@@ -2,10 +2,25 @@
 // © 2025 Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+    <div class="hero">
+        <h1>Open Source Endowment</h1>
+        <p>Lorem ipsum dolor sit amet</p>
+    </div>
 </Layout>
+
+<style>
+    .hero {
+        min-height: 30rem;
+        background:
+            radial-gradient(
+                ellipse at top,
+                var(--color-primary), transparent),
+            radial-gradient(
+                ellipse at bottom,
+                var(--color-secondary), transparent);
+    }
+</style>
