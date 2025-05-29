@@ -13,24 +13,59 @@ import Layout from '../layouts/Layout.astro';
             <hr>
             <small>Truly sustainable funding for critical OSS through a community&#x2011;driven endowment fund.</small>
         </div>
-        <div class="intro-illu">
-            &nbsp;
+        <div class="intro-illu-container">
+            <div class="intro-illu">
+                <div class="illubox illubox--a">curl</div>
+                <div class="illubox illubox--a">mpld3</div>
+                <div class="illubox illubox--b illubox--ok">imagemagick</div>
+                <div class="illubox illubox--b">iced</div>
+                <div class="illubox illubox--c">xz</div>
+                <div class="illubox illubox--c illubox--ok">log4j</div>
+                <div class="illubox illubox--d illubox--ok">openssl</div>
+                <div class="illubox illubox--d illubox--ok">git</div>
+            </div>
         </div>
     </div>
-    <div class="container">
-        <p>Hello world.</p>
-    </div>
+    <section>
+        <div class="container">
+            <p>Hello world.</p>
+        </div>
+    </section>
 </Layout>
 
 <style>
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    @keyframes toggle {
+        0% {
+            opacity: 1;
+        }
+        45% {
+            opacity: 1;
+        }
+        55% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
     .intro {
         display: flex;
-        padding: 6rem 0;
-        padding-top: 5rem;
-        .intro-text, .intro-illu {
-            flex: 1;
-        }
+        flex-wrap: wrap;
+        padding-top: 3rem;
+        padding-bottom: 4rem;
         .intro-text {
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -39,6 +74,7 @@ import Layout from '../layouts/Layout.astro';
                 display: block;
                 font-size: 1.5rem;
                 font-weight: normal;
+                font-style: italic;
             }
             h2 {
                 margin: 0;
@@ -53,6 +89,70 @@ import Layout from '../layouts/Layout.astro';
                 /* background-size: 100%; */
                 /* background-clip: text; */
                 /* -webkit-text-fill-color: transparent; */
+            }
+        }
+        .intro-illu-container {
+            flex: 0 0 20rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem;
+        }
+        .intro-illu {
+            flex: 1;
+            position: relative;
+            background-image: url(/images/branches.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 23rem;
+            width: 20rem;
+            .illubox {
+                position: absolute;
+                display: inline-block;
+                padding: 0.3rem 0.8rem;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: var(--border-radius);
+                color: white;
+                font-family: 'Raleway', 'Helvetia Neue', Helvetica, sans-serif;
+                white-space: nowrap;
+                transform: rotate(-50deg);
+                transform-origin: left;
+                &.illubox--a {
+                    top: -7%;
+                    left: 20%;
+                }
+                &.illubox--b {
+                    top: 4%;
+                    left: 38%;
+                }
+                &.illubox--c {
+                    top: 12%;
+                    left: 56%;
+                }
+                &.illubox--d {
+                    top: 18%;
+                    left: 74%;
+                }
+                &:before {
+                    content: ' ';
+                    display: inline-block;
+                    height: 0.6rem;
+                    width: 0.6rem;
+                    margin-right: 0.6rem;
+                    border-radius: 100%;
+                    background: var(--color-warning);
+                    animation: blink 2s ease-in-out infinite alternate;
+                }
+                &.illubox--ok:before {
+                    background: var(--color-secondary);
+                }
+                &:nth-child(2n) {
+                    animation: toggle 10s ease-in-out infinite alternate;
+                }
+                &:nth-child(2n+1) {
+                    animation: toggle 10s ease-in-out infinite alternate-reverse;
+                }
             }
         }
     }

@@ -127,6 +127,8 @@ SPDX-License-Identifier: Apache-2.0
     --color-primary-bright: #81d7ff;
     --color-secondary: #3fbd73;
     --color-secondary-bright: #51f395;
+    --color-warning: #aa1111;
+    --border-radius: 50px;
 
     font-size: 18px;
     font-family: 'Lora', 'Georgia Pro', Georgia, serif;
@@ -160,7 +162,7 @@ hr {
     position: relative;
     padding: 0.7rem 1rem;
     border: 1px solid white;
-    border-radius: 50px;
+    border-radius: var(--border-radius);
     font-weight: bold;
     background: white;
     color: black;
@@ -172,5 +174,12 @@ hr {
 
 .container {
     max-width: 900px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+section {
+    margin: 4rem 0;
 }
