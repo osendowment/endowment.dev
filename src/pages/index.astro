@@ -6,21 +6,54 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-    <div class="hero">
-        <h1>Open Source Endowment</h1>
-        <p>Lorem ipsum dolor sit amet</p>
+    <div class="intro container" slot="hero">
+        <div class="intro-text">
+            <small>The world's first</small>
+            <h2>Open Source<br>Endowment</h2>
+            <hr>
+            <small>Truly sustainable funding for critical OSS through a community&#x2011;driven endowment fund.</small>
+        </div>
+        <div class="intro-illu">
+            &nbsp;
+        </div>
+    </div>
+    <div class="container">
+        <p>Hello world.</p>
     </div>
 </Layout>
 
 <style>
-    .hero {
-        min-height: 30rem;
-        background:
-            radial-gradient(
-                ellipse at top,
-                var(--color-primary), transparent),
-            radial-gradient(
-                ellipse at bottom,
-                var(--color-secondary), transparent);
+    .intro {
+        display: flex;
+        padding: 6rem 0;
+        padding-top: 5rem;
+        .intro-text, .intro-illu {
+            flex: 1;
+        }
+        .intro-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            small {
+                display: block;
+                font-size: 1.5rem;
+                font-weight: normal;
+            }
+            h2 {
+                margin: 0;
+                font-size: 4.0rem;
+                /* background-image: */
+                /*     radial-gradient( */
+                /*         ellipse at top left, */
+                /*         var(--color-primary-bright), transparent), */
+                /*     radial-gradient( */
+                /*         ellipse at bottom right, */
+                /*         var(--color-secondary-bright), transparent); */
+                /* background-size: 100%; */
+                /* background-clip: text; */
+                /* -webkit-text-fill-color: transparent; */
+            }
+        }
     }
 </style>

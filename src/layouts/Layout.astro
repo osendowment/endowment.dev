@@ -13,6 +13,48 @@ import '../styles/common.css';
         <title>Open Source Endowment</title>
     </head>
     <body>
+        <div class="hero">
+            <header>
+                <div class="container header-items">
+                    <a href="/">
+                        <img
+                            src="/images/logo/OSE Logo for Dark BG.svg"
+                            alt="The Open Source Endowment logo">
+                    </a>
+                    <nav>
+                        <a href="#donate" class="button">
+                            Donate now<span class="after">›</span>
+                        </a>
+                    </nav>
+                </div>
+            </header>
+            <slot name="hero" />
+        </div>
         <slot />
     </body>
 </html>
+
+<style>
+    .hero {
+        background: linear-gradient(#0e152b, #011124);
+            /* var(--color-bg); */
+            /* radial-gradient( */
+            /*     ellipse at top left, */
+            /*     #5ba9ee33, transparent), */
+            /* radial-gradient( */
+            /*     ellipse at bottom right, */
+            /*     #3fbd7333, transparent), */
+            /* var(--color-bg); */
+    }
+    header {
+        padding: 1rem 0;
+        .header-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            img {
+                height: 3rem;
+            }
+        }
+    }
+</style>

@@ -122,20 +122,55 @@ SPDX-License-Identifier: Apache-2.0
 
 
 :root {
+    --color-bg: #011124;
     --color-primary: #5ba9ee;
     --color-primary-bright: #81d7ff;
     --color-secondary: #3fbd73;
     --color-secondary-bright: #51f395;
 
     font-size: 18px;
-    font-family: 'Noto Serif', 'Georgia Pro', Georgia, serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Raleway', 'Helvetia Neue', Helvetica, sans-serif;
+    font-family: 'Lora', 'Georgia Pro', Georgia, serif;
 }
 
 html, body {
     margin: 0;
     padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6, .button {
+    font-family: 'Raleway', 'Helvetia Neue', Helvetica, sans-serif;
+}
+
+hr {
+  margin: 1.5rem 0;
+  max-width: 10rem;
+  border-color: white;
+  border-width: 1px;
+}
+
+.button {
+    background: none;
+    border: none;
+    text-decoration: none;
+    position: relative;
+    padding: 0.7rem 1rem;
+    border: 1px solid white;
+    border-radius: 50px;
+    font-weight: bold;
+    background: white;
+    color: black;
+    .after {
+        padding-left: 0.5rem;
+        vertical-align: 1px;
+    }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
 }
