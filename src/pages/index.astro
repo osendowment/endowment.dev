@@ -28,6 +28,11 @@ import Layout from '../layouts/Layout.astro';
                 <div class="illubox illubox--d illubox--ok">git</div>
             </div>
         </div>
+        <div class="mobile-only">
+            <a href="#TODO" class="button">
+                Donate now<span class="after">›</span>
+            </a>
+        </div>
     </div>
     <section class="principles">
         <div class="container">
@@ -62,8 +67,8 @@ import Layout from '../layouts/Layout.astro';
     <section>
         <div class="container">
             <h2>Solving Open Source Sustainability</h2>
-            <div class="sustainability">
-                <div class="sustainability-about">
+            <div class="feature">
+                <div>
                     <p>
                         Though 96% of codebases rely on open source software, the maintainers of
                         this software are generally unpaid, doing their work in a burnout&#x2011;inducing
@@ -86,6 +91,26 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <img src="/images/xkcd-2347.png">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container flex flex-center">
+            <div class="card card--narrow card--bigpad">
+                <div class="text-center">
+                    <img src="/images/icons/branches-dense.svg">
+                    <h2>Community&#x2011;Governed Algorithmic Allocation</h2>
+                </div>
+                <p>
+                    We allocate funds using algorithms we develop in-house, which operate on data from across the open
+                    source ecosystem.
+                </p>
+                <p>
+                    Algorithms are selected by our member donors, in consultation with the community.
+                </p>
+                <div class="text-center">
+                    <a href="#TODO" class="button">Join the conversation →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -254,15 +279,12 @@ import Layout from '../layouts/Layout.astro';
     .intro {
         display: flex;
         flex-wrap: wrap;
+        gap: 3rem;
         padding-top: 2rem;
         padding-bottom: 2rem;
         @media (max-width: 800px) {
-            display: block;
-            .intro-illu-container {
-                margin-top: 3rem;
-                margin-left: auto;
-                margin-right: auto;
-            }
+            flex-direction: column;
+            align-items: center;
         }
         .intro-text {
             flex: 1;
@@ -364,11 +386,15 @@ import Layout from '../layouts/Layout.astro';
     .principles {
         margin-top: 3rem;
     }
-    .sustainability {
+    .feature {
         display: flex;
         flex-wrap: wrap;
         gap: 4rem;
-        .sustainability-about {
+        @media (max-width: 800px) {
+            flex-direction: column;
+            align-items: center;
+        }
+        & > div {
             flex: 1;
             font-size: 1.2rem;
         }
