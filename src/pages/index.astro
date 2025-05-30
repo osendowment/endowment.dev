@@ -11,7 +11,10 @@ import Layout from '../layouts/Layout.astro';
             <small>The world's first</small>
             <h2>Open Source<br>Endowment</h2>
             <hr>
-            <small>Truly sustainable funding for critical OSS through a community&#x2011;driven endowment fund.</small>
+            <small>
+                Truly sustainable funding for critical OSS through a community&#x2011;driven
+                endowment fund.
+            </small>
         </div>
         <div class="intro-illu-container">
             <div class="intro-illu">
@@ -28,37 +31,37 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <section>
         <div class="container">
-            <p>Hello world.</p>
+            <div class="cardset">
+                <div class="card">
+                    <img src="/images/icons/squiggle.svg">
+                    <h2>Sustainable</h2>
+                    <p>
+                        Provides stable, long-term funding for OSS maintenance, independent of
+                        yearly donation cycles or short-term corporate budgets.
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="/images/icons/balls.svg">
+                    <h2>Systemic</h2>
+                    <p>
+                        Supports crucial 'long tail' of OSS&nbsp;—&nbsp;foundational projects vital
+                        for the entire ecosystem, often overlooked by typical funding.
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="/images/icons/assembly.svg">
+                    <h2>Efficient</h2>
+                    <p>
+                        Maximizes impact with a community&#x2011;first, transparent digital operation,
+                        attracting diverse support from tech and beyond.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 </Layout>
 
 <style>
-    @keyframes blink {
-        0% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-    @keyframes toggle {
-        0% {
-            opacity: 1;
-        }
-        45% {
-            opacity: 1;
-        }
-        55% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
     .intro {
         display: flex;
         flex-wrap: wrap;
@@ -124,7 +127,7 @@ import Layout from '../layouts/Layout.astro';
                 display: inline-block;
                 padding: 0.3rem 0.8rem;
                 border: 1px solid rgba(255, 255, 255, 0.5);
-                border-radius: var(--border-radius);
+                border-radius: var(--border-radius-big);
                 color: white;
                 font-family: 'Raleway', 'Helvetia Neue', Helvetica, sans-serif;
                 white-space: nowrap;

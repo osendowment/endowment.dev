@@ -18,6 +18,15 @@ SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
 path = [
+    "public/images/icons/**",
+    "public/images/noise.png",
+]
+SPDX-FileCopyrightText = "© 2025 Vlad-Stefan Harbuz"
+SPDX-License-Identifier = "LicenseRef-Restricted"
+
+[[annotations]]
+path = [
+    "public/images/branches.svg",
     "public/images/logo/**/*",
 ]
 SPDX-FileCopyrightText = "© 2025 Open Source Endowment Foundation"
