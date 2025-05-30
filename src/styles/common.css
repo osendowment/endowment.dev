@@ -238,16 +238,16 @@ hr {
     }
     &:hover {
         color: black;
-        background: var(--color-primary);
+        background: var(--color-primary-bright);
     }
     &.button--huge {
         padding: 0.8rem 1.8rem;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
     &.button--colored {
-        background: var(--color-secondary);
+        background: var(--color-secondary-bright);
         &:hover {
-            background: var(--color-primary);
+            background: var(--color-primary-bright);
         }
     }
 }
