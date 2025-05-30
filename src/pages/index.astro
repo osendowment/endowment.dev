@@ -29,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </div>
-    <section>
+    <section class="principles">
         <div class="container">
             <div class="cardset">
                 <div class="card">
@@ -61,11 +61,41 @@ import Layout from '../layouts/Layout.astro';
     </section>
     <section>
         <div class="container">
+            <h2>Solving Open Source Sustainability</h2>
+            <div class="sustainability">
+                <div class="sustainability-about">
+                    <p>
+                        Though 96% of codebases rely on open source software, the maintainers of
+                        this software are generally unpaid, doing their work in a burnout&#x2011;inducing
+                        second shift after their day jobs.
+                    </p>
+                    <p>
+                        This burnout leads to catastrophic global security issues, as we've already
+                        seen with
+                        <a href="https://en.wikipedia.org/wiki/Log4Shell">Log4Shell</a>,
+                        the
+                        <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor">XZ Utils backdoor</a>
+                        and
+                        <a href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed</a>.
+                    </p>
+                    <p>
+                        <strong>Our solution: the endowment model</strong>.
+                        An endowment invests donations in low-risk assets to build a permanent fund. It then uses only
+                        capital gains from investments to support its mission. This creates a sustainable funding stream
+                        that weathers economic and political volatility for generations.
+                    </p>
+                </div>
+                <img src="/images/xkcd-2347.png">
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
             <h2>Our Team</h2>
             <div class="team-member-list">
                 <div class="team-member">
                     <div class="team-member__head">
-                        <img src="/images/team/konstantin.webp">
+                        <img src="/images/team/konstantin.webp" alt="A portrait of Konstantin">
                         <h3>
                             <a href="https://www.linkedin.com/in/kvinogradov/">Konstantin Vinogradov</a>
                             <em>Board Director, Chairman</em>
@@ -90,7 +120,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="team-member">
                     <div class="team-member__head">
-                        <img src="/images/team/chad.webp">
+                        <img src="/images/team/chad.webp" alt="A portrait of Chad">
                         <h3>
                             <a href="https://www.linkedin.com/in/chadwhitacre/">Chad Whitacre</a>
                             <em>Board Director, Secretary</em>
@@ -116,7 +146,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="team-member">
                     <div class="team-member__head">
-                        <img src="/images/team/maxim.webp">
+                        <img src="/images/team/maxim.webp" alt="A portrait of Maxim">
                         <h3>
                             <a href="https://www.linkedin.com/in/maxim/">Maxim Konovalov</a>
                             <em>Board Director, Treasurer</em>
@@ -140,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="team-member">
                     <div class="team-member__head">
-                        <img src="/images/team/jonathan.webp">
+                        <img src="/images/team/jonathan.webp" alt="A portrait of Jonathan">
                         <h3>
                             <a href="https://www.linkedin.com/in/jonathan-starr-b04032284/">Jonathan Starr</a>
                             <em>Executive Director</em>
@@ -164,7 +194,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="team-member">
                     <div class="team-member__head">
-                        <img src="/images/team/amy.webp">
+                        <img src="/images/team/amy.webp" alt="A portrait of Amy">
                         <h3>
                             <a href="https://www.linkedin.com/in/amy3parker/">Amy Parker</a>
                             <em>Advisor</em>
@@ -188,7 +218,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="team-member">
                     <div class="team-member__head">
-                        <img src="/images/team/vlad.webp">
+                        <img src="/images/team/vlad.webp" alt="A portrait of Vlad">
                         <h3>
                             <a href="https://vlad.website">Vlad-Stefan Harbuz</a>
                             <em>Advisor</em>
@@ -329,6 +359,21 @@ import Layout from '../layouts/Layout.astro';
                     animation: toggle 10s ease-in-out infinite alternate-reverse;
                 }
             }
+        }
+    }
+    .principles {
+        margin-top: 3rem;
+    }
+    .sustainability {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+        .sustainability-about {
+            flex: 1;
+            font-size: 1.2rem;
+        }
+        & > img {
+            max-width: 17rem;
         }
     }
     .team-member-list {

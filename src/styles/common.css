@@ -260,7 +260,7 @@ hr {
 }
 
 section {
-    margin: 4rem 0;
+    margin: 6rem 0;
     & > h2, & > .container > h2 {
         text-align: center;
         font-size: 2.5rem;
