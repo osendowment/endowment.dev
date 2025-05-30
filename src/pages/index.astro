@@ -62,8 +62,16 @@ import Layout from '../layouts/Layout.astro';
     .intro {
         display: flex;
         flex-wrap: wrap;
-        padding-top: 3rem;
-        padding-bottom: 4rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        @media (max-width: 800px) {
+            display: block;
+            .intro-illu-container {
+                margin-top: 3rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
         .intro-text {
             flex: 1;
             display: flex;
@@ -79,6 +87,9 @@ import Layout from '../layouts/Layout.astro';
             h2 {
                 margin: 0;
                 font-size: 4.0rem;
+                @media (max-width: 800px) {
+                    font-size: 2.5rem;
+                }
                 /* background-image: */
                 /*     radial-gradient( */
                 /*         ellipse at top left, */
@@ -92,7 +103,8 @@ import Layout from '../layouts/Layout.astro';
             }
         }
         .intro-illu-container {
-            flex: 0 0 20rem;
+            flex: 0 0 16rem;
+            width: 16rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,7 +118,7 @@ import Layout from '../layouts/Layout.astro';
             background-repeat: no-repeat;
             background-position: center center;
             height: 23rem;
-            width: 20rem;
+            width: 16rem;
             .illubox {
                 position: absolute;
                 display: inline-block;
@@ -120,19 +132,19 @@ import Layout from '../layouts/Layout.astro';
                 transform-origin: left;
                 &.illubox--a {
                     top: -7%;
-                    left: 20%;
+                    left: 13%;
                 }
                 &.illubox--b {
                     top: 4%;
-                    left: 38%;
+                    left: 36%;
                 }
                 &.illubox--c {
                     top: 12%;
-                    left: 56%;
+                    left: 57%;
                 }
                 &.illubox--d {
                     top: 18%;
-                    left: 74%;
+                    left: 78%;
                 }
                 &:before {
                     content: ' ';
