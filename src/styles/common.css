@@ -308,7 +308,7 @@ section {
     border-radius: var(--border-radius-small);
     background:
         url(/images/noise.png),
-        linear-gradient(-45deg, #0f1229, #011124);
+        linear-gradient(-45deg, #111330, #011124);
     h2 {
         margin: 0;
     }
