@@ -71,6 +71,9 @@ import '../styles/common.css';
                         Wilmington, DE<br>
                         USA
                     </p>
+                    <p class="disclaimers">
+                        Third-party project names used for illustrative purposes only.
+                    </p>
                 </div>
                 <div>
                     <h3>Resources</h3>
@@ -152,6 +155,9 @@ import '../styles/common.css';
             linear-gradient(135deg, #011124, #091320);
         border-top: 1px solid rgba(222, 222, 255, 0.03);
         font-size: 0.9rem;
+        .disclaimers {
+            color: var(--color-faded-text);
+        }
         .footer-items {
             display: flex;
             flex-wrap: wrap;
@@ -169,7 +175,7 @@ import '../styles/common.css';
                 margin: 1rem 0;
                 a {
                     text-decoration: none;
-                    color: white;
+                    color: var(--color-text);
                     &:hover {
                         color: var(--color-primary-bright);
                         svg path {
@@ -189,7 +195,7 @@ import '../styles/common.css';
                 flex-direction: column;
                 gap: 0.5rem;
                 a {
-                    color: white;
+                    color: var(--color-text);
                     text-decoration-color: rgba(255, 255, 255, 0.4);
                 }
             }

@@ -139,29 +139,39 @@ SPDX-License-Identifier: Apache-2.0
 }
 
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+    0%   { opacity: 1; }
+    50%  { opacity: 1; }
+    100% { opacity: 0; }
 }
-@keyframes toggle {
-    0% {
-        opacity: 1;
-    }
-    45% {
-        opacity: 1;
-    }
-    55% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
+@keyframes illubox-a {
+    0%   { opacity: 0; }
+    2%   { opacity: 1; }
+    23%  { opacity: 1; }
+    25%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes illubox-b {
+    0%   { opacity: 0; }
+    23%  { opacity: 0; }
+    25%  { opacity: 1; }
+    48%  { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes illubox-c {
+    0%   { opacity: 0; }
+    48%  { opacity: 0; }
+    50%  { opacity: 1; }
+    73%  { opacity: 1; }
+    75%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes illubox-d {
+    0%   { opacity: 0; }
+    73%  { opacity: 0; }
+    75%  { opacity: 1; }
+    98%  { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 :root {
@@ -171,6 +181,8 @@ SPDX-License-Identifier: Apache-2.0
     --color-secondary: #3fbd73;
     --color-secondary-bright: #51f395;
     --color-warning: #aa1111;
+    --color-text: white;
+    --color-faded-text: rgba(255, 255, 255, 0.5);
     --border-radius-big: 50px;
     --border-radius-small: 6px;
 
@@ -180,7 +192,7 @@ SPDX-License-Identifier: Apache-2.0
     background:
         url(/images/noise.png),
         var(--color-bg);
-    color: white;
+    color: var(--color-text);
 }
 
 html, body {

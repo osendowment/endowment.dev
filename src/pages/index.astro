@@ -20,12 +20,20 @@ import Layout from '../layouts/Layout.astro';
             <div class="intro-illu">
                 <div class="illubox illubox--a">curl</div>
                 <div class="illubox illubox--a">mpld3</div>
+                <div class="illubox illubox--a">pandas</div>
+                <div class="illubox illubox--a">cpython</div>
                 <div class="illubox illubox--b illubox--ok">imagemagick</div>
                 <div class="illubox illubox--b">iced</div>
+                <div class="illubox illubox--b">tokio</div>
+                <div class="illubox illubox--b illubox--ok">numpy</div>
                 <div class="illubox illubox--c">xz</div>
                 <div class="illubox illubox--c illubox--ok">log4j</div>
+                <div class="illubox illubox--c">matplotlib</div>
+                <div class="illubox illubox--c">requests</div>
                 <div class="illubox illubox--d illubox--ok">openssl</div>
                 <div class="illubox illubox--d illubox--ok">git</div>
+                <div class="illubox illubox--d">zlib</div>
+                <div class="illubox illubox--d">joda-time</div>
             </div>
         </div>
         <div class="mobile-only">
@@ -345,6 +353,7 @@ import Layout from '../layouts/Layout.astro';
                 white-space: nowrap;
                 transform: rotate(-50deg);
                 transform-origin: left;
+                opacity: 0;
                 &.illubox--a {
                     top: -7%;
                     left: 13%;
@@ -374,11 +383,29 @@ import Layout from '../layouts/Layout.astro';
                 &.illubox--ok:before {
                     background: var(--color-secondary);
                 }
-                &:nth-child(2n) {
-                    animation: toggle 10s ease-in-out infinite alternate;
+                &:nth-child(4n+1) {
+                    animation-name: illubox-a;
+                    animation-duration: 40s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
                 }
-                &:nth-child(2n+1) {
-                    animation: toggle 10s ease-in-out infinite alternate-reverse;
+                &:nth-child(4n+2) {
+                    animation-name: illubox-b;
+                    animation-duration: 40s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
+                }
+                &:nth-child(4n+3) {
+                    animation-name: illubox-c;
+                    animation-duration: 40s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
+                }
+                &:nth-child(4n) {
+                    animation-name: illubox-d;
+                    animation-duration: 40s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
                 }
             }
         }
