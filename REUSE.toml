@@ -59,3 +59,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "© 2025 Matthew Butterick"
 SPDX-License-Identifier = "LicenseRef-Restricted"
+
+[[annotations]]
+path = [
+    "public/fonts/Geist*",
+]
+SPDX-FileCopyrightText = "Copyright 2024 The Geist Project Authors (https://vercel.com/font)"
+SPDX-License-Identifier = "OFL-1.1"

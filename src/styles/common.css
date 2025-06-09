@@ -137,6 +137,20 @@ SPDX-License-Identifier: Apache-2.0
     src: url(/fonts/valkyrie_b_italic.woff2) format('woff2');
     font-display: swap;
 }
+@font-face {
+    font-family: 'Geist Mono';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(/fonts/GeistMono[wght].woff2) format('woff2');
+}
+@font-face {
+    font-family: 'Geist Mono';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(/fonts/GeistMono-Italic[wght].woff2) format('woff2');
+}
 
 @keyframes blink {
     0%   { opacity: 1; }
