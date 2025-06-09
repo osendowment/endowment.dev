@@ -195,7 +195,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-bg-card1: #000218;
     --color-bg-card2: #090522;
     --color-shadow: #19124255;
-    --color-bg-border: rgba(222, 222, 255, 0.03);
+    --color-bg-border: rgba(222, 222, 255, 0.05);
     --color-bg-border-light: rgba(255, 255, 255, 0.08);
     --color-bg-border-lighter: rgba(255, 255, 255, 0.13);
     --color-primary: #5ba9ee;
@@ -208,12 +208,13 @@ SPDX-License-Identifier: Apache-2.0
     --border-radius-big: 50px;
     --border-radius-small: 6px;
     --light-angle: 60deg;
+    --url-noise: url(/images/noise-coarse.svg);
 
     font-size: 18px;
     font-family: 'Raleway', 'Georgia Pro', Georgia, serif;
     line-height: 1.35;
     background:
-        url(/images/noise.png),
+        var(--url-noise),
         var(--color-bg-base);
     color: var(--color-text);
 }
@@ -327,6 +328,16 @@ section {
     }
 }
 
+.section--grid {
+    padding: 3rem;
+    border-top: 1px solid var(--color-bg-border);
+    border-bottom: 1px solid var(--color-bg-border);
+    background: url(/images/dot-grid.svg), var(--color-bg-base);
+}
+.hero + .section--grid {
+    border-top: none;
+}
+
 .cardset {
     display: flex;
     flex-wrap: wrap;
@@ -343,11 +354,9 @@ section {
     border: 1px solid var(--color-bg-border-light);
     border-top-color: var(--color-bg-border-lighter);
     border-radius: var(--border-radius-small);
-    background:
-        url(/images/noise.png),
-        linear-gradient(var(--light-angle),
-            var(--color-bg-card1), var(--color-bg-card2));
-    box-shadow: 0px 0px 8px 3px var(--color-shadow);
+    background: linear-gradient(var(--light-angle),
+        var(--color-bg-card1), var(--color-bg-card2));
+    box-shadow: 0px 0px 8px 2px var(--color-shadow);
     h2 {
         margin: 0;
     }
