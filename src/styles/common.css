@@ -333,6 +333,13 @@ section {
     border-top: 1px solid var(--color-bg-border);
     border-bottom: 1px solid var(--color-bg-border);
     background: url(/images/dot-grid.svg), var(--color-bg-base);
+    @media (max-width: 800px) {
+        padding: 1.5rem;
+    }
+    & > .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 .hero + .section--grid {
     border-top: none;
@@ -344,6 +351,10 @@ section {
     gap: 2rem;
     .card {
         flex: 1;
+    }
+    @media (max-width: 800px) {
+        flex-direction: column;
+        gap: 1.5rem;
     }
 }
 .card {
