@@ -126,7 +126,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="container">
             <h2>Our Team</h2>
             <div class="team-member-list">
-                <div class="team-member">
+                <div class="team-member card">
                     <div class="team-member__head">
                         <img src="/images/team/konstantin.webp" alt="A portrait of Konstantin">
                         <h3>
@@ -151,7 +151,7 @@ import Layout from '../layouts/Layout.astro';
                         </li>
                     </ul>
                 </div>
-                <div class="team-member">
+                <div class="team-member card">
                     <div class="team-member__head">
                         <img src="/images/team/chad.webp" alt="A portrait of Chad">
                         <h3>
@@ -177,7 +177,7 @@ import Layout from '../layouts/Layout.astro';
                         </li>
                     </ul>
                 </div>
-                <div class="team-member">
+                <div class="team-member card">
                     <div class="team-member__head">
                         <img src="/images/team/maxim.webp" alt="A portrait of Maxim">
                         <h3>
@@ -201,7 +201,7 @@ import Layout from '../layouts/Layout.astro';
                         </li>
                     </ul>
                 </div>
-                <div class="team-member">
+                <div class="team-member card">
                     <div class="team-member__head">
                         <img src="/images/team/jonathan.webp" alt="A portrait of Jonathan">
                         <h3>
@@ -225,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
                         </li>
                     </ul>
                 </div>
-                <div class="team-member">
+                <div class="team-member card">
                     <div class="team-member__head">
                         <img src="/images/team/amy.webp" alt="A portrait of Amy">
                         <h3>
@@ -249,7 +249,7 @@ import Layout from '../layouts/Layout.astro';
                         </li>
                     </ul>
                 </div>
-                <div class="team-member">
+                <div class="team-member card">
                     <div class="team-member__head">
                         <img src="/images/team/vlad.webp" alt="A portrait of Vlad">
                         <h3>
@@ -313,16 +313,6 @@ import Layout from '../layouts/Layout.astro';
                 @media (max-width: 800px) {
                     font-size: 2.5rem;
                 }
-                /* background-image: */
-                /*     radial-gradient( */
-                /*         ellipse at top left, */
-                /*         var(--color-primary-bright), transparent), */
-                /*     radial-gradient( */
-                /*         ellipse at bottom right, */
-                /*         var(--color-secondary-bright), transparent); */
-                /* background-size: 100%; */
-                /* background-clip: text; */
-                /* -webkit-text-fill-color: transparent; */
             }
         }
         .intro-illu-container {
@@ -434,15 +424,6 @@ import Layout from '../layouts/Layout.astro';
         gap: 2rem;
         grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
         .team-member {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius-small);
-            background:
-                url(/images/noise.png),
-                linear-gradient(-45deg, #111330, #011124);
             .team-member__head {
                 display: flex;
                 gap: 1rem;
