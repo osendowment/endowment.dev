@@ -248,32 +248,48 @@ import Layout from '../layouts/Layout.astro';
             <h2>Our Process</h2>
             <div class="process">
                 <div class="process-item">
-                    <div class="process-digit">1</div>
-                    <h3>Donations</h3>
+                    <div class="process-icon">
+                        <img src="/images/icons/balls.svg">
+                    </div>
+                    <h3>
+                        <span class="process-number">1</span>Donations
+                    </h3>
                     <p>
                         Diverse contributions (cash, stocks) from individuals, companies, and foundations build the
                         endowment's permanent principal. (US 501(c)(3) status pending).
                     </p>
                 </div>
                 <div class="process-item">
-                    <div class="process-digit">2</div>
-                    <h3>Investments</h3>
+                    <div class="process-icon">
+                        <img src="/images/icons/search.svg">
+                    </div>
+                    <h3>
+                        <span class="process-number">2</span>Investments
+                    </h3>
                     <p>
                         The principal is invested in a diversified, low-risk portfolio to generate sustainable annual
                         returns while preserving capital.
                     </p>
                 </div>
                 <div class="process-item">
-                    <div class="process-digit">3</div>
-                    <h3>Selection</h3>
+                    <div class="process-icon">
+                        <img src="/images/icons/balls.svg">
+                    </div>
+                    <h3>
+                        <span class="process-number">3</span>Selection
+                    </h3>
                     <p>
                         A transparent, community-led process selects critical OSS projects for funding. The model
                         evolves with community input.
                     </p>
                 </div>
                 <div class="process-item">
-                    <div class="process-digit">4</div>
-                    <h3>Monitoring</h3>
+                    <div class="process-icon">
+                        <img src="/images/icons/search.svg">
+                    </div>
+                    <h3>
+                        <span class="process-number">4</span>Monitoring
+                    </h3>
                     <p>
                         Project outcomes are tracked for accountability, refining strategy, and maximizing ecosystem
                         benefits.
@@ -620,14 +636,15 @@ import Layout from '../layouts/Layout.astro';
                 height: 1.5rem;
                 width: 1.5rem;
                 background: var(--color-secondary-bright);
-                border-radius:100%;
+                border-radius: 100%;
             }
             &:after {
                 content: '';
                 position: absolute;
                 top: 1rem;
-                left: 0.55rem;
+                left: 0.75rem;
                 bottom: -0.5rem;
+                transform: translateX(-50%);
                 display: block;
                 width: 0.3rem;
                 background: var(--color-secondary-bright);
@@ -648,21 +665,58 @@ import Layout from '../layouts/Layout.astro';
     }
     .process {
         display: flex;
-        gap: 1rem;
+        flex-wrap: wrap;
+        gap: 2rem;
+        @media (max-width: 800px) {
+            flex-direction: column;
+        }
         .process-item {
             position: relative;
             flex: 1;
-            padding-right: 3rem;
-            .process-digit {
-                position: absolute;
-                top: 0;
-                left: -3rem;
-                font-size: 4rem;
-                line-height: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .process-icon {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 3.5rem;
+                width: 3.5rem;
+                border: 3px solid var(--color-secondary-bright);
+                border-radius: 100%;
+                img {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                }
+            }
+            .process-number {
+                display: inline-block;
+                width: 1.5rem;
                 font-family: 'Geist Mono', 'Ubuntu Mono', monospaced;
-                color: var(--color-standalone-border);
+                &:after {
+                    content: '.';
+                }
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 1.75rem;
+                left: calc(3.5rem);
+                right: -2rem;
+                transform: translateY(-50%);
+                display: block;
+                height: 0.3rem;
+                background: var(--color-secondary-bright);
+                @media (max-width: 800px) {
+                    display: none;
+                }
+            }
+            &:last-child:after {
+                display: none;
             }
             h3 {
+                margin: 0;
             }
         }
     }
