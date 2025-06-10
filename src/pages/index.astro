@@ -248,9 +248,7 @@ import Layout from '../layouts/Layout.astro';
             <h2>Our Process</h2>
             <div class="process">
                 <div class="process-item">
-                    <div class="process-icon">
-                        <img src="/images/icons/balls.svg">
-                    </div>
+                    <div class="process-icon"></div>
                     <h3>
                         <span class="process-number">1</span>Donations
                     </h3>
@@ -260,9 +258,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="process-item">
-                    <div class="process-icon">
-                        <img src="/images/icons/search.svg">
-                    </div>
+                    <div class="process-icon"></div>
                     <h3>
                         <span class="process-number">2</span>Investments
                     </h3>
@@ -272,9 +268,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="process-item">
-                    <div class="process-icon">
-                        <img src="/images/icons/balls.svg">
-                    </div>
+                    <div class="process-icon"></div>
                     <h3>
                         <span class="process-number">3</span>Selection
                     </h3>
@@ -284,9 +278,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="process-item">
-                    <div class="process-icon">
-                        <img src="/images/icons/search.svg">
-                    </div>
+                    <div class="process-icon"></div>
                     <h3>
                         <span class="process-number">4</span>Monitoring
                     </h3>
@@ -681,14 +673,10 @@ import Layout from '../layouts/Layout.astro';
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                height: 3.5rem;
-                width: 3.5rem;
-                border: 3px solid var(--color-secondary-bright);
+                height: 1.5rem;
+                width: 1.5rem;
+                background: var(--color-secondary-bright);
                 border-radius: 100%;
-                img {
-                    width: 1.8rem;
-                    height: 1.8rem;
-                }
             }
             .process-number {
                 display: inline-block;
@@ -701,8 +689,8 @@ import Layout from '../layouts/Layout.astro';
             &:after {
                 content: '';
                 position: absolute;
-                top: 1.75rem;
-                left: calc(3.5rem);
+                top: 0.75rem;
+                left: 1.5rem;
                 right: -2rem;
                 transform: translateY(-50%);
                 display: block;
