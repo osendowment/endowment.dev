@@ -207,7 +207,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-text: white;
     --color-faded-text: rgba(255, 255, 255, 0.5);
     --border-radius-big: 50px;
-    --border-radius-small: 6px;
+    --border-radius-small: 4px;
     --light-angle: 60deg;
     --url-noise: url(/images/noise-coarse.svg);
 
@@ -381,6 +381,7 @@ section {
     padding: 1rem;
     border: 1px solid var(--color-box-border);
     border-top-color: var(--color-box-hl-border);
+    border-radius: var(--border-radius-small);
     background: linear-gradient(var(--light-angle),
         var(--color-bg-card1), var(--color-bg-card2));
     box-shadow: 0px 0px 8px 2px var(--color-shadow);
