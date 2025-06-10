@@ -102,27 +102,91 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </section>
+    <section class="vision section--grid">
+        <div class="container">
+            <h2>Our Vision</h2>
+            <p>
+                Open Source is the world's largest public good institution, fostering global education, professional
+                connections, community, and significant economic activity — all underpinned by a unique collaborative
+                culture.
+            </p>
+            <p>
+                The Open Source Endowment offers an efficient, lasting solution to ensure this vital institution and
+                its global community can meet the fundamental challenge of sustainable funding, securing its
+                contributions for generations to come.
+            </p>
+        </div>
+    </section>
     <section>
         <div class="container flex flex-center">
-            <div class="card card--narrow card--bigpad">
-                <div class="text-center">
-                    <img src="/images/icons/branches-dense.svg">
-                    <h2>Community&#x2011;Governed Algorithmic Allocation</h2>
+            <div class="features">
+                <div class="card">
+                    <h3>Digital-First</h3>
+                    <p>
+                        Operates like a tech startup with minimal overhead and automated, data-driven processes for
+                        efficiency and transparency.
+                    </p>
                 </div>
-                <p>
-                    We allocate funds using algorithms we develop in&#x2011;house, which operate on data from across the open
-                    source ecosystem.
-                </p>
-                <p>
-                    Algorithms are selected by our member donors, in consultation with the community.
-                </p>
-                <div class="text-center">
-                    <a href="#TODO" class="button">Join the conversation →</a>
+                <div class="card">
+                    <h3>Global Outlook</h3>
+                    <p>
+                        Supports the worldwide open source community, focusing on developers, maintainers, networks, and
+                        cultural elements for long-term health.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Radical Transparency</h3>
+                    <p>
+                         Commits to open data, public governance processes, and clear accountability in all funding
+                         decisions and operations.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>People-Centric & Bottom-Up</h3>
+                    <p>
+                         Empowers individuals and the community to shape our direction, with inclusive governance and
+                         low thresholds for participation.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Data-Driven & SMART Goals</h3>
+                    <p>
+                         Utilizes analytics to inform funding, measure impact, and guide strategy, ensuring even small
+                         donations make a measurable difference.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Decentralized & Diversified</h3>
+                    <p>
+                         Builds a broad funding base from diverse sources, making every contribution meaningful and
+                         fostering collective ownership.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Neutrality</h3>
+                    <p>
+                        Remains independent from political or corporate influence, ensuring unbiased, mission-driven
+                        funding for the public good.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Innovation & Viral Growth</h3>
+                    <p>
+                        Fosters innovation in funding models and community engagement, encouraging donors and projects
+                        to spread the word and boost organic growth.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Member-Led Governance</h3>
+                    <p>
+                        Ensures key strategic decisions, particularly around grant-making, are advised and driven by
+                        members with a direct stake in OSE's success.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container section--split">
+    <section class="container section--split flex-center">
         <div class="subsection">
             <h2>Roadmap</h2>
             <div class="roadmap">
@@ -181,7 +245,22 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
         <div class="subsection">
-            <h2>Features</h2>
+            <div class="card card--narrow card--bigpad">
+                <div class="text-center">
+                    <img src="/images/icons/branches-dense.svg">
+                    <h2>Community&#x2011;Governed Algorithmic Allocation</h2>
+                </div>
+                <p>
+                    We allocate funds using algorithms we develop in&#x2011;house, which operate on data from across the open
+                    source ecosystem.
+                </p>
+                <p>
+                    Algorithms are selected by our member donors, in consultation with the community.
+                </p>
+                <div class="text-center">
+                    <a href="#TODO" class="button">Join the conversation →</a>
+                </div>
+            </div>
         </div>
     </section>
     <section>
@@ -468,6 +547,12 @@ import Layout from '../layouts/Layout.astro';
     .principles {
         margin-top: 0rem;
     }
+    .vision {
+        p {
+            font-size: 1.3rem;
+            text-align: center;
+        }
+    }
     .feature {
         display: flex;
         flex-wrap: wrap;
@@ -519,6 +604,15 @@ import Layout from '../layouts/Layout.astro';
             &:last-child:after {
                 display: none;
             }
+        }
+    }
+    .features {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+        h3 {
+            margin: 0;
+            font-size: 1rem;
         }
     }
     .team-member-list {
