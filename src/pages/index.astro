@@ -245,6 +245,45 @@ import Layout from '../layouts/Layout.astro';
     </section>
     <section>
         <div class="container">
+            <h2>Our Process</h2>
+            <div class="process">
+                <div class="process-item">
+                    <div class="process-digit">1</div>
+                    <h3>Donations</h3>
+                    <p>
+                        Diverse contributions (cash, stocks) from individuals, companies, and foundations build the
+                        endowment's permanent principal. (US 501(c)(3) status pending).
+                    </p>
+                </div>
+                <div class="process-item">
+                    <div class="process-digit">2</div>
+                    <h3>Investments</h3>
+                    <p>
+                        The principal is invested in a diversified, low-risk portfolio to generate sustainable annual
+                        returns while preserving capital.
+                    </p>
+                </div>
+                <div class="process-item">
+                    <div class="process-digit">3</div>
+                    <h3>Selection</h3>
+                    <p>
+                        A transparent, community-led process selects critical OSS projects for funding. The model
+                        evolves with community input.
+                    </p>
+                </div>
+                <div class="process-item">
+                    <div class="process-digit">4</div>
+                    <h3>Monitoring</h3>
+                    <p>
+                        Project outcomes are tracked for accountability, refining strategy, and maximizing ecosystem
+                        benefits.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
             <h2>Our Team</h2>
             <div class="team-member-list">
                 <div class="team-member card">
@@ -593,6 +632,26 @@ import Layout from '../layouts/Layout.astro';
         h3 {
             margin: 0;
             font-size: 1rem;
+        }
+    }
+    .process {
+        display: flex;
+        gap: 1rem;
+        .process-item {
+            position: relative;
+            flex: 1;
+            padding-right: 3rem;
+            .process-digit {
+                position: absolute;
+                top: 0;
+                left: -3rem;
+                font-size: 4rem;
+                line-height: 1;
+                font-family: 'Geist Mono', 'Ubuntu Mono', monospaced;
+                color: var(--color-standalone-border);
+            }
+            h3 {
+            }
         }
     }
     .team-member-list {
