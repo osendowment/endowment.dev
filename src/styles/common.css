@@ -258,6 +258,11 @@ hr {
   border-width: 1px;
 }
 
+ul {
+    padding: 0;
+    list-style-position: inside;
+}
+
 .button {
     background: none;
     border: none;
@@ -327,19 +332,29 @@ section {
         text-align: center;
         font-size: 2.5rem;
     }
-}
-
-.section--grid {
-    padding: 3rem;
-    border-top: 1px solid var(--color-section-border);
-    border-bottom: 1px solid var(--color-section-border);
-    background: url(/images/dot-grid.svg), var(--color-bg-base);
-    @media (max-width: 800px) {
-        padding: 1.5rem;
+    &.section--grid {
+        padding: 3rem;
+        border-top: 1px solid var(--color-section-border);
+        border-bottom: 1px solid var(--color-section-border);
+        background: url(/images/dot-grid.svg), var(--color-bg-base);
+        @media (max-width: 800px) {
+            padding: 1.5rem;
+        }
+        & > .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
-    & > .container {
-        padding-left: 0;
-        padding-right: 0;
+    &.section--split {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        @media (max-width: 800px) {
+            flex-direction: column;
+        }
+        .subsection {
+            flex: 1;
+        }
     }
 }
 .hero + .section--grid {

@@ -122,6 +122,68 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
     </section>
+    <section class="container section--split">
+        <div class="subsection">
+            <h2>Roadmap</h2>
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <h3>Q1 2025</h3>
+                    <ul>
+                        <li>
+                            Legal setup & initial seed funding.
+                        </li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Q2 2025</h3>
+                    <ul>
+                        <li>
+                            Launch Member Club & website.
+                        </li>
+                        <li>
+                            Appoint investment managers.
+                        </li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Q3 2025</h3>
+                    <ul>
+                        <li>
+                            Co-develop v1.0 distribution model.
+                        </li>
+                        <li>
+                            Prepare MVP funding.
+                        </li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Q4 2025</h3>
+                    <ul>
+                        <li>
+                            Get 501(c)(3) status.
+                        </li>
+                        <li>
+                            Public launch & fundraising.
+                        </li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Q1 2026</h3>
+                    <ul>
+                        <li>
+                            Vote on model.
+                        </li>
+                        <li>
+                            Execute MVP distribution.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="subsection">
+            <h2>Features</h2>
+        </div>
+    </section>
     <section>
         <div class="container">
             <h2>Our Team</h2>
@@ -422,6 +484,43 @@ import Layout from '../layouts/Layout.astro';
             max-width: 17rem;
         }
     }
+    .roadmap {
+        .roadmap-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 3rem;
+            h3 {
+                margin-bottom: 0.5rem;
+            }
+            ul {
+                margin: 0;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                height: 1.5rem;
+                width: 1.5rem;
+                background: var(--color-secondary-bright);
+                border-radius:100%;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 1rem;
+                left: 0.55rem;
+                bottom: -0.5rem;
+                display: block;
+                width: 0.3rem;
+                background: var(--color-secondary-bright);
+            }
+            &:last-child:after {
+                display: none;
+            }
+        }
+    }
     .team-member-list {
         display: grid;
         gap: 1.5rem;
@@ -462,7 +561,6 @@ import Layout from '../layouts/Layout.astro';
                 gap: 1rem;
                 margin: 0;
                 padding: 1rem;
-                list-style-position: inside;
             }
         }
     }
