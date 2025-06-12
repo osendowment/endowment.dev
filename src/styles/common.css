@@ -280,7 +280,7 @@ ul {
     }
     &:hover {
         color: black;
-        background: var(--color-primary-bright);
+        background: var(--color-secondary-bright);
     }
     &.button--huge {
         padding: 0.8rem 1.8rem;
