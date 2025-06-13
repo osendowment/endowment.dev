@@ -332,7 +332,7 @@ input[type="text"] {
     display: block;
     width: 100%;
     padding: 0.7rem;
-    border: 1px solid var(--color-standalone-border);
+    border: 1px solid var(--color-box-hl-border);
     border-radius: var(--border-radius-small);
     background: rgba(0, 0, 0, 0.5);
     color: white;
@@ -481,6 +481,9 @@ section {
         right: 1rem;
         transform: translateY(-50%);
         font-size: 1.2rem;
+    }
+    &.card--center {
+        align-items: center;
     }
 }
 a.card {
