@@ -244,10 +244,21 @@ small {
 a {
     color: var(--color-primary);
     text-decoration-color: var(--color-primary);
-    text-decoration-style: dashed;
+    text-decoration-style: dotted;
     text-underline-offset: 3px;
     &:hover {
         color: var(--color-primary-bright);
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    figcaption {
+        margin-top: 0.3rem;
+        text-align: center;
     }
 }
 
@@ -311,8 +322,15 @@ ul {
     display: flex;
 }
 .flex-center {
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
 }
 .text-center {
     text-align: center;
@@ -370,12 +388,18 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    .card {
-        flex: 1;
+    &.cardset--tight {
+        gap: 1rem;
+    }
+    &.cardset--column {
+        flex-direction: column;
     }
     @media (max-width: 800px) {
         flex-direction: column;
         gap: 1.5rem;
+    }
+    .card {
+        flex: 1;
     }
 }
 .card {
@@ -401,6 +425,34 @@ section {
     }
     &.card--bigpad {
         padding: 2rem;
+    }
+    &.card--iconed {
+        flex-direction: row;
+        align-items: center;
+        & > svg {
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+    }
+}
+a.card {
+    position: relative;
+    padding-right: 2.5rem;
+    color: var(--color-text);
+    text-decoration: none;
+    &:after {
+        content: '→';
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+    }
+    &:hover {
+        color: var(--color-primary-bright);
+        svg path {
+            fill: var(--color-primary-bright);
+        }
     }
 }
 

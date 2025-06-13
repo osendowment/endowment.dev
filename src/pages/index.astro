@@ -53,7 +53,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="card">
-                    <img src="/images/icons/balls.svg">
+                    <img src="/images/icons/branches-dense.svg">
                     <h2>Systemic</h2>
                     <p>
                         Supports the critical but underfunded projects that conventional models miss.
@@ -72,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
     <section>
         <div class="container">
             <h2>Solving Open Source Sustainability</h2>
-            <div class="feature">
+            <div class="spotlight">
                 <div>
                     <p>
                         96% of codebases rely on open source software. Still, this critical infrastructure is built and
@@ -97,7 +97,12 @@ import Layout from '../layouts/Layout.astro';
                         to weather economic and political volatility across decades.
                     </p>
                 </div>
-                <img src="/images/xkcd-2347.png">
+                <figure>
+                    <img src="/images/xkcd-2347.png">
+                    <figcaption>
+                        <a href="https://xkcd.com/2347/">xkcd “Dependency”</a>
+                    </figcaption>
+                </figure>
             </div>
         </div>
     </section>
@@ -116,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
             </p>
         </div>
     </section>
-    <section class="container section--split flex-center">
+    <section class="container section--split">
         <div class="subsection">
             <h2>Short-Term Roadmap</h2>
             <div class="roadmap">
@@ -181,22 +186,33 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
         <div class="subsection">
-            <div class="card card--narrow card--bigpad">
-                <div class="text-center">
-                    <img src="/images/icons/branches-dense.svg">
-                    <h2>Community-Governed, Data-Driven Distribution</h2>
-                </div>
-                <p>
-                    We distribute funds through community-developed algorithms that leverage data from across the open
-                    source ecosystem.
-                </p>
-                <p>
-                    Distribution algorithms are selected by our member donors, in consultation with the open source
-                    community.
-                </p>
-                <div class="text-center">
-                    <a href="#TODO" class="button">Join the conversation →</a>
-                </div>
+            <h2>Helpful Resources</h2>
+            <div class="cardset cardset--tight cardset--column">
+                <a class="card card--iconed" href="https://openpath.quest/2024/the-open-source-sustainability-crisis/">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
+                    <span>
+                        <strong>“The Open Source Sustainability Crisis”</strong><br>by Chad Whitacre
+                    </span>
+                </a>
+                <a class="card card--iconed" href="https://kvinogradov.com/oss-universities/">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
+                    <span>
+                        <strong>“What Open Source can learn from universities to fix its funding”</strong><br>by
+                        Konstantin Vinogradov
+                    </span>
+                </a>
+                <a class="card card--iconed" href="https://www.blackduck.com/resources/analyst-reports/open-source-security-risk-analysis.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
+                    <span>
+                        <strong>“2025 Open Source Security and Risk Analysis”</strong><br>by Synopsis
+                    </span>
+                </a>
+                <a class="card card--iconed" href="https://opensourcepledge.com/blog/CFOs-care-about-OSS/">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
+                    <span>
+                        <strong>“Why CFOs should care about Open Source software”</strong><br>by Todd Bazakas
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -235,7 +251,7 @@ import Layout from '../layouts/Layout.astro';
                     <h3>Decentralized and Diversified Funding</h3>
                     <p>
                         A broad funding base from diverse sources makes every contribution meaningful and
-                        fosters collective ownership.
+                        fosters community governance.
                     </p>
                 </div>
                 <div class="card">
@@ -600,7 +616,7 @@ import Layout from '../layouts/Layout.astro';
             text-align: center;
         }
     }
-    .feature {
+    .spotlight {
         display: flex;
         flex-wrap: wrap;
         gap: 4rem;
@@ -612,8 +628,9 @@ import Layout from '../layouts/Layout.astro';
             flex: 1;
             font-size: 1.2rem;
         }
-        & > img {
+        & > figure {
             max-width: 17rem;
+            margin: 0;
         }
     }
     .roadmap {
@@ -768,7 +785,7 @@ import Layout from '../layouts/Layout.astro';
                         vertical-align: middle;
                         &:hover {
                             path {
-                                fill: var(--color-secondary-bright);
+                                fill: var(--color-primary-bright);
                             }
                         }
                     }
