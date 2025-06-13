@@ -413,7 +413,7 @@ section {
     background: linear-gradient(var(--light-angle),
         var(--color-bg-card1), var(--color-bg-card2));
     box-shadow: 0px 0px 8px 2px var(--color-shadow);
-    h2 {
+    h2, h3 {
         margin: 0;
     }
     img {

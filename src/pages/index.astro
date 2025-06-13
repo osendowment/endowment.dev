@@ -267,9 +267,9 @@ import Layout from '../layouts/Layout.astro';
     <section>
         <div class="container">
             <h2>How it Works</h2>
-            <div class="process">
-                <div class="process-item">
-                    <div class="process-icon"></div>
+            <div class="cardset cardset--tight process">
+                <div class="card">
+                    <img src="/images/icons/card.svg">
                     <h3>
                         <span class="process-number">1</span>Donations
                     </h3>
@@ -277,8 +277,8 @@ import Layout from '../layouts/Layout.astro';
                         Donations from individuals, companies, and foundations build the endowment's permanent principal.
                     </p>
                 </div>
-                <div class="process-item">
-                    <div class="process-icon"></div>
+                <div class="card">
+                    <img src="/images/icons/suns.svg">
                     <h3>
                         <span class="process-number">2</span>Investments
                     </h3>
@@ -287,8 +287,8 @@ import Layout from '../layouts/Layout.astro';
                         sustainable annual returns.
                     </p>
                 </div>
-                <div class="process-item">
-                    <div class="process-icon"></div>
+                <div class="card">
+                    <img src="/images/icons/balls.svg">
                     <h3>
                         <span class="process-number">3</span>Selection
                     </h3>
@@ -297,8 +297,8 @@ import Layout from '../layouts/Layout.astro';
                         evolves with community input.
                     </p>
                 </div>
-                <div class="process-item">
-                    <div class="process-icon"></div>
+                <div class="card">
+                    <img src="/images/icons/search.svg">
                     <h3>
                         <span class="process-number">4</span>Monitoring
                     </h3>
@@ -681,28 +681,10 @@ import Layout from '../layouts/Layout.astro';
         }
     }
     .process {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
         @media (max-width: 800px) {
             flex-direction: column;
         }
-        .process-item {
-            position: relative;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            .process-icon {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 1.5rem;
-                width: 1.5rem;
-                background: var(--color-secondary-bright);
-                border-radius: 100%;
-            }
+        .card {
             .process-number {
                 display: inline-block;
                 width: 1.5rem;
@@ -710,26 +692,6 @@ import Layout from '../layouts/Layout.astro';
                 &:after {
                     content: '.';
                 }
-            }
-            &:after {
-                content: '';
-                position: absolute;
-                top: 0.75rem;
-                left: 1.5rem;
-                right: -2rem;
-                transform: translateY(-50%);
-                display: block;
-                height: 0.3rem;
-                background: var(--color-secondary-bright);
-                @media (max-width: 800px) {
-                    display: none;
-                }
-            }
-            &:last-child:after {
-                display: none;
-            }
-            h3 {
-                margin: 0;
             }
         }
     }
