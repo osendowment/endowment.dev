@@ -482,6 +482,13 @@ import Layout from '../layouts/Layout.astro';
                 </a>
                 <div class="card card--full-width card--small-icon">
                     <h3>Bank transfer</h3>
+                    <div>
+                        <p>To instantly receive our bank details by email, enter your address.</p>
+                    </div>
+                    <div class="bank-form">
+                        <input type="text" placeholder="jsmith@foocorp.com">
+                        <button class="button button--form button--block">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -799,5 +806,16 @@ import Layout from '../layouts/Layout.astro';
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
+    .bank-form {
+        width: 100%;
+        display: flex;
+        gap: 0.5rem;
+        input {
+            flex: 1;
+        }
+        .button {
+            flex-basis: 6rem;
+        }
     }
 </style>
