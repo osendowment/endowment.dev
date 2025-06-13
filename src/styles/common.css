@@ -188,12 +188,20 @@ SPDX-License-Identifier: Apache-2.0
     100% { opacity: 0; }
 }
 
+@property --color-bg-card1 {
+  syntax: '<color>';
+  initial-value: #000218;
+  inherits: false;
+}
+@property --color-bg-card2 {
+  syntax: '<color>';
+  initial-value: #090522;
+  inherits: false;
+}
 :root {
     --color-bg-base: #020018;
     --color-bg-grad1: #090926;
     --color-bg-grad2: #000217;
-    --color-bg-card1: #000218;
-    --color-bg-card2: #090522;
     --color-shadow: #19124255;
     --color-section-border: rgba(222, 222, 255, 0.15);
     --color-box-border: rgba(222, 222, 255, 0.1);
@@ -405,6 +413,7 @@ section {
 .card {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1rem;
     border: 1px solid var(--color-box-border);
@@ -413,12 +422,20 @@ section {
     background: linear-gradient(var(--light-angle),
         var(--color-bg-card1), var(--color-bg-card2));
     box-shadow: 0px 0px 8px 2px var(--color-shadow);
+    transition: --color-bg-card1 150ms ease-in-out,
+        --color-bg-card2 150ms ease-in-out;
     h2, h3 {
         margin: 0;
     }
-    img {
-        width: 2.5rem;
+    img, svg {
         height: 2.5rem;
+        width: auto;
+    }
+    &.card--small-icon {
+        img, svg {
+            height: 1.5rem;
+            width: auto;
+        }
     }
     &.card--narrow {
         max-width: 30rem;
@@ -434,13 +451,10 @@ section {
             height: 1.1rem;
         }
     }
-}
-a.card {
-    position: relative;
-    padding-right: 2.5rem;
-    color: var(--color-text);
-    text-decoration: none;
-    &:after {
+    &.card--full-width {
+        flex-basis: 100%;
+    }
+    &.card--with-arrow:after {
         content: '→';
         position: absolute;
         top: 50%;
@@ -448,11 +462,15 @@ a.card {
         transform: translateY(-50%);
         font-size: 1.2rem;
     }
+}
+a.card {
+    position: relative;
+    padding-right: 2.5rem;
+    color: var(--color-text);
+    text-decoration: none;
     &:hover {
-        color: var(--color-primary-bright);
-        svg path {
-            fill: var(--color-primary-bright);
-        }
+        --color-bg-card1: #000218;
+        --color-bg-card2: #190542;
     }
 }
 
