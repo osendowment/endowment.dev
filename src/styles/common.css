@@ -195,10 +195,10 @@ SPDX-License-Identifier: Apache-2.0
     --color-bg-card1: #000218;
     --color-bg-card2: #090522;
     --color-shadow: #19124255;
-    --color-section-border: rgba(222, 222, 255, 0.05);
-    --color-box-border: rgba(222, 222, 255, 0.08);
-    --color-box-hl-border: rgba(222, 222, 255, 0.13);
-    --color-standalone-border: rgba(222, 222, 255, 0.2);
+    --color-section-border: rgba(222, 222, 255, 0.15);
+    --color-box-border: rgba(222, 222, 255, 0.1);
+    --color-box-hl-border: rgba(222, 222, 255, 0.15);
+    --color-standalone-border: rgba(222, 222, 255, 0.25);
     --color-primary: #5ba9ee;
     --color-primary-bright: #81d7ff;
     --color-secondary: #3fbd73;
@@ -261,6 +261,10 @@ hr {
 ul {
     padding: 0;
     list-style-position: inside;
+}
+
+.sneaky {
+    color: var(--color-faded-text);
 }
 
 .button {
