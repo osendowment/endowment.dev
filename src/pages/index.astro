@@ -474,29 +474,58 @@ import Layout from '../layouts/Layout.astro';
     </section>
     <section id="donate">
         <div class="container">
-            <h2>Want to make sustainable OSS happen?</h2>
-            <div class="card card--alert card--iconed" id="checkout-alert" hidden>
-                <img src="/images/icons/fa-triangle-exclamation-solid.svg">
-                <span></span>
-            </div>
-            <div class="stripe-checkout-container">
-                <div id="stripe-checkout"></div>
-                <form action="http://localhost:3003/create-checkout-session" method="POST">
-                    <input type="text" name="customerEmail" placeholder="jsmith@foocorp.com">
-                    <input type="text" name="customerName" placeholder="John Smith">
-                    <input type="number" name="unitAmount" placeholder="100" value="100">
-                    <button type="submit" id="checkout-button">Checkout</button>
-                </form>
-            </div>
-            <div class="cardset cardset--tight">
-                <div class="card card--full-width card--small-icon">
-                    <h3>Bank transfer</h3>
-                    <div>
-                        <p>To instantly receive our bank details by email, enter your email address.</p>
+            <h2>Donate now to pioneer a healthy open source ecosystem</h2>
+            <div class="cardset cardset--column">
+                <div class="card card--alert card--iconed checkout-alert" hidden>
+                    <img src="/images/icons/fa-triangle-exclamation-solid.svg">
+                    <p></p>
+                </div>
+                <noscript>
+                    <div class="card card--info card--iconed">
+                        <img src="/images/icons/fa-triangle-exclamation-solid.svg">
+                        <p>
+                            Our payment process requires Javascript — but you can contact us at
+                            <a href="mailto:donors@endowment.dev">donors@endowment.dev</a>
+                            to arrange your donation separately.
+                        </p>
                     </div>
-                    <div class="bank-form">
-                        <input type="text" placeholder="jsmith@foocorp.com">
-                        <button class="button button--form button--block">Submit</button>
+                </noscript>
+                <div class="card card--tabbed checkout">
+                    <div class="card__tabs">
+                        <button class="card__tab card__tab--active" data-tab-id="stripe">Card</button>
+                        <button class="card__tab" data-tab-id="bank">Bank transfer</button>
+                    </div>
+                    <div class="card__inner">
+                        <form
+                            class="form form--big"
+                            action="http://localhost:3003/create-checkout-session" method="POST"
+                        >
+                            <div class="form-control">
+                                <label>Email</label>
+                                <input type="text" name="customerEmail">
+                            </div>
+                            <div class="form-control">
+                                <label>Name <span class="form-hint">(optional)</span></label>
+                                <input type="text" name="customerName">
+                            </div>
+                            <div class="form-control">
+                                <label>Donation amount</label>
+                                <div class="input-wrapper input-wrapper--usd">
+                                    <input type="text" name="unitAmount" placeholder="100" value="100">
+                                </div>
+                            </div>
+                            <div class="form-control" data-tab-content="stripe">
+                                <input type="submit" class="button button--block" value="Continue with card">
+                            </div>
+                            <div class="form-control" data-tab-content="bank" hidden>
+                                <button type="button" class="button button--block checkout__bank-button">
+                                    Continue with bank transfer
+                                </button>
+                            </div>
+                        </form>
+                        <div class="checkout__bank-details" hidden>
+                            <p>hello lol</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -636,21 +665,50 @@ import Layout from '../layouts/Layout.astro';
             flex-basis: 6rem;
         }
     }
-    .stripe-checkout-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 2rem 0;
-    }
 </style>
 
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     const checkoutMessage = urlParams.get('checkoutMessage');
     if (checkoutMessage) {
-        const $checkoutAlert = document.getElementById('checkout-alert');
-        const $checkoutAlertSpan = $checkoutAlert.querySelector('span');
-        $checkoutAlert.hidden = false;
-        $checkoutAlertSpan.textContent = checkoutMessage;
+        const $$checkoutAlert = document.querySelectorAll('.checkout-alert');
+        $$checkoutAlert.forEach(($checkoutAlert) => {
+            const $checkoutAlertSpan = $checkoutAlert.querySelector('p');
+            $checkoutAlert.hidden = false;
+            $checkoutAlertSpan.textContent = checkoutMessage;
+        });
     }
+
+    const $$cardTabbed = document.querySelectorAll('.card--tabbed');
+    $$cardTabbed.forEach(($cardTabbed) => {
+        const $$tabs = $cardTabbed.querySelectorAll('.card__tab');
+        $$tabs.forEach(($tab) => {
+            $tab.addEventListener('click', () => {
+                $$tabs.forEach(($tab) => $tab.classList.remove('card__tab--active'));
+                $tab.classList.add('card__tab--active');
+
+                const $$tabContent = $cardTabbed.querySelectorAll('[data-tab-content]');
+                $$tabContent.forEach(($tabContent) => $tabContent.hidden = true);
+
+                const tabId = $tab.dataset.tabId;
+                console.log(tabId);
+                const $$ourTabContent = $cardTabbed.querySelectorAll(`[data-tab-content="${tabId}"]`);
+                $$ourTabContent.forEach(($ourTabContent) => $ourTabContent.hidden = false);
+            });
+        });
+    });
+
+    const $$checkout = document.querySelectorAll('.checkout');
+    $$checkout.forEach(($checkout) => {
+        const $$checkoutBankButton = $checkout.querySelectorAll('.checkout__bank-button');
+        const $$checkoutBankDetails = $checkout.querySelectorAll('.checkout__bank-details');
+        $$checkoutBankButton.forEach(($checkoutBankButton) => {
+            $checkoutBankButton.addEventListener('click', () => {
+                $$checkoutBankDetails.forEach(($checkoutBankDetails) => {
+                    $checkoutBankDetails.hidden = false;
+                    // TODO: generate bank details
+                });
+            });
+        });
+    });
 </script>
