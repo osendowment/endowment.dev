@@ -213,9 +213,12 @@ SPDX-License-Identifier: Apache-2.0
     --color-primary-bright: #81d7ff;
     --color-secondary: #3fbd73;
     --color-secondary-bright: #51f395;
-    --color-warning: #aa1111;
+    --color-no: #aa1111;
+    --color-error: #551020;
+    --color-error-fade: rgba(100, 10, 30, 0.3);
     --color-text: white;
     --color-faded-text: rgba(255, 255, 255, 0.5);
+    --color-inset-bg: rgba(0, 0, 0, 0.5);
     --border-radius-big: 50px;
     --border-radius-small: 4px;
     --light-angle: 60deg;
@@ -233,6 +236,11 @@ SPDX-License-Identifier: Apache-2.0
 html, body {
     margin: 0;
     padding: 0;
+}
+
+/* We never want anything to have higher specificity than `[hidden]`. */
+[hidden] {
+  display: none !important;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -334,7 +342,7 @@ input[type="text"] {
     padding: 0.7rem;
     border: 1px solid var(--color-box-hl-border);
     border-radius: var(--border-radius-small);
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--color-inset-bg);
     color: white;
 }
 
@@ -466,9 +474,9 @@ section {
     &.card--iconed {
         flex-direction: row;
         align-items: center;
-        & > svg {
-            width: 1.1rem;
+        & > img, & > svg {
             height: 1.1rem;
+            width: auto;
         }
     }
     &.card--full-width {
@@ -484,6 +492,10 @@ section {
     }
     &.card--center {
         align-items: center;
+    }
+    &.card--alert {
+        border: 1px solid var(--color-error);
+        background: var(--color-error-fade);
     }
 }
 a.card {
@@ -596,7 +608,7 @@ a.card {
                 width: 0.6rem;
                 margin-right: 0.6rem;
                 border-radius: 100%;
-                background: var(--color-warning);
+                background: var(--color-no);
                 animation: blink 2s ease-in-out infinite alternate;
             }
             &.illubox--ok:before {
