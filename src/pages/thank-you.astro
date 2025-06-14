@@ -1,0 +1,34 @@
+---
+// © 2025 Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout nodonate={true}>
+    <div class="intro container" slot="hero">
+        <div class="intro-text flex-center">
+            <h1>Thank you for donating</h2>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+            <div class="cardset">
+                <div class="card">
+                    <img src="/images/icons/squiggle.svg">
+                    <h2>Your impact</h2>
+                    <p>
+                        Your generous donation is helping create a truly sustainable global open source ecosystem.
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="/images/icons/avatar.svg">
+                    <h2>Members' club</h2>
+                    <p>
+                        You are now eligible to participate in the Open Source Endowment's governance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</layout>

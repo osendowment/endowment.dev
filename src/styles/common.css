@@ -378,7 +378,7 @@ input[type="text"] {
 
 section {
     margin: 6rem 0;
-    & > h2, & > .container > h2 {
+    & > h1, & > h2, & > .container > h2, & > .container > h1 {
         margin-bottom: 1.5rem;
         font-size: 2.5rem;
         text-align: center;
@@ -508,6 +508,194 @@ a.card {
         margin: 0;
         font-size: 3rem;
     }
+}
+
+.intro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    @media (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+    }
+    .intro-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        small {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: normal;
+            font-style: italic;
+        }
+        h1 {
+            margin: 0;
+            font-size: 4.0rem;
+            line-height: 1.2;
+            @media (max-width: 800px) {
+                font-size: 2.5rem;
+            }
+        }
+    }
+    .intro-illu-container {
+        flex: 0 0 16rem;
+        width: 16rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5rem;
+    }
+    .intro-illu {
+        flex: 1;
+        position: relative;
+        background-image: url(/images/branches.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 23rem;
+        width: 16rem;
+        .illubox {
+            position: absolute;
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--border-radius-big);
+            border: 1px solid var(--color-box-border);
+            border-top-color: var(--color-box-hl-border);
+            box-shadow: 0px 0px 8px 2px var(--color-shadow);
+            background: rgba(200, 200, 255, 0.02);
+            color: white;
+            font-family: 'Geist Mono', 'Ubuntu Mono', monospaced;
+            white-space: nowrap;
+            transform: rotate(-50deg);
+            transform-origin: left;
+            opacity: 0;
+            &.illubox--a {
+                top: -7%;
+                left: 14%;
+            }
+            &.illubox--b {
+                top: 4%;
+                left: 37%;
+            }
+            &.illubox--c {
+                top: 12%;
+                left: 59%;
+            }
+            &.illubox--d {
+                top: 19%;
+                left: 80%;
+            }
+            &:before {
+                content: ' ';
+                display: inline-block;
+                height: 0.6rem;
+                width: 0.6rem;
+                margin-right: 0.6rem;
+                border-radius: 100%;
+                background: var(--color-warning);
+                animation: blink 2s ease-in-out infinite alternate;
+            }
+            &.illubox--ok:before {
+                background: var(--color-secondary);
+            }
+            &:nth-child(4n+1) {
+                animation-name: illubox-a;
+                animation-duration: 40s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+            &:nth-child(4n+2) {
+                animation-name: illubox-b;
+                animation-duration: 40s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+            &:nth-child(4n+3) {
+                animation-name: illubox-c;
+                animation-duration: 40s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+            &:nth-child(4n) {
+                animation-name: illubox-d;
+                animation-duration: 40s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+            }
+        }
+    }
+}
+
+.team-member-list {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+        .team-member__head {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--color-box-border);
+            h3 {
+                margin: 0;
+                padding: 0 1rem;
+                font-size: 1.3rem;
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+                em {
+                    display: block;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-size: 1rem;
+                }
+            }
+            .team-member__image {
+                height: 6rem;
+                width: 6rem;
+                padding: 1rem;
+                img {
+                    height: 4rem;
+                    width: 4rem;
+                    z-index: 100;
+                    box-shadow: 0 0 4px 4px var(--color-shadow);
+                    border: 4px solid transparent;
+                    outline: 1px solid var(--color-box-border);
+                    border-radius: var(--border-radius-small);
+                }
+            }
+            .team-member__nameline {
+                svg {
+                    position: relative;
+                    top: -2px;
+                    width: 1.1rem;
+                    height: 1.1rem;
+                    margin-left: 0.3rem;
+                    vertical-align: middle;
+                    &:hover {
+                        path {
+                            fill: var(--color-primary-bright);
+                        }
+                    }
+                }
+            }
+        }
+        .team-member__desc {
+            padding: 1rem;
+        }
+    }
+}
+.team-note {
+    padding-top: 1.5rem;
+    text-align: center;
 }
 
 /*

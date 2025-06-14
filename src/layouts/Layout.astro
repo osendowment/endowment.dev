@@ -2,6 +2,12 @@
 // © 2025 Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
+interface Props {
+  nodonate?: boolean;
+}
+
+const { nodonate } = Astro.props;
+
 import '../styles/common.css';
 ---
 
@@ -28,11 +34,13 @@ import '../styles/common.css';
                             src="/images/logo/Logomark Colored.svg"
                             alt="The Open Source Endowment logo">
                     </a>
-                    <nav class="desktop-only">
-                        <a href="#donate" class="button">
-                            Donate now<span class="after">›</span>
-                        </a>
-                    </nav>
+                    {!nodonate && (
+                        <nav class="desktop-only">
+                            <a href="#donate" class="button">
+                                Donate now<span class="after">›</span>
+                            </a>
+                        </nav>
+                    )}
                 </div>
             </header>
             <slot name="hero" />

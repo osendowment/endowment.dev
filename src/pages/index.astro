@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="intro container" slot="hero">
         <div class="intro-text">
             <small>The world's first</small>
-            <h2>Open Source<br>Endowment</h2>
+            <h1>Open Source<br>Endowment</h1>
             <hr>
             <small>
                 Truly sustainable funding for critical OSS through a community&#x2011;driven
@@ -473,11 +473,10 @@ import Layout from '../layouts/Layout.astro';
     <section id="donate">
         <div class="container">
             <h2>Want to make sustainable OSS happen?</h2>
+            <div class="stripe-checkout-container">
+                <div id="stripe-checkout"></div>
+            </div>
             <div class="cardset cardset--tight">
-                <a class="card card--small-icon card--with-arrow card--no-h-margin" href="https://buy.stripe.com/4gwdTs9zk0VI7F67ss">
-                    <svg role="img" aria-label="The Stripe logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="50 40 380 150" style="enable-background:new 0 0 468 222.5" xml:space="preserve"><style>.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}</style><path class="st0" d="M414 113.4c0-25.6-12.4-45.8-36.1-45.8-23.8 0-38.2 20.2-38.2 45.6 0 30.1 17 45.3 41.4 45.3 11.9 0 20.9-2.7 27.7-6.5v-20c-6.8 3.4-14.6 5.5-24.5 5.5-9.7 0-18.3-3.4-19.4-15.2h48.9c0-1.3.2-6.5.2-8.9zm-49.4-9.5c0-11.3 6.9-16 13.2-16 6.1 0 12.6 4.7 12.6 16h-25.8zM301.1 67.6c-9.8 0-16.1 4.6-19.6 7.8l-1.3-6.2h-22v116.6l25-5.3.1-28.3c3.6 2.6 8.9 6.3 17.7 6.3 17.9 0 34.2-14.4 34.2-46.1-.1-29-16.6-44.8-34.1-44.8zm-6 68.9c-5.9 0-9.4-2.1-11.8-4.7l-.1-37.1c2.6-2.9 6.2-4.9 11.9-4.9 9.1 0 15.4 10.2 15.4 23.3 0 13.4-6.2 23.4-15.4 23.4zM223.8 61.7l25.1-5.4V36l-25.1 5.3zM223.8 69.3h25.1v87.5h-25.1zM196.9 76.7l-1.6-7.4h-21.6v87.5h25V97.5c5.9-7.7 15.9-6.3 19-5.2v-23c-3.2-1.2-14.9-3.4-20.8 7.4zM146.9 47.6l-24.4 5.2-.1 80.1c0 14.8 11.1 25.7 25.9 25.7 8.2 0 14.2-1.5 17.5-3.3V135c-3.2 1.3-19 5.9-19-8.9V90.6h19V69.3h-19l.1-21.7zM79.3 94.7c0-3.9 3.2-5.4 8.5-5.4 7.6 0 17.2 2.3 24.8 6.4V72.2c-8.3-3.3-16.5-4.6-24.8-4.6C67.5 67.6 54 78.2 54 95.9c0 27.6 38 23.2 38 35.1 0 4.6-4 6.1-9.6 6.1-8.3 0-18.9-3.4-27.3-8v23.8c9.3 4 18.7 5.7 27.3 5.7 20.8 0 35.1-10.3 35.1-28.2-.1-29.8-38.2-24.5-38.2-35.7z"/></svg>
-                    <em>2.9% fee</em>
-                </a>
                 <div class="card card--full-width card--small-icon">
                     <h3>Bank transfer</h3>
                     <div>
@@ -526,125 +525,6 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    .intro {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        @media (max-width: 800px) {
-            flex-direction: column;
-            align-items: center;
-        }
-        .intro-text {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: white;
-            small {
-                display: block;
-                font-size: 1.5rem;
-                font-weight: normal;
-                font-style: italic;
-            }
-            h2 {
-                margin: 0;
-                font-size: 4.0rem;
-                line-height: 1.2;
-                @media (max-width: 800px) {
-                    font-size: 2.5rem;
-                }
-            }
-        }
-        .intro-illu-container {
-            flex: 0 0 16rem;
-            width: 16rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 5rem;
-        }
-        .intro-illu {
-            flex: 1;
-            position: relative;
-            background-image: url(/images/branches.svg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center center;
-            height: 23rem;
-            width: 16rem;
-            .illubox {
-                position: absolute;
-                display: inline-block;
-                padding: 0.3rem 0.8rem;
-                border-radius: var(--border-radius-big);
-                border: 1px solid var(--color-box-border);
-                border-top-color: var(--color-box-hl-border);
-                box-shadow: 0px 0px 8px 2px var(--color-shadow);
-                background: rgba(200, 200, 255, 0.02);
-                color: white;
-                font-family: 'Geist Mono', 'Ubuntu Mono', monospaced;
-                white-space: nowrap;
-                transform: rotate(-50deg);
-                transform-origin: left;
-                opacity: 0;
-                &.illubox--a {
-                    top: -7%;
-                    left: 14%;
-                }
-                &.illubox--b {
-                    top: 4%;
-                    left: 37%;
-                }
-                &.illubox--c {
-                    top: 12%;
-                    left: 59%;
-                }
-                &.illubox--d {
-                    top: 19%;
-                    left: 80%;
-                }
-                &:before {
-                    content: ' ';
-                    display: inline-block;
-                    height: 0.6rem;
-                    width: 0.6rem;
-                    margin-right: 0.6rem;
-                    border-radius: 100%;
-                    background: var(--color-warning);
-                    animation: blink 2s ease-in-out infinite alternate;
-                }
-                &.illubox--ok:before {
-                    background: var(--color-secondary);
-                }
-                &:nth-child(4n+1) {
-                    animation-name: illubox-a;
-                    animation-duration: 40s;
-                    animation-timing-function: ease-in-out;
-                    animation-iteration-count: infinite;
-                }
-                &:nth-child(4n+2) {
-                    animation-name: illubox-b;
-                    animation-duration: 40s;
-                    animation-timing-function: ease-in-out;
-                    animation-iteration-count: infinite;
-                }
-                &:nth-child(4n+3) {
-                    animation-name: illubox-c;
-                    animation-duration: 40s;
-                    animation-timing-function: ease-in-out;
-                    animation-iteration-count: infinite;
-                }
-                &:nth-child(4n) {
-                    animation-name: illubox-d;
-                    animation-duration: 40s;
-                    animation-timing-function: ease-in-out;
-                    animation-iteration-count: infinite;
-                }
-            }
-        }
-    }
     .principles {
         margin-top: 0rem;
     }
@@ -733,78 +613,6 @@ import Layout from '../layouts/Layout.astro';
             }
         }
     }
-    .team-member-list {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-        .team-member {
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            gap: 0;
-            .team-member__head {
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid var(--color-box-border);
-                h3 {
-                    margin: 0;
-                    padding: 0 1rem;
-                    font-size: 1.3rem;
-                    a {
-                        color: white;
-                        text-decoration: none;
-                    }
-                    em {
-                        display: block;
-                        font-weight: normal;
-                        font-style: normal;
-                        font-size: 1rem;
-                    }
-                }
-                .team-member__image {
-                    height: 6rem;
-                    width: 6rem;
-                    padding: 1rem;
-                    img {
-                        height: 4rem;
-                        width: 4rem;
-                        z-index: 100;
-                        box-shadow: 0 0 4px 4px var(--color-shadow);
-                        border: 4px solid transparent;
-                        outline: 1px solid var(--color-box-border);
-                        border-radius: var(--border-radius-small);
-                    }
-                }
-                .team-member__nameline {
-                    svg {
-                        position: relative;
-                        top: -2px;
-                        width: 1.1rem;
-                        height: 1.1rem;
-                        margin-left: 0.3rem;
-                        vertical-align: middle;
-                        &:hover {
-                            path {
-                                fill: var(--color-primary-bright);
-                            }
-                        }
-                    }
-                }
-            }
-            .team-member__desc {
-                padding: 1rem;
-            }
-        }
-    }
-    .team-note {
-        padding-top: 1.5rem;
-        text-align: center;
-    }
-    .gh-sponsors {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
     .bank-form {
         width: 100%;
         display: flex;
@@ -816,4 +624,28 @@ import Layout from '../layouts/Layout.astro';
             flex-basis: 6rem;
         }
     }
+    .stripe-checkout-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+    }
 </style>
+
+<script>
+    import { loadStripe } from '@stripe/stripe-js';
+    const STRIPE_PUBLIC_API_KEY =
+        'pk_test_51RDs2UBNfHh1TmlNz7lE7sWFlrHp0jKi0jGZ84rtUBD0SksVYdzCDjlEY03XESKwRsADM4IruVAYJnLKfnxktknG00YemWynxJ';
+    const stripe = await loadStripe(STRIPE_PUBLIC_API_KEY);
+
+    const fetchClientSecret = async () => {
+        const response = await fetch("https://api.endowment.dev/create-checkout-session", {
+            method: "POST",
+        });
+        const { clientSecret } = await response.json();
+        return clientSecret;
+    };
+
+    const checkout = await stripe.initEmbeddedCheckout({ fetchClientSecret });
+    checkout.mount('#stripe-checkout');
+</script>
