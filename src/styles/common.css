@@ -229,8 +229,10 @@ SPDX-License-Identifier: Apache-2.0
     color: var(--color-text);
 }
 
-:root, input, button, textarea {
+* {
     box-sizing: border-box;
+}
+:root, input, button, textarea {
     font-size: 16px;
     font-family: 'Raleway', 'Georgia Pro', Georgia, serif;
     line-height: 1.35;
