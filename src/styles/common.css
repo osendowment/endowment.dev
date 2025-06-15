@@ -495,6 +495,11 @@ section {
     .card {
         flex: 1;
     }
+    &.cardset--two {
+        .card {
+            min-width: 40%;
+        }
+    }
 }
 .card {
     display: flex;
