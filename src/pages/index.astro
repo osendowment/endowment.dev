@@ -510,7 +510,7 @@ import Layout from '../layouts/Layout.astro';
                     >
                         <div class="form-control">
                             <label>Email</label>
-                            <input type="text" name="donorEmail">
+                            <input type="email" name="donorEmail">
                         </div>
                         <div class="form-control">
                             <label>Name</label>
@@ -724,19 +724,24 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const checkoutMessage = urlParams.get('checkoutMessage');
-    if (checkoutMessage) {
+    function isValidEmail(email) {
+        return email && email.includes('@') && email.length >= 'a@a.aa'.length;
+    }
+
+    function showCheckoutMessage(checkoutMessage) {
         const $$checkoutAlert = document.querySelectorAll('.checkout-alert');
         $$checkoutAlert.forEach(($checkoutAlert) => {
-            const $checkoutAlertSpan = $checkoutAlert.querySelector('p');
+            const $checkoutAlertText = $checkoutAlert.querySelector('p');
             $checkoutAlert.hidden = false;
-            $checkoutAlertSpan.textContent = checkoutMessage;
+            $checkoutAlertText.textContent = checkoutMessage;
         });
     }
 
     async function getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish) {
         const formData = new FormData($form);
+        if (!isValidEmail(formData.get('donorEmail'))) {
+            return showCheckoutMessage("Please enter an email address");
+        }
         const params = new URLSearchParams(formData);
         const res = await fetch('https://api.endowment.dev/create-bank-details', {
             method: 'POST',
@@ -759,4 +764,10 @@ import Layout from '../layouts/Layout.astro';
             getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish);
         });
     });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const checkoutMessage = urlParams.get('checkoutMessage');
+    if (checkoutMessage) {
+        showCheckoutMessage(checkoutMessage);
+    }
 </script>
