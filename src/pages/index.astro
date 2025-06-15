@@ -546,7 +546,7 @@ import Layout from '../layouts/Layout.astro';
                                     <label for="presetAmount-custom">Custom</label>
                                 </div>
                             </div>
-                            <div class="form-control custom-amount">
+                            <div class="form-control checkout__custom-amount">
                                 <div class="input-wrapper input-wrapper--usd">
                                     <input type="text" name="customAmount" placeholder="100" value="100">
                                 </div>
@@ -566,18 +566,16 @@ import Layout from '../layouts/Layout.astro';
                                 </div>
                             </div>
                         </div>
-                        <div class="form-control method-trigger-stripe">
+                        <div class="form-control checkout__trigger-stripe">
                             <input type="submit" class="button button--block" value="Continue with card">
                         </div>
-                        <div class="form-control method-trigger-bank">
+                        <div class="form-control checkout__trigger-bank">
                             <button type="button" class="button button--block checkout__bank-button">
                                 Continue with bank transfer
                             </button>
                         </div>
                     </form>
-                    <div class="checkout__bank-details" hidden>
-                        <p>TODO</p>
-                    </div>
+                    <div class="checkout__bank-details"></div>
                 </div>
             </div>
         </div>
@@ -681,23 +679,32 @@ import Layout from '../layouts/Layout.astro';
         }
     }
     .checkout {
-        .custom-amount {
+        .checkout__custom-amount {
             display: none;
         }
-        .method-trigger-bank {
+        .checkout__trigger-bank {
+            display: none;
+        }
+        .checkout__bank-details {
             display: none;
         }
         &:has(input[name="presetAmount"][value="custom"]:checked) {
-            .custom-amount {
+            .checkout__custom-amount {
                 display: block;
             }
         }
         &:has(input[name="method"][value="bank"]:checked) {
-            .method-trigger-stripe {
+            .checkout__trigger-stripe {
                 display: none;
             }
-            .method-trigger-bank {
+            .checkout__trigger-bank {
                 display: block;
+            }
+            .checkout__bank-details {
+                display: block;
+                &:empty {
+                    display: none;
+                }
             }
         }
     }
@@ -715,17 +722,26 @@ import Layout from '../layouts/Layout.astro';
         });
     }
 
+    async function getBankDetails($form, $checkoutBankDetails) {
+        const formData = new FormData($form);
+        const params = new URLSearchParams(formData);
+        const res = await fetch('http://localhost:3003/create-bank-details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: params,
+        }).then((r) => r.text());
+        $checkoutBankDetails.innerHTML = res;
+    }
+
     const $$checkout = document.querySelectorAll('.checkout');
     $$checkout.forEach(($checkout) => {
-        const $$checkoutBankButton = $checkout.querySelectorAll('.checkout__bank-button');
-        const $$checkoutBankDetails = $checkout.querySelectorAll('.checkout__bank-details');
-        $$checkoutBankButton.forEach(($checkoutBankButton) => {
-            $checkoutBankButton.addEventListener('click', () => {
-                $$checkoutBankDetails.forEach(($checkoutBankDetails) => {
-                    $checkoutBankDetails.hidden = false;
-                    // TODO: generate bank details
-                });
-            });
+        const $form = $checkout.querySelector('form');
+        const $checkoutBankButton = $checkout.querySelector('.checkout__trigger-bank button');
+        const $checkoutBankDetails = $checkout.querySelector('.checkout__bank-details');
+        $checkoutBankButton.addEventListener('click', () => {
+            getBankDetails($form, $checkoutBankDetails);
         });
     });
 </script>
