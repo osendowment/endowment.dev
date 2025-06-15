@@ -508,42 +508,75 @@ import Layout from '../layouts/Layout.astro';
                         </p>
                     </div>
                 </noscript>
-                <div class="card card--tabbed checkout">
-                    <div class="card__tabs">
-                        <button class="card__tab card__tab--active" data-tab-id="stripe">Card</button>
-                        <button class="card__tab" data-tab-id="bank">Bank transfer</button>
-                    </div>
-                    <div class="card__inner">
-                        <form
-                            class="form form--big"
-                            action="http://localhost:3003/create-checkout-session" method="POST"
-                        >
-                            <div class="form-control">
-                                <label>Email</label>
-                                <input type="text" name="customerEmail">
-                            </div>
-                            <div class="form-control">
-                                <label>Name <span class="small-text">(optional)</span></label>
-                                <input type="text" name="customerName">
-                            </div>
-                            <div class="form-control">
-                                <label>Donation amount</label>
-                                <div class="input-wrapper input-wrapper--usd">
-                                    <input type="text" name="unitAmount" placeholder="100" value="100">
+                <div class="card card--white card--narrow card--big-shadow checkout">
+                    <form
+                        class="form form--big"
+                        action="http://localhost:3003/create-checkout-session" method="POST"
+                    >
+                        <div class="form-control">
+                            <label>Email</label>
+                            <input type="text" name="customerEmail">
+                        </div>
+                        <div class="form-control">
+                            <label>Name <span class="small-text">(optional)</span></label>
+                            <input type="text" name="customerName">
+                        </div>
+                        <div class="form-control-group">
+                            <label>Donation amount</label>
+                            <div class="form-control-set">
+                                <div class="form-control">
+                                    <input type="radio" name="presetAmount" value="100" id="presetAmount-100">
+                                    <label for="presetAmount-100">$100</label>
+                                </div>
+                                <div class="form-control">
+                                    <input type="radio" name="presetAmount" value="500" id="presetAmount-500"
+                                        checked="checked">
+                                    <label for="presetAmount-500">$500</label>
+                                </div>
+                                <div class="form-control">
+                                    <input type="radio" name="presetAmount" value="1000" id="presetAmount-1000">
+                                    <label for="presetAmount-1000">$1000</label>
+                                </div>
+                                <div class="form-control">
+                                    <input type="radio" name="presetAmount" value="2000" id="presetAmount-2000">
+                                    <label for="presetAmount-2000">$2000</label>
+                                </div>
+                                <div class="form-control">
+                                    <input type="radio" name="presetAmount" value="custom" id="presetAmount-custom">
+                                    <label for="presetAmount-custom">Custom</label>
                                 </div>
                             </div>
-                            <div class="form-control" data-tab-content="stripe">
-                                <input type="submit" class="button button--block" value="Continue with card">
+                            <div class="form-control custom-amount">
+                                <div class="input-wrapper input-wrapper--usd">
+                                    <input type="text" name="customAmount" placeholder="100" value="100">
+                                </div>
                             </div>
-                            <div class="form-control" data-tab-content="bank" hidden>
-                                <button type="button" class="button button--block checkout__bank-button">
-                                    Continue with bank transfer
-                                </button>
-                            </div>
-                        </form>
-                        <div class="checkout__bank-details" hidden>
-                            <p>TODO</p>
                         </div>
+                        <div class="form-control-group">
+                            <label>Donation method</label>
+                            <div class="form-control-set">
+                                <div class="form-control">
+                                    <input type="radio" name="method" value="stripe" id="method-stripe"
+                                        checked="checked">
+                                    <label for="method-stripe">Card</label>
+                                </div>
+                                <div class="form-control">
+                                    <input type="radio" name="method" value="bank" id="method-bank">
+                                    <label for="method-bank">Bank transfer</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control method-trigger-stripe">
+                            <input type="submit" class="button button--block" value="Continue with card">
+                        </div>
+                        <div class="form-control method-trigger-bank">
+                            <button type="button" class="button button--block checkout__bank-button">
+                                Continue with bank transfer
+                            </button>
+                        </div>
+                    </form>
+                    <div class="checkout__bank-details" hidden>
+                        <p>TODO</p>
                     </div>
                 </div>
             </div>
@@ -647,15 +680,25 @@ import Layout from '../layouts/Layout.astro';
             }
         }
     }
-    .bank-form {
-        width: 100%;
-        display: flex;
-        gap: 0.5rem;
-        input {
-            flex: 1;
+    .checkout {
+        .custom-amount {
+            display: none;
         }
-        .button {
-            flex-basis: 6rem;
+        .method-trigger-bank {
+            display: none;
+        }
+        &:has(input[name="presetAmount"][value="custom"]:checked) {
+            .custom-amount {
+                display: block;
+            }
+        }
+        &:has(input[name="method"][value="bank"]:checked) {
+            .method-trigger-stripe {
+                display: none;
+            }
+            .method-trigger-bank {
+                display: block;
+            }
         }
     }
 </style>
@@ -671,25 +714,6 @@ import Layout from '../layouts/Layout.astro';
             $checkoutAlertSpan.textContent = checkoutMessage;
         });
     }
-
-    const $$cardTabbed = document.querySelectorAll('.card--tabbed');
-    $$cardTabbed.forEach(($cardTabbed) => {
-        const $$tabs = $cardTabbed.querySelectorAll('.card__tab');
-        $$tabs.forEach(($tab) => {
-            $tab.addEventListener('click', () => {
-                $$tabs.forEach(($tab) => $tab.classList.remove('card__tab--active'));
-                $tab.classList.add('card__tab--active');
-
-                const $$tabContent = $cardTabbed.querySelectorAll('[data-tab-content]');
-                $$tabContent.forEach(($tabContent) => $tabContent.hidden = true);
-
-                const tabId = $tab.dataset.tabId;
-                console.log(tabId);
-                const $$ourTabContent = $cardTabbed.querySelectorAll(`[data-tab-content="${tabId}"]`);
-                $$ourTabContent.forEach(($ourTabContent) => $ourTabContent.hidden = false);
-            });
-        });
-    });
 
     const $$checkout = document.querySelectorAll('.checkout');
     $$checkout.forEach(($checkout) => {

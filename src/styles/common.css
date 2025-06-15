@@ -201,6 +201,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-bg-card1-hl: #000218;
     --color-bg-card2-hl: #190542;
     --color-shadow: #19124255;
+    --color-shadow-strong: #191242ff;
     --color-section-border: rgba(222, 222, 255, 0.15);
     --color-box-border: rgba(222, 222, 255, 0.1);
     --color-box-hl-border: rgba(222, 222, 255, 0.15);
@@ -212,12 +213,15 @@ SPDX-License-Identifier: Apache-2.0
     --color-primary-border: #5ba9ee66;
     --color-secondary: #3fbd73;
     --color-secondary-bright: #51f395;
+    --color-secondary-semidark: #2c8f5c;
+    --color-secondary-dark: #1c7f4c;
     --color-no: #aa1111;
     --color-error: #551020;
     --color-error-fade: rgba(100, 10, 30, 0.3);
     --color-text: white;
     --color-faded-text: rgba(255, 255, 255, 0.5);
-    --color-inset-bg: rgba(0, 0, 0, 0.5);
+    --color-bg-inset-light: #f1f3f5;
+    --color-input-border: #98a9af;
     --border-radius-big: 50px;
     --border-radius-small: 4px;
     --light-angle: 60deg;
@@ -349,22 +353,60 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
     &.form--big {
         &, input, button {
             font-size: 1.1rem;
         }
     }
+    .button {
+        background: var(--color-secondary-dark);
+        color: white;
+        &:hover {
+            background: var(--color-secondary-semidark);
+        }
+    }
 }
 
-input[type="text"], input[type="number"] {
+label {
+    font-weight: bold;
+}
+
+input[type="text"] {
     display: block;
     width: 100%;
     padding: 0.7rem;
-    border: 1px solid var(--color-box-hl-border);
+    border: 1px solid var(--color-input-border);
     border-radius: var(--border-radius-small);
-    background: var(--color-inset-bg);
-    color: white;
+    background: var(--color-bg-inset-light);
     font-variant-numeric: lining-nums;
+    &:focus {
+        border-color: var(--color-secondary-dark);
+        background: white;
+        outline: none;
+    }
+}
+
+input[type="radio"] {
+    display: block;
+    height: 0;
+    & + label {
+        display: block;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--color-input-border);
+        border-radius: var(--border-radius-small);
+        text-align: center;
+        font-weight: normal;
+        cursor: pointer;
+        &:hover {
+            background: var(--color-bg-inset-light);
+        }
+    }
+    &:checked + label {
+        background: var(--color-secondary-dark);
+        color: white;
+        border-color: transparent;
+    }
 }
 
 .input-wrapper {
@@ -395,8 +437,23 @@ input[type="text"], input[type="number"] {
     }
 }
 
+.form-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-control-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .form-control {
+        flex: 1;
+    }
+}
+
 .form-control {
-    label {
+    & > label:first-child {
         display: block;
         margin-bottom: 0.5rem;
     }
@@ -416,6 +473,7 @@ input[type="text"], input[type="number"] {
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 .flex-center {
     display: flex;
@@ -525,8 +583,14 @@ section {
             width: auto;
         }
     }
+    &.card--big-shadow {
+        box-shadow: 0px 0px 25px 5px var(--color-shadow-strong);
+    }
     &.card--narrow {
-        max-width: 30rem;
+        min-width: 35rem;
+        max-width: 45rem;
+        margin-left: auto;
+        margin-right: auto;
     }
     &.card--bigpad {
         padding: 2rem;
@@ -594,6 +658,10 @@ section {
             gap: 1rem;
             padding: 1rem;
         }
+    }
+    &.card--white {
+        background: white;
+        color: var(--color-bg-base);
     }
 }
 a.card {
