@@ -402,7 +402,7 @@ input[type="text"], input[type="number"] {
     }
 }
 
-.form-hint {
+.small-text {
     font-size: 0.8em;
 }
 
@@ -496,11 +496,6 @@ section {
     }
     .card {
         flex: 1;
-    }
-    &.cardset--two {
-        .card {
-            min-width: 40%;
-        }
     }
 }
 .card {
