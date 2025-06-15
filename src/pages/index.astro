@@ -510,7 +510,7 @@ import Layout from '../layouts/Layout.astro';
                     >
                         <div class="form-control">
                             <label>Email</label>
-                            <input type="email" name="donorEmail">
+                            <input type="email" name="donorEmail" id="donor-email">
                         </div>
                         <div class="form-control">
                             <label>Name</label>
@@ -770,4 +770,12 @@ import Layout from '../layouts/Layout.astro';
     if (checkoutMessage) {
         showCheckoutMessage(checkoutMessage);
     }
+
+    const donorEmail = document.getElementById('donor-email');
+    donorEmail.addEventListener('change', function() {
+        window.op('identify', {
+            profileId: this.value,
+            email: this.value,
+        });
+    });
 </script>
