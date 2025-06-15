@@ -302,8 +302,9 @@ hr {
 }
 
 dl {
-    background: var(--color-bg-inset-light);
+    margin: 0;
     padding: 1rem;
+    background: var(--color-bg-inset-light);
     dt {
         font-weight: bold;
     }
