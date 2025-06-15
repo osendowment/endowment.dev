@@ -9,6 +9,8 @@ interface Props {
 const { nodonate } = Astro.props;
 
 import '../styles/common.css';
+
+import { OpenPanelComponent } from '@openpanel/astro';
 ---
 
 <!doctype html>
@@ -37,6 +39,12 @@ import '../styles/common.css';
         <meta property="og:site_name" content="Open Source Endowment">
         <meta property="og:determiner" content="the">
         <meta property="og:url" content={Astro.url}>
+
+        <OpenPanelComponent
+            clientId="56442bc4-68fa-4003-8935-8210f125f448"
+            trackScreenViews={true}
+            trackAttributes={true}
+            trackOutgoingLinks={true} />
     </head>
     <body>
         <div class="hero">
@@ -54,7 +62,7 @@ import '../styles/common.css';
                     </a>
                     {!nodonate && (
                         <nav class="desktop-only">
-                            <a href="#donate" class="button">
+                            <a href="#donate" class="button" data-track="header-donate">
                                 Donate now<span class="after">›</span>
                             </a>
                         </nav>

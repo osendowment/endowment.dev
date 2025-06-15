@@ -37,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
         </div>
         <div class="mobile-only">
-            <a href="#donate" class="button">
+            <a href="#donate" class="button" data-track="hero-bottom-donate">
                 Donate now<span class="after">›</span>
             </a>
         </div>
@@ -226,7 +226,7 @@ import Layout from '../layouts/Layout.astro';
                     OSE is strategically managed by its Board of Directors, with operations managed by its Executive
                     Director. By design, all directors at OSE must also be Members.
                 </p>
-                <a href="#donate" class="button">
+                <a href="#donate" class="button" data-track="governance-donate">
                     Donate $1,000+ to join as a Member<span class="after">›</span>
                 </a>
             </div>
@@ -562,10 +562,12 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                         </div>
                         <div class="form-control checkout__trigger-stripe">
-                            <input type="submit" class="button button--block" value="Donate via Stripe">
+                            <input type="submit" class="button button--block" value="Donate via Stripe"
+                                data-track="checkout-stripe-trigger">
                         </div>
                         <div class="form-control checkout__trigger-bank">
-                            <button type="button" class="button button--block checkout__bank-button">
+                            <button type="button" class="button button--block checkout__bank-button"
+                                data-track="checkout-bank-trigger">
                                 Show bank details for a donation
                             </button>
                         </div>
@@ -576,7 +578,8 @@ import Layout from '../layouts/Layout.astro';
                         <div class="checkout__bank-details"></div>
                         <div class="checkout__bank-finish" hidden>
                             <input type="submit" class="button button--block" value="I've made my transfer"
-                                formaction="https://api.endowment.dev/record-bank-transfer">
+                                formaction="https://api.endowment.dev/record-bank-transfer"
+                                data-track="checkout-bank-finish">
                         </div>
                     </form>
                 </div>
