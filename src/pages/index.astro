@@ -515,11 +515,11 @@ import Layout from '../layouts/Layout.astro';
                     >
                         <div class="form-control">
                             <label>Email</label>
-                            <input type="text" name="customerEmail">
+                            <input type="text" name="donorEmail">
                         </div>
                         <div class="form-control">
                             <label>Name <span class="small-text">(optional)</span></label>
-                            <input type="text" name="customerName">
+                            <input type="text" name="donorName">
                         </div>
                         <div class="form-control-group">
                             <label>Donation amount</label>
@@ -692,6 +692,9 @@ import Layout from '../layouts/Layout.astro';
         .checkout__bank-details {
             display: none;
         }
+        .checkout__bank-finish {
+            display: none;
+        }
         &:has(input[name="presetAmount"][value="custom"]:checked) {
             .checkout__custom-amount {
                 display: block;
@@ -709,6 +712,9 @@ import Layout from '../layouts/Layout.astro';
                 &:empty {
                     display: none;
                 }
+            }
+            .checkout__bank-finish {
+                display: block;
             }
         }
     }
