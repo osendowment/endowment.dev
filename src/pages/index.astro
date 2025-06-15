@@ -574,8 +574,12 @@ import Layout from '../layouts/Layout.astro';
                                 Continue with bank transfer
                             </button>
                         </div>
+                        <div class="checkout__bank-details"></div>
+                        <div class="checkout__bank-finish" hidden>
+                            <input type="submit" class="button button--block" value="I've made my transfer"
+                                formaction="http://localhost:3003/record-bank-transfer">
+                        </div>
                     </form>
-                    <div class="checkout__bank-details"></div>
                 </div>
             </div>
         </div>
@@ -722,7 +726,7 @@ import Layout from '../layouts/Layout.astro';
         });
     }
 
-    async function getBankDetails($form, $checkoutBankDetails) {
+    async function getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish) {
         const formData = new FormData($form);
         const params = new URLSearchParams(formData);
         const res = await fetch('http://localhost:3003/create-bank-details', {
@@ -733,6 +737,7 @@ import Layout from '../layouts/Layout.astro';
             body: params,
         }).then((r) => r.text());
         $checkoutBankDetails.innerHTML = res;
+        $checkoutBankFinish.hidden = false;
     }
 
     const $$checkout = document.querySelectorAll('.checkout');
@@ -740,8 +745,9 @@ import Layout from '../layouts/Layout.astro';
         const $form = $checkout.querySelector('form');
         const $checkoutBankButton = $checkout.querySelector('.checkout__trigger-bank button');
         const $checkoutBankDetails = $checkout.querySelector('.checkout__bank-details');
+        const $checkoutBankFinish = $checkout.querySelector('.checkout__bank-finish');
         $checkoutBankButton.addEventListener('click', () => {
-            getBankDetails($form, $checkoutBankDetails);
+            getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish);
         });
     });
 </script>

@@ -300,6 +300,21 @@ hr {
   border-width: 1px;
 }
 
+dl {
+    background: var(--color-bg-inset-light);
+    padding: 1rem;
+    dt {
+        font-weight: bold;
+    }
+    dd {
+        margin: 0;
+        margin-bottom: 1rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
 ul {
     padding: 0;
     list-style-position: inside;
@@ -327,6 +342,7 @@ ul {
     &.button--block {
         display: block;
         width: 100%;
+        text-align: center;
     }
     .after {
         padding-left: 0.5rem;
@@ -357,13 +373,6 @@ ul {
     &.form--big {
         &, input, button {
             font-size: 1.1rem;
-        }
-    }
-    .button {
-        background: var(--color-secondary-dark);
-        color: white;
-        &:hover {
-            background: var(--color-secondary-semidark);
         }
     }
 }
@@ -587,8 +596,8 @@ section {
         box-shadow: 0px 0px 25px 5px var(--color-shadow-strong);
     }
     &.card--narrow {
-        min-width: 35rem;
-        max-width: 45rem;
+        width: 40rem;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -662,6 +671,13 @@ section {
     &.card--white {
         background: white;
         color: var(--color-bg-base);
+        .button {
+            background: var(--color-secondary-dark);
+            color: white;
+            &:hover {
+                background: var(--color-secondary-semidark);
+            }
+        }
     }
 }
 a.card {
