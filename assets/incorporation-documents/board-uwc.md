@@ -8,10 +8,10 @@ The directors of Open Source Endowment Foundation, a Delaware nonprofit nonstock
 
 **NOW, THEREFORE, IT IS RESOLVED** that the following individuals shall hold the offices set forth opposite their names:
 
-- **Konstantin Vinogradov** – Chair of the Board  
-- **Chad Whitacre** – Secretary  
-- **Maxim Konovalov** – Treasurer  
-- **Jonathan Starr** – Executive Director  
+- **Konstantin Vinogradov** – Chair of the Board
+- **Chad Whitacre** – Secretary
+- **Maxim Konovalov** – Treasurer
+- **Jonathan Starr** – Executive Director
 
 **RESOLVED FURTHER** that the actions taken by the incorporator and the decisions reflected in the Action of Sole Incorporator are confirmed and approved, and the Secretary is hereby directed to cause the Action of Sole Incorporator to be filed in this corporation’s minute book.
 

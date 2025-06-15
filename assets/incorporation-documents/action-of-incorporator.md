@@ -10,5 +10,5 @@ Pursuant to the provisions of Section 107 of the Delaware General Corporation La
 
 4. The following individuals are hereby appointed to serve as the initial Board-Elected Directors of this corporation, for terms of three (3) years to hold office until their successors are elected and qualify: **Chad Whitacre** and **Maxim Konovalov**.
 
-DATED: 3/31/2025  
+DATED: 3/31/2025
 Chad Whitacre, Incorporator
