@@ -511,7 +511,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="card card--white card--narrow card--big-shadow checkout">
                     <form
                         class="form form--big"
-                        action="http://api.endowment.dev/create-checkout-session" method="POST"
+                        action="https://api.endowment.dev/create-checkout-session" method="POST"
                     >
                         <div class="form-control">
                             <label>Email</label>
@@ -577,7 +577,7 @@ import Layout from '../layouts/Layout.astro';
                         <div class="checkout__bank-details"></div>
                         <div class="checkout__bank-finish" hidden>
                             <input type="submit" class="button button--block" value="I've made my transfer"
-                                formaction="http://api.endowment.dev/record-bank-transfer">
+                                formaction="https://api.endowment.dev/record-bank-transfer">
                         </div>
                     </form>
                 </div>
@@ -735,7 +735,7 @@ import Layout from '../layouts/Layout.astro';
     async function getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish) {
         const formData = new FormData($form);
         const params = new URLSearchParams(formData);
-        const res = await fetch('http://api.endowment.dev/create-bank-details', {
+        const res = await fetch('https://api.endowment.dev/create-bank-details', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
