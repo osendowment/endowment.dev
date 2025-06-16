@@ -46,21 +46,21 @@ import Layout from '../layouts/Layout.astro';
         <div class="container">
             <div class="cardset">
                 <div class="card">
-                    <img src="/images/icons/squiggle.svg">
+                    <img src="/images/icons/squiggle.svg" alt="A leaf-shaped squiggle">
                     <h2>Sustainable</h2>
                     <p>
                         Provides a stable, long-term funding model, independent of the volatility of traditional support.
                     </p>
                 </div>
                 <div class="card">
-                    <img src="/images/icons/branches-dense.svg">
+                    <img src="/images/icons/branches-dense.svg" alt="Dense, intertwining branches">
                     <h2>Systemic</h2>
                     <p>
                         Supports the critical but underfunded projects that conventional models miss.
                     </p>
                 </div>
                 <div class="card">
-                    <img src="/images/icons/assembly.svg">
+                    <img src="/images/icons/assembly.svg" alt="Two circles coming together">
                     <h2>Efficient</h2>
                     <p>
                         A lean, digital-first, community-led organization designed for maximum impact and transparency.
@@ -103,7 +103,8 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <figure>
-                    <img src="/images/xkcd-2347.png">
+                    <img src="/images/xkcd-2347.png"
+                        alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating “all modern digital infrastructure”. The structure precariously rests on a small load-bearing block, titled “a project some random person in Nebraska has been thanklessly maintaining since 2003”.">
                     <figcaption>
                         <a href="https://xkcd.com/2347/">xkcd “Dependency”</a>
                     </figcaption>
@@ -213,7 +214,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="subsection">
             <div class="card card--center">
-                <img src="/images/icons/avatar.svg">
+                <img src="/images/icons/avatar.svg" alt="The silhouette of a person">
                 <h2>Governance</h2>
                 <p>
                     <strong>Members.</strong>
@@ -285,7 +286,7 @@ import Layout from '../layouts/Layout.astro';
             <h2>How it Works</h2>
             <div class="cardset cardset--tight process">
                 <div class="card">
-                    <img src="/images/icons/card.svg">
+                    <img src="/images/icons/card.svg" alt="A credit card">
                     <h3>
                         <span class="process-number">1</span>Fundraising
                     </h3>
@@ -295,7 +296,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="card">
-                    <img src="/images/icons/suns.svg">
+                    <img src="/images/icons/suns.svg" alt="Two triangles pointing up">
                     <h3>
                         <span class="process-number">2</span>Investing
                     </h3>
@@ -305,7 +306,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="card">
-                    <img src="/images/icons/balls.svg">
+                    <img src="/images/icons/balls.svg" alt="Circles of different sizes">
                     <h3>
                         <span class="process-number">3</span>Grant-Making
                     </h3>
@@ -315,7 +316,7 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
                 <div class="card">
-                    <img src="/images/icons/search.svg">
+                    <img src="/images/icons/search.svg" alt="A magnifying glass">
                     <h3>
                         <span class="process-number">4</span>Monitoring
                     </h3>
@@ -509,12 +510,12 @@ import Layout from '../layouts/Layout.astro';
                         action="https://api.endowment.dev/create-checkout-session" method="POST"
                     >
                         <div class="form-control">
-                            <label>Email</label>
+                            <label for="donor-email">Email</label>
                             <input type="email" name="donorEmail" id="donor-email">
                         </div>
                         <div class="form-control">
-                            <label>Name</label>
-                            <input type="text" name="donorName">
+                            <label for="donor-name">Name</label>
+                            <input type="text" name="donorName" id="donor-name">
                         </div>
                         <div class="form-control-group">
                             <label>Donation amount</label>
