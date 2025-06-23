@@ -765,11 +765,17 @@ import Layout from '../layouts/Layout.astro';
         showCheckoutMessage(checkoutMessage);
     }
 
-    const donorEmail = document.getElementById('donor-email');
-    donorEmail.addEventListener('change', function() {
+    const $donorEmail = document.getElementById('donor-email');
+    const $donorName = document.getElementById('donor-name');
+
+    function identify() {
         window.op('identify', {
-            profileId: this.value,
-            email: this.value,
+            profileId: $donorEmail.value,
+            email: $donorEmail.value,
+            lastName: $donorName.value,
         });
-    });
+    }
+
+    $donorEmail.addEventListener('change', identify);
+    $donorName.addEventListener('change', identify);
 </script>
