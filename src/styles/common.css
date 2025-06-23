@@ -570,7 +570,6 @@ section {
 .card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 1rem;
     padding: 1rem;
     border: 1px solid var(--color-box-border);
@@ -587,11 +586,8 @@ section {
         height: 2.5rem;
         width: auto;
     }
-    &.card--small-icon {
-        img, svg {
-            height: 1.5rem;
-            width: auto;
-        }
+    &.card--big-icon {
+        align-items: flex-start;
     }
     &.card--big-shadow {
         box-shadow: 0px 0px 25px 5px var(--color-shadow-strong);
@@ -605,7 +601,7 @@ section {
     &.card--bigpad {
         padding: 2rem;
     }
-    &.card--iconed {
+    &.card--row-icon {
         flex-direction: row;
         align-items: center;
         & > img, & > svg {
