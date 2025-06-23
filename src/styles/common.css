@@ -186,25 +186,25 @@ SPDX-License-Identifier: Apache-2.0
 
 @property --color-bg-card1 {
   syntax: '<color>';
-  initial-value: #000218;
+  initial-value: #060924;
   inherits: false;
 }
 @property --color-bg-card2 {
   syntax: '<color>';
-  initial-value: #090522;
+  initial-value: #140e2e;
   inherits: false;
 }
 :root {
     --color-bg-base: #020018;
     --color-bg-grad1: #090926;
     --color-bg-grad2: #000217;
-    --color-bg-card1-hl: #000218;
-    --color-bg-card2-hl: #190542;
+    --color-bg-card1-hl: #060924;
+    --color-bg-card2-hl: #181842;
     --color-shadow: #19124255;
     --color-shadow-strong: #191242ff;
     --color-section-border: rgba(222, 222, 255, 0.15);
-    --color-box-border: rgba(222, 222, 255, 0.1);
-    --color-box-hl-border: rgba(222, 222, 255, 0.15);
+    --color-box-border: rgba(45, 45, 92, 0.88);
+    --color-box-hl-border: rgba(195, 195, 251, 0.23);
     --color-standalone-border: rgba(222, 222, 255, 0.25);
     --color-primary: #5ba9ee;
     --color-primary-bright: #81d7ff;
@@ -574,7 +574,6 @@ section {
     gap: 1rem;
     padding: 1rem;
     border: 1px solid var(--color-box-border);
-    border-top-color: var(--color-box-hl-border);
     border-radius: var(--border-radius-small);
     background: linear-gradient(var(--light-angle),
         var(--color-bg-card1), var(--color-bg-card2));
