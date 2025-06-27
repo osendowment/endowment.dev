@@ -556,12 +556,12 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                         </div>
                         <div class="form-control checkout__trigger-stripe">
-                            <input type="submit" class="button button--block" value="Donate via Stripe"
-                                data-track="checkout-stripe-trigger">
+                            <button type="button" class="button button--block">
+                                Donate via Stripe
+                            </button>
                         </div>
                         <div class="form-control checkout__trigger-bank">
-                            <button type="button" class="button button--block checkout__bank-button"
-                                data-track="checkout-bank-trigger">
+                            <button type="button" class="button button--block">
                                 Show bank details for a donation
                             </button>
                         </div>
@@ -751,11 +751,25 @@ import Layout from '../layouts/Layout.astro';
     const $$checkout = document.querySelectorAll('.checkout');
     $$checkout.forEach(($checkout) => {
         const $form = $checkout.querySelector('form');
+        const $checkoutStripeButton = $checkout.querySelector('.checkout__trigger-stripe button');
         const $checkoutBankButton = $checkout.querySelector('.checkout__trigger-bank button');
         const $checkoutBankDetails = $checkout.querySelector('.checkout__bank-details');
         const $checkoutBankFinish = $checkout.querySelector('.checkout__bank-finish');
         $checkoutBankButton.addEventListener('click', () => {
+            try {
+                window.op('track', 'checkout-bank-trigger');
+            } catch (e) {
+                console.error('Failed to track checkout-bank-trigger');
+            }
             getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish);
+        });
+        $checkoutStripeButton.addEventListener('click', () => {
+            try {
+                window.op('track', 'checkout-stripe-trigger');
+            } catch (e) {
+                console.error('Failed to track checkout-stripe-trigger');
+            }
+            $form.submit();
         });
     });
 
