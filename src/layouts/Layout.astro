@@ -25,6 +25,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <meta
           name="description"
           content="Truly sustainable funding for critical open source software through a community‑driven endowment.">
+        <link rel="canonical" href={Astro.url}>
         <meta property="og:type" content="website">
         <meta property="og:title" content="Open Source Endowment">
         <meta
@@ -41,7 +42,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
           content="https://endowment.dev/images/logo/Logomark%20Colored%20for%20Dark%20BG.png">
         <meta property="og:site_name" content="Open Source Endowment">
         <meta property="og:determiner" content="the">
-        <meta property="og:url" content="https://endowment.dev">
+        <meta property="og:url" content={Astro.url}>
         <meta
           name="twitter:title"
           content="Open Source Endowment">
