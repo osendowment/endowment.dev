@@ -503,7 +503,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="card card--white card--narrow card--big-shadow checkout">
                     <form
                         class="form form--big"
-                        action="https://api.endowment.dev/create-checkout-session" method="POST"
+                        action="http://localhost:3003/stripe-checkout-session" method="POST"
                     >
                         <div class="form-control">
                             <label for="donor-email">Email</label>
@@ -517,30 +517,30 @@ import Layout from '../layouts/Layout.astro';
                             <label>Donation amount</label>
                             <div class="form-control-set">
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="100" id="presetAmount-100">
-                                    <label for="presetAmount-100">$100</label>
+                                    <input type="radio" name="presetUsdAmount" value="100" id="presetUsdAmount-100">
+                                    <label for="presetUsdAmount-100">$100</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="500" id="presetAmount-500"
+                                    <input type="radio" name="presetUsdAmount" value="500" id="presetUsdAmount-500"
                                         checked="checked">
-                                    <label for="presetAmount-500">$500</label>
+                                    <label for="presetUsdAmount-500">$500</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="1000" id="presetAmount-1000">
-                                    <label for="presetAmount-1000">$1000</label>
+                                    <input type="radio" name="presetUsdAmount" value="1000" id="presetUsdAmount-1000">
+                                    <label for="presetUsdAmount-1000">$1000</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="2000" id="presetAmount-2000">
-                                    <label for="presetAmount-2000">$2000</label>
+                                    <input type="radio" name="presetUsdAmount" value="2000" id="presetUsdAmount-2000">
+                                    <label for="presetUsdAmount-2000">$2000</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="custom" id="presetAmount-custom">
-                                    <label for="presetAmount-custom">Custom</label>
+                                    <input type="radio" name="presetUsdAmount" value="custom" id="presetUsdAmount-custom">
+                                    <label for="presetUsdAmount-custom">Custom</label>
                                 </div>
                             </div>
                             <div class="form-control checkout__custom-amount">
                                 <div class="input-wrapper input-wrapper--usd">
-                                    <input type="text" name="customAmount" placeholder="100" value="100">
+                                    <input type="text" name="customUsdAmount" placeholder="100" value="100">
                                 </div>
                             </div>
                         </div>
@@ -575,7 +575,7 @@ import Layout from '../layouts/Layout.astro';
                         <div class="checkout__bank-details"></div>
                         <div class="checkout__bank-finish" hidden>
                             <input type="submit" class="button button--block" value="I've made my transfer"
-                                formaction="https://api.endowment.dev/record-bank-transfer"
+                                formaction="/thank-you"
                                 data-track="checkout-bank-finish">
                         </div>
                     </form>
@@ -698,7 +698,7 @@ import Layout from '../layouts/Layout.astro';
         .checkout__bank-finish {
             display: none;
         }
-        &:has(input[name="presetAmount"][value="custom"]:checked) {
+        &:has(input[name="presetUsdAmount"][value="custom"]:checked) {
             .checkout__custom-amount {
                 display: block;
             }
@@ -743,7 +743,7 @@ import Layout from '../layouts/Layout.astro';
             return showCheckoutMessage("Please enter an email address");
         }
         const params = new URLSearchParams(formData);
-        const res = await fetch('https://api.endowment.dev/create-bank-details', {
+        const res = await fetch('http://localhost:3003/bank-details', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
