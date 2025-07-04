@@ -331,6 +331,10 @@ ol {
     color: var(--color-faded-text);
 }
 
+.bank-reference {
+    font-family: monospace;
+}
+
 .button {
     background: none;
     border: none;
