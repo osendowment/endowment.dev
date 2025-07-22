@@ -503,44 +503,44 @@ import Layout from '../layouts/Layout.astro';
                 <div class="card card--white card--narrow card--big-shadow checkout">
                     <form
                         class="form form--big"
-                        action="https://api.endowment.dev/create-checkout-session" method="POST"
+                        action="https://staging-api.endowment.dev/stripe-checkout-session" method="POST"
                     >
                         <div class="form-control">
                             <label for="donor-email">Email</label>
-                            <input type="email" name="donorEmail" id="donor-email">
+                            <input type="email" name="email" id="donor-email">
                         </div>
                         <div class="form-control">
                             <label for="donor-name">Name</label>
-                            <input type="text" name="donorName" id="donor-name">
+                            <input type="text" name="name" id="donor-name">
                         </div>
                         <div class="form-control-group">
                             <label>Donation amount</label>
                             <div class="form-control-set">
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="100" id="presetAmount-100">
-                                    <label for="presetAmount-100">$100</label>
+                                    <input type="radio" name="preset_amount" value="100" id="preset_amount-100">
+                                    <label for="preset_amount-100">$100</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="500" id="presetAmount-500"
+                                    <input type="radio" name="preset_amount" value="500" id="preset_amount-500"
                                         checked="checked">
-                                    <label for="presetAmount-500">$500</label>
+                                    <label for="preset_amount-500">$500</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="1000" id="presetAmount-1000">
-                                    <label for="presetAmount-1000">$1000</label>
+                                    <input type="radio" name="preset_amount" value="1000" id="preset_amount-1000">
+                                    <label for="preset_amount-1000">$1000</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="2000" id="presetAmount-2000">
-                                    <label for="presetAmount-2000">$2000</label>
+                                    <input type="radio" name="preset_amount" value="2000" id="preset_amount-2000">
+                                    <label for="preset_amount-2000">$2000</label>
                                 </div>
                                 <div class="form-control">
-                                    <input type="radio" name="presetAmount" value="custom" id="presetAmount-custom">
-                                    <label for="presetAmount-custom">Custom</label>
+                                    <input type="radio" name="preset_amount" value="-1" id="preset_amount-custom">
+                                    <label for="preset_amount-custom">Custom</label>
                                 </div>
                             </div>
                             <div class="form-control checkout__custom-amount">
                                 <div class="input-wrapper input-wrapper--usd">
-                                    <input type="text" name="customAmount" placeholder="100" value="100">
+                                    <input type="text" name="custom_amount" placeholder="100" value="100">
                                 </div>
                             </div>
                         </div>
@@ -574,9 +574,12 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                         <div class="checkout__bank-details"></div>
                         <div class="checkout__bank-finish" hidden>
-                            <input type="submit" class="button button--block" value="I've made my transfer"
-                                formaction="https://api.endowment.dev/record-bank-transfer"
-                                data-track="checkout-bank-finish">
+                            <a
+                                href="/thank-you"
+                                type="submit"
+                                class="button button--block"
+                                data-track="checkout-bank-finish"
+                            >I've made my transfer</a>
                         </div>
                     </form>
                 </div>
@@ -698,7 +701,7 @@ import Layout from '../layouts/Layout.astro';
         .checkout__bank-finish {
             display: none;
         }
-        &:has(input[name="presetAmount"][value="custom"]:checked) {
+        &:has(input[name="preset_amount"][value="-1"]:checked) {
             .checkout__custom-amount {
                 display: block;
             }
@@ -739,11 +742,11 @@ import Layout from '../layouts/Layout.astro';
 
     async function getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish) {
         const formData = new FormData($form);
-        if (!isValidEmail(formData.get('donorEmail'))) {
+        if (!isValidEmail(formData.get('email'))) {
             return showCheckoutMessage("Please enter an email address");
         }
         const params = new URLSearchParams(formData);
-        const res = await fetch('https://api.endowment.dev/create-bank-details', {
+        const res = await fetch('https://staging-api.endowment.dev/bank-details', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
