@@ -503,7 +503,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="card card--white card--narrow card--big-shadow checkout">
                     <form
                         class="form form--big"
-                        action="https://staging-api.endowment.dev/stripe-checkout-session" method="POST"
+                        action="https://api.endowment.dev/stripe-checkout-session" method="POST"
                     >
                         <div class="form-control">
                             <label for="donor-email">Email</label>
@@ -754,7 +754,7 @@ import Layout from '../layouts/Layout.astro';
         }
         const params = new URLSearchParams(formData);
         try {
-            const res = await fetch('https://staging-api.endowment.dev/bank-details', {
+            const res = await fetch('https://api.endowment.dev/bank-details', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
