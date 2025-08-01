@@ -740,21 +740,37 @@ import Layout from '../layouts/Layout.astro';
         });
     }
 
+    function hideCheckoutMessage() {
+        const $$checkoutAlert = document.querySelectorAll('.checkout-alert');
+        $$checkoutAlert.forEach(($checkoutAlert) => {
+            $checkoutAlert.hidden = true;
+        });
+    }
+
     async function getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish) {
         const formData = new FormData($form);
         if (!isValidEmail(formData.get('email'))) {
             return showCheckoutMessage("Please enter an email address");
         }
         const params = new URLSearchParams(formData);
-        const res = await fetch('https://staging-api.endowment.dev/bank-details', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-            },
-            body: params,
-        }).then((r) => r.text());
-        $checkoutBankDetails.innerHTML = res;
-        $checkoutBankFinish.hidden = false;
+        try {
+            const res = await fetch('https://staging-api.endowment.dev/bank-details', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                },
+                body: params,
+            });
+            if (res.status != 200) {
+                throw new Error(`Got status code ${res.status}`);
+            }
+            const html = await res.text();
+            $checkoutBankDetails.innerHTML = html;
+            $checkoutBankFinish.hidden = false;
+            hideCheckoutMessage();
+        } catch (err) {
+            showCheckoutMessage("Could not record donation attempt. Please contact us.");
+        }
     }
 
     const $$checkout = document.querySelectorAll('.checkout');
