@@ -19,6 +19,12 @@ This website is built with [Astro][astro]. This is a good place to start:
 npx astro dev
 ```
 
+If you want to specify a custom API URL, which is useful for development:
+
+```
+ENDOWMENT_API_HOST='http://localhost:3003' npx astro dev
+```
+
 ## Authorship
 
 This repository is managed by [Vlad-Stefan Harbuz][vladh].

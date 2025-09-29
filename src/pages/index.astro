@@ -3,6 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Layout from '../layouts/Layout.astro';
+
+let API_HOST = 'https://api.endowment.dev';
+if ('ENDOWMENT_API_HOST' in process.env) {
+    API_HOST = process.env.ENDOWMENT_API_HOST;
+}
 ---
 
 <Layout>
@@ -504,7 +509,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="card card--white card--narrow card--big-shadow checkout">
                     <form
                         class="form form--big"
-                        action="https://api.endowment.dev/stripe-checkout-session" method="POST"
+                        action={API_HOST + "/stripe-checkout-session"} method="POST"
                     >
                         <div class="form-control">
                             <label for="donor-email">Email</label>
@@ -727,7 +732,7 @@ import Layout from '../layouts/Layout.astro';
     }
 </style>
 
-<script>
+<script define:vars={{ API_HOST }}>
     function isValidEmail(email) {
         return email && email.includes('@') && email.length >= 'a@a.aa'.length;
     }
@@ -755,7 +760,7 @@ import Layout from '../layouts/Layout.astro';
         }
         const params = new URLSearchParams(formData);
         try {
-            const res = await fetch('https://api.endowment.dev/bank-details', {
+            const res = await fetch(API_HOST + '/bank-details', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
