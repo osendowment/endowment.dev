@@ -116,21 +116,19 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <div class="hero">
             <header>
                 <div class="container header-items">
-                    <a href="/">
+                    <a href="/" class="logo">
                         <img
                             class="desktop-only"
-                            src="/images/logo/OSE Logo for Dark BG.svg"
-                            alt="The Open Source Endowment logo">
-                        <img
-                            class="mobile-only"
-                            src="/images/logo/Logomark Colored.svg"
+                            src="/images/logo/OSE Logo.svg"
                             alt="The Open Source Endowment logo">
                     </a>
                     {!nodonate && (
                         <nav class="desktop-only">
-                            <a href="#donate" class="button" data-track="header-donate">
-                                Donate now<span class="after">›</span>
-                            </a>
+                            <a
+                                href="#donate"
+                                class="button button--colored"
+                                data-track="header-donate"
+                            >Donate</a>
                         </nav>
                     )}
                 </div>
@@ -142,7 +140,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
             <div class="container footer-items">
                 <div class="footer-brand">
                     <img
-                        src="/images/logo/OSE Logo for Dark BG.svg"
+                        src="/images/logo/OSE Logo.svg"
                         alt="The Open Source Endowment logo">
                     <div class="footer-socials">
                         <a href="https://x.com/osendowment" target="_blank">
@@ -197,17 +195,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
 </html>
 
 <style>
-    .hero {
-        background:
-            var(--url-noise),
-            radial-gradient(ellipse at center center,
-                rgba(150, 150, 255, 0.03), transparent),
-            radial-gradient(ellipse at bottom left,
-                rgba(0, 0, 0, 0.2), transparent),
-            radial-gradient(ellipse at top right,
-                var(--color-bg-grad1), var(--color-bg-base));
-        border-bottom: 1px solid var(--color-section-border);
-    }
     header {
         padding: 1rem 0;
         @media (max-width: 800px) {
@@ -224,21 +211,17 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 gap: 1.5rem;
                 justify-content: center;
             }
-            img {
-                height: 3rem;
+            a.logo {
+                background-color: transparent;
+                img {
+                    height: 3rem;
+                }
             }
         }
     }
     footer {
         padding-top: 2rem;
         padding-bottom: 2rem;
-        background:
-            linear-gradient(0deg,
-                var(--color-bg-base), transparent),
-            url(/images/lined-grid.svg),
-            var(--url-noise),
-            linear-gradient(var(--light-angle),
-                var(--color-bg-base), var(--color-bg-grad1));
         border-top: 1px solid var(--color-section-border);
         font-size: 0.9rem;
         .footer-items {
