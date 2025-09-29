@@ -51,25 +51,33 @@ if ('ENDOWMENT_API_HOST' in process.env) {
         <div class="container">
             <div class="cardset">
                 <div class="card card--big-icon">
-                    <img src="/images/icons/squiggle.svg" alt="A leaf-shaped squiggle">
-                    <h2>Sustainable</h2>
-                    <p>
-                        Provides a stable, long-term funding model, independent of the volatility of traditional support.
-                    </p>
+                    <img src="/images/icons/em-sustainable.svg" alt="A leaf-shaped squiggle">
+                    <div>
+                        <h2>Sustainable</h2>
+                        <p>
+                            Provides a stable, long-term funding model, independent of the volatility of traditional
+                            support.
+                        </p>
+                    </div>
                 </div>
                 <div class="card card--big-icon">
-                    <img src="/images/icons/branches-dense.svg" alt="Dense, intertwining branches">
-                    <h2>Systemic</h2>
-                    <p>
-                        Supports the critical but underfunded projects that conventional models miss.
-                    </p>
+                    <img src="/images/icons/em-systemic.svg" alt="A building block">
+                    <div>
+                        <h2>Systemic</h2>
+                        <p>
+                            Supports the critical but underfunded projects that conventional models miss.
+                        </p>
+                    </div>
                 </div>
                 <div class="card card--big-icon">
-                    <img src="/images/icons/assembly.svg" alt="Two circles coming together">
-                    <h2>Efficient</h2>
-                    <p>
-                        A lean, digital-first, community-led organization designed for maximum impact and transparency.
-                    </p>
+                    <img src="/images/icons/em-efficient.svg" alt="A performance gauge">
+                    <div>
+                        <h2>Efficient</h2>
+                        <p>
+                            A lean, digital-first, community-led organization designed for maximum impact and
+                            transparency.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -506,7 +514,7 @@ if ('ENDOWMENT_API_HOST' in process.env) {
                         </p>
                     </div>
                 </noscript>
-                <div class="card card--white card--narrow card--big-shadow checkout">
+                <div class="card card--narrow card--big-shadow checkout">
                     <form
                         class="form form--big"
                         action={API_HOST + "/stripe-checkout-session"} method="POST"
