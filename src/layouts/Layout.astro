@@ -116,23 +116,28 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <div class="hero">
             <header>
                 <div class="container header-items">
-                    <a href="/">
+                    <a href="/" class="logo">
                         <img
                             class="desktop-only"
-                            src="/images/logo/OSE Logo for Dark BG.svg"
+                            src="/images/logo/OSE Logo.svg"
                             alt="The Open Source Endowment logo">
                         <img
                             class="mobile-only"
                             src="/images/logo/Logomark Colored.svg"
                             alt="The Open Source Endowment logo">
                     </a>
-                    {!nodonate && (
-                        <nav class="desktop-only">
-                            <a href="#donate" class="button" data-track="header-donate">
-                                Donate now<span class="after">›</span>
-                            </a>
-                        </nav>
-                    )}
+                    <nav class="desktop-only">
+                        <a href="/">Endowment</a>
+                        <a href="#">Docs</a>
+                        <a href="https://github.com/osendowment/model" target="_blank">Model</a>
+                    </nav>
+                    <div>
+                        <a
+                            href="#donate"
+                            class="button button--colored"
+                            data-track="header-donate"
+                        >Donate</a>
+                    </div>
                 </div>
             </header>
             <slot name="hero" />
@@ -142,36 +147,24 @@ import { OpenPanelComponent } from '@openpanel/astro';
             <div class="container footer-items">
                 <div class="footer-brand">
                     <img
-                        src="/images/logo/OSE Logo for Dark BG.svg"
+                        src="/images/logo/OSE Logo.svg"
                         alt="The Open Source Endowment logo">
-                    <div class="footer-socials">
-                        <a href="https://x.com/osendowment" target="_blank">
-                            <svg role="img" aria-label="The X (Twitter) logo" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 300 300.251"><path fill="#fff" d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59H300M36.01 19.54h40.65l187.13 262.13h-40.66"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/osendowment/" target="_blank">
-                            <svg role="img" aria-label="The LinkedIn logo" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72"><path fill="#fff" d="M8 0a8 8 0 0 0-8 8v56a8 8 0 0 0 8 8h56a8 8 0 0 0 8-8V8a8 8 0 0 0-8-8zm8.35 10c3.508 0 6.347 2.863 6.347 6.396s-2.84 6.399-6.347 6.399S10 19.929 10 16.396 12.842 10 16.35 10m33.033 16.273c7.353 0 12.617 4.49 12.617 13.778V62H51.316V43.803c0-4.99-1.896-7.778-5.845-7.778-4.296 0-6.54 2.902-6.54 7.778V62H28.634V27.332H38.93v4.672s3.096-5.73 10.453-5.73m-38.35 1.059h10.735V62H11.03z"></svg>
-                        </a>
-                        <a href="https://github.com/osendowment" target="_blank">
-                            <svg role="img" aria-label="The GitHub logo" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 33 32"><path fill="#fff" fill-rule="evenodd" d="M16.288 0C7.294 0 0 7.293 0 16.29c0 7.197 4.667 13.302 11.14 15.456.815.15 1.112-.353 1.112-.785 0-.386-.014-1.411-.022-2.77-4.531.984-5.487-2.184-5.487-2.184-.741-1.882-1.809-2.383-1.809-2.383-1.479-1.01.112-.99.112-.99 1.635.115 2.495 1.679 2.495 1.679 1.453 2.489 3.813 1.77 4.741 1.353.148-1.052.569-1.77 1.034-2.177-3.617-.411-7.42-1.809-7.42-8.051 0-1.778.635-3.233 1.677-4.371-.168-.412-.727-2.069.16-4.311 0 0 1.367-.438 4.479 1.67a15.6 15.6 0 0 1 4.078-.549 15.6 15.6 0 0 1 4.078.549c3.11-2.108 4.475-1.67 4.475-1.67.889 2.242.33 3.899.163 4.311 1.044 1.138 1.674 2.593 1.674 4.371 0 6.258-3.809 7.635-7.437 8.038.584.503 1.105 1.497 1.105 3.017 0 2.177-.02 3.934-.02 4.468 0 .436.294.943 1.12.784 6.468-2.159 11.131-8.26 11.131-15.455C32.579 7.293 25.285 0 16.288 0"/></svg>
-                        </a>
-                    </div>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://x.com/osendowment" target="_blank">
+                        <svg role="img" aria-label="The X (Twitter) logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 300 300.251"><path fill="#fff" d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59H300M36.01 19.54h40.65l187.13 262.13h-40.66"/></svg>
+                        <span>osendowment</span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/osendowment/" target="_blank">
+                        <svg role="img" aria-label="The LinkedIn logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 72 72"><path fill="#fff" d="M8 0a8 8 0 0 0-8 8v56a8 8 0 0 0 8 8h56a8 8 0 0 0 8-8V8a8 8 0 0 0-8-8zm8.35 10c3.508 0 6.347 2.863 6.347 6.396s-2.84 6.399-6.347 6.399S10 19.929 10 16.396 12.842 10 16.35 10m33.033 16.273c7.353 0 12.617 4.49 12.617 13.778V62H51.316V43.803c0-4.99-1.896-7.778-5.845-7.778-4.296 0-6.54 2.902-6.54 7.778V62H28.634V27.332H38.93v4.672s3.096-5.73 10.453-5.73m-38.35 1.059h10.735V62H11.03z"></svg>
+                        <span>osendowment</span>
+                    </a>
+                    <a href="https://github.com/osendowment" target="_blank">
+                        <svg role="img" aria-label="The GitHub logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 33 32"><path fill="#fff" fill-rule="evenodd" d="M16.288 0C7.294 0 0 7.293 0 16.29c0 7.197 4.667 13.302 11.14 15.456.815.15 1.112-.353 1.112-.785 0-.386-.014-1.411-.022-2.77-4.531.984-5.487-2.184-5.487-2.184-.741-1.882-1.809-2.383-1.809-2.383-1.479-1.01.112-.99.112-.99 1.635.115 2.495 1.679 2.495 1.679 1.453 2.489 3.813 1.77 4.741 1.353.148-1.052.569-1.77 1.034-2.177-3.617-.411-7.42-1.809-7.42-8.051 0-1.778.635-3.233 1.677-4.371-.168-.412-.727-2.069.16-4.311 0 0 1.367-.438 4.479 1.67a15.6 15.6 0 0 1 4.078-.549 15.6 15.6 0 0 1 4.078.549c3.11-2.108 4.475-1.67 4.475-1.67.889 2.242.33 3.899.163 4.311 1.044 1.138 1.674 2.593 1.674 4.371 0 6.258-3.809 7.635-7.437 8.038.584.503 1.105 1.497 1.105 3.017 0 2.177-.02 3.934-.02 4.468 0 .436.294.943 1.12.784 6.468-2.159 11.131-8.26 11.131-15.455C32.579 7.293 25.285 0 16.288 0"/></svg>
+                        <span>osendowment</span>
+                    </a>
                 </div>
                 <div>
-                    <p>
-                        Open Source Endowment Foundation<br>
-                        US nonprofit corporation<br>
-                        501(c)(3) status pending
-                    </p>
-                    <p class="sneaky">
-                        74 E Glenwood Ave Unit 5756, Smyrna, DE
-                    </p>
-                    <p class="sneaky">
-                        Third-party project names used for illustrative purposes only.
-                    </p>
-                </div>
-                <div>
-                    {true && (
-                    <h3>Key Documents</h3>
                     <ul>
                         <li>
                             <a href="/membership-policy">Membership Policy</a>
@@ -189,7 +182,25 @@ import { OpenPanelComponent } from '@openpanel/astro';
                             <a href="/board-of-directors">Board of Directors</a>
                         </li>
                     </ul>
-                    )}
+                </div>
+                <div class="footer-legal">
+                    <p>
+                        Open Source Endowment Foundation.
+                        US nonprofit corporation.
+                        501(c)(3) status pending.
+                    </p>
+                    <p>
+                        74 E Glenwood Ave Unit 5756, Smyrna, DE
+                    </p>
+                    <p>
+                        Third-party project names used for illustrative purposes only.
+                    </p>
+                    <p>
+                        Designed by
+                        <a
+                            href="https://evilmartians.com/"
+                            target="_blank"
+                        >Evil Martians</a>.
                 </div>
             </div>
         </footer>
@@ -197,78 +208,71 @@ import { OpenPanelComponent } from '@openpanel/astro';
 </html>
 
 <style>
-    .hero {
-        background:
-            var(--url-noise),
-            radial-gradient(ellipse at center center,
-                rgba(150, 150, 255, 0.03), transparent),
-            radial-gradient(ellipse at bottom left,
-                rgba(0, 0, 0, 0.2), transparent),
-            radial-gradient(ellipse at top right,
-                var(--color-bg-grad1), var(--color-bg-base));
-        border-bottom: 1px solid var(--color-section-border);
-    }
     header {
         padding: 1rem 0;
-        @media (max-width: 800px) {
-            padding-bottom: 0;
-            padding-top: 2rem;
-        }
         .header-items {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            @media (max-width: 800px) {
-                flex-direction: column;
-                gap: 1.5rem;
-                justify-content: center;
-            }
-            img {
-                height: 3rem;
+            a.logo {
+                background-color: transparent;
+                img {
+                    height: 3rem;
+                }
             }
         }
     }
     footer {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        background:
-            linear-gradient(0deg,
-                var(--color-bg-base), transparent),
-            url(/images/lined-grid.svg),
-            var(--url-noise),
-            linear-gradient(var(--light-angle),
-                var(--color-bg-base), var(--color-bg-grad1));
+        padding: 2rem 1rem;
         border-top: 1px solid var(--color-section-border);
         font-size: 0.9rem;
         .footer-items {
             display: flex;
             flex-wrap: wrap;
             gap: 4rem;
-            @media (max-width: 800px) {
+            @media (max-width: 1200px) {
                 flex-direction: column;
                 gap: 2rem;
             }
-            .footer-brand {
-                flex: 1;
+            a {
+                color: inherit;
+                background: none;
+                &:hover {
+                    color: var(--color-primary);
+                }
             }
             .footer-socials {
                 display: flex;
+                flex-direction: column;
                 gap: 1rem;
-                margin-top: 1rem;
                 a {
-                    text-decoration: none;
+                    display: flex;
+                    gap: 0.5rem;
+                    background: none;
                     color: var(--color-text);
+                    svg {
+                        vertical-align: 2px;
+                        path {
+                            fill: var(--color-text);
+                        }
+                    }
                     &:hover {
-                        color: var(--color-primary-bright);
+                        color: var(--color-primary);
                         svg path {
-                            fill: var(--color-primary-bright);
+                            fill: var(--color-primary);
                         }
                     }
                 }
             }
+            .footer-legal {
+                color: var(--color-text-dark-faded);
+                font-size: 0.8rem;
+                max-width: 20rem;
+            }
             h3 {
                 margin-bottom: 0.5rem;
+                font-weight: bold;
             }
             ul {
                 margin: 0;
@@ -277,10 +281,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
-                a {
-                    color: var(--color-text);
-                    text-decoration-color: rgba(255, 255, 255, 0.4);
-                }
             }
         }
     }
