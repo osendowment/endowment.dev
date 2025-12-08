@@ -533,6 +533,12 @@ input[type="radio"] {
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
+    &.container--mobile-unpadded {
+        @media (max-width: 800px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 }
 
 .flex {
@@ -608,11 +614,19 @@ input[type="radio"] {
     @media (max-width: 600px) {
         display: flex;
         flex-direction: column;
+        .grid__item {
+            border-right: 0;
+        }
         .grid__item:first-child {
             border-top: 0;
         }
         .grid__item:last-child {
             border-bottom: 0;
+        }
+    }
+    @media (max-width: 800px) {
+        .grid__item:nth-child(3), .grid__item:nth-child(5) {
+            border-right: 0;
         }
     }
 }
