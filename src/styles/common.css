@@ -676,8 +676,13 @@ nav {
     display: flex;
     gap: 1.5rem;
     a {
-        color: var(--color-text-dark);
-        background: none;
+        &, &:hover {
+            color: var(--color-text-dark);
+            background: none;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
