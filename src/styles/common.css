@@ -896,6 +896,7 @@ section.pagesec {
 
 .kpis {
     display: flex;
+    margin-top: 3rem;
     color: var(--color-text-dark);
     & > div {
         flex: 1;
