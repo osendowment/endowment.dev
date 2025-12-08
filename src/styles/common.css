@@ -705,6 +705,7 @@ section.pagesec {
         &:is(h2), h2 {
             font-family: var(--font-family-serif);
             line-height: 1;
+            font-size: 3.0rem;
         }
         h2 {
             margin: 0;
