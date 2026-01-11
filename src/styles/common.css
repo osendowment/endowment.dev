@@ -261,6 +261,10 @@ img {
     max-width: 100%;
 }
 
+i {
+    font-style: normal;
+}
+
 figure {
     figcaption {
         margin-top: 0.3rem;
@@ -300,6 +304,12 @@ ol {
     & > li {
         margin-bottom: 1lh;
     }
+}
+
+.highlight {
+    display: inline-block;
+    padding: 0 0.3rem;
+    background: #ffff00;
 }
 
 .hlbox {
@@ -659,7 +669,6 @@ figure.endorsement {
         font-size: 1rem;
     }
     i {
-        font-style: normal;
         font-size: 0.8rem;
     }
 }
