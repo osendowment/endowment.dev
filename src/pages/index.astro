@@ -2,20 +2,18 @@
 // © 2025 Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
+import fetch from 'node-fetch';
+import { getRandomPlaceholderImage, humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 
 let API_HOST = 'https://api.endowment.dev';
 if ('ENDOWMENT_API_HOST' in process.env) {
     API_HOST = process.env.ENDOWMENT_API_HOST;
 }
+let STATS_URL = 'https://stats.endowment.dev/';
 
-function getRandomEndorsementImage() {
-    const prefix = "/images/endorsements/placeholder-";
-    const suffix = ".jpg";
-    const mids = ["a", "b", "c", "d", "e"];
-    const randomMid = mids[Math.floor(Math.random() * mids.length)];
-    return prefix + randomMid + suffix;
-}
+const stats_res = await fetch(STATS_URL);
+const stats = await stats_res.json();
 ---
 
 <Layout>
@@ -78,13 +76,13 @@ function getRandomEndorsementImage() {
                 </div>
                 <div class="kpis">
                     <div>
-                        <b>2.8B</b><span>donated</h2>
+                        <b>${humanize(stats.donations.ind_donated_value)}</b><span>donated</h2>
                     </div>
                     <div>
-                        <b>1.3K</b><span>donors</h2>
+                        <b>{humanize(stats.donations.ind_donors_count)}</b><span>donors</h2>
                     </div>
                     <div>
-                        <b>3.5K</b><span>projects supported</h2>
+                        <b>${humanize(stats.investment_account.profit_to_date)}</b><span>profit to date</h2>
                     </div>
                 </div>
             </div>
@@ -456,7 +454,7 @@ function getRandomEndorsementImage() {
                     {Array.from(Array(20).keys()).map(() =>
                         <div class="donor-list__donor donor-mini-profile">
                             <img
-                                src={getRandomEndorsementImage()}
+                                src={getRandomPlaceholderImage()}
                                 alt="A portrait of Alina Adorno"
                                 width="64"
                                 height="64"
