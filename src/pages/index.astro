@@ -733,7 +733,13 @@ function getRandomEndorsementImage() {
                 color: var(--color-secondary);
             }
             & > img {
-                max-width: 26rem;
+                width: 22rem;
+                flex-basis: 22rem;
+                @media (max-width: 1000px) {
+                    width: auto;
+                    flex-basis: auto;
+                    max-width: 100%;
+                }
             }
             h3 {
                 margin: 0;
