@@ -256,23 +256,25 @@ const stats = await stats_res.json();
                     <h3>The modern world runs on open source software that is mostly built and maintained by unpaid volunteers</h3>
                 </div>
                 <div class="sustainability">
-                    <div class="sustainability__part">
+                    <div class="sustainability__part sustainability__part--xkcd">
                         <div class="sustainability__desc">
-                            <h3>
-                                <i>The Problem</i>
-                                Critical but Fragile Infrastructure
-                            </h3>
-                            <p>
-                                Maintainers’ burnout and lack of funding often lead to bugs and serious security incidents,
-                                as seen with
-                                <a href="https://en.wikipedia.org/wiki/Log4Shell" target="_blank">Log4Shell</a>,
-                                the
-                                <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank">XZ Utils backdoor</a>
-                                and
-                                <a href="https://en.wikipedia.org/wiki/Heartbleed" target="_blank">Heartbleed</a>.
-                                The unsustainable state of OSS financing makes critical infrastructure more fragile and
-                                puts our world at ever-growing risk.
-                            </p>
+                            <div>
+                                <h3>
+                                    <i>The Problem</i>
+                                    Critical but Fragile Infrastructure
+                                </h3>
+                                <p>
+                                    Maintainers’ burnout and lack of funding often lead to bugs and serious security incidents,
+                                    as seen with
+                                    <a href="https://en.wikipedia.org/wiki/Log4Shell" target="_blank">Log4Shell</a>,
+                                    the
+                                    <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank">XZ Utils backdoor</a>
+                                    and
+                                    <a href="https://en.wikipedia.org/wiki/Heartbleed" target="_blank">Heartbleed</a>.
+                                    The unsustainable state of OSS financing makes critical infrastructure more fragile and
+                                    puts our world at ever-growing risk.
+                                </p>
+                            </div>
                             <div class="sustainability__stats">
                                 <div>
                                     <i>>95%</i>
@@ -661,10 +663,15 @@ const stats = await stats_res.json();
                 border: 0;
             }
         }
+        .sustainability__part--xkcd .sustainability__desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-self: normal;
+        }
         .sustainability__stats {
             display: flex;
             gap: 6rem;
-            margin-top: 1.5rem;
             & > div {
                 max-width: 14rem;
             }
