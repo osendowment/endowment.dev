@@ -1,0 +1,98 @@
+---
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import Layout from '../layouts/Layout.astro';
+let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
+
+const donors_res = await fetch(DONOR_STATS_URL);
+const donors = await donors_res.json();
+const donorsByClass = donors.reduce((donorsByClass, donor) => {
+    if (!(donor.class in donorsByClass)) {
+        donorsByClass[donor.class] = [];
+    }
+    donorsByClass[donor.class].push(donor);
+    return donorsByClass;
+}, {});
+const nHardcodedDonors = 2;
+const nDonors = donors.length + nHardcodedDonors;
+---
+
+<Layout>
+    <article>
+        <section class="pagesec pagesec--dark">
+            <div class="container">
+                <div class="insec insec--xpad">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="insec__safety">
+                        <h1>Community</h1>
+                        <p>
+                            We welcome everybody to the donor community, and
+                            thank our {nDonors} donors for generous
+                            donations to the Open Source Endowment, increasing
+                            the sustainability of the global software supply
+                            chain.
+                        </p>
+                        <p>
+                            Community is a cornerstone of our endowment, and
+                            all individuals contributing at least $1000/year —
+                            OSE Members — are invited to participate in its
+                            <a href="/endowment#governance">governance</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                {Object.entries(donorsByClass).map(([className, donors]) => (
+                    <h2>{className}</h2>
+                    <div class="donor-list">
+                        {donors.map((donor) => (
+                            <div class="donor-list__donor donor-mini-profile">
+                                <img
+                                    src="/images/icons/silhouette.svg"
+                                    alt={"A portrait of " + donor.name}
+                                    width="64"
+                                    height="64"
+                                >
+                                <div>
+                                    <h3>{donor.name}</h3>
+                                    <i></i>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+                <h2>Institutional donors</h2>
+                <div class="donor-list">
+                    <div class="donor-list__donor donor-mini-profile">
+                        <img
+                            src="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
+                            alt="The G-Research Logo"
+                            width="64"
+                            height="64"
+                        >
+                        <div>
+                            <h3>G-Research</h3>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div class="donor-list__donor donor-mini-profile">
+                        <img
+                            src="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
+                            alt="The Evil Martians Logo"
+                            width="64"
+                            height="64"
+                        >
+                        <div>
+                            <h3>Evil Martians</h3>
+                            <i>Pro bono donor</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <article>
+</Layout>
