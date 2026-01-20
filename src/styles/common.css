@@ -263,13 +263,14 @@ h1, h2, h3, h4, h5, h6, .button, small {
 a {
     padding-left: 0.1rem;
     padding-right: 0.1rem;
-    text-decoration: none;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 2px;
     color: var(--color-primary);
-    background-color: var(--color-primary-fade2);
     font-weight: 500;
     &:hover {
         background-color: var(--color-primary);
         color: var(--color-text-light);
+        text-decoration: none;
     }
 }
 
