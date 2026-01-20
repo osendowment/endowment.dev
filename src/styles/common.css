@@ -742,12 +742,13 @@ nav {
     display: flex;
     gap: 1.5rem;
     a {
+        text-decoration: none;
         &, &:hover {
             color: var(--color-text-dark);
             background: none;
         }
         &:hover {
-            text-decoration: underline;
+            color: var(--color-primary);
         }
     }
 }
