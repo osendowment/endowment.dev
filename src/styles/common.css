@@ -1008,6 +1008,11 @@ section.pagesec {
     .card {
         flex: 1;
     }
+    @media (min-width: 801px) {
+        .card + .card {
+            border-left: 0;
+        }
+    }
 }
 .card {
     display: flex;
