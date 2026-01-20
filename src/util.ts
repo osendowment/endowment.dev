@@ -9,11 +9,3 @@ export function humanize(n) {
     }
     return n.toLocaleString();
 }
-
-export function getRandomPlaceholderImage() {
-    const prefix = "/images/endorsements/placeholder-";
-    const suffix = ".jpg";
-    const mids = ["a", "b", "c", "d", "e"];
-    const randomMid = mids[Math.floor(Math.random() * mids.length)];
-    return prefix + randomMid + suffix;
-}

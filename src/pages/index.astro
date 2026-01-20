@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import fetch from 'node-fetch';
-import { getRandomPlaceholderImage, humanize } from '../util.ts';
+import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 
 let API_HOST = 'https://api.endowment.dev';
@@ -213,7 +213,7 @@ const stats = await stats_res.json();
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <img
-                                src="/images/endorsements/placeholder-d.jpg"
+                                src="/images/icons/silhouette.svg"
                                 alt="A portrait of Daniel Dover"
                                 width="64"
                                 height="64"
@@ -233,7 +233,7 @@ const stats = await stats_res.json();
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <img
-                                src="/images/endorsements/placeholder-e.jpg"
+                                src="/images/icons/silhouette.svg"
                                 alt="A portrait of Erin Enoch"
                                 width="64"
                                 height="64"
@@ -455,7 +455,7 @@ const stats = await stats_res.json();
                     {Array.from(Array(20).keys()).map(() =>
                         <div class="donor-list__donor donor-mini-profile">
                             <img
-                                src={getRandomPlaceholderImage()}
+                                src="/images/icons/silhouette.svg"
                                 alt="A portrait of Alina Adorno"
                                 width="64"
                                 height="64"
