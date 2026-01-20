@@ -235,6 +235,22 @@ h1, h2, h3, h4, h5, h6, p {
     }
 }
 
+h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+time {
+    font-family: var(--font-family-mono);
+    &.timeslug {
+        margin-right: 0.5rem;
+        &:after {
+            content: '—';
+            margin-left: 0.5rem;
+        }
+    }
+}
+
 p {
     width: 100%;
 }
@@ -310,7 +326,17 @@ ol {
 }
 
 article {
-    padding: 2rem 0;
+    padding: 4rem 0;
+    h1, h2 {
+        font-family: var(--font-family-serif);
+        line-height: 1.1;
+    }
+    h1 {
+        font-size: 3.0rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
 }
 
 .highlight {
