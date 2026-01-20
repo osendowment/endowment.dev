@@ -8,8 +8,8 @@
 site:
 	npx astro build
 
-publish-prod: site
-	rsync -Pvrthl --delete --exclude .git --info=progress2 dist/ yavin:/srv/www/dev.endowment
+# publish-prod: site
+# 	rsync -Pvrthl --delete --exclude .git --info=progress2 dist/ yavin:/srv/www/dev.endowment
 
 publish-staging: site
 	rsync -Pvrthl --delete --exclude .git --info=progress2 dist/ yavin:/srv/www/dev.endowment.staging
