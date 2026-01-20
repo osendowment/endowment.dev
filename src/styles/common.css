@@ -306,6 +306,10 @@ ol {
     }
 }
 
+article {
+    padding: 2rem 0;
+}
+
 .highlight {
     display: inline-block;
     padding: 0 0.3rem;

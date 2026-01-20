@@ -4,11 +4,11 @@
 
 import Layout from '../layouts/Layout.astro';
 
-import * as post from '../../assets/membership-policy.md';
+import * as post from '../assets/foundation/docs/policies/membership-policy.md';
 ---
 
 <Layout>
-    <section class="pagesec">
+    <section>
         <div class="container">
             <article>
                 <Fragment set:html={post.compiledContent()}/>
