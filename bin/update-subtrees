@@ -1,6 +1,0 @@
-#!/bin/sh -eu
-
-# Must be run in the repository root
-
-git fetch foundation main
-git subtree pull --prefix src/assets/foundation foundation main --squash
