@@ -6,55 +6,67 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout nodonate={true}>
-    <div class="intro container" slot="hero">
-        <div class="intro-text flex-center">
-            <h1>Thank you for donating to the Open Source Endowment!</h1>
-            <hr>
-            <small>
-                Your contribution will be used to provide the open source ecosystem with sustainable funding — for as
-                long as our world continues to rely on open source.
-            </small>
-        </div>
-    </div>
-    <section class="pagesec">
-        <div class="container">
-            <div class="cardset">
-                <div class="card">
-                    <img src="/images/icons/squiggle.svg">
-                    <h2>How to maximize your impact</h2>
-                    <ul>
-                        <li>
-                            Tell others about the OSE and your donation privately or via social media.
-                        </li>
-                        <li>
-                            Share any feedback with us — let's build the best endowment for OSS together.
-                        </li>
-                        <li>
-                            If you donated $1,000+, share your GitHub login with us to be included in the private
-                            Members' Club repo.
-                        </li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <img src="/images/icons/avatar.svg">
-                    <h2>What to expect from the OSE</h2>
-                    <ul>
-                        <li>
-                            We will keep you posted about major OSE developments, including a heads-up before its
-                            public launch.
-                        </li>
-                        <li>
-                            Your name might be included in the public honorary list of co-founding donors.
-                        </li>
-                    </ul>
+    <article>
+        <section class="pagesec pagesec--dark">
+            <div class="container">
+                <div class="insec insec--xpad">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="insec__safety">
+                        <div class="intro container">
+                            <div class="intro-text flex-center">
+                                <h1>Thank you for donating to the Open Source Endowment!</h1>
+                                <hr>
+                                <p class="large-text">
+                                    Your contribution will be used to provide the open source ecosystem with sustainable funding — for as
+                                    long as our world continues to rely on open source.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mini-note">
-            <p>
-                Questions, ideas, or want to get more deeply involved? We'd love to chat.
-                <a href="mailto:donors@endowment.dev" target="_blank">Contact us!</a>
-            </p>
-        </div>
-    </section>
+        </section>
+        <section>
+            <div class="container">
+                <div class="cardset">
+                    <div class="card">
+                        <img src="/images/icons/squiggle.svg">
+                        <h2>How to maximize your impact</h2>
+                        <ul>
+                            <li>
+                                Tell others about the OSE and your donation privately or via social media.
+                            </li>
+                            <li>
+                                Share any feedback with us — let's build the best endowment for OSS together.
+                            </li>
+                            <li>
+                                If you donated $1,000+, share your GitHub login with us to be included in the private
+                                Members' Club repo.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <img src="/images/icons/avatar.svg">
+                        <h2>What to expect from the OSE</h2>
+                        <ul>
+                            <li>
+                                We will keep you posted about major OSE developments, including a heads-up before its
+                                public launch.
+                            </li>
+                            <li>
+                                Your name might be included in the public honorary list of co-founding donors.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mini-note">
+                <p>
+                    Questions, ideas, or want to get more deeply involved? We'd love to chat.
+                    <a href="mailto:donors@endowment.dev" target="_blank">Contact us!</a>
+                </p>
+            </div>
+        </section>
+    </article>
 </layout>
