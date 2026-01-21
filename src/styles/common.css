@@ -240,6 +240,10 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
+.large-text {
+    font-size: 1.3rem;
+}
+
 time {
     font-family: var(--font-family-mono);
     &.timeslug {
@@ -327,7 +331,7 @@ ol {
 }
 
 article {
-    padding: 4rem 0;
+    padding-bottom: 4rem;
     h1, h2 {
         font-family: var(--font-family-serif);
         line-height: 1.1;
@@ -1080,6 +1084,20 @@ a.card {
     }
 }
 
+.mini-kpis {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    gap: 2rem;
+    margin: 2rem 0;
+    .mini-kpi {
+        font-size: 1.1rem;
+        i {
+            display: block;
+            font-size: 2rem;
+        }
+    }
+}
+
 .detailed-form {
     display: flex;
     width: 50rem;
@@ -1314,6 +1332,7 @@ a.card {
                     color: var(--color-text-dark);
                     background-color: transparent;
                     font-weight: 600;
+                    text-decoration: none;
                     &:hover {
                         background-color: var(--color-primary);
                         color: var(--color-text-light);
@@ -1367,7 +1386,7 @@ a.card {
     }
 }
 .mini-note {
-    padding-top: 1.5rem;
+    padding-top: 3rem;
     text-align: center;
 }
 
