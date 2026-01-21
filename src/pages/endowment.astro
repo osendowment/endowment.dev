@@ -2,7 +2,13 @@
 // © Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
+import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
+
+let STATS_URL = 'https://stats.endowment.dev/';
+
+const stats_res = await fetch(STATS_URL);
+const stats = await stats_res.json();
 ---
 
 <Layout>
@@ -42,49 +48,69 @@ import Layout from '../layouts/Layout.astro';
                         universities and startup approach to build a scalable tool allowing the tech
                         industry members to support the public good they care about.
                     </p>
-                    <h2>Governance</h2>
-                    <p>
-                        The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt charity. It has a bottom-up
-                        inclusive governance inspired by the best universities and business practices, that is based on
-                        passionate individuals with “skin in the game”, not corporations. We strive to meet the
-                        best-in-class standards in terms of neutrality, transparency, and efficiency.
-                    </p>
-                    <div class="mini-kpis">
-                        <div class="mini-kpi">
-                            <i>50</i>Donors
-                        </div>
-                        <div class="flex-center">
-                            <div>
+                </div>
+            </div>
+        </section>
+        <section class="pagesec pagesec--dark">
+            <div class="container">
+                <div class="insec insec--xpad">
+                    <div class="squares squares--corner-dark-sw-inner"></div>
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="sechead sechead--left">
+                        <h2>Governance</h2>
+                        <p>
+                            The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt charity. It has a bottom-up
+                            inclusive governance inspired by the best universities and business practices, that is based on
+                            passionate individuals with “skin in the game”, not corporations. We strive to meet the
+                            best-in-class standards in terms of neutrality, transparency, and efficiency.
+                        </p>
+                    </div>
+                    <div class="features">
+                        <div class="feature">
+                            <h3><i>50</i>Donors</h3>
+                            <p>
                                 OSE welcomes all individual and institutional donors, who would like to leave a lasting
-                                impact on the open source ecosystem and improve its sustainability. The
+                                impact on the open source ecosystem and improve its sustainability.
+                            </p>
+                            <p>
+                                The
                                 <a href="/community">donor list</a>
                                 is fully open and regularly updated.
-                            </div>
+                            </p>
                         </div>
-                        <div class="mini-kpi">
-                            <i>20</i>Members
-                        </div>
-                        <div class="flex-center">
-                            <div>
-                                Donors personally contributing at least $1000/year qualify as the OSE Members. They are
-                                invited to advise the board on key matters like the grant model, participate in closed
-                                events and appoint several board directors in the future. Such rights are legally
-                                defined in the
+                        <div class="feature">
+                            <h3><i>20</i>Members</h3>
+                            <p>
+                                Donors contributing at least $1k/year qualify as Members, invited to advise the board on
+                                key matters like the grant model, participate in closed events and appoint board
+                                directors.
+                            </p>
+                            <p>
+                                Such rights are legally defined in the
                                 <a href="/docs/membership-policy">membership policy</a>.
-                            </div>
+                            </p>
                         </div>
-                        <div class="mini-kpi">
-                            <i>3</i>Board Directors
-                        </div>
-                        <div class="flex-center">
-                            <div>
-                                The Board of Directors is the main governing body at OSE, that appoints the Executive
-                                Director for operational management and Advisors. By design, all Directors must also be
-                                Members. More details on the board election and other mechanics can be found in the
+                        <div class="feature">
+                            <h3><i>3</i>Board Directors</h3>
+                            <p>
+                                The Board of Directors is our main governing body, and appoints the Executive
+                                Director for operational management and Advisors.
+                            </p>
+                            <p>
+                                By design, all Directors must also be Members. More details on the board election
+                                can be found in the
                                 <a href="/docs/bylaws">bylaws</a>.
-                            </div>
+                            </p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="insec insec--xpad">
                     <h2>Current team</h2>
                     <div class="team-member-list">
                         <div class="team-member card">
@@ -225,31 +251,43 @@ import Layout from '../layouts/Layout.astro';
                             <a href="mailto:donors@endowment.dev" target="_blank">contact us</a>.
                         </p>
                     </div>
-                    <h2>Investing strategy</h2>
-                    <p>
-                        OSE invests received donations in low-risk assets, and provides grants only from investment
-                        income. It enables long term planning and sustainable support for OSS.
-                    </p>
-                    <p>
-                        Before obtaining a 501(c)(3) status, OSE has been investing in US Treasury bonds, whose yield
-                        matches our target spend rate of 5% per year.
-                    </p>
-                    <p>
-                        Later, these T-bonds will be complemented by slightly more risky assets selected by the
-                        outsourced CIO, which should increase the expected portfolio returns to 7-8%
-                    </p>
-                    <div class="kpis">
+                </div>
+            </div>
+        </section>
+        <section class="pagesec">
+            <div class="container container--mobile-unpadded">
+                <div class="insec insec--xpad insec--noborder-right insec--side-squares">
+                    <div class="side-kpi-section">
                         <div>
-                            <b>123</b><span>Net cash transferred from OSE to its broker account</h2>
+                            <h2>Investing strategy</h2>
+                            <p>
+                                OSE invests received donations in low-risk assets, and provides grants only from
+                                investment income. It enables long term planning and sustainable support for OSS.
+                            </p>
+                            <p>
+                                Before obtaining a 501(c)(3) status, OSE has been investing in US Treasury bonds, whose
+                                yield matches our target spend rate of 5% per year.
+                            </p>
+                            <p>
+                                Later, these T-bonds will be complemented by slightly more risky assets selected by the
+                                outsourced CIO, which should increase the expected portfolio returns to 7-8%
+                            </p>
+                            <small>
+                                Last updated on
+                                <a href="https://stats.endowment.dev/">Nov 11, 2025</a>
+                            </small>
                         </div>
-                        <div>
-                            <b>2342</b><span>OSE investment portfolio value</h2>
+                        <div class="side-kpis">
+                            <div>
+                                <i>${humanize(stats.investment_account.total_cash_in)}</i>
+                                <span>Net cash transferred from OSE to its broker account</h2>
+                            </div>
+                            <div>
+                                <i>${humanize(stats.investment_account.total_current_value)}</i>
+                                <span>OSE investment portfolio value</h2>
+                            </div>
                         </div>
                     </div>
-                    <small>
-                        Last updated on
-                        <a href="https://stats.endowment.dev/">Nov 11, 2025</a>
-                    </small>
                 </div>
             </div>
         </section>

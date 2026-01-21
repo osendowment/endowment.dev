@@ -260,7 +260,7 @@ const stats = await stats_res.json();
                         <div class="sustainability__desc">
                             <div>
                                 <h3>
-                                    <i>The Problem</i>
+                                    The Problem:<br>
                                     Critical but Fragile Infrastructure
                                 </h3>
                                 <p>
@@ -299,7 +299,7 @@ const stats = await stats_res.json();
                     <div class="sustainability__part sustainability__part--reverse">
                         <div class="sustainability__desc">
                             <h3>
-                                <i>The Solution</i>
+                                The Solution:<br>
                                 OSS Community Endowment
                             </h3>
                             <p>
@@ -741,22 +741,6 @@ const stats = await stats_res.json();
             }
             &:last-child:after {
                 display: none;
-            }
-        }
-    }
-    .features {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-        .feature {
-            background: var(--color-bg-ash);
-            box-shadow: 0 0 20px 10px var(--color-bg-ash);
-            h3 {
-                margin: 0.5rem 0;
-                font-weight: bold;
-            }
-            p {
-                color: var(--color-text-light-faded);
             }
         }
     }

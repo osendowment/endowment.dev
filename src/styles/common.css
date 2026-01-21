@@ -233,6 +233,10 @@ h1, h2, h3, h4, h5, h6, p {
     &:last-child {
         margin-bottom: 0;
     }
+    i {
+        display: block;
+        font-size: 2rem;
+    }
 }
 
 h2 {
@@ -768,18 +772,22 @@ section.pagesec {
         margin-right: auto;
         margin-bottom: 0;
         padding-bottom: 4rem;
-        font-size: 3.0rem;
         text-align: center;
-        @media (max-width: 800px) {
-            font-size: 2rem;
-        }
         &:is(h2), h2 {
             font-family: var(--font-family-serif);
             line-height: 1;
             font-size: 3.0rem;
         }
+        h2, &:is(h2) {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 3.0rem;
+            @media (max-width: 800px) {
+                font-size: 2rem;
+            }
+        }
         h2 {
-            margin: 0;
+            margin-bottom: 2rem;
         }
         h3 {
             margin: 0;
@@ -831,6 +839,10 @@ section.pagesec {
             padding-bottom: 10rem; /* 6rem outer + 4rem inner */
             border-color: var(--color-section-border-dark);
         }
+        .features .feature {
+            background: var(--color-bg-ash);
+            box-shadow: 0 0 20px 10px var(--color-bg-ash);
+        }
     }
     & + section.pagesec {
         border-top: 0;
@@ -865,6 +877,12 @@ section.pagesec {
     * {
         position: relative;
         z-index: 5;
+    }
+    :first-child {
+        margin-top: 0;
+    }
+    :last-child {
+        margin-bottom: 0;
     }
     &.insec--xpad {
         @media (min-width: 801px) {
@@ -1081,6 +1099,27 @@ a.card {
     text-decoration: none;
     &:hover {
         background: var(--color-button-hover);
+    }
+}
+
+.side-kpi-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    @media (max-width: 800px) {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+    .side-kpis {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        i {
+            display: block;
+            font-size: 3rem;
+        }
     }
 }
 
@@ -1307,6 +1346,21 @@ a.card {
                 animation-timing-function: ease-in-out;
                 animation-iteration-count: infinite;
             }
+        }
+    }
+}
+
+.features {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    .feature {
+        h3 {
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+        p {
+            color: var(--color-text-light-faded);
         }
     }
 }
