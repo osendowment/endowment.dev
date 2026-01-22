@@ -826,7 +826,7 @@ section.pagesec {
     /* For when this contains a .insec.insec--squares */
     overflow-x: hidden;
     .sechead {
-        max-width: 48rem;
+        max-width: 45rem;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0;
@@ -853,6 +853,7 @@ section.pagesec {
             margin: 0;
             margin-top: 1rem;
             font-size: 1.3rem;
+            color: var(--color-text-dark-secondary);
         }
     }
     .sechead.sechead--left {

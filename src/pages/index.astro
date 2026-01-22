@@ -265,57 +265,55 @@ const donors = await donors_res.json();
         </div>
     </section>
     <section class="pagesec">
-        <div class="insec">
-            <div class="container">
+        <div class="container">
+            <div class="insec insec--xpad">
                 <div class="sechead">
                     <h2>Solving Open&nbsp;Source Sustainability Together</h2>
-                    <h3>The modern world runs on open source software that is mostly built and maintained by unpaid volunteers</h3>
+                    <h3>The modern world runs on open source software that is mostly built and maintained by unpaid volunteers. A lack of sustainable funding might lead to serious issues for all of us.</h3>
                 </div>
                 <div class="sustainability">
-                    <div class="sustainability__part sustainability__part--xkcd">
-                        <div class="sustainability__desc">
+                    <div class="sustainability-outline">
+                        <figure>
+                            <a href="https://xkcd.com/2347/" target="_blank">
+                                <img
+                                    src="/images/xkcd-2347.png"
+                                    alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating “all modern digital infrastructure”. The structure precariously rests on a small load-bearing block, titled “a project some random person in Nebraska has been thanklessly maintaining since 2003”."
+                                    width="300">
+                            </a>
+                        </figure>
+                        <div class="sustainability-stats">
                             <div>
-                                <h3>
-                                    The Problem:<br>
-                                    Critical but Fragile Infrastructure
-                                </h3>
-                                <p>
-                                    Maintainers’ burnout and lack of funding often lead to bugs and serious security incidents,
-                                    as seen with
-                                    <a href="https://en.wikipedia.org/wiki/Log4Shell" target="_blank">Log4Shell</a>,
-                                    the
-                                    <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank">XZ Utils backdoor</a>
-                                    and
-                                    <a href="https://en.wikipedia.org/wiki/Heartbleed" target="_blank">Heartbleed</a>.
-                                    The unsustainable state of OSS financing makes critical infrastructure more fragile and
-                                    puts our world at ever-growing risk.
-                                </p>
+                                <i>>95%</i>
+                                <p>software depends on open source packages</p>
                             </div>
-                            <div class="sustainability__stats">
-                                <div>
-                                    <i>>95%</i>
-                                    <p>software depends on open source packages</p>
-                                </div>
-                                <div>
-                                    <i>500+</i>
-                                    <p>open source dependencies in the average app</p>
-                                </div>
+                            <div>
+                                <i>500+</i>
+                                <p>open source dependencies in the average app</p>
                             </div>
                         </div>
-                        <figure>
-                            <img
-                                src="/images/xkcd-2347.png"
-                                alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating “all modern digital infrastructure”. The structure precariously rests on a small load-bearing block, titled “a project some random person in Nebraska has been thanklessly maintaining since 2003”."
-                                width="300">
-                            <figcaption>
-                                <a href="https://xkcd.com/2347/" target="_blank">xkcd “Dependency”</a>
-                            </figcaption>
-                        </figure>
                     </div>
-                    <div class="sustainability__part sustainability__part--reverse">
-                        <div class="sustainability__desc">
+                    <div class="sustainability-boxgroup">
+                        <div class="sustainability-box">
                             <h3>
-                                The Solution:<br>
+                                <i>Problem</i>
+                                Critical but Fragile Infrastructure
+                            </h3>
+                            <p>
+                                Maintainers’ burnout and lack of funding often lead to bugs and serious security incidents,
+                                as seen with
+                                <a href="https://en.wikipedia.org/wiki/Log4Shell" target="_blank">Log4Shell</a>,
+                                the
+                                <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank">XZ Utils backdoor</a>
+                                and
+                                <a href="https://en.wikipedia.org/wiki/Heartbleed" target="_blank">Heartbleed</a>.
+                                The unsustainable state of OSS financing makes critical infrastructure more fragile and
+                                puts our world at ever-growing risk.
+                            </p>
+                        </div>
+                        <div class="sustainability-arrow">↓</div>
+                        <div class="sustainability-box">
+                            <h3>
+                                <i>Solution</i>
                                 OSS Community Endowment
                             </h3>
                             <p>
@@ -325,7 +323,7 @@ const donors = await donors_res.json();
                                 donations to advance their causes, weathering economic and political volatility.
                             </p>
                             <p>
-                                We are building a community-led endowment fund that leverages “open source alumni” to
+                                We are building a community-led endowment fund that leverages "open source alumni" to
                                 sustainably fund the most critical OSS projects. It is an open nonprofit, and everybody is
                                 welcome to join — every contribution matters.
                             </p>
@@ -631,85 +629,81 @@ const donors = await donors_res.json();
 
 <style>
     .sustainability {
-        padding: 2rem 0;
-        border: 1px solid var(--color-section-border);
+        display: flex;
+        gap: 4rem;
         @media (max-width: 800px) {
-            padding: 0;
-            border: 0;
-        }
-        h3 {
-            font-weight: bold;
-            i {
-                display: block;
-                font-weight: normal;
-            }
-        }
-        .sustainability__part {
-            display: flex;
-            flex-direction: row;
-            &.sustainability__part--reverse {
-                flex-direction: row-reverse;
-            }
-            align-items: center;
+            flex-direction: column;
             gap: 4rem;
-            padding: 2rem;
-            &:first-child {
-                padding-top: 0;
-            }
-            &:last-child {
-                padding-bottom: 0;
-            }
-            @media (max-width: 800px) {
-                flex-direction: column;
-                padding: 0;
-                &.sustainability__part--reverse {
-                    flex-direction: column;
-                }
-                figure {
-                    flex-basis: auto;
-                }
-            }
         }
-        .sustainability__part + .sustainability__part {
-            border-top: 1px solid var(--color-section-border);
-            @media (max-width: 800px) {
-                padding-top: 4rem;
-                border: 0;
-            }
-        }
-        .sustainability__part--xkcd .sustainability__desc {
+        .sustainability-outline {
+            flex: 1;
             display: flex;
+            flex-direction: column;
+            gap: 1.0rem;
+            figure {
+                margin: 0;
+                a {
+                    display: block;
+                    width: 100%;
+                    &:hover {
+                        background: none;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .sustainability-stats {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                padding: 0 2rem;
+                text-align: center;
+                i {
+                    font-size: 2.0rem;
+                }
+                p {
+                    font-size: 0.9rem;
+                    color: var(--color-text-dark-secondary);
+                }
+            }
+        }
+        .sustainability-arrow {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+        .sustainability-boxgroup {
+            flex: 3;
+            display: flex;
+            gap: 2rem;
             flex-direction: column;
             justify-content: space-between;
-            align-self: normal;
-        }
-        .sustainability__stats {
-            display: flex;
-            gap: 6rem;
-            & > div {
-                max-width: 14rem;
+            .sustainability-box {
+                padding: 1.5rem;
+                border: 1px solid var(--color-section-border);
+                h3 {
+                    margin-bottom: 0.7rem;
+                    font-size: 1.3rem;
+                    font-weight: 500;
+                    i {
+                        margin-bottom: 0.1rem;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        font-variant-caps: small-caps;
+                        font-feature-settings: "smcp";
+                        text-transform: lowercase;
+                        font-family: var(--font-family-mono);
+                    }
+                }
+                p {
+                    color: var(--color-text-dark-secondary);
+                    font-size: 0.9rem;
+                }
             }
-            i {
-                font-size: 2rem;
-                font-weight: normal;
-            }
-        }
-        .sustainability__desc {
-            flex: 1;
-        }
-        figure {
-            flex-basis: 13rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            figcaption {
-                font-size: 0.8rem;
-            }
-        }
-        & + .cardset {
-            margin-top: 2rem;
         }
     }
     .roadmap {
