@@ -126,20 +126,34 @@ import { OpenPanelComponent } from '@openpanel/astro';
                             src="/images/logo/Logomark Colored.svg"
                             alt="The Open Source Endowment logo">
                     </a>
-                    <nav class="desktop-only">
-                        <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
-                        <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
-                        <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
-                    </nav>
-                    <div>
-                        <a
-                            href="#donate"
-                            class="button button--colored"
-                            data-track="header-donate"
-                        >Donate</a>
+                    <div class="desktop-only">
+                        <nav class="desktop-nav">
+                            <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
+                            <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
+                            <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
+                        </nav>
+                    </div>
+                    <div class="mobile-only">
+                        <div class="header-buttons">
+                            <!-- <a -->
+                            <!--     href="#donate" -->
+                            <!--     class="button button--colored" -->
+                            <!--     data-track="header-donate" -->
+                            <!-- >Donate</a> -->
+                            <button class="button button--icon-only nav-trigger">
+                                <img src="/images/icons/em-hamburger.svg">
+                            </button>
+                        </div>
                     </div>
                 </div>
             </header>
+            <div class="container">
+                <nav class="mobile-only mobile-nav" hidden>
+                    <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
+                    <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
+                    <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
+                </nav>
+            </div>
             <slot name="hero" />
         </div>
         <slot />
@@ -219,6 +233,10 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 }
             }
         }
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+        }
     }
     footer {
         padding: 2rem 1rem;
@@ -282,3 +300,32 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }
     }
 </style>
+
+<script>
+    function debounce_leading(func, timeout = 300){
+        let timer;
+        return (...args) => {
+            if (!timer) {
+                func.apply(this, args);
+            }
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                timer = undefined;
+            }, timeout);
+        };
+    }
+    const $navTriggers = document.querySelectorAll('.nav-trigger');
+    const $mobileNavs = document.querySelectorAll('.mobile-nav');
+    $navTriggers.forEach(($navTrigger) => {
+        $navTrigger.addEventListener('click', debounce_leading(() => {
+            $mobileNavs.forEach(($mobileNav) => {
+                $mobileNav.hidden = !$mobileNav.hidden;
+                if ($navTrigger.dataset.active) {
+                    delete $navTrigger.dataset.active;
+                } else {
+                    $navTrigger.dataset.active = 'true';
+                }
+            });
+        }));
+    });
+</script>

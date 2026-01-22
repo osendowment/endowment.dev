@@ -193,7 +193,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-no: #aa1111;
     --color-error: #551020;
     --color-error-fade: rgba(100, 10, 30, 0.3);
-    --color-text-dark: #1a1e23;
+    --color-text-dark: #3A3E43;
     --color-text-light: white;
     --color-text-dark-faded: #3a3e43;
     --color-text-light-faded: #c9cbcd;
@@ -214,7 +214,7 @@ SPDX-License-Identifier: Apache-2.0
 :root, input, button, textarea {
     font-size: 16px;
     font-family: var(--font-family-sans);
-    line-height: 1.35;
+    line-height: 1.4;
 }
 
 html, body {
@@ -422,6 +422,13 @@ article {
         display: block;
         width: 100%;
         text-align: center;
+    }
+    &.button--icon-only {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem;
+        min-width: auto;
     }
     .after {
         padding-left: 0.5rem;
@@ -746,9 +753,8 @@ blockquote {
     }
 }
 
-nav {
+nav.desktop-nav, nav.mobile-nav {
     display: flex;
-    gap: 1.5rem;
     a {
         text-decoration: none;
         &, &:hover {
@@ -759,6 +765,15 @@ nav {
             color: var(--color-primary);
         }
     }
+}
+nav.desktop-nav {
+    flex-direction: row;
+    gap: 1.5rem;
+}
+nav.mobile-nav {
+    flex-direction: column;
+    gap: 1.0rem;
+    padding-bottom: 1.0rem;
 }
 
 section.pagesec {
@@ -1053,6 +1068,7 @@ section.pagesec {
     h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+        font-weight: 600;
     }
     img, svg {
         width: 1.5rem;
@@ -1260,7 +1276,7 @@ a.card {
         }
         small {
             display: block;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
         h1 {
@@ -1270,7 +1286,7 @@ a.card {
             font-family: var(--font-family-serif);
             font-weight: normal;
             @media (max-width: 800px) {
-                font-size: 2.5rem;
+                font-size: 3.4rem;
             }
         }
     }
