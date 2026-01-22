@@ -888,10 +888,6 @@ section.pagesec {
         border-left: none;
         border-right: none;
     }
-    * {
-        position: relative;
-        z-index: 5;
-    }
     :first-child {
         margin-top: 0;
     }
