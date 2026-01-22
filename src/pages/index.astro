@@ -5,12 +5,14 @@
 import NodeFetchCache from 'node-fetch-cache';
 import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
+import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
 let API_HOST = 'https://api.endowment.dev';
 if ('ENDOWMENT_API_HOST' in process.env) {
     API_HOST = process.env.ENDOWMENT_API_HOST;
 }
 let STATS_URL = 'https://stats.endowment.dev/';
+let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
 
 const stats_res = await NodeFetchCache(STATS_URL);
 const stats = await stats_res.json();
@@ -456,20 +458,17 @@ const donors = await donors_res.json();
                     <h3>Here are some of the generous donors helping make Open Source sustainable</h3>
                 </div>
                 <div class="donor-list">
-                    {Array.from(Array(20).keys()).map(() =>
-                        <div class="donor-list__donor donor-mini-profile">
-                            <img
-                                src="/images/icons/silhouette.svg"
-                                alt="A portrait of Alina Adorno"
-                                width="64"
-                                height="64"
-                            >
-                            <div>
-                                <h3>Alina Adorno</h3>
-                                <i>Co-Founder, Enorma</i>
-                            </div>
-                        </div>
-                    )}
+                    {donors.slice(0, 12).map((donor) => (
+                        <DonorMiniProfile
+                            name={donor.name}
+                        ></DonorMiniProfile>
+                    ))}
+                </div>
+                <div class="buttonset buttonset--center">
+                    <a
+                        href="/community"
+                        class="button"
+                    >See all donors →</a>
                 </div>
             </div>
         </div>

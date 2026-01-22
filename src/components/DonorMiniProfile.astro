@@ -1,0 +1,28 @@
+---
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import { minidenticon } from 'minidenticons';
+
+interface Props {
+  name: string;
+  description?: string;
+  avatarUrl?: string;
+}
+
+let { name, description, avatarUrl } = Astro.props;
+
+if (!avatarUrl) {
+    avatarUrl = '/images/icons/silhouette.svg';
+}
+---
+
+<div class="donor-list__donor donor-mini-profile">
+    <div class="donor-avatar">
+        <Fragment set:html={minidenticon(name)} />
+    </div>
+    <div>
+        <h3>{name}</h3>
+        <i>{description}</i>
+    </div>
+</div>

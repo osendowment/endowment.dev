@@ -4,6 +4,8 @@
 
 import NodeFetchCache from 'node-fetch-cache';
 import Layout from '../layouts/Layout.astro';
+import DonorMiniProfile from "../components/DonorMiniProfile.astro";
+
 let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
 
 const donors_res = await NodeFetchCache(DONOR_STATS_URL);
@@ -51,18 +53,9 @@ const nDonors = donors.length + nHardcodedDonors;
                     <h2>{className}</h2>
                     <div class="donor-list">
                         {donors.map((donor) => (
-                            <div class="donor-list__donor donor-mini-profile">
-                                <img
-                                    src="/images/icons/silhouette.svg"
-                                    alt={"A portrait of " + donor.name}
-                                    width="64"
-                                    height="64"
-                                >
-                                <div>
-                                    <h3>{donor.name}</h3>
-                                    <i></i>
-                                </div>
-                            </div>
+                            <DonorMiniProfile
+                                name={donor.name}
+                            ></DonorMiniProfile>
                         ))}
                     </div>
                 ))}
@@ -70,7 +63,7 @@ const nDonors = donors.length + nHardcodedDonors;
                 <div class="donor-list">
                     <div class="donor-list__donor donor-mini-profile">
                         <img
-                            src="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
+                            src="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
                             alt="The G-Research Logo"
                             width="64"
                             height="64"
@@ -82,7 +75,7 @@ const nDonors = donors.length + nHardcodedDonors;
                     </div>
                     <div class="donor-list__donor donor-mini-profile">
                         <img
-                            src="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
+                            src="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
                             alt="The Evil Martians Logo"
                             width="64"
                             height="64"
