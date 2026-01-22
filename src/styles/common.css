@@ -198,7 +198,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-text-dark-secondary: #6b7280;
     --color-text-light: white;
     --color-text-dark-faded: #3a3e43;
-    --color-text-light-faded: #c9cbcd;
+    --color-text-light-faded: #bcbec1;
     --color-button-hover: #f0f0f0;
     --border-radius: 6px;
     --border-radius-big: 50px;
@@ -1457,7 +1457,7 @@ a.card {
     .feature {
         h3 {
             margin: 0.5rem 0;
-            font-weight: bold;
+            font-weight: 500;
         }
         p {
             color: var(--color-text-light-faded);

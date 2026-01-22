@@ -762,9 +762,12 @@ const donors = await donors_res.json();
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        max-width: 52rem;
+        margin-left: auto;
+        margin-right: auto;
         .how-it-works__step {
             display: flex;
-            gap: 2rem;
+            gap: 4rem;
             align-items: center;
             @media (max-width: 1000px) {
                 flex-direction: column;
@@ -777,9 +780,10 @@ const donors = await donors_res.json();
                 color: var(--color-secondary);
             }
             & > img {
-                width: 22rem;
-                flex-basis: 22rem;
+                width: 18rem;
+                flex-basis: 18rem;
                 @media (max-width: 1000px) {
+                    margin-top: 1.5rem;
                     width: auto;
                     flex-basis: auto;
                     max-width: 100%;
@@ -787,8 +791,14 @@ const donors = await donors_res.json();
             }
             h3 {
                 margin: 0;
-                margin-bottom: 1rem;
-                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            p {
+                color: var(--color-text-dark-secondary);
+                font-size: 0.9rem;
+                line-height: 1.6;
             }
         }
     }
