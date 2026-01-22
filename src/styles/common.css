@@ -710,12 +710,25 @@ figure.endorsement {
     }
 }
 .donor-list {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     gap: 1.0rem;
     .donor-list__donor {
         border: 1px solid var(--color-section-border);
-        padding: 0.5rem;
+        padding: 0.8rem;
+    }
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
+        background-image: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.9));
+        pointer-events: none;
     }
 }
 .donor-mini-profile {
@@ -915,6 +928,8 @@ section.pagesec {
     padding-right: 1rem;
     position: relative;
     @media (max-width: 800px) {
+        padding-left: 0;
+        padding-right: 0;
         border-left: none;
         border-right: none;
     }
@@ -989,6 +1004,9 @@ section.pagesec {
             background-image: url(/images/decorations/squares-corner-dark-sw-inner.svg);
             background-repeat: no-repeat;
             background-position: bottom left;
+            @media (max-width: 800px) {
+                background-image: url(/images/decorations/squares-corner-dark-ne-outer.svg);
+            }
         }
         &.squares--corner-dark-sw-outer {
             content: '';
@@ -1001,6 +1019,9 @@ section.pagesec {
             background-image: url(/images/decorations/squares-corner-dark-sw-outer.svg);
             background-repeat: no-repeat;
             background-position: top right;
+            @media (max-width: 800px) {
+                display: none;
+            }
         }
         &.squares--corner-dark-ne-inner {
             content: '';
@@ -1013,6 +1034,9 @@ section.pagesec {
             background-image: url(/images/decorations/squares-corner-dark-ne-inner.svg);
             background-repeat: no-repeat;
             background-position: top right;
+            @media (max-width: 800px) {
+                background-image: url(/images/decorations/squares-corner-dark-sw-outer.svg);
+            }
         }
         &.squares--corner-dark-ne-outer {
             content: '';
@@ -1025,6 +1049,9 @@ section.pagesec {
             background-image: url(/images/decorations/squares-corner-dark-ne-outer.svg);
             background-repeat: no-repeat;
             background-position: bottom left;
+            @media (max-width: 800px) {
+                display: none;
+            }
         }
     }
 }
