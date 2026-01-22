@@ -2,7 +2,7 @@
 // © Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
-import fetch from 'node-fetch';
+import NodeFetchCache from 'node-fetch-cache';
 import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 
@@ -12,8 +12,11 @@ if ('ENDOWMENT_API_HOST' in process.env) {
 }
 let STATS_URL = 'https://stats.endowment.dev/';
 
-const stats_res = await fetch(STATS_URL);
+const stats_res = await NodeFetchCache(STATS_URL);
 const stats = await stats_res.json();
+
+const donors_res = await NodeFetchCache(DONOR_STATS_URL);
+const donors = await donors_res.json();
 ---
 
 <Layout>
