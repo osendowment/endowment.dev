@@ -194,7 +194,8 @@ SPDX-License-Identifier: Apache-2.0
     --color-no: #aa1111;
     --color-error: #551020;
     --color-error-fade: rgba(100, 10, 30, 0.3);
-    --color-text-dark: #3A3E43;
+    --color-text-dark: #3a3e43;
+    --color-text-dark-secondary: #808387;
     --color-text-light: white;
     --color-text-dark-faded: #3a3e43;
     --color-text-light-faded: #c9cbcd;
@@ -710,7 +711,7 @@ figure.endorsement {
 }
 .donor-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     gap: 1.0rem;
     .donor-list__donor {
         border: 1px solid var(--color-section-border);
@@ -732,16 +733,30 @@ figure.endorsement {
         border: 1px solid var(--color-section-border);
         border-radius: var(--border-radius);
         background: var(--color-primary-lightbg);
-        svg, img {
+        overflow: hidden;
+        svg {
             width: 3rem;
+        }
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
         }
     }
     h3 {
         margin: 0;
-        font-size: 1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
     }
     i {
         font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--color-text-dark-secondary);
+    }
+    b {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--color-text-dark-secondary);
     }
 }
 

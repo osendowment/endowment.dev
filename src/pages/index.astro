@@ -152,15 +152,17 @@ const donors = await donors_res.json();
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
-                            <img
-                                src="/images/endorsements/konstantin.webp"
-                                alt="A portrait of Konstantin Vinogradov"
-                                width="64"
-                                height="64"
-                            >
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/konstantin.webp"
+                                    alt="A portrait of Konstantin Vinogradov"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
                             <div>
                                 <h3>Konstantin Vinogradov</h3>
-                                <i>ex General Partner at Runa Capital</i>
+                                <b>ex General Partner at Runa Capital</b>
                             </div>
                         </figcaption>
                     </figure>
@@ -176,15 +178,17 @@ const donors = await donors_res.json();
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
-                            <img
-                                src="/images/endorsements/chad.webp"
-                                alt="A portrait of Chad Whitacre"
-                                width="64"
-                                height="64"
-                            >
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/chad.webp"
+                                    alt="A portrait of Chad Whitacre"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
                             <div>
                                 <h3>Chad Whitacre</h3>
-                                <i>Head of Open Source, Sentry</i>
+                                <b>Head of Open Source, Sentry</b>
                             </div>
                         </figcaption>
                     </figure>
@@ -197,15 +201,17 @@ const donors = await donors_res.json();
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
-                            <img
-                                src="/images/endorsements/mitchell.webp"
-                                alt="A portrait of Mitchell Hashimoto"
-                                width="64"
-                                height="64"
-                            >
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/mitchell.webp"
+                                    alt="A portrait of Mitchell Hashimoto"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
                             <div>
                                 <h3>Mitchell Hashimoto</h3>
-                                <i>Co-founder, HashiCorp</i>
+                                <b>Co-founder, HashiCorp</b>
                             </div>
                         </figcaption>
                     </figure>
@@ -218,15 +224,17 @@ const donors = await donors_res.json();
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
-                            <img
-                                src="/images/icons/silhouette.svg"
-                                alt="A portrait of Daniel Dover"
-                                width="64"
-                                height="64"
-                            >
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/icons/silhouette.svg"
+                                    alt="A portrait of Daniel Dover"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
                             <div>
                                 <h3>Daniel Dover</h3>
-                                <i>CEO, Blooper</i>
+                                <b>CEO, Blooper</b>
                             </div>
                         </figcaption>
                     </figure>
@@ -238,15 +246,17 @@ const donors = await donors_res.json();
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
-                            <img
-                                src="/images/icons/silhouette.svg"
-                                alt="A portrait of Erin Enoch"
-                                width="64"
-                                height="64"
-                            >
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/icons/silhouette.svg"
+                                    alt="A portrait of Erin Enoch"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
                             <div>
                                 <h3>Erin Enoch</h3>
-                                <i>Research Lead, Foofax</i>
+                                <b>Research Lead, Foofax</b>
                             </div>
                         </figcaption>
                     </figure>
@@ -461,6 +471,7 @@ const donors = await donors_res.json();
                     {donors.slice(0, 12).map((donor) => (
                         <DonorMiniProfile
                             name={donor.name}
+                            description="CEO, Foocorp"
                         ></DonorMiniProfile>
                     ))}
                 </div>
