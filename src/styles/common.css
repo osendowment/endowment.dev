@@ -755,7 +755,7 @@ nav {
             color: var(--color-text-dark);
             background: none;
         }
-        &:hover {
+        &:hover, &.active {
             color: var(--color-primary);
         }
     }
