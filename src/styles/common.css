@@ -1130,9 +1130,16 @@ section.pagesec {
     }
     &.card--big-icon {
         align-items: flex-start;
+        h2 {
+            font-size: 1.4rem;
+        }
         img, svg {
-            width: 3.0rem;
-            flex-basis: 3.0rem;
+            width: 3.5rem;
+            flex-basis: 3.5rem;
+        }
+        p {
+            color: var(--color-text-dark-secondary);
+            font-size: 0.9rem;
         }
     }
     &.card--bigpad {
