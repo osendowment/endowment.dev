@@ -195,7 +195,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-error: #551020;
     --color-error-fade: rgba(100, 10, 30, 0.3);
     --color-text-dark: #3a3e43;
-    --color-text-dark-secondary: #808387;
+    --color-text-dark-secondary: #6b7280;
     --color-text-light: white;
     --color-text-dark-faded: #3a3e43;
     --color-text-light-faded: #c9cbcd;
@@ -1122,7 +1122,6 @@ section.pagesec {
     h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
-        font-weight: 600;
     }
     img, svg {
         width: 1.5rem;
