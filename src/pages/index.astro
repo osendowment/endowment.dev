@@ -467,7 +467,7 @@ const donors = await donors_res.json();
                     <h2>Supported by the tech community</h2>
                     <h3>Here are some of the generous donors helping make Open Source sustainable</h3>
                 </div>
-                <div class="donor-list">
+                <div class="donor-list donor-list--faded">
                     {donors.slice(0, 12).map((donor) => (
                         <DonorMiniProfile
                             name={donor.name}
