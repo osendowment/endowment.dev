@@ -826,10 +826,11 @@ section.pagesec {
     /* For when this contains a .insec.insec--squares */
     overflow-x: hidden;
     .sechead {
-        max-width: 60rem;
+        max-width: 45rem;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0;
+        padding-top: 2rem;
         padding-bottom: 4rem;
         text-align: center;
         &:is(h2), h2 {
@@ -1334,8 +1335,10 @@ a.card {
             padding-left: 4rem;
             padding-right: 4rem;
         }
+
         small {
             display: block;
+            max-width: 25rem;
             font-size: 1.1rem;
             font-weight: 500;
         }
