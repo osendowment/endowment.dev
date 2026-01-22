@@ -660,7 +660,6 @@ input[type="radio"] {
         &:not(.grid--bigfirst) {
             .grid__item:nth-child(2) {
                 border-top: 0;
-                background: red;
             }
         }
         .grid__item:nth-child(1) {
@@ -859,15 +858,15 @@ section.pagesec {
             box-shadow: 0 0 20px 10px var(--color-bg-ash);
         }
     }
+    &.pagesec--no-top-border {
+        border-top: 0;
+    }
     & + section.pagesec {
         border-top: 0;
     }
     &:has(+ section.pagesec--dark) {
         border-bottom: 0;
     }
-}
-.hero + section.pagesec {
-    border-top: 0;
 }
 
 .outsec {

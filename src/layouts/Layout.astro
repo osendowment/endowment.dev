@@ -113,7 +113,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
         </script>
     </head>
     <body>
-        <div class="hero">
+        <div class="header-and-nav">
             <header>
                 <div class="container header-items">
                     <a href="/" class="logo">
@@ -154,7 +154,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
                     <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
                 </nav>
             </div>
-            <slot name="hero" />
         </div>
         <slot />
         <footer>
@@ -219,6 +218,14 @@ import { OpenPanelComponent } from '@openpanel/astro';
 </html>
 
 <style>
+    .header-and-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--color-section-border);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+    }
     header {
         padding: 1rem 0;
         .header-items {
