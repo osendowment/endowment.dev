@@ -989,12 +989,15 @@ section.pagesec {
     }
 }
 
-.kpis {
+.intro-kpis {
     display: flex;
-    margin-top: 3rem;
     color: var(--color-text-dark);
     & > div {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         b {
             display: block;
             margin-bottom: 0.2rem;
@@ -1245,6 +1248,16 @@ a.card {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media (min-width: 1101px) {
+            padding-left: 6rem;
+            padding-right: 6rem;
+        }
+        @media (min-width: 801px) {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            padding-left: 4rem;
+            padding-right: 4rem;
+        }
         small {
             display: block;
             font-size: 1.3rem;
@@ -1259,6 +1272,14 @@ a.card {
             @media (max-width: 800px) {
                 font-size: 2.5rem;
             }
+        }
+    }
+    .intro-tree {
+        margin-left: auto;
+        margin-right: auto;
+        @media (min-width: 1101px) {
+            padding-right: 6rem;
+            align-self: flex-end;
         }
     }
     .buttonset {

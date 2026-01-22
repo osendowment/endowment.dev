@@ -19,7 +19,7 @@ const stats = await stats_res.json();
 <Layout>
     <section class="pagesec" slot="hero">
         <div class="container">
-            <div class="insec insec--xpad">
+            <div class="insec insec--nopad">
                 <div class="intro">
                     <div class="intro-text">
                         <small>The world's first</small>
@@ -53,37 +53,35 @@ const stats = await stats_res.json();
                             >Learn More</a>
                         </div>
                     </div>
-                    <div class="intro-illu-container">
-                        <div class="intro-illu">
-                            <div class="illubox illubox--a">curl</div>
-                            <div class="illubox illubox--a">mpld3</div>
-                            <div class="illubox illubox--a">pandas</div>
-                            <div class="illubox illubox--a">cpython</div>
-                            <div class="illubox illubox--b illubox--ok">openssl</div>
-                            <div class="illubox illubox--b illubox--ok">imagemagick</div>
-                            <div class="illubox illubox--b">tokio</div>
-                            <div class="illubox illubox--b illubox--ok">numpy</div>
-                            <div class="illubox illubox--c illubox--ok">log4j</div>
-                            <div class="illubox illubox--c">joda-time</div>
-                            <div class="illubox illubox--c">matplotlib</div>
-                            <div class="illubox illubox--c">requests</div>
-                            <div class="illubox illubox--d">iced</div>
-                            <div class="illubox illubox--d illubox--ok">git</div>
-                            <div class="illubox illubox--d">zlib</div>
-                            <div class="illubox illubox--d">xz</div>
-                        </div>
-                    </div>
+                    <img class="intro-tree" src="/images/illustrations/em-tree.svg">
+                    <!-- <div class="intro-illu-container"> -->
+                        <!-- <div class="intro-illu"> -->
+                        <!--     <div class="illubox illubox--a">curl</div> -->
+                        <!--     <div class="illubox illubox--a">mpld3</div> -->
+                        <!--     <div class="illubox illubox--a">pandas</div> -->
+                        <!--     <div class="illubox illubox--a">cpython</div> -->
+                        <!--     <div class="illubox illubox--b illubox--ok">openssl</div> -->
+                        <!--     <div class="illubox illubox--b illubox--ok">imagemagick</div> -->
+                        <!--     <div class="illubox illubox--b">tokio</div> -->
+                        <!--     <div class="illubox illubox--b illubox--ok">numpy</div> -->
+                        <!--     <div class="illubox illubox--c illubox--ok">log4j</div> -->
+                        <!--     <div class="illubox illubox--c">joda-time</div> -->
+                        <!--     <div class="illubox illubox--c">matplotlib</div> -->
+                        <!--     <div class="illubox illubox--c">requests</div> -->
+                        <!--     <div class="illubox illubox--d">iced</div> -->
+                        <!--     <div class="illubox illubox--d illubox--ok">git</div> -->
+                        <!--     <div class="illubox illubox--d">zlib</div> -->
+                        <!--     <div class="illubox illubox--d">xz</div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
                 </div>
-                <div class="kpis">
-                    <div>
-                        <b>${humanize(stats.donations.ind_donated_value)}</b><span>donated</span>
-                    </div>
-                    <div>
-                        <b>{humanize(stats.donations.ind_donors_count)}</b><span>donors</span>
-                    </div>
-                    <div>
-                        <b>${humanize(stats.investment_account.profit_to_date)}</b><span>profit to date</span>
-                    </div>
+            </div>
+            <div class="insec insec--xpad insec--ytight intro-kpis">
+                <div>
+                    <b>${humanize(stats.donations.ind_donated_value)}</b><span>donated</span>
+                </div>
+                <div>
+                    <b>{humanize(stats.donations.ind_donors_count)}</b><span>donors</span>
                 </div>
             </div>
         </div>
