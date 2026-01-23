@@ -8,21 +8,30 @@ interface Props {
   name: string;
   description?: string;
   avatarUrl?: string;
+  compact?: boolean;
 }
 
-let { name, description, avatarUrl } = Astro.props;
+let { name, description, avatarUrl, compact } = Astro.props;
 
 if (!avatarUrl) {
     avatarUrl = '/images/icons/silhouette.svg';
 }
 ---
 
-<div class="donor-list__donor donor-mini-profile">
-    <div class="donor-avatar">
-        <Fragment set:html={minidenticon(name)} />
-    </div>
+<div class={'donor-mini-profile' + (compact && ' donor-mini-profile--compact' || '')}>
+    {!compact &&
+        <div class="donor-avatar">
+            {avatarUrl && (
+                <img src={avatarUrl} alt={"The " + name + " logo"}>
+            ) || (
+                <Fragment set:html={minidenticon(name)} />
+            )}
+        </div>
+    }
     <div>
         <h3>{name}</h3>
-        <i>{description}</i>
+        {!compact &&
+            <i>{description}</i>
+        }
     </div>
 </div>

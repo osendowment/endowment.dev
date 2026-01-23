@@ -723,9 +723,13 @@ figure.endorsement {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
     gap: 1.0rem;
-    .donor-list__donor {
+    .donor-mini-profile {
         border: 1px solid var(--color-section-border);
         padding: 0.8rem;
+        &.donor-mini-profile--compact {
+            border: 0;
+            padding: 0;
+        }
     }
     &.donor-list--faded {
         &:after {
