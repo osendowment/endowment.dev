@@ -179,6 +179,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-gray: #fafafa;
     --color-section-border: #e0e0e0; /* #ebebeb in design */
     --color-section-border-dark: #3f6280; /* #42586c in design */
+    --color-section-border-dark-secondary: #3f628099;
     --color-primary: #5ba9ee;
     --color-primary-lightbg: #e9f5f7ff;
     --color-primary-fade1: #d1e6f8;
@@ -1493,7 +1494,7 @@ a.card {
     &.features--bordered {
         .feature {
             padding: 1.5rem;
-            border: 1px solid var(--color-section-border-dark);
+            border: 1px solid var(--color-section-border-dark-secondary);
         }
     }
 }
