@@ -836,7 +836,7 @@ nav.mobile-nav {
     padding-bottom: 1.0rem;
 }
 .mobile-nav-wrapper {
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.08);
 }
 .desktop-secondary-nav {
     display: flex;
