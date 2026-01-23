@@ -1378,88 +1378,89 @@ a.card {
     .buttonset {
         margin-top: 3rem;
     }
-    .intro-illu-container {
-        flex: 0 0 16rem;
-        width: 16rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 5rem;
-    }
-    .intro-illu {
-        flex: 1;
-        position: relative;
-        background-image: url(/images/branches.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        height: 23rem;
-        width: 16rem;
-        .illubox {
-            position: absolute;
+}
+
+.branch-illu-container {
+    flex: 0 0 16rem;
+    width: 16rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+}
+.branch-illu {
+    flex: 1;
+    position: relative;
+    background-image: url(/images/branches.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 23rem;
+    width: 16rem;
+    .illubox {
+        position: absolute;
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: var(--border-radius-big);
+        border: 1px solid var(--color-section-border);
+        background: rgba(200, 200, 255, 0.02);
+        font-family: var(--font-family-mono);
+        white-space: nowrap;
+        transform: rotate(-50deg);
+        transform-origin: left;
+        opacity: 0;
+        &.illubox--a {
+            top: -7%;
+            left: 14%;
+        }
+        &.illubox--b {
+            top: 4%;
+            left: 37%;
+        }
+        &.illubox--c {
+            top: 12%;
+            left: 59%;
+        }
+        &.illubox--d {
+            top: 19%;
+            left: 80%;
+        }
+        &:before {
+            content: ' ';
             display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: var(--border-radius-big);
-            border: 1px solid var(--color-section-border);
-            background: rgba(200, 200, 255, 0.02);
-            font-family: var(--font-family-mono);
-            white-space: nowrap;
-            transform: rotate(-50deg);
-            transform-origin: left;
-            opacity: 0;
-            &.illubox--a {
-                top: -7%;
-                left: 14%;
-            }
-            &.illubox--b {
-                top: 4%;
-                left: 37%;
-            }
-            &.illubox--c {
-                top: 12%;
-                left: 59%;
-            }
-            &.illubox--d {
-                top: 19%;
-                left: 80%;
-            }
-            &:before {
-                content: ' ';
-                display: inline-block;
-                height: 0.6rem;
-                width: 0.6rem;
-                margin-right: 0.6rem;
-                border-radius: 100%;
-                background: var(--color-no);
-                animation: blink 2s ease-in-out infinite alternate;
-            }
-            &.illubox--ok:before {
-                background: var(--color-secondary);
-            }
-            &:nth-child(4n+1) {
-                animation-name: illubox-a;
-                animation-duration: 40s;
-                animation-timing-function: ease-in-out;
-                animation-iteration-count: infinite;
-            }
-            &:nth-child(4n+2) {
-                animation-name: illubox-b;
-                animation-duration: 40s;
-                animation-timing-function: ease-in-out;
-                animation-iteration-count: infinite;
-            }
-            &:nth-child(4n+3) {
-                animation-name: illubox-c;
-                animation-duration: 40s;
-                animation-timing-function: ease-in-out;
-                animation-iteration-count: infinite;
-            }
-            &:nth-child(4n) {
-                animation-name: illubox-d;
-                animation-duration: 40s;
-                animation-timing-function: ease-in-out;
-                animation-iteration-count: infinite;
-            }
+            height: 0.6rem;
+            width: 0.6rem;
+            margin-right: 0.6rem;
+            border-radius: 100%;
+            background: var(--color-no);
+            animation: blink 2s ease-in-out infinite alternate;
+        }
+        &.illubox--ok:before {
+            background: var(--color-secondary);
+        }
+        &:nth-child(4n+1) {
+            animation-name: illubox-a;
+            animation-duration: 40s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        &:nth-child(4n+2) {
+            animation-name: illubox-b;
+            animation-duration: 40s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        &:nth-child(4n+3) {
+            animation-name: illubox-c;
+            animation-duration: 40s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        &:nth-child(4n) {
+            animation-name: illubox-d;
+            animation-duration: 40s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
         }
     }
 }
