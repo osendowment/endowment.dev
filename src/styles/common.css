@@ -245,10 +245,6 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-.large-text {
-    font-size: 1.3rem;
-}
-
 time {
     font-family: var(--font-family-mono);
     &.timeslug {

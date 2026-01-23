@@ -40,14 +40,14 @@ const stats = await stats_res.json();
                 <div class="insec insec--xpad">
                     <div class="endowment-blurb">
                         <div>
-                            <p class="large-text">
+                            <p>
                                 We aim to solve the open source sustainability crisis by enabling additional funding
                                 for maintenance of critical open source software that is truly sustainable, systemic
                                 and efficient. At the heart of this idea is the endowment model, which has been
                                 successfully used by the best private universities for hundreds of years but has
                                 never been applied to Open Source until OSE.
                             </p>
-                            <p class="large-text">
+                            <p>
                                 Our nonprofit is founded by a diverse community of tech founders, executives,
                                 investors, and developers across the globe. It uses the similarities between OSS and
                                 universities and startup approach to build a scalable tool allowing the tech
@@ -317,6 +317,13 @@ const stats = await stats_res.json();
 </Layout>
 
 <style>
+    .intro-text {
+        h2 {
+            @media (max-width: 800px) {
+                font-size: 1.5rem;
+            }
+        }
+    }
     .endowment-blurb {
         display: flex;
         align-items: center;
@@ -325,6 +332,11 @@ const stats = await stats_res.json();
             flex-direction: column;
             gap: 4rem;
             align-items: center;
+        }
+        p {
+            @media (min-width: 801px) {
+                font-size: 1.3rem;
+            }
         }
     }
 </style>
