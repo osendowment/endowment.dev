@@ -835,6 +835,9 @@ nav.mobile-nav {
     gap: 1.0rem;
     padding-bottom: 1.0rem;
 }
+.mobile-nav-wrapper {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.08);
+}
 
 section.pagesec {
     border-top: 1px solid var(--color-section-border);

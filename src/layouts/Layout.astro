@@ -147,12 +147,14 @@ import { OpenPanelComponent } from '@openpanel/astro';
                     </div>
                 </div>
             </header>
-            <div class="container">
-                <nav class="mobile-only mobile-nav" hidden>
-                    <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
-                    <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
-                    <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
-                </nav>
+            <div class="mobile-nav-wrapper">
+                <div class="container">
+                    <nav class="mobile-only mobile-nav" hidden>
+                        <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
+                        <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
+                        <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
+                    </nav>
+                </div>
             </div>
         </div>
         <slot />
