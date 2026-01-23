@@ -447,12 +447,11 @@ const donors = await donors_res.json();
                 </div>
                 <div class="donor-list donor-list--faded">
                     {donors.slice(0, 4 * 5).map((donor, idx) => (
-                    <div class={idx > 9 && "desktop-only"}>
-                            <DonorMiniProfile
-                                name={donor.name}
-                                description="CEO, Foocorp"
-                            ></DonorMiniProfile>
-                        </div>
+                        <DonorMiniProfile
+                            name={donor.name}
+                            description="CEO, Foocorp"
+                            extraClasses={idx > 9 && 'desktop-only' || ''}
+                        ></DonorMiniProfile>
                     ))}
                 </div>
                 <div class="buttonset buttonset--center">

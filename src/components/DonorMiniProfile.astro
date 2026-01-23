@@ -9,16 +9,17 @@ interface Props {
   description?: string;
   avatarUrl?: string;
   compact?: boolean;
+  extraClasses?: string;
 }
 
-let { name, description, avatarUrl, compact } = Astro.props;
+let { name, description, avatarUrl, compact, extraClasses } = Astro.props;
 
 if (!avatarUrl) {
     avatarUrl = '/images/icons/silhouette.svg';
 }
 ---
 
-<div class={'donor-mini-profile' + (compact && ' donor-mini-profile--compact' || '')}>
+<div class={'donor-mini-profile ' + (compact && 'donor-mini-profile--compact' || '') + (extraClasses || '')}>
     {!compact &&
         <div class="donor-avatar">
             {avatarUrl && (
