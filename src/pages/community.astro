@@ -23,12 +23,10 @@ const nDonors = donors.length + nHardcodedDonors;
 
 <Layout>
     <article>
-        <section class="pagesec pagesec--dark">
+        <section class="pagesec">
             <div class="container">
-                <div class="insec insec--xpad">
-                    <div class="squares squares--corner-dark-sw-outer"></div>
-                    <div class="squares squares--corner-dark-ne-outer"></div>
-                    <div class="insec__safety">
+                <div class="insec insec--xpad insec--side-squares">
+                    <div class="sechead">
                         <h1>Community</h1>
                         <p>
                             We welcome everybody to the donor community, and
@@ -47,47 +45,49 @@ const nDonors = donors.length + nHardcodedDonors;
                 </div>
             </div>
         </section>
-        <section>
+        <section class="pagesec">
             <div class="container">
-                {Object.entries(donorsByClass).map(([className, donors]) => (
-                    <h2>{className}</h2>
-                    <div class="donor-list">
-                        {donors.map((donor) => (
-                            <DonorMiniProfile
-                                name={donor.name}
-                                description="CEO, Foocorp"
-                            ></DonorMiniProfile>
-                        ))}
-                    </div>
-                ))}
-                <h2>Institutional donors</h2>
-                <div class="donor-list">
-                    <div class="donor-list__donor donor-mini-profile">
-                        <img
-                            src="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
-                            alt="The G-Research Logo"
-                            width="64"
-                            height="64"
-                        >
-                        <div>
-                            <h3>G-Research</h3>
-                            <i></i>
+                <div class="insec insec--xpad">
+                    {Object.entries(donorsByClass).map(([className, donors]) => (
+                        <h2>{className}</h2>
+                        <div class="donor-list">
+                            {donors.map((donor) => (
+                                <DonorMiniProfile
+                                    name={donor.name}
+                                    description="CEO, Foocorp"
+                                ></DonorMiniProfile>
+                            ))}
                         </div>
-                    </div>
-                    <div class="donor-list__donor donor-mini-profile">
-                        <img
-                            src="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
-                            alt="The Evil Martians Logo"
-                            width="64"
-                            height="64"
-                        >
-                        <div>
-                            <h3>Evil Martians</h3>
-                            <i>Pro bono donor</i>
+                    ))}
+                    <h2>Institutional donors</h2>
+                    <div class="donor-list">
+                        <div class="donor-list__donor donor-mini-profile">
+                            <img
+                                src="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
+                                alt="The G-Research Logo"
+                                width="64"
+                                height="64"
+                            >
+                            <div>
+                                <h3>G-Research</h3>
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="donor-list__donor donor-mini-profile">
+                            <img
+                                src="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
+                                alt="The Evil Martians Logo"
+                                width="64"
+                                height="64"
+                            >
+                            <div>
+                                <h3>Evil Martians</h3>
+                                <i>Pro bono donor</i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    <article>
+    </article>
 </Layout>

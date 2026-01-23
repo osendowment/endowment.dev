@@ -11,7 +11,11 @@ import * as post from '../../assets/foundation/docs/incorporation/bylaws.md';
     <section>
         <div class="container">
             <article>
-                <Fragment set:html={post.compiledContent()}/>
+                <section class="pagesec">
+                    <div class="insec insec--xpad">
+                        <Fragment set:html={post.compiledContent()}/>
+                    </div>
+                </section>
             </article>
         </div>
     </section>

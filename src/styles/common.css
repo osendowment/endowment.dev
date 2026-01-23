@@ -338,6 +338,7 @@ ol {
 
 article {
     padding-bottom: 4rem;
+    padding-bottom: 0;
     h1, h2 {
         font-family: var(--font-family-serif);
         line-height: 1.1;
@@ -347,6 +348,14 @@ article {
     }
     h2 {
         font-size: 2.5rem;
+    }
+    & > .pagesec:first-child {
+        /* The header already has this border */
+        border-top: 0;
+    }
+    & > .pagesec:last-child {
+        /* The footer already has this border */
+        border-bottom: 0;
     }
 }
 
