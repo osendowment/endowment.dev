@@ -736,12 +736,15 @@ figure.endorsement {
             content: '';
             display: block;
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
             z-index: 5;
-            background-image: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.9));
+            background-image: linear-gradient(to bottom,
+                transparent 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.9));
             pointer-events: none;
         }
     }
