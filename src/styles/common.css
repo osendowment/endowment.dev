@@ -838,6 +838,23 @@ nav.mobile-nav {
 .mobile-nav-wrapper {
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.08);
 }
+.desktop-secondary-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    a:has(svg) {
+        &:hover {
+            background: none;
+            svg path {
+                fill: var(--color-text-dark);
+            }
+        }
+        svg {
+            margin-top: 3px;
+        }
+    }
+}
 
 section.pagesec {
     border-top: 1px solid var(--color-section-border);
