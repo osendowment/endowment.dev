@@ -65,10 +65,13 @@ const donors = await donors_res.json();
             </div>
             <div class="insec insec--xpad insec--ytight intro-kpis">
                 <div>
-                    <b>${humanize(stats.donations.ind_donated_value)}</b><span>donated</span>
+                    <b>${humanize(stats.donations.total_donated_value)}</b><span>donated</span>
                 </div>
                 <div>
-                    <b>{humanize(stats.donations.ind_donors_count)}</b><span>donors</span>
+                    <b>{humanize(stats.donations.total_donors_count)}</b><span>donors</span>
+                </div>
+                <div>
+                    <b>{stats.members_count}</b><span>donors giving $1K+</span>
                 </div>
             </div>
         </div>
