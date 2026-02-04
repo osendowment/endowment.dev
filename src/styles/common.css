@@ -1646,19 +1646,26 @@ a.card {
         url(/images/icons/em-systemic-mono.svg),
         url(/images/icons/em-efficient-mono.svg);
     background-position:
-        05% 20%,
-        95% 50%,
-        center 80%;
+        01% 20%,
+        98% 50%,
+        center 82.7%;
     background-repeat: no-repeat;
+    h2, h3 {
+        text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
     @media (max-width: 800px) {
         background-size: 100px, 100px, 100px;
     }
     h2 {
         margin-bottom: 1.0rem;
+        font-size: var(--font-size-7);
     }
     h3 {
-        margin-bottom: 1.5rem;
+        margin-bottom: 3.0rem;
         color: var(--color-text-light-faded);
+    }
+    a.button {
+        margin-bottom: 2.0rem; /* to balance illustrations */
     }
 }
 
