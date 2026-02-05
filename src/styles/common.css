@@ -1725,8 +1725,8 @@ a.card {
 }
 
 .bubble {
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 100%;
     &.bubble--no {
         background-color: var(--color-no);
