@@ -15,21 +15,17 @@ const stats = await statsRes.json();
     <article>
         <section class="pagesec pagesec--dark pagesec--tight">
             <div class="container">
-                <div class="insec insec--xpad">
+                <div class="insec insec--xpad insec--ytight">
                     <div class="squares squares--corner-dark-sw-outer"></div>
                     <div class="squares squares--corner-dark-sw-inner"></div>
                     <div class="squares squares--corner-dark-ne-outer"></div>
                     <div class="squares squares--corner-dark-ne-inner"></div>
-                    <div class="insec__safety">
-                        <div class="intro container">
-                            <div class="intro-text flex-center">
-                                <h1>Our Mission</h1>
-                                <h2>
-                                    The Open Source Endowment (OSE) is a community-driven endowment, dedicated to
-                                    sustaining critical open source projects the world relies on.
-                                </h2>
-                            </div>
-                        </div>
+                    <div class="endowment-intro sechead sechead--min-height flex-center flex-column">
+                        <h1>Our Mission</h1>
+                        <h2>
+                            The Open Source Endowment (OSE) is a community-driven endowment, dedicated to
+                            sustaining critical open source projects the world relies on.
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -316,8 +312,14 @@ const stats = await statsRes.json();
 </Layout>
 
 <style>
-    .intro-text {
+    .endowment-intro.sechead {
+        h1 {
+            font-size: var(--font-size-7);
+        }
         h2 {
+            margin-bottom: 0;
+            font-size: var(--font-size-6);
+            text-align: center;
             @media (max-width: 800px) {
                 font-size: var(--font-size-5);
             }

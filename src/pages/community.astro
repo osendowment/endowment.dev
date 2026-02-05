@@ -34,24 +34,30 @@ const otherDonorsClassName = '0-1K';
 
 <Layout>
     <article>
-        <section class="pagesec">
+        <section class="pagesec pagesec--dark pagesec--tight">
             <div class="container">
-                <div class="insec insec--xpad insec--side-squares">
-                    <div class="sechead">
-                        <h1>Community</h1>
-                        <p>
-                            We welcome everybody to the donor community, and
-                            thank our {nDonors} donors for generous
-                            donations to the Open Source Endowment, increasing
-                            the sustainability of the global software supply
-                            chain.
-                        </p>
-                        <p>
-                            Community is a cornerstone of our endowment, and
-                            all individuals contributing at least $1000/year —
-                            OSE Members — are invited to participate in its
-                            <a href="/endowment#governance">governance</a>.
-                        </p>
+                <div class="insec insec--xpad insec--ytight">
+                    <div class="community-intro">
+                        <div class="sechead sechead--min-height sechead--left">
+                            <h1>Community</h1>
+                            <p>
+                                We welcome everybody to the donor community, and
+                                thank our {nDonors} donors for generous
+                                donations to the Open Source Endowment, increasing
+                                the sustainability of the global software supply
+                                chain.
+                            </p>
+                            <p>
+                                Community is a cornerstone of our endowment, and
+                                all individuals contributing at least $1000/year —
+                                OSE Members — are invited to participate in its
+                                <a href="/endowment#governance">governance</a>.
+                            </p>
+                        </div>
+                        <div class="community-kpi">
+                            <b>{stats.members_count}</b>
+                            <span>OSE members</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,6 +111,30 @@ const otherDonorsClassName = '0-1K';
     .donor-board {
         h2 {
             font-size: var(--font-size-5);
+        }
+    }
+    .community-intro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        @media (max-width: 800px) {
+            flex-direction: column;
+            gap: 4rem;
+        }
+        .community-kpi {
+            text-align: center;
+            b {
+                display: block;
+                margin-bottom: 1.0rem;
+                font-size: var(--font-size-8);
+                font-weight: normal;
+                line-height: 1;
+                @media (max-width: 800px) {
+                    margin-bottom: 0.5rem;
+                    font-size: var(--font-size-6);
+                }
+            }
         }
     }
 </style>

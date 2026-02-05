@@ -1007,10 +1007,18 @@ section.pagesec {
             font-size: var(--font-size-5);
             color: var(--color-text-dark-secondary);
         }
-    }
-    .sechead.sechead--left {
-        text-align: left;
-        margin-left: 0;
+        &.sechead--left {
+            text-align: left;
+            margin-left: 0;
+        }
+        &.sechead--min-height {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 20rem;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
     }
     &.pagesec--grid {
         background:
