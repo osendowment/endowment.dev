@@ -933,7 +933,7 @@ blockquote {
 
 nav.desktop-nav, nav.mobile-nav {
     display: flex;
-    a {
+    a:not(.button) {
         text-decoration: none;
         &, &:hover {
             color: var(--color-text-dark);
