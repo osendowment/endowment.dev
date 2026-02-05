@@ -5,19 +5,23 @@
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
+let STATS_URL = 'https://stats.endowment.dev/';
 let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
 
-const donors_res = await fetch(DONOR_STATS_URL);
-const donors = await donors_res.json();
-const donorsByClass = donors.reduce((donorsByClass, donor) => {
+const statsRes = await fetch(STATS_URL);
+const stats = await statsRes.json();
+
+const donorsRes = await fetch(DONOR_STATS_URL);
+const allDonors = await donorsRes.json();
+const individualDonors = allDonors.filter((d) => d.type == 'individual');
+const donorsByClass = individualDonors.reduce((donorsByClass, donor) => {
     if (!(donor.class in donorsByClass)) {
         donorsByClass[donor.class] = [];
     }
     donorsByClass[donor.class].push(donor);
     return donorsByClass;
 }, {});
-const nHardcodedDonors = 2;
-const nDonors = donors.length + nHardcodedDonors;
+const nDonors = stats.donations.total_donors_count;
 
 const classDisplayNames: Record<string, string> = {
     '100K+': '$100,000+ individual donors',
@@ -62,7 +66,8 @@ const otherDonorsClassName = '0-1K';
                                 {donors.map((donor) => (
                                     <DonorMiniProfile
                                         name={donor.name}
-                                        description="CEO, Foocorp"
+                                        description={donor.description}
+                                        avatarUrl={donor.picture_url}
                                     ></DonorMiniProfile>
                                 ))}
                             </div>
@@ -72,6 +77,7 @@ const otherDonorsClassName = '0-1K';
                     <div class="donor-list">
                         <DonorMiniProfile
                             name="G-Research"
+                            description="Corporate donor"
                             avatarUrl="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
                         ></DonorMiniProfile>
                         <DonorMiniProfile
@@ -85,7 +91,6 @@ const otherDonorsClassName = '0-1K';
                         {donorsByClass[otherDonorsClassName].map((donor) => (
                             <DonorMiniProfile
                                 name={donor.name}
-                                description="CEO, Foocorp"
                                 compact={true}
                             ></DonorMiniProfile>
                         ))}

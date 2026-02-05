@@ -9,11 +9,16 @@ import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 let STATS_URL = 'https://stats.endowment.dev/';
 let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
 
-const stats_res = await fetch(STATS_URL);
-const stats = await stats_res.json();
+const statsRes = await fetch(STATS_URL);
+const stats = await statsRes.json();
 
-const donors_res = await fetch(DONOR_STATS_URL);
-const donors = await donors_res.json();
+const donorsRes = await fetch(DONOR_STATS_URL);
+const allDonors = await donorsRes.json();
+const individualDonors = allDonors.filter((d) => d.type == 'individual');
+const featuredDonors = individualDonors
+    .filter((d) => d.featured)
+    .sort((a, b) => a.featured - b.featured);
+
 ---
 
 <Layout>
@@ -140,7 +145,7 @@ const donors = await donors_res.json();
                             </div>
                             <div>
                                 <h3>Konstantin Vinogradov</h3>
-                                <b>ex General Partner at Runa Capital</b>
+                                <i>ex General Partner at Runa Capital</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -166,7 +171,7 @@ const donors = await donors_res.json();
                             </div>
                             <div>
                                 <h3>Chad Whitacre</h3>
-                                <b>Head of Open Source, Sentry</b>
+                                <i>Head of Open Source, Sentry</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -189,7 +194,7 @@ const donors = await donors_res.json();
                             </div>
                             <div>
                                 <h3>Mitchell Hashimoto</h3>
-                                <b>Co-founder, HashiCorp</b>
+                                <i>Co-founder, HashiCorp</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -212,7 +217,7 @@ const donors = await donors_res.json();
                             </div>
                             <div>
                                 <h3>Daniel Dover</h3>
-                                <b>CEO, Blooper</b>
+                                <i>CEO, Blooper</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -234,7 +239,7 @@ const donors = await donors_res.json();
                             </div>
                             <div>
                                 <h3>Erin Enoch</h3>
-                                <b>Research Lead, Foofax</b>
+                                <i>Research Lead, Foofax</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -444,11 +449,11 @@ const donors = await donors_res.json();
                     <h3>Here are some of the generous donors helping make Open Source sustainable</h3>
                 </div>
                 <div class="donor-list donor-list--faded">
-                    {donors.slice(0, 4 * 5).map((donor, idx) => (
+                    {featuredDonors.map((donor) => (
                         <DonorMiniProfile
                             name={donor.name}
-                            description="CEO, Foocorp"
-                            extraClasses={idx > 9 && 'desktop-only' || ''}
+                            description={donor.description}
+                            avatarUrl={donor.picture_url}
                         ></DonorMiniProfile>
                     ))}
                 </div>

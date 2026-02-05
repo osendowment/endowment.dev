@@ -7,8 +7,8 @@ import Layout from '../layouts/Layout.astro';
 
 let STATS_URL = 'https://stats.endowment.dev/';
 
-const stats_res = await fetch(STATS_URL);
-const stats = await stats_res.json();
+const statsRes = await fetch(STATS_URL);
+const stats = await statsRes.json();
 ---
 
 <Layout>
