@@ -742,7 +742,7 @@ header {
     }
 }
 footer {
-    padding: 4rem 1rem 3rem;
+    padding-block: 4rem 3rem;
     border-top: 1px solid var(--color-section-border);
     font-size: var(--font-size-3);
     .footer-items {
