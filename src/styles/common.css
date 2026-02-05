@@ -1248,6 +1248,7 @@ section.pagesec {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
         b {
             display: block;
             margin-bottom: 0.2rem;
