@@ -278,7 +278,7 @@ const featuredDonors = individualDonors
                     <div class="sustainability-boxgroup">
                         <div class="sustainability-box">
                             <h3>
-                                <i>Problem</i>
+                                <i><div class="bubble bubble--no"></div>Problem</i>
                                 Critical but Fragile Infrastructure
                             </h3>
                             <p>
@@ -296,7 +296,7 @@ const featuredDonors = individualDonors
                         <div class="sustainability-arrow">↓</div>
                         <div class="sustainability-box">
                             <h3>
-                                <i>Solution</i>
+                                <i><div class="bubble bubble--ok"></div>Solution</i>
                                 OSS Community Endowment
                             </h3>
                             <p>
@@ -533,7 +533,7 @@ const featuredDonors = individualDonors
             text-align: center;
             font-size: var(--font-size-6);
             font-weight: 500;
-            color: var(--color-primary);
+            color: var(--color-text-dark);
         }
         .sustainability-boxgroup {
             flex: 3;
@@ -549,13 +549,19 @@ const featuredDonors = individualDonors
                     font-size: var(--font-size-5);
                     font-weight: 500;
                     i {
-                        margin-bottom: 0.1rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        margin-bottom: 0.3rem;
                         font-size: var(--font-size-5);
                         font-weight: 500;
                         font-variant-caps: small-caps;
                         font-feature-settings: "smcp";
                         text-transform: lowercase;
                         font-family: var(--font-family-mono);
+                        .bubble {
+                            margin-top: 0.15rem;
+                        }
                     }
                 }
                 p {

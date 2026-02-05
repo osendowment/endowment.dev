@@ -1723,6 +1723,18 @@ a.card {
     }
 }
 
+.bubble {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 100%;
+    &.bubble--no {
+        background-color: var(--color-no);
+    }
+    &.bubble--ok {
+        background-color: var(--color-secondary);
+    }
+}
+
 /*
 Bluesky flutter — https://flutterby.philhawksworth.dev/
 SPDX-SnippetBegin
