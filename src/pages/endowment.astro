@@ -57,9 +57,9 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                                 Open Source until OSE.
                             </p>
                             <p>
-                                Founded in 2025, by a diverse group of tech founders, executives, investors, and
+                                Founded in 2025 by a diverse group of tech founders, executives, investors, and
                                 engineers across the globe, our endowment operates as a lean next-gen nonprofit. Its
-                                aim to be a scalable funding tool allowing tech industry members to
+                                aim is to be a scalable funding tool allowing tech industry members to
                                 support the public good they care about.
                             </p>
                         </div>
@@ -134,7 +134,7 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                         <div class="feature">
                             <h3><i>3</i>Board Directors</h3>
                             <p>
-                                The Board of Directors is our main governing body, and appoints the Executive
+                                The Board of Directors is our main governing body and appoints the Executive
                                 Director for operational management and Advisors.
                             </p>
                             <p>
@@ -277,37 +277,41 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
         </section>
         <section class="pagesec">
             <div class="container">
-                <div class="insec insec--xpad insec--noborder-right insec--side-squares">
-                    <div class="side-kpi-section">
-                        <div>
-                            <h2 class="sechead sechead--left">Investing strategy</h2>
-                            <p>
-                                All donations to the Endowment are put into low-risk investments, and only the yearly
-                                income from these investments is used to fund OSS project grants. This approach supports
-                                long-term planning and sustainable funding for OSS.
-                            </p>
-                            <p>
-                                Previously, OSE invested in US Treasury bonds, which are very
-                                low-risk and earn ~5% per year. Now, the portfolio is being transferred to a professional
-                                investment manager. The board chose
-                                <a href="https://www.infinitegiving.com/" target="_blank">Infinite Giving</a>,
-                                specializing in US nonprofits, as our outsourced CIO.
-                            </p>
-                            <p>
-                                Our target is a 7-8% return with low risk, using 5% of the endowment each year
-                                for grants. Most of the remaining earnings will be reinvested after covering basic
-                                operating costs.
-                            </p>
+                <div class="insec insec--xpad">
+                    <h2 class="sechead sechead--left">Investing strategy</h2>
+                    <div class="invest-text">
+                        <p>
+                            All donations to the Endowment are put into low-risk investments, and only the yearly
+                            income from these investments is used to fund OSS project grants. This approach supports
+                            long-term planning and sustainable funding for OSS.
+                        </p>
+                        <p>
+                            Previously, OSE invested in US Treasury bonds, which are very
+                            low-risk and earn ~5% per year. Now, the portfolio is being transferred to a professional
+                            investment manager. The board chose
+                            <a href="https://www.infinitegiving.com/" target="_blank">Infinite Giving</a>,
+                            specializing in US nonprofits, as our outsourced CIO.
+                        </p>
+                        <p>
+                            Our target is a 7-8% return with low risk, using 5% of the endowment each year
+                            for grants. Most of the remaining earnings will be reinvested after covering basic
+                            operating costs.
+                        </p>
+                    </div>
+                    <div class="invest-kpis">
+                        <div class="invest-kpi">
+                            <i>${humanize(fundSize)}</i>
+                            <span>current fund size</span>
                         </div>
-                        <div class="side-kpis">
-                            <div>
-                                <i>${humanize(fundSize)}</i>
-                                <span>current fund size</span>
-                            </div>
-                            <div>
-                                <i>5%</i>
-                                <span>target spend rate</span>
-                            </div>
+                        <div class="invest-kpi">
+                            <i>5%</i>
+                            <span>target spend rate</span>
+                        </div>
+                        <div class="invest-kpi">
+                            <a href="https://www.infinitegiving.com/" target="_blank">
+                                <img src="/images/infinite-giving-logo.svg" alt="Infinite Giving" class="invest-kpi__logo">
+                            </a>
+                            <span>outsourced CIO</span>
                         </div>
                     </div>
                 </div>
@@ -320,48 +324,68 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                     <div class="squares squares--corner-dark-ne-inner"></div>
                     <div class="squares squares--corner-dark-ne-outer"></div>
                     <h2 class="sechead sechead--left">Funding Model</h2>
-                    <div class="recognition-content">
+                    <div class="funding-intro">
                         <p>
                             We strive to support the most critical yet underfunded open source projects,
-                            sustainably addressing gaps in the current OSS funding landscape.
+                            sustainably addressing gaps in the OSS funding landscape.
                         </p>
                     </div>
-                    <div class="distribution-layout">
-                        <div class="distribution-copy">
+                    <div class="funding-highlights">
+                        <div class="funding-highlight">
+                            <h3>Open Model</h3>
                             <p>
-                                To prioritize projects in each ecosystem, we use a scoring model that analyzes open
-                                data to calculate Value and Risk scores, based on various parameters. Such model
-                                highlights high-value OSS that are at risk, which the board reviews before approving grants.
-                            </p>
-                            <p>
-                                There is no perfect model to distribute FOSS funding. Our approach is to have an
-                                <a href="https://github.com/osendowment/model" target="_blank">open model</a>,
+                                There is no perfect model to distribute FOSS funding. Our approach is to have an open
+                                data-driven <a href="https://github.com/osendowment/model" target="_blank">model</a>
                                 that is co-developed and approved by OSE Members — people who meaningfully
                                 contributed to power it with funding.
                             </p>
                         </div>
-                        <div class="distribution-cards">
-                            <div class="feature">
-                                <h3>Value</h3>
-                                <p><em>How critical is this project?</em></p>
-                                <ul>
-                                    <li>Number of dependents & dependency depth</li>
-                                    <li>Download volume</li>
-                                    <li>Qualified funding requests</li>
-                                    <li>Endorsements from OSE donors</li>
-                                    <li>Open community nominations</li>
-                                </ul>
+                        <div class="funding-highlight">
+                            <h3>Deep Infrastructure</h3>
+                            <p>
+                                The target model would drill down dependencies from popular ecosystems to
+                                underlying packages, creating a natural priority for low-level libraries — less
+                                Python and JavaScript, more C/C++ and Fortran.
+                            </p>
+                        </div>
+                        <div class="funding-highlight">
+                            <h3>Independent FOSS</h3>
+                            <p>
+                                We do not fund open source projects, even with high value &amp; risk, if they
+                                have corporate roots or an associated startup (e.g. Kubernetes or MariaDB). Our ideal
+                                grantee profile looks like a <a href="https://xkcd.com/2347/" target="_blank">random person in Nebraska</a>.
+                            </p>
+                        </div>
+                        <div class="funding-highlight funding-highlight--scoring">
+                            <div class="scoring-left">
+                                <h3>Funding Framework</h3>
+                                <p>
+                                    Within each ecosystem, we use a model based on Value and Risk scores. They are
+                                    calculated based on multiple open data points and are used to sort OSS projects.
+                                    For now, we aim to provide microgrants (~$5000) to high-risk candidates among
+                                    the most valuable OSS, performing manual due diligence before funding.
+                                </p>
                             </div>
-                            <div class="feature">
-                                <h3>Risk</h3>
-                                <p><em>How vulnerable is it?</em></p>
-                                <ul>
-                                    <li>Lines of code & complexity</li>
-                                    <li>OpenSSF security score</li>
-                                    <li>Active developers & bus factor</li>
-                                    <li>Issue volume</li>
-                                    <li>Existing funding & GitHub Sponsors</li>
-                                </ul>
+                            <div class="scoring-right">
+                                <div class="funding-score-card">
+                                    <h4>Value</h4>
+                                    <div class="tag-cloud">
+                                        <span>Downloads</span>
+                                        <span>Dependents</span>
+                                        <span>Community Nominations</span>
+                                        <span>...</span>
+                                    </div>
+                                </div>
+                                <div class="funding-score-card">
+                                    <h4>Risk</h4>
+                                    <div class="tag-cloud">
+                                        <span>OpenSSF Score</span>
+                                        <span>LOCs</span>
+                                        <span>Active Maintainers</span>
+                                        <span>Funding</span>
+                                        <span>...</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -401,60 +425,124 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
         }
     }
 
-    /* Distribution Section */
-    .subsection-header {
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--color-section-border-dark-secondary);
-        font-size: 1.5rem;
-    }
-    .distribution-layout {
-        display: flex;
-        gap: 4rem;
-        @media (max-width: 900px) {
-            flex-direction: column;
-            gap: 2rem;
+    /* Investing Strategy */
+    .invest-text {
+        max-width: 66%;
+        @media (max-width: 800px) {
+            max-width: 100%;
         }
     }
-    .distribution-copy {
+    .invest-kpis {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        @media (max-width: 600px) {
+            flex-direction: column;
+        }
+    }
+    .invest-kpi {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: center;
+        padding: 1.5rem;
+        border: 1px solid var(--color-section-border);
+        i {
+            font-style: normal;
+            font-size: var(--font-size-6);
+            font-weight: 600;
+        }
+        span {
+            margin-top: 0.5rem;
+            font-size: var(--font-size-3);
+            opacity: 0.7;
+        }
+    }
+    .invest-kpi__logo {
+        height: 1.5rem;
+        margin: 0.25rem 0;
+    }
+
+    .funding-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    /* Funding Model */
+    .funding-intro {
+        max-width: 66%;
+        margin-bottom: 2.5rem;
+        p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+        @media (max-width: 800px) {
+            max-width: 100%;
+        }
+    }
+    .funding-highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        @media (max-width: 700px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    .funding-highlight {
+        padding: 1.5rem;
+        border: 1px solid var(--color-section-border-dark-secondary);
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 0 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        p {
+            margin: 0;
+            color: var(--color-text-light-faded);
+            font-size: var(--font-size-3);
+            line-height: 1.6;
+        }
+    }
+    .funding-highlight--scoring {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 3rem;
+        @media (max-width: 800px) {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+    }
+    .scoring-left {
         flex: 1;
     }
-    .distribution-cards {
+    .scoring-right {
         flex: 1;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        .feature {
-            padding: 1.5rem;
-            border: 1px solid var(--color-section-border-dark-secondary);
-            h3 {
-                margin: 0;
-                margin-bottom: 0.5rem;
-                font-weight: 500;
-            }
-            p, li {
-                color: var(--color-text-light-faded);
-                font-size: var(--font-size-3);
-            }
-            ul {
-                margin: 0.5rem 0 0;
-                padding-left: 1.2rem;
-            }
+    }
+    .funding-score-card {
+        h4 {
+            margin: 0 0 0.75rem;
+            font-size: 1rem;
+            font-weight: 500;
         }
     }
-
-    .framework-note {
-        margin-top: 2rem;
-        opacity: 0.8;
-    }
-
-    /* Funding Model intro */
-    .recognition-content {
-        max-width: 700px;
-        margin-bottom: 3rem;
-        p {
-            font-size: 1.15rem;
-            line-height: 1.7;
+    .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        span {
+            padding: 0.25rem 0.6rem;
+            border: 1px solid var(--color-section-border-dark-secondary);
+            font-size: var(--font-size-2);
+            color: var(--color-text-light-faded);
+            white-space: nowrap;
         }
     }
 </style>
