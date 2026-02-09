@@ -6,9 +6,20 @@ import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 
 let STATS_URL = 'https://stats.endowment.dev/';
+let TEMP_STATS_URL = 'https://stats.endowment.dev/temp';
 
 const statsRes = await fetch(STATS_URL);
 const stats = await statsRes.json();
+
+const tempStatsRes = await fetch(TEMP_STATS_URL);
+const tempStats = await tempStatsRes.json();
+
+const fundSize = tempStats.endowment.fund_size;
+const totalDonors = tempStats.donors.total;
+const totalMembers = tempStats.donors.members;
+const lastUpdated = Object.values(tempStats.endowment.accounts)
+    .map((a: any) => a.synced_at)
+    .sort()[0];
 ---
 
 <Layout>
@@ -23,8 +34,8 @@ const stats = await statsRes.json();
                     <div class="endowment-intro sechead sechead--min-height flex-center flex-column">
                         <h1>Our Mission</h1>
                         <h2>
-                            The Open Source Endowment (OSE) is a community-driven endowment, dedicated to
-                            sustaining critical open source projects the world relies on.
+                            Open Source Endowment (OSE) is a community endowment dedicated to sustaining
+                            critical open source projects the world relies on.
                         </h2>
                     </div>
                 </div>
@@ -36,17 +47,20 @@ const stats = await statsRes.json();
                     <div class="endowment-blurb">
                         <div>
                             <p>
-                                We aim to solve the open source sustainability crisis by enabling additional funding
-                                for maintenance of critical open source software that is truly sustainable, systemic
-                                and efficient. At the heart of this idea is the endowment model, which has been
-                                successfully used by the best private universities for hundreds of years but has
-                                never been applied to Open Source until OSE.
+                                We aim to solve the open-source sustainability crisis with a funding solution
+                                for the maintenance of critical open-source software that is truly sustainable,
+                                systemic, and efficient.
                             </p>
                             <p>
-                                Our nonprofit is founded by a diverse community of tech founders, executives,
-                                investors, and developers across the globe. It uses the similarities between OSS and
-                                universities and startup approach to build a scalable tool allowing the tech
-                                industry members to support the public good they care about.
+                                At the heart of this idea is the endowment model, which has been successfully used
+                                by the best private universities for hundreds of years but has never been applied to
+                                open source until OSE.
+                            </p>
+                            <p>
+                                Our endowment is funded by a diverse community of tech founders, executives,
+                                investors, and engineers across the globe. It operates as a lean next-gen nonprofit
+                                — a scalable tool allowing tech industry members to support the public good they
+                                care about.
                             </p>
                         </div>
                         <div class="branch-illu-container">
@@ -82,17 +96,21 @@ const stats = await statsRes.json();
                     <div class="sechead sechead--left">
                         <h2>Governance</h2>
                         <p class="narrow-text">
-                            The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt charity. It has a bottom-up
-                            inclusive governance inspired by the best universities and business practices, that is based on
-                            passionate individuals with “skin in the game”, not corporations. We strive to meet the
-                            best-in-class standards in terms of neutrality, transparency, and efficiency.
+                            Open Source Endowment Foundation is a U.S. 501(c)(3) tax-exempt charity (EIN 33-3502715).
+                            It has bottom-up inclusive governance inspired by the best universities and business
+                            practices, which is based on passionate individuals with "skin in the game," not
+                            corporations.
+                        </p>
+                        <p class="narrow-text">
+                            We strive to meet best-in-class standards in terms of neutrality,
+                            transparency, and efficiency.
                         </p>
                     </div>
                     <div class="features features--bordered">
                         <div class="feature">
-                            <h3><i>50</i>Donors</h3>
+                            <h3><i>{totalDonors}</i>Donors</h3>
                             <p>
-                                OSE welcomes all individual and institutional donors, who would like to leave a lasting
+                                OSE welcomes all individual and institutional donors who would like to leave a lasting
                                 impact on the open source ecosystem and improve its sustainability.
                             </p>
                             <p>
@@ -102,10 +120,10 @@ const stats = await statsRes.json();
                             </p>
                         </div>
                         <div class="feature">
-                            <h3><i>20</i>Members</h3>
+                            <h3><i>{totalMembers}</i>Members</h3>
                             <p>
                                 Donors contributing at least $1k/year qualify as Members, invited to advise the board on
-                                key matters like the grant model, participate in closed events and appoint board
+                                key matters like the grant model, participate in closed events, and appoint board
                                 directors.
                             </p>
                             <p>
@@ -148,12 +166,9 @@ const stats = await statsRes.json();
                             </div>
                             <div class="team-member__desc">
                                 <p>
-                                    General Partner at
-                                    <a href="https://runacap.com/" target="_blank">Runa Capital</a>
-                                    ($0.5B+ AUM), who focuses on early-stage OSS investments.
-                                    Previously co&#x2011;founded an endowment which grew from $50K to $600K+ in 12 months. Publishes the
-                                    <a href="https://runacap.com/ross-index/" target="_blank">ROSS Index</a>,
-                                    a quarterly data-driven rating of top open source startups.
+                                    VC investor in open source, AI, and infrastructure software. Former General Partner at
+                                    Runa Capital ($600M+ AUM). Creator and maintainer (2020–2025) of the
+                                    ROSS Index, a quarterly data-driven index of OSS startups.
                                 </p>
                             </div>
                         </div>
@@ -170,11 +185,9 @@ const stats = await statsRes.json();
                             <div class="team-member__desc">
                                 <p>
                                     Head of Open Source at application monitoring platform
-                                    <a href="https://sentry.io/" target="_blank">Sentry</a> (used by 4M+ developers) and the
-                                    leader of the
-                                    <a href="https://opensourcepledge.com" target="_blank">Open Source Pledge</a>,
-                                    a cultural initiative to get companies to pay open source maintainers.
-                                    Founded OSS funding pioneer Gratipay (2012–2018).
+                                    Sentry (used by 4M+ developers) and the leader of the
+                                    Open Source Pledge, a cultural initiative to get companies to pay open source
+                                    maintainers. Founded OSS funding pioneer Gratipay (2012–2018).
                                 </p>
                             </div>
                         </div>
@@ -190,12 +203,9 @@ const stats = await statsRes.json();
                             </div>
                             <div class="team-member__desc">
                                 <p>
-                                    Co-founder and ex VP Engineering at
-                                    <a href="https://nginx.com" target="_blank">Nginx</a>,
+                                    Co-founder and ex VP Engineering at Nginx,
                                     the world's leading web server, used by 400M+ websites, acquired for ~$0.7B in 2019.
-                                    Former VP Engineering at
-                                    <a href="https://www.f5.com/" target="_blank">F5</a>.
-                                    Seasoned supporter of FreeBSD.
+                                    Former VP Engineering at F5. Long-time contributor to FreeBSD.
                                 </p>
                             </div>
                         </div>
@@ -213,14 +223,8 @@ const stats = await statsRes.json();
                             </div>
                             <div class="team-member__desc">
                                 <p>
-                                    Program Manager at
-                                    <a href="https://numfocus.org" target="_blank">NumFOCUS</a>,
-                                    a nonprofit foundation supporting scientific OSS such as
-                                    <a href="https://pandas.pydata.org/" target="_blank">Pandas</a>.
-                                    Co-Founder of
-                                    <a href="https://www.scios.tech/" target="_blank">SciOS</a>
-                                    and the
-                                    <a href="https://iosp.io/" target="_blank">The Institute of Open Science Practices</a>,
+                                    Program Manager at NumFOCUS, a nonprofit supporting scientific OSS such as
+                                    Pandas. Co-Founder of SciOS and The Institute of Open Science Practices,
                                     focusing on sustainable open science.
                                 </p>
                             </div>
@@ -237,11 +241,9 @@ const stats = await statsRes.json();
                             </div>
                             <div class="team-member__desc">
                                 <p>
-                                    Chief Fundraising Officer at the
-                                    <a href="https://openssl-foundation.org/" target="_blank">OpenSSL Foundation</a>
-                                    and former Director of the
-                                    <a href="https://wikimediaendowment.org/" target="_blank">Wikipedia Endowment</a>.
-                                    Served as Director of Individual Giving at the Smithsonian and the New York Public Library
+                                    Deputy Executive Director at the OpenSSL Foundation
+                                    and former Director of the Wikipedia Endowment.
+                                    Served as Director of Individual Giving at the Smithsonian and the New York Public Library.
                                 </p>
                             </div>
                         </div>
@@ -257,10 +259,8 @@ const stats = await statsRes.json();
                             </div>
                             <div class="team-member__desc">
                                 <p>
-                                    Maintainer of the
-                                    <a href="https://opensourcepledge.com" target="_blank">Open Source Pledge</a>.
-                                    Core developer of OSS funding service
-                                    <a href="https://thanks.dev" target="_blank">thanks.dev</a>.
+                                    Maintainer of the Open Source Pledge.
+                                    Core developer of OSS funding service thanks.dev.
                                     Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
                                 </p>
                             </div>
@@ -268,7 +268,7 @@ const stats = await statsRes.json();
                     </div>
                     <div class="mini-note">
                         <p>
-                            Looking to contribute to the Open Source Endowment and join our team of volunteers? Please
+                            Looking to contribute to the Open Source Endowment and join our team as a volunteer contributor or board member? Please
                             <a href="mailto:donors@endowment.dev" target="_blank">contact us</a>.
                         </p>
                     </div>
@@ -282,25 +282,29 @@ const stats = await statsRes.json();
                         <div>
                             <h2>Investing strategy</h2>
                             <p>
-                                OSE invests received donations in low-risk assets, and provides grants only from
-                                investment income. It enables long term planning and sustainable support for OSS.
+                                All donations to the Endowment are put into low-risk investments, and only the yearly
+                                income from these investments is used to fund OSS project grants. This approach supports
+                                long-term planning and sustainable funding for OSS.
                             </p>
                             <p>
-                                Before obtaining a 501(c)(3) status, OSE has been investing in US Treasury bonds, whose
-                                yield matches our target spend rate of 5% per year.
+                                Previously, OSE invested in US Treasury bonds, which are very
+                                low-risk and earn ~5% per year. Now, the portfolio is being transferred to a professional
+                                investment manager. The board chose Infinite Giving, specializing in US nonprofits, as
+                                our outsourced CIO.
                             </p>
                             <p>
-                                Later, these T-bonds will be complemented by slightly more risky assets selected by the
-                                outsourced CIO, which should increase the expected portfolio returns to 7-8%
+                                Our target is a 7-8% return with low risk, using 5% of the endowment each year
+                                for grants. Most of the remaining earnings will be reinvested after covering basic
+                                operating costs.
                             </p>
                         </div>
                         <div class="side-kpis">
                             <div>
-                                <i>${humanize(stats.investment_account.total_current_value)}</i>
-                                <span>OSE investment portfolio value</h2>
+                                <i>${humanize(fundSize)}</i>
+                                <span>endowment fund size</span>
                                 <small>
                                     Last updated on
-                                    <a href="https://stats.endowment.dev/">Nov 11, 2025</a>
+                                    <a href="https://stats.endowment.dev/">{lastUpdated}</a>
                                 </small>
                             </div>
                         </div>

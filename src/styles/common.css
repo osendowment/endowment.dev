@@ -1647,6 +1647,7 @@ a.card {
         }
         .team-member__desc {
             padding: 1rem;
+            font-size: var(--font-size-3);
         }
     }
 }
