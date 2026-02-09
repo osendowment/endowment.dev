@@ -1,0 +1,135 @@
+---
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import Layout from '../layouts/Layout.astro';
+import DonorMiniProfile from "../components/DonorMiniProfile.astro";
+
+let STATS_URL = 'https://stats.endowment.dev/';
+let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
+
+const statsRes = await fetch(STATS_URL);
+const stats = await statsRes.json();
+
+const donorsRes = await fetch(DONOR_STATS_URL);
+const allDonors = await donorsRes.json();
+const individualDonors = allDonors.filter((d) => d.type == 'individual');
+const donorsByClass = individualDonors.reduce((donorsByClass, donor) => {
+    if (!(donor.class in donorsByClass)) {
+        donorsByClass[donor.class] = [];
+    }
+    donorsByClass[donor.class].push(donor);
+    return donorsByClass;
+}, {});
+const nDonors = stats.donations.total_donors_count;
+
+const classDisplayNames: Record<string, string> = {
+    '100K+': '$100,000+ individual donors',
+    '10-100K': '$10,000+ individual donors',
+    '1-10K': '$1,000+ individual donors',
+    '0-1K': 'Other donors',
+};
+const otherDonorsClassName = '0-1K';
+---
+
+<Layout>
+    <article>
+        <section class="pagesec pagesec--dark pagesec--tight">
+            <div class="container">
+                <div class="insec insec--xpad insec--ytight">
+                    <div class="community-intro">
+                        <div class="sechead sechead--min-height sechead--left">
+                            <h1>Community</h1>
+                            <p>
+                                We welcome everybody to the donor community, and
+                                thank our {nDonors} donors for generous
+                                donations to the Open Source Endowment, increasing
+                                the sustainability of the global software supply
+                                chain.
+                            </p>
+                            <p>
+                                Community is a cornerstone of our endowment, and
+                                all individuals contributing at least $1000/year —
+                                OSE Members — are invited to participate in its
+                                <a href="/endowment#governance">governance</a>.
+                            </p>
+                        </div>
+                        <div class="community-kpi">
+                            <b>{stats.members_count}</b>
+                            <span>OSE members</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pagesec">
+            <div class="container">
+                <div class="insec insec--xpad donor-board">
+                    {Object.entries(donorsByClass).map(([className, donors]) =>
+                        className != otherDonorsClassName && (
+                            <h2>{classDisplayNames[className]}</h2>
+                            <div class="donor-list">
+                                {donors.map((donor) => (
+                                    <DonorMiniProfile
+                                        name={donor.name}
+                                        description={donor.description}
+                                        avatarUrl={donor.picture_url}
+                                    ></DonorMiniProfile>
+                                ))}
+                            </div>
+                        )
+                    )}
+                    <h2>Institutional donors</h2>
+                    <div class="donor-list">
+                        <DonorMiniProfile
+                            name="G-Research"
+                            description="Corporate donor"
+                            avatarUrl="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
+                        ></DonorMiniProfile>
+                        <DonorMiniProfile
+                            name="Evil Martians"
+                            description="Pro bono donor"
+                            avatarUrl="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
+                        ></DonorMiniProfile>
+                    </div>
+                    <h2>{classDisplayNames[otherDonorsClassName]}</h2>
+                    <div class="donor-list">
+                        {donorsByClass[otherDonorsClassName].map((donor) => (
+                            <DonorMiniProfile
+                                name={donor.name}
+                                compact={true}
+                            ></DonorMiniProfile>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+</Layout>
+
+<style>
+    .community-intro {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        @media (max-width: 800px) {
+            flex-direction: column;
+            gap: 4rem;
+        }
+        .community-kpi {
+            text-align: center;
+            b {
+                display: block;
+                margin-bottom: 1.0rem;
+                font-size: var(--font-size-8);
+                font-weight: normal;
+                line-height: 1;
+                @media (max-width: 800px) {
+                    margin-bottom: 0.5rem;
+                    font-size: var(--font-size-6);
+                }
+            }
+        }
+    }
+</style>

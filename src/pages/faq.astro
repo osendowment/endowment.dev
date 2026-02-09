@@ -1,0 +1,22 @@
+---
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import Layout from '../layouts/Layout.astro';
+
+import * as post from '../assets/foundation/faq.md';
+---
+
+<Layout>
+    <section>
+        <div class="container">
+            <article>
+                <section class="pagesec">
+                    <div class="insec insec--xpad">
+                        <Fragment set:html={post.compiledContent()}/>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </section>
+</layout>

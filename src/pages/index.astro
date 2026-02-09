@@ -1,633 +1,582 @@
 ---
-// © 2025 Vlad-Stefan Harbuz <vlad@vlad.website>
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
+import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
+import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
-let API_HOST = 'https://api.endowment.dev';
-if ('ENDOWMENT_API_HOST' in process.env) {
-    API_HOST = process.env.ENDOWMENT_API_HOST;
-}
+let STATS_URL = 'https://stats.endowment.dev/';
+let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
+
+const statsRes = await fetch(STATS_URL);
+const stats = await statsRes.json();
+
+const donorsRes = await fetch(DONOR_STATS_URL);
+const allDonors = await donorsRes.json();
+const individualDonors = allDonors.filter((d) => d.type == 'individual');
+const featuredDonors = individualDonors
+    .filter((d) => d.featured)
+    .sort((a, b) => a.featured - b.featured);
+
 ---
 
 <Layout>
-    <div class="intro container" slot="hero">
-        <div class="intro-text">
-            <small>The world's first</small>
-            <h1>Open Source<br>Endowment</h1>
-            <hr>
-            <small>
-                Truly sustainable funding for critical OSS through a community&#x2011;driven
-                endowment.
-            </small>
-        </div>
-        <div class="intro-illu-container">
-            <div class="intro-illu">
-                <div class="illubox illubox--a">curl</div>
-                <div class="illubox illubox--a">mpld3</div>
-                <div class="illubox illubox--a">pandas</div>
-                <div class="illubox illubox--a">cpython</div>
-                <div class="illubox illubox--b illubox--ok">openssl</div>
-                <div class="illubox illubox--b illubox--ok">imagemagick</div>
-                <div class="illubox illubox--b">tokio</div>
-                <div class="illubox illubox--b illubox--ok">numpy</div>
-                <div class="illubox illubox--c illubox--ok">log4j</div>
-                <div class="illubox illubox--c">joda-time</div>
-                <div class="illubox illubox--c">matplotlib</div>
-                <div class="illubox illubox--c">requests</div>
-                <div class="illubox illubox--d">iced</div>
-                <div class="illubox illubox--d illubox--ok">git</div>
-                <div class="illubox illubox--d">zlib</div>
-                <div class="illubox illubox--d">xz</div>
+    <section class="pagesec pagesec--no-top-border">
+        <div class="container">
+            <div class="insec insec--nopad">
+                <div class="intro">
+                    <div class="intro-text">
+                        <small>The world's first</small>
+                        <h1>Open Source<br>Endowment</h1>
+                        <small>
+                            Truly
+                            <span class="desktop-only">
+                                <span class="hlbox">
+                                    <span class="hlbox--text">
+                                        sustainable funding
+                                    </span>
+                                    <span class="hlbox--main">
+                                        <span class="hlbox--sm hlbox--nw"></span>
+                                        <span class="hlbox--sm hlbox--ne"></span>
+                                        <span class="hlbox--sm hlbox--sw"></span>
+                                        <span class="hlbox--sm hlbox--se"></span>
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="mobile-only">sustainable funding</span>
+                            for critical OSS through a community&#x2011;driven
+                            endowment
+                        </small>
+                        <div class="buttonset">
+                            <a
+                                href="https://www.every.org/osendowment?suggestedAmounts=100%2C500%2C1000%2C2000&theme_color=5ba9ee&designation=Endowment+Fund&utm_campaign=donate-link#/donate"
+                                class="button button--colored"
+                                data-track="intro-bottom-donate"
+                            >Donate</a>
+                            <a
+                                href="/endowment"
+                                class="button"
+                                data-track="intro-bottom-learn"
+                            >Learn More</a>
+                        </div>
+                    </div>
+                    <img class="intro-tree" src="/images/illustrations/em-tree.svg">
+                </div>
+            </div>
+            <div class="insec insec--xpad insec--ytight intro-kpis">
+                <div>
+                    <b>${humanize(stats.donations.total_donated_value)}</b><span>donated</span>
+                </div>
+                <div>
+                    <b>{humanize(stats.donations.total_donors_count)}</b><span>donors</span>
+                </div>
+                <div>
+                    <b>{stats.members_count}</b><span><span class="desktop-only">donors </span>giving $1K+</span>
+                </div>
             </div>
         </div>
-        <div class="mobile-only">
-            <a href="#donate" class="button" data-track="hero-bottom-donate">
-                Donate now<span class="after">›</span>
-            </a>
+    </section>
+    <section class="pagesec pagesec--grid">
+        <div class="container">
+            <div class="insec insec--xpad">
+                <div class="cardset">
+                    <div class="card card--big-icon">
+                        <img src="/images/icons/em-sustainable.svg" alt="A leaf-shaped squiggle">
+                        <div>
+                            <h2>Sustainable</h2>
+                            <p>
+                                Provides a stable, long-term funding model, independent of the volatility of traditional
+                                support.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card card--big-icon">
+                        <img src="/images/icons/em-systemic.svg" alt="A building block">
+                        <div>
+                            <h2>Systemic</h2>
+                            <p>
+                                Supports the critical but underfunded projects that conventional models miss.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card card--big-icon">
+                        <img src="/images/icons/em-efficient.svg" alt="A performance gauge">
+                        <div>
+                            <h2>Efficient</h2>
+                            <p>
+                                A lean, digital-first, community-led organization designed for maximum impact and
+                                transparency.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pagesec">
+        <div class="container">
+            <div class="insec insec--nopad-bottom insec--nopad-x">
+                <h2 class="sechead">Trusted by open source creators, founders, executives and investors</h2>
+            </div>
+        </div>
+    </section>
+    <section class="pagesec">
+        <div class="container container--mobile-unpadded">
+            <div class="insec insec--nopad insec--noborder-right insec--side-squares">
+                <div class="grid grid--bigfirst">
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
+                                Open Source is a cornerstone of the tech-enabled world, operating similarly to a global
+                                <a href="https://kvinogradov.com/oss-universities/">research university</a>.
+                                We are building a community-led endowment fund for the global tech industry to
+                                sustainably fund the most critical OSS projects.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/konstantin.webp"
+                                    alt="A portrait of Konstantin Vinogradov"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Konstantin Vinogradov</h3>
+                                <i>ex General Partner at Runa Capital</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
+                                The Open Source Endowment is so obvious in retrospect, it’s a wonder it took so long to
+                                connect the dots. What better way to permanently fund vital non-profit work? It’s high
+                                time we brought the endowment model to bear on
+                                <a href="https://openpath.quest/2024/the-open-source-sustainability-crisis/"
+                                   >the Open Source sustainability crisis</a
+                                >.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/chad.webp"
+                                    alt="A portrait of Chad Whitacre"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Chad Whitacre</h3>
+                                <i>Head of Open Source, Sentry</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
+                                Open source underpins the critical infrastructure of the global tech ecosystem, and the
+                                community-driven Endowment is a wonderful initiative to pursue its long-term
+                                sustainability.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/mitchell.webp"
+                                    alt="A portrait of Mitchell Hashimoto"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Mitchell Hashimoto</h3>
+                                <i>Co-founder, HashiCorp</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
+                                Aenean molestie nibh in turpis venenatis, nec
+                                auctor est ultricies. Maecenas porta quis augue
+                                eget luctus.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/icons/silhouette.svg"
+                                    alt="A portrait of Daniel Dover"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Daniel Dover</h3>
+                                <i>CEO, Blooper</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
+                                Sed malesuada mauris et aliquet mollis. Nunc
+                                sodales eu lacus sed viverra.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/icons/silhouette.svg"
+                                    alt="A portrait of Erin Enoch"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Erin Enoch</h3>
+                                <i>Research Lead, Foofax</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pagesec">
+        <div class="container">
+            <div class="insec insec--xpad">
+                <div class="sechead">
+                    <h2>Solving Open&nbsp;Source Sustainability Together</h2>
+                    <h3>The modern world runs on open source software that is mostly built and maintained by unpaid volunteers. A lack of sustainable funding might lead to serious issues for all of us.</h3>
+                </div>
+                <div class="sustainability">
+                    <div class="sustainability-outline">
+                        <figure>
+                            <a href="https://xkcd.com/2347/" target="_blank">
+                                <img
+                                    src="/images/xkcd-2347.png"
+                                    alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating “all modern digital infrastructure”. The structure precariously rests on a small load-bearing block, titled “a project some random person in Nebraska has been thanklessly maintaining since 2003”."
+                                    width="300">
+                            </a>
+                        </figure>
+                        <div class="sustainability-stats">
+                            <div>
+                                <i>>95%</i>
+                                <p>software depends on OSS</p>
+                            </div>
+                            <div>
+                                <i>500+</i>
+                                <p>OSS dependencies in average app</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sustainability-boxgroup">
+                        <div class="sustainability-box">
+                            <h3>
+                                <i><div class="bubble bubble--no"></div>Problem</i>
+                                Critical but Fragile Infrastructure
+                            </h3>
+                            <p>
+                                Maintainers’ burnout and lack of funding often lead to bugs and serious security incidents,
+                                as seen with
+                                <a href="https://en.wikipedia.org/wiki/Log4Shell" target="_blank">Log4Shell</a>,
+                                the
+                                <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank">XZ Utils backdoor</a>
+                                and
+                                <a href="https://en.wikipedia.org/wiki/Heartbleed" target="_blank">Heartbleed</a>.
+                                The unsustainable state of OSS financing makes critical infrastructure more fragile and
+                                puts our world at ever-growing risk.
+                            </p>
+                        </div>
+                        <div class="sustainability-arrow">↓</div>
+                        <div class="sustainability-box">
+                            <h3>
+                                <i><div class="bubble bubble--ok"></div>Solution</i>
+                                OSS Community Endowment
+                            </h3>
+                            <p>
+                                Successfully
+                                <a href="https://en.wikipedia.org/wiki/Financial_endowment" target="_blank">used</a>
+                                by leading universities for centuries, endowments spend only investment returns from
+                                donations to advance their causes, weathering economic and political volatility.
+                            </p>
+                            <p>
+                                We are building a community-led endowment fund that leverages "open source alumni" to
+                                sustainably fund the most critical OSS projects. It is an open nonprofit, and everybody is
+                                welcome to join — every contribution matters.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pagesec pagesec--dark">
+        <div class="container">
+            <div class="insec insec--xpad">
+                <div class="squares squares--corner-dark-sw-inner"></div>
+                <div class="squares squares--corner-dark-sw-outer"></div>
+                <div class="squares squares--corner-dark-ne-inner"></div>
+                <div class="squares squares--corner-dark-ne-outer"></div>
+                <h2 class="sechead sechead--left">Next-gen Nonprofit,<br>Based on Principles</h2>
+                <div class="features">
+                    <div class="feature">
+                        <img src="/images/icons/em-academy.svg" alt="An academy">
+                        <h3>Data-Driven & SMART Goals</h3>
+                        <p>
+                            Data guides our goal-based strategy,
+                            ensuring every donation makes a measurable difference.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/icons/em-globe.svg" alt="A globe">
+                        <h3>Global Outlook</h3>
+                        <p>
+                            Supports the long-term health of the global open source supply chain, not of specific countries or
+                            ecosystems.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/icons/em-door.svg" alt="An open door">
+                        <h3>Maximum Transparency</h3>
+                        <p>
+                            Provides open data, public governance processes, and clear accountability in all funding
+                            decisions and operations.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/icons/em-people.svg" alt="Two people">
+                        <h3>Inclusive and Diverse Governance</h3>
+                        <p>
+                            Empowers the community to shape key strategic decisions with a focus on individuals over companies.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/icons/em-network.svg" alt="A global network">
+                        <h3>Decentralized Funding</h3>
+                        <p>
+                            A broad funding base from diverse sources makes every contribution meaningful and
+                            fosters community governance.
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/icons/em-umbrella.svg" alt="An umbrella">
+                        <h3>Neutrality</h3>
+                        <p>
+                            Remains independent from political or corporate influence, ensuring unbiased, mission-driven
+                            funding for the public good.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pagesec">
+        <div class="container">
+            <div class="insec insec--xpad">
+                <h2 class="sechead">How It Works</h2>
+                <div class="how-it-works">
+                    <div class="how-it-works__step">
+                        <div>
+                            <div class="how-it-works__digit">1</div>
+                            <h3>Fundraising</h3>
+                            <p>
+                                Individuals, companies, and foundations donate to
+                                the Open Source Endowment, forming its permanent
+                                principal, which is not spent.
+                            </p>
+                        </div>
+                        <img
+                            src="/images/illustrations/howto-1.svg"
+                            alt="Individuals, companies and foundations donate money">
+                    </div>
+                    <div class="how-it-works__step">
+                        <div>
+                            <div class="how-it-works__digit">2</div>
+                            <h3>Investing</h3>
+                            <p>
+                                The endowment principal is invested in a low-risk
+                                portfolio that generates sustainable annual
+                                returns. We target a ~5% spend rate, typical for
+                                U.S. universities.
+                            </p>
+                        </div>
+                        <img src="/images/illustrations/howto-2.svg"
+                            alt="The donated money is invested">
+                    </div>
+                    <div class="how-it-works__step">
+                        <div>
+                            <div class="how-it-works__digit">3</div>
+                            <h3>Grantmaking</h3>
+                            <p>
+                                We distribute grants based on open, data-driven
+                                inputs and our model, co-developed with the
+                                Endowment's Members and in consultation with the
+                                open source community.
+                            </p>
+                        </div>
+                        <img src="/images/illustrations/howto-3.svg"
+                            alt="Grants are distributed">
+                    </div>
+                    <div class="how-it-works__step">
+                        <div>
+                            <div class="how-it-works__digit">4</div>
+                            <h3>Monitoring</h3>
+                            <p>
+                                Supported projects are tracked for accountability,
+                                refining strategy, and maximizing OSE's positive
+                                impact. The grantmaking model is iteratively
+                                improved.
+                            </p>
+                        </div>
+                        <img src="/images/illustrations/howto-4.svg"
+                            alt="The progress of grant-funded work is monitored">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <section class="principles section--grid">
+    <section class="pagesec" id="donors">
         <div class="container">
-            <div class="cardset">
-                <div class="card card--big-icon">
-                    <img src="/images/icons/squiggle.svg" alt="A leaf-shaped squiggle">
-                    <h2>Sustainable</h2>
-                    <p>
-                        Provides a stable, long-term funding model, independent of the volatility of traditional support.
-                    </p>
+            <div class="insec insec--xpad">
+                <div class="sechead">
+                    <h2>Supported by the tech community</h2>
+                    <h3>Here are some of the generous donors helping make Open Source sustainable</h3>
                 </div>
-                <div class="card card--big-icon">
-                    <img src="/images/icons/branches-dense.svg" alt="Dense, intertwining branches">
-                    <h2>Systemic</h2>
-                    <p>
-                        Supports the critical but underfunded projects that conventional models miss.
-                    </p>
+                <div class="donor-list donor-list--faded">
+                    {featuredDonors.map((donor) => (
+                        <DonorMiniProfile
+                            name={donor.name}
+                            description={donor.description}
+                            avatarUrl={donor.picture_url}
+                        ></DonorMiniProfile>
+                    ))}
                 </div>
-                <div class="card card--big-icon">
-                    <img src="/images/icons/assembly.svg" alt="Two circles coming together">
-                    <h2>Efficient</h2>
-                    <p>
-                        A lean, digital-first, community-led organization designed for maximum impact and transparency.
-                    </p>
+                <div class="buttonset buttonset--center">
+                    <a
+                        href="/community"
+                        class="button"
+                    >See all donors →</a>
                 </div>
             </div>
         </div>
     </section>
-    <section>
+    <section class="pagesec pagesec--dark">
         <div class="container">
-            <h2>Solving Open&nbsp;Source Sustainability</h2>
-            <div class="spotlight">
+            <div class="insec insec--xpad big-cta">
                 <div>
-                    <p>
-                        The modern world runs on software, and more than 95% of its code depends on open source
-                        software. This critical infrastructure is built and maintained by mostly unpaid volunteers
-                        contributing in whatever spare time they have.
-                    </p>
-                    <p>
-                        Maintainer burnout and lack of funding often lead to catastrophic security incidents, as seen
-                        with
-                        <a href="https://en.wikipedia.org/wiki/Log4Shell" target="_blank">Log4Shell</a>,
-                        the
-                        <a href="https://en.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank">XZ Utils backdoor</a>
-                        and
-                        <a href="https://en.wikipedia.org/wiki/Heartbleed" target="_blank">Heartbleed</a>.
-                        The unsustainable state of OSS financing makes the global software supply chain fragile and
-                        puts our world at ever-growing risk.
-                    </p>
-                    <p>
-                        <strong>Our solution: the endowment model</strong>.
-                        Successfully
-                        <a href="https://en.wikipedia.org/wiki/Financial_endowment" target="_blank">implemented</a>
-                        by the world's leading universities and nonprofit institutions, endowments aggregate donations
-                        in a permanent fund and spend only investment returns to advance their causes. This creates a
-                        stable financial foundation designed to weather economic and political volatility across
-                        decades.
-                    </p>
-                    <p>
-                        We are building the first implementation of this model for open source software, and invite you
-                        to join this mission.
-                    </p>
-                </div>
-                <figure>
-                    <img src="/images/xkcd-2347.png"
-                        alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating “all modern digital infrastructure”. The structure precariously rests on a small load-bearing block, titled “a project some random person in Nebraska has been thanklessly maintaining since 2003”.">
-                    <figcaption>
-                        <a href="https://xkcd.com/2347/" target="_blank">xkcd “Dependency”</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="cardset cardset--tight small-text">
-                <a class="card card--row-icon card--top" href="https://openpath.quest/2024/the-open-source-sustainability-crisis/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
-                    <span>
-                        <strong>“The Open Source Sustainability Crisis”</strong><br>by Chad Whitacre
-                    </span>
-                </a>
-                <a class="card card--row-icon card--top" href="https://kvinogradov.com/oss-universities/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
-                    <span>
-                        <strong>“What Open Source can learn from universities to fix its funding”</strong><br>by
-                        Konstantin Vinogradov
-                    </span>
-                </a>
-                <a class="card card--row-icon card--top" href="https://www.blackduck.com/resources/analyst-reports/open-source-security-risk-analysis.html" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#fff" d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z"/></svg>
-                    <span>
-                        <strong>“2025 Open Source Security and Risk Analysis”</strong><br>by Synopsis
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="vision section--grid">
-        <div class="container">
-            <h2>Our Vision</h2>
-            <p>
-                Open source is the world's largest public institution, operating much like a global, decentralized
-                university. Over 150 million people on GitHub alone learn, create, and share together, in a unique
-                collaborative and social environment.
-            </p>
-            <p>
-                The Open Source Endowment (OSE) is a lasting solution to efficiently sustaining this vital institution.
-                It leverages a funding model proven to work by leading universities and cultural organizations for
-                centuries.
-            </p>
-        </div>
-    </section>
-    <section class="container section--split flex-center">
-        <div class="subsection">
-            <h2>Short-Term Roadmap</h2>
-            <div class="roadmap">
-                <div class="roadmap-item">
-                    <h3>Q1 2025</h3>
-                    <ul>
-                        <li>
-                            Incorporated a US nonprofit corporation
-                        </li>
-                        <li>
-                            Applied for tax-exempt 501(c)(3) status
-                        </li>
-                        <li>
-                            Secured the first co-founding donors
-                        </li>
-                    </ul>
-                </div>
-                <div class="roadmap-item">
-                    <h3>Q2 2025</h3>
-                    <ul>
-                        <li>
-                            Set up financial infrastructure
-                        </li>
-                        <li>
-                            Introduce Members' Club
-                        </li>
-                    </ul>
-                </div>
-                <div class="roadmap-item">
-                    <h3>Q3 2025</h3>
-                    <ul>
-                        <li>
-                            Develop initial grantmaking model
-                        </li>
-                    </ul>
-                </div>
-                <div class="roadmap-item">
-                    <h3>Q4 2025</h3>
-                    <ul>
-                        <li>
-                            Finalize co-founding donor community
-                        </li>
-                    </ul>
-                </div>
-                <div class="roadmap-item">
-                    <h3>Q1 2026</h3>
-                    <ul>
-                        <li>
-                            501(c)(3) status (expected, not guaranteed)
-                        </li>
-                        <li>
-                            Public launch and community expansion
-                        </li>
-                        <li>
-                            Finalize grantmaking model
-                        </li>
-                        <li>
-                            Perform first distributions of grants
-                        </li>
-                    </ul>
+                    <h2>Donate to Open Source</h2>
+                    <h3>Make an ever-lasting impact on the open source ecosystem</h3>
+                    <a
+                        href="https://www.every.org/osendowment?suggestedAmounts=100%2C500%2C1000%2C2000&theme_color=5ba9ee&designation=Endowment+Fund&utm_campaign=donate-link#/donate"
+                        class="button button--colored"
+                        data-track="big-cta-donate"
+                    >Donate</a>
                 </div>
             </div>
-        </div>
-        <div class="subsection">
-            <div class="card card--center">
-                <img src="/images/icons/avatar.svg" alt="The silhouette of a person">
-                <h2>Governance</h2>
-                <p>
-                    <strong>Members.</strong>
-                    OSE is guided by the Members' Club — the open community of individuals who donate at least $1,000
-                    per year. They have legal rights to take part in strategic matters, such as selecting the
-                    grantmaking model and appointing community directors to the OSE board.
-                </p>
-                <p>
-                    <strong>Directors.</strong>
-                    OSE is strategically managed by its Board of Directors, with operations managed by its Executive
-                    Director. By design, all directors at OSE must also be Members.
-                </p>
-                <a href="#donate" class="button" data-track="governance-donate">
-                    Donate $1,000+ to join as a Member<span class="after">›</span>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h2>Next-gen Nonprofit, Based on Principles</h2>
-        <div class="container flex flex-center">
-            <div class="features">
-                <div class="card">
-                    <h3>Data-Driven & SMART Goals</h3>
-                    <p>
-                        Data guides our goal-based strategy,
-                        ensuring every donation makes a measurable difference.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Global Outlook</h3>
-                    <p>
-                        Supports the long-term health of the global open source supply chain, not of specific countries or
-                        ecosystems.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Maximum Transparency</h3>
-                    <p>
-                        Provides open data, public governance processes, and clear accountability in all funding
-                        decisions and operations.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Inclusive and Diverse Governance</h3>
-                    <p>
-                        Empowers the community to shape key strategic decisions with a focus on individuals over companies.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Decentralized Funding</h3>
-                    <p>
-                        A broad funding base from diverse sources makes every contribution meaningful and
-                        fosters community governance.
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Neutrality</h3>
-                    <p>
-                        Remains independent from political or corporate influence, ensuring unbiased, mission-driven
-                        funding for the public good.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <h2>How it Works</h2>
-            <div class="cardset cardset--tight process">
-                <div class="card card--big-icon">
-                    <img src="/images/icons/card.svg" alt="A credit card">
-                    <h3>
-                        <span class="process-number">1</span>Fundraising
-                    </h3>
-                    <p>
-                        Individuals, companies, and foundations donate to the Open Source Endowment, forming its
-                        permanent principal, which is not spent.
-                    </p>
-                </div>
-                <div class="card card--big-icon">
-                    <img src="/images/icons/suns.svg" alt="Two triangles pointing up">
-                    <h3>
-                        <span class="process-number">2</span>Investing
-                    </h3>
-                    <p>
-                        The endowment principal is invested in a low-risk portfolio that generates sustainable annual
-                        returns. We target a ~5% spend rate, typical for U.S. universities.
-                    </p>
-                </div>
-                <div class="card card--big-icon">
-                    <img src="/images/icons/balls.svg" alt="Circles of different sizes">
-                    <h3>
-                        <span class="process-number">3</span>Grantmaking
-                    </h3>
-                    <p>
-                        We distribute grants based on open, data-driven inputs and our model, co-developed with the OSE
-                        Members and in consultation with the open source community.
-                    </p>
-                </div>
-                <div class="card card--big-icon">
-                    <img src="/images/icons/search.svg" alt="A magnifying glass">
-                    <h3>
-                        <span class="process-number">4</span>Monitoring
-                    </h3>
-                    <p>
-                        Supported projects are tracked for accountability, refining strategy, and maximizing OSE's
-                        positive impact. The grantmaking model is iteratively improved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    {true && (
-    <section>
-        <div class="container">
-            <h2>Our Team</h2>
-            <div class="team-member-list">
-                <div class="team-member card">
-                    <div class="team-member__head">
-                        <div class="team-member__image">
-                            <img src="/images/team/konstantin.webp" alt="A portrait of Konstantin">
-                        </div>
-                        <h3>
-                            <div class="team-member__nameline">
-                                <a href="https://www.linkedin.com/in/kvinogradov/" target="_blank">Konstantin Vinogradov</a>
-                                <a href="mailto:konstantin@endowment.dev" target="_blank" aria-label="Email Konstantin">
-                                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 352c-16.53 0-33.06-5.422-47.16-16.41L0 173.2V400C0 426.5 21.49 448 48 448h416c26.51 0 48-21.49 48-48V173.2l-208.8 162.5C289.1 346.6 272.5 352 256 352zM16.29 145.3l212.2 165.1c16.19 12.6 38.87 12.6 55.06 0l212.2-165.1C505.1 137.3 512 125 512 112C512 85.49 490.5 64 464 64h-416C21.49 64 0 85.49 0 112C0 125 6.01 137.3 16.29 145.3z"/></svg>
-                                </a>
-                            </div>
-                            <em>Board Director, Chairman</em>
-                        </h3>
-                    </div>
-                    <div class="team-member__desc">
-                        <p>
-                            General Partner at
-                            <a href="https://runacap.com/" target="_blank">Runa Capital</a>
-                            ($0.5B+ AUM), who focuses on early-stage OSS investments.
-                            Previously co&#x2011;founded an endowment which grew from $50K to $600K+ in 12 months. Publishes the
-                            <a href="https://runacap.com/ross-index/" target="_blank">ROSS Index</a>,
-                            a quarterly data-driven rating of top open source startups.
-                        </p>
-                    </div>
-                </div>
-                <div class="team-member card">
-                    <div class="team-member__head">
-                        <div class="team-member__image">
-                            <img src="/images/team/chad.webp" alt="A portrait of Chad">
-                        </div>
-                        <h3>
-                            <a href="https://www.linkedin.com/in/chadwhitacre/" target="_blank">Chad Whitacre</a>
-                            <em>Board Director, Secretary</em>
-                        </h3>
-                    </div>
-                    <div class="team-member__desc">
-                        <p>
-                            Head of Open Source at application monitoring platform
-                            <a href="https://sentry.io/" target="_blank">Sentry</a> (used by 4M+ developers) and the
-                            leader of the
-                            <a href="https://opensourcepledge.com" target="_blank">Open Source Pledge</a>,
-                            a cultural initiative to get companies to pay open source maintainers.
-                            Founded OSS funding pioneer Gratipay (2012–2018).
-                        </p>
-                    </div>
-                </div>
-                <div class="team-member card">
-                    <div class="team-member__head">
-                        <div class="team-member__image">
-                            <img src="/images/team/maxim.webp" alt="A portrait of Maxim">
-                        </div>
-                        <h3>
-                            <a href="https://www.linkedin.com/in/maxim/" target="_blank">Maxim Konovalov</a>
-                            <em>Board Director, Treasurer</em>
-                        </h3>
-                    </div>
-                    <div class="team-member__desc">
-                        <p>
-                            Co-founder and ex VP Engineering at
-                            <a href="https://nginx.com" target="_blank">Nginx</a>,
-                            the world's leading web server, used by 400M+ websites, acquired for ~$0.7B in 2019.
-                            Former VP Engineering at
-                            <a href="https://www.f5.com/" target="_blank">F5</a>.
-                            Seasoned supporter of FreeBSD.
-                        </p>
-                    </div>
-                </div>
-                <div class="team-member card">
-                    <div class="team-member__head">
-                        <div class="team-member__image">
-                            <img src="/images/team/jonathan.webp" alt="A portrait of Jonathan">
-                        </div>
-                        <h3>
-                            <div class="team-member__nameline">
-                                <a href="https://www.linkedin.com/in/jonathan-starr-b04032284/" target="_blank">Jonathan Starr</a>
-                                <a href="mailto:jon@endowment.dev" target="_blank" aria-label="Email Jonathan">
-                                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M256 352c-16.53 0-33.06-5.422-47.16-16.41L0 173.2V400C0 426.5 21.49 448 48 448h416c26.51 0 48-21.49 48-48V173.2l-208.8 162.5C289.1 346.6 272.5 352 256 352zM16.29 145.3l212.2 165.1c16.19 12.6 38.87 12.6 55.06 0l212.2-165.1C505.1 137.3 512 125 512 112C512 85.49 490.5 64 464 64h-416C21.49 64 0 85.49 0 112C0 125 6.01 137.3 16.29 145.3z"/></svg>
-                                </a>
-                            </div>
-                            <em>Executive Director</em>
-                        </h3>
-                    </div>
-                    <div class="team-member__desc">
-                        <p>
-                            Program Manager at
-                            <a href="https://numfocus.org" target="_blank">NumFOCUS</a>,
-                            a nonprofit foundation supporting scientific OSS such as
-                            <a href="https://pandas.pydata.org/" target="_blank">Pandas</a>.
-                            Co-Founder of
-                            <a href="https://www.scios.tech/" target="_blank">SciOS</a>
-                            and the
-                            <a href="https://iosp.io/" target="_blank">The Institute of Open Science Practices</a>,
-                            focusing on sustainable open science.
-                        </p>
-                    </div>
-                </div>
-                <div class="team-member card">
-                    <div class="team-member__head">
-                        <div class="team-member__image">
-                            <img src="/images/team/amy.webp" alt="A portrait of Amy">
-                        </div>
-                        <h3>
-                            <a href="https://www.linkedin.com/in/amy3parker/" target="_blank">Amy Parker</a>
-                            <em>Advisor</em>
-                        </h3>
-                    </div>
-                    <div class="team-member__desc">
-                        <p>
-                            Chief Fundraising Officer at the
-                            <a href="https://openssl-foundation.org/" target="_blank">OpenSSL Foundation</a>
-                            and former Director of the
-                            <a href="https://wikimediaendowment.org/" target="_blank">Wikipedia Endowment</a>.
-                            Served as Director of Individual Giving at the Smithsonian and the New York Public Library
-                        </p>
-                    </div>
-                </div>
-                <div class="team-member card">
-                    <div class="team-member__head">
-                        <div class="team-member__image">
-                            <img src="/images/team/vlad.webp" alt="A portrait of Vlad">
-                        </div>
-                        <h3>
-                            <a href="https://vlad.website" target="_blank">Vlad-Stefan Harbuz</a>
-                            <em>Advisor</em>
-                        </h3>
-                    </div>
-                    <div class="team-member__desc">
-                        <p>
-                            Maintainer of the
-                            <a href="https://opensourcepledge.com" target="_blank">Open Source Pledge</a>.
-                            Core developer of OSS funding service
-                            <a href="https://thanks.dev" target="_blank">thanks.dev</a>.
-                            Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="mini-note">
-                <p>
-                    Looking to contribute to the Open Source Endowment? We'd love to chat.
-                    <a href="mailto:donors@endowment.dev" target="_blank">Contact us!</a>
-                </p>
-            </div>
-        </div>
-    </section>
-    )}
-    <section id="donate">
-        <div class="container">
-            <h2>Donate now to make an ever-lasting impact on the open source ecosystem</h2>
-            <h3>Give $1,000+/year to become a Member</h3>
-            <div class="cardset cardset--column">
-                <div class="card card--alert card--row-icon checkout-alert" hidden>
-                    <img src="/images/icons/fa-triangle-exclamation-solid.svg">
-                    <p></p>
-                </div>
-                <noscript>
-                    <div class="card card--info card--row-icon">
-                        <img src="/images/icons/fa-triangle-exclamation-solid.svg">
-                        <p>
-                            Our payment process requires Javascript — but you can contact us at
-                            <a href="mailto:donors@endowment.dev" target="_blank">donors@endowment.dev</a>
-                            to arrange your donation separately.
-                        </p>
-                    </div>
-                </noscript>
-                <div class="card card--white card--narrow card--big-shadow checkout">
-                    <form
-                        class="form form--big"
-                        action={API_HOST + "/stripe-checkout-session"} method="POST"
-                    >
-                        <div class="form-control">
-                            <label for="donor-email">Email</label>
-                            <input type="email" name="email" id="donor-email">
-                        </div>
-                        <div class="form-control">
-                            <label for="donor-name">Name</label>
-                            <input type="text" name="name" id="donor-name">
-                        </div>
-                        <div class="form-control-group">
-                            <label>Donation amount</label>
-                            <div class="form-control-set">
-                                <div class="form-control">
-                                    <input type="radio" name="preset_amount" value="100" id="preset_amount-100">
-                                    <label for="preset_amount-100">$100</label>
-                                </div>
-                                <div class="form-control">
-                                    <input type="radio" name="preset_amount" value="500" id="preset_amount-500"
-                                        checked="checked">
-                                    <label for="preset_amount-500">$500</label>
-                                </div>
-                                <div class="form-control">
-                                    <input type="radio" name="preset_amount" value="1000" id="preset_amount-1000">
-                                    <label for="preset_amount-1000">$1000</label>
-                                </div>
-                                <div class="form-control">
-                                    <input type="radio" name="preset_amount" value="2000" id="preset_amount-2000">
-                                    <label for="preset_amount-2000">$2000</label>
-                                </div>
-                                <div class="form-control">
-                                    <input type="radio" name="preset_amount" value="-1" id="preset_amount-custom">
-                                    <label for="preset_amount-custom">Custom</label>
-                                </div>
-                            </div>
-                            <div class="form-control checkout__custom-amount">
-                                <div class="input-wrapper input-wrapper--usd">
-                                    <input type="text" name="custom_amount" placeholder="100" value="100">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-control-group">
-                            <label>Donation method</label>
-                            <div class="form-control-set">
-                                <div class="form-control">
-                                    <input type="radio" name="method" value="stripe" id="method-stripe"
-                                        checked="checked">
-                                    <label for="method-stripe">Card</label>
-                                </div>
-                                <div class="form-control">
-                                    <input type="radio" name="method" value="bank" id="method-bank">
-                                    <label for="method-bank">Bank transfer</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-control checkout__trigger-stripe">
-                            <button type="button" class="button button--block">
-                                Donate via Stripe
-                            </button>
-                        </div>
-                        <div class="form-control checkout__trigger-bank">
-                            <button type="button" class="button button--block">
-                                Show bank details for a donation
-                            </button>
-                        </div>
-                        <div class="small-text">
-                            For US donors: 501(c)(3) status is pending. Current donations are not tax-deductible,
-                            but would be if 501(c)(3) status is approved by the IRS.
-                        </div>
-                        <div class="checkout__bank-details"></div>
-                        <div class="checkout__bank-finish" hidden>
-                            <a
-                                href="/thank-you"
-                                type="submit"
-                                class="button button--block"
-                                data-track="checkout-bank-finish"
-                            >I've made my transfer</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="resources">
-        <div class="container">
         </div>
     </section>
 </Layout>
 
 <style>
-    .principles {
-        margin-top: 0rem;
-    }
-    .vision {
-        p {
-            font-size: 1.3rem;
-            text-align: center;
-        }
-    }
-    .spotlight {
+    .sustainability {
         display: flex;
-        flex-wrap: wrap;
         gap: 4rem;
         @media (max-width: 800px) {
             flex-direction: column;
-            align-items: center;
+            gap: 4rem;
         }
-        & > div {
+        .sustainability-outline {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.0rem;
+            figure {
+                margin: 0;
+                a {
+                    display: block;
+                    width: 100%;
+                    max-width: 20rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    &:hover {
+                        background: none;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .sustainability-stats {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                padding: 0 2rem;
+                text-align: center;
+                i {
+                    font-size: var(--font-size-6);
+                }
+                p {
+                    font-size: var(--font-size-3);
+                    color: var(--color-text-dark-secondary);
+                }
+            }
         }
-        & > figure {
-            max-width: 17rem;
-            margin: 0;
+        .sustainability-arrow {
+            text-align: center;
+            font-size: var(--font-size-6);
+            font-weight: 500;
+            color: var(--color-text-dark);
         }
-        & + .cardset {
-            margin-top: 2rem;
+        .sustainability-boxgroup {
+            flex: 3;
+            display: flex;
+            gap: 2rem;
+            flex-direction: column;
+            justify-content: space-between;
+            .sustainability-box {
+                padding: 1.5rem;
+                border: 1px solid var(--color-section-border);
+                h3 {
+                    margin-bottom: 0.7rem;
+                    font-size: var(--font-size-5);
+                    font-weight: 500;
+                    i {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        margin-bottom: 0.3rem;
+                        font-size: var(--font-size-4);
+                        font-weight: 500;
+                        font-variant-caps: small-caps;
+                        font-feature-settings: "smcp";
+                        text-transform: lowercase;
+                        font-family: var(--font-family-mono);
+                        .bubble {
+                            margin-top: 2px;
+                        }
+                    }
+                }
+                p {
+                    color: var(--color-text-dark-secondary);
+                    font-size: var(--font-size-3);
+                }
+            }
         }
     }
     .roadmap {
+        /*
+            NOTE: This class is not currently used but should be used again in the future. Feel free to delete if enough
+            time passes and it is still unused.
+            — vladh, 08 Dec 2025
+        */
         .roadmap-item {
             position: relative;
             padding-bottom: 2rem;
@@ -668,159 +617,48 @@ if ('ENDOWMENT_API_HOST' in process.env) {
             }
         }
     }
-    .features {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-        h3 {
-            margin: 0;
-            font-size: 1rem;
-        }
-    }
-    .process {
-        @media (max-width: 800px) {
-            flex-direction: column;
-        }
-        .card {
-            .process-number {
-                display: inline-block;
-                width: 1.5rem;
-                font-family: 'Geist Mono', 'Ubuntu Mono', monospaced;
-                &:after {
-                    content: '.';
+    .how-it-works {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 52rem;
+        margin-left: auto;
+        margin-right: auto;
+        .how-it-works__step {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            @media (max-width: 1000px) {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .how-it-works__digit {
+                font-size: var(--font-size-8);
+                font-family: var(--font-family-serif);
+                line-height: 1;
+                color: var(--color-secondary);
+            }
+            & > img {
+                width: 18rem;
+                flex-basis: 18rem;
+                @media (max-width: 1000px) {
+                    margin-top: 1.5rem;
+                    width: auto;
+                    flex-basis: auto;
+                    max-width: 100%;
                 }
             }
-        }
-    }
-    .checkout {
-        .checkout__custom-amount {
-            display: none;
-        }
-        .checkout__trigger-bank {
-            display: none;
-        }
-        .checkout__bank-details {
-            display: none;
-            padding-top: 1rem;
-            border-top: 1px solid var(--color-input-border);
-        }
-        .checkout__bank-finish {
-            display: none;
-        }
-        &:has(input[name="preset_amount"][value="-1"]:checked) {
-            .checkout__custom-amount {
-                display: block;
+            h3 {
+                margin: 0;
+                margin-bottom: 0.8rem;
+                font-size: var(--font-size-5);
+                font-weight: 600;
             }
-        }
-        &:has(input[name="method"][value="bank"]:checked) {
-            .checkout__trigger-stripe {
-                display: none;
-            }
-            .checkout__trigger-bank {
-                display: block;
-            }
-            .checkout__bank-details {
-                display: block;
-                &:empty {
-                    display: none;
-                }
-            }
-            .checkout__bank-finish {
-                display: block;
+            p {
+                color: var(--color-text-dark-secondary);
+                font-size: var(--font-size-3);
+                line-height: 1.6;
             }
         }
     }
 </style>
-
-<script define:vars={{ API_HOST }}>
-    function isValidEmail(email) {
-        return email && email.includes('@') && email.length >= 'a@a.aa'.length;
-    }
-
-    function showCheckoutMessage(checkoutMessage) {
-        const $$checkoutAlert = document.querySelectorAll('.checkout-alert');
-        $$checkoutAlert.forEach(($checkoutAlert) => {
-            const $checkoutAlertText = $checkoutAlert.querySelector('p');
-            $checkoutAlert.hidden = false;
-            $checkoutAlertText.textContent = checkoutMessage;
-        });
-    }
-
-    function hideCheckoutMessage() {
-        const $$checkoutAlert = document.querySelectorAll('.checkout-alert');
-        $$checkoutAlert.forEach(($checkoutAlert) => {
-            $checkoutAlert.hidden = true;
-        });
-    }
-
-    async function getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish) {
-        const formData = new FormData($form);
-        if (!isValidEmail(formData.get('email'))) {
-            return showCheckoutMessage("Please enter an email address");
-        }
-        const params = new URLSearchParams(formData);
-        try {
-            const res = await fetch(API_HOST + '/bank-details', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                },
-                body: params,
-            });
-            if (res.status != 200) {
-                throw new Error(`Got status code ${res.status}`);
-            }
-            const html = await res.text();
-            $checkoutBankDetails.innerHTML = html;
-            $checkoutBankFinish.hidden = false;
-            hideCheckoutMessage();
-        } catch (err) {
-            showCheckoutMessage("Could not record donation attempt. Please contact us.");
-        }
-    }
-
-    const $$checkout = document.querySelectorAll('.checkout');
-    $$checkout.forEach(($checkout) => {
-        const $form = $checkout.querySelector('form');
-        const $checkoutStripeButton = $checkout.querySelector('.checkout__trigger-stripe button');
-        const $checkoutBankButton = $checkout.querySelector('.checkout__trigger-bank button');
-        const $checkoutBankDetails = $checkout.querySelector('.checkout__bank-details');
-        const $checkoutBankFinish = $checkout.querySelector('.checkout__bank-finish');
-        $checkoutBankButton.addEventListener('click', () => {
-            try {
-                window.op('track', 'checkout-bank-trigger');
-            } catch (e) {
-                console.error('Failed to track checkout-bank-trigger');
-            }
-            getBankDetails($form, $checkoutBankDetails, $checkoutBankFinish);
-        });
-        $checkoutStripeButton.addEventListener('click', () => {
-            try {
-                window.op('track', 'checkout-stripe-trigger');
-            } catch (e) {
-                console.error('Failed to track checkout-stripe-trigger');
-            }
-            $form.submit();
-        });
-    });
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const checkoutMessage = urlParams.get('checkoutMessage');
-    if (checkoutMessage) {
-        showCheckoutMessage(checkoutMessage);
-    }
-
-    const $donorEmail = document.getElementById('donor-email');
-    const $donorName = document.getElementById('donor-name');
-
-    function identify() {
-        window.op('identify', {
-            profileId: $donorEmail.value,
-            email: $donorEmail.value,
-            lastName: $donorName.value,
-        });
-    }
-
-    $donorEmail.addEventListener('change', identify);
-    $donorName.addEventListener('change', identify);
-</script>
