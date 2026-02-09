@@ -1654,6 +1654,9 @@ a.card {
 .mini-note {
     padding-top: 3rem;
     text-align: center;
+    max-width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .big-cta {

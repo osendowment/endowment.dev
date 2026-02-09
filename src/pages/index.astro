@@ -7,10 +7,14 @@ import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
 let STATS_URL = 'https://stats.endowment.dev/';
+let TEMP_STATS_URL = 'https://stats.endowment.dev/temp';
 let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
 
 const statsRes = await fetch(STATS_URL);
 const stats = await statsRes.json();
+
+const tempStatsRes = await fetch(TEMP_STATS_URL);
+const tempStats = await tempStatsRes.json();
 
 const donorsRes = await fetch(DONOR_STATS_URL);
 const allDonors = await donorsRes.json();
@@ -66,13 +70,13 @@ const featuredDonors = individualDonors
             </div>
             <div class="insec insec--xpad insec--ytight intro-kpis">
                 <div>
-                    <b>${humanize(stats.donations.total_donated_value)}</b><span>endowment fund</span>
+                    <b>${humanize(tempStats.endowment.fund_size)}</b><span>endowment fund</span>
                 </div>
                 <div>
-                    <b>{humanize(stats.donations.total_donors_count)}</b><span>total donors</span>
+                    <b>{tempStats.donors.total}</b><span>total donors</span>
                 </div>
                 <div>
-                    <b>{stats.members_count}</b><span><span class="desktop-only">people </span>donated $1K+</span>
+                    <b>{tempStats.donors.members}</b><span><span class="desktop-only">people </span>donated $1K+</span>
                 </div>
             </div>
         </div>
@@ -465,7 +469,7 @@ const featuredDonors = individualDonors
                     <a
                         href="/community"
                         class="button"
-                    >See all {stats.donations.total_donors_count} donors →</a>
+                    >See all {tempStats.donors.total} donors →</a>
                 </div>
             </div>
         </div>

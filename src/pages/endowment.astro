@@ -48,19 +48,19 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                         <div>
                             <p>
                                 We aim to solve the open-source sustainability crisis with a funding solution
-                                for the maintenance of critical open-source software that is truly sustainable,
+                                for the maintenance of critical OSS that is truly sustainable,
                                 systemic, and efficient.
                             </p>
                             <p>
-                                At the heart of this idea is the endowment model, which has been successfully used
-                                by the best private universities for hundreds of years but has never been applied to
-                                open source until OSE.
+                                At the heart of this idea is the <a href="https://en.wikipedia.org/wiki/Financial_endowment" target="_blank">endowment model</a>, which has been used
+                                by the best universities for centuries but has never been applied to
+                                Open Source until OSE.
                             </p>
                             <p>
-                                Our endowment is funded by a diverse community of tech founders, executives,
-                                investors, and engineers across the globe. It operates as a lean next-gen nonprofit
-                                — a scalable tool allowing tech industry members to support the public good they
-                                care about.
+                                Founded in 2025, by a diverse group of tech founders, executives, investors, and
+                                engineers across the globe, our endowment operates as a lean next-gen nonprofit. Its
+                                aim to be a scalable funding tool allowing tech industry members to
+                                support the public good they care about.
                             </p>
                         </div>
                         <div class="branch-illu-container">
@@ -97,8 +97,8 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                         <h2>Governance</h2>
                         <p class="narrow-text">
                             Open Source Endowment Foundation is a U.S. 501(c)(3) tax-exempt charity (EIN 33-3502715).
-                            It has bottom-up inclusive governance inspired by the best universities and business
-                            practices, which is based on passionate individuals with "skin in the game," not
+                            It has bottom-up inclusive governance inspired by the best universities and tech
+                            startups, which is based on passionate individuals with "skin in the game," not
                             corporations.
                         </p>
                         <p class="narrow-text">
@@ -150,7 +150,7 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
         <section>
             <div class="container">
                 <div class="insec insec--xpad">
-                    <h2>Team</h2>
+                    <h2 class="sechead sechead--left">Team</h2>
                     <div class="team-member-list">
                         <div class="team-member card">
                             <div class="team-member__head">
@@ -280,7 +280,7 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                 <div class="insec insec--xpad insec--noborder-right insec--side-squares">
                     <div class="side-kpi-section">
                         <div>
-                            <h2>Investing strategy</h2>
+                            <h2 class="sechead sechead--left">Investing strategy</h2>
                             <p>
                                 All donations to the Endowment are put into low-risk investments, and only the yearly
                                 income from these investments is used to fund OSS project grants. This approach supports
@@ -289,8 +289,9 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                             <p>
                                 Previously, OSE invested in US Treasury bonds, which are very
                                 low-risk and earn ~5% per year. Now, the portfolio is being transferred to a professional
-                                investment manager. The board chose Infinite Giving, specializing in US nonprofits, as
-                                our outsourced CIO.
+                                investment manager. The board chose
+                                <a href="https://www.infinitegiving.com/" target="_blank">Infinite Giving</a>,
+                                specializing in US nonprofits, as our outsourced CIO.
                             </p>
                             <p>
                                 Our target is a 7-8% return with low risk, using 5% of the endowment each year
@@ -301,11 +302,66 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                         <div class="side-kpis">
                             <div>
                                 <i>${humanize(fundSize)}</i>
-                                <span>endowment fund size</span>
-                                <small>
-                                    Last updated on
-                                    <a href="https://stats.endowment.dev/">{lastUpdated}</a>
-                                </small>
+                                <span>current fund size</span>
+                            </div>
+                            <div>
+                                <i>5%</i>
+                                <span>target spend rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pagesec pagesec--dark">
+            <div class="container">
+                <div class="insec insec--xpad">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <h2 class="sechead sechead--left">Funding Model</h2>
+                    <div class="recognition-content">
+                        <p>
+                            We strive to support the most critical yet underfunded open source projects,
+                            sustainably addressing gaps in the current OSS funding landscape.
+                        </p>
+                    </div>
+                    <div class="distribution-layout">
+                        <div class="distribution-copy">
+                            <p>
+                                To prioritize projects in each ecosystem, we use a scoring model that analyzes open
+                                data to calculate Value and Risk scores, based on various parameters. Such model
+                                highlights high-value OSS that are at risk, which the board reviews before approving grants.
+                            </p>
+                            <p>
+                                There is no perfect model to distribute FOSS funding. Our approach is to have an
+                                <a href="https://github.com/osendowment/model" target="_blank">open model</a>,
+                                that is co-developed and approved by OSE Members — people who meaningfully
+                                contributed to power it with funding.
+                            </p>
+                        </div>
+                        <div class="distribution-cards">
+                            <div class="feature">
+                                <h3>Value</h3>
+                                <p><em>How critical is this project?</em></p>
+                                <ul>
+                                    <li>Number of dependents & dependency depth</li>
+                                    <li>Download volume</li>
+                                    <li>Qualified funding requests</li>
+                                    <li>Endorsements from OSE donors</li>
+                                    <li>Open community nominations</li>
+                                </ul>
+                            </div>
+                            <div class="feature">
+                                <h3>Risk</h3>
+                                <p><em>How vulnerable is it?</em></p>
+                                <ul>
+                                    <li>Lines of code & complexity</li>
+                                    <li>OpenSSF security score</li>
+                                    <li>Active developers & bus factor</li>
+                                    <li>Issue volume</li>
+                                    <li>Existing funding & GitHub Sponsors</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -342,6 +398,63 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
             @media (min-width: 801px) {
                 font-size: var(--font-size-5);
             }
+        }
+    }
+
+    /* Distribution Section */
+    .subsection-header {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-section-border-dark-secondary);
+        font-size: 1.5rem;
+    }
+    .distribution-layout {
+        display: flex;
+        gap: 4rem;
+        @media (max-width: 900px) {
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
+    .distribution-copy {
+        flex: 1;
+    }
+    .distribution-cards {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        .feature {
+            padding: 1.5rem;
+            border: 1px solid var(--color-section-border-dark-secondary);
+            h3 {
+                margin: 0;
+                margin-bottom: 0.5rem;
+                font-weight: 500;
+            }
+            p, li {
+                color: var(--color-text-light-faded);
+                font-size: var(--font-size-3);
+            }
+            ul {
+                margin: 0.5rem 0 0;
+                padding-left: 1.2rem;
+            }
+        }
+    }
+
+    .framework-note {
+        margin-top: 2rem;
+        opacity: 0.8;
+    }
+
+    /* Funding Model intro */
+    .recognition-content {
+        max-width: 700px;
+        margin-bottom: 3rem;
+        p {
+            font-size: 1.15rem;
+            line-height: 1.7;
         }
     }
 </style>
