@@ -52,15 +52,14 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                                 systemic, and efficient.
                             </p>
                             <p>
-                                At the heart of this idea is the <a href="https://en.wikipedia.org/wiki/Financial_endowment" target="_blank">endowment model</a>, which has been used
-                                by the best universities for centuries but has never been applied to
-                                Open Source until OSE.
+                                Its cornerstone is the <a href="https://en.wikipedia.org/wiki/Financial_endowment" target="_blank">endowment model</a>,
+                                that top universities have successfully used for centuries. However, this approach
+                                has never been applied to Open Source until OSE.
                             </p>
                             <p>
-                                Founded in 2025 by a diverse group of tech founders, executives, investors, and
-                                engineers across the globe, our endowment operates as a lean next-gen nonprofit. Its
-                                aim is to be a scalable funding tool allowing tech industry members to
-                                support the public good they care about.
+                                Founded in 2025 by a global group of tech founders, executives, investors, and
+                                engineers, OSE operates as a lean next-gen nonprofit. It's designed to be a scalable
+                                tool for people in the tech industry to support the public good they deeply care about.
                             </p>
                         </div>
                         <div class="branch-illu-container">
@@ -331,34 +330,34 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
                         </p>
                     </div>
                     <div class="funding-highlights">
-                        <div class="funding-highlight">
+                        <div class="funding-highlight funding-highlight--top">
                             <h3>Open Model</h3>
                             <p>
-                                There is no perfect model to distribute FOSS funding. Our approach is to have an open
+                                There is no perfect model for OSS grants. Our approach is an open
                                 data-driven <a href="https://github.com/osendowment/model" target="_blank">model</a>
-                                that is co-developed and approved by OSE Members — people who meaningfully
-                                contributed to power it with funding.
+                                that is developed and approved by OSE Members — people who actually
+                                power it with funding.
                             </p>
                         </div>
-                        <div class="funding-highlight">
+                        <div class="funding-highlight funding-highlight--top">
                             <h3>Deep Infrastructure</h3>
                             <p>
-                                The target model would drill down dependencies from popular ecosystems to
-                                underlying packages, creating a natural priority for low-level libraries — less
-                                Python and JavaScript, more C/C++ and Fortran.
+                                The target model would trace links from popular ecosystems (like Python and
+                                JavaScript) to underlying packages, creating a natural priority for low-level
+                                libraries (like C and Fortran).
                             </p>
                         </div>
-                        <div class="funding-highlight">
+                        <div class="funding-highlight funding-highlight--top">
                             <h3>Independent FOSS</h3>
                             <p>
-                                We do not fund open source projects, even with high value &amp; risk, if they
-                                have corporate roots or an associated startup (e.g. Kubernetes or MariaDB). Our ideal
-                                grantee profile looks like a <a href="https://xkcd.com/2347/" target="_blank">random person in Nebraska</a>.
+                                We do not fund critical open source projects which have an associated startup
+                                or corporate roots (e.g. Kubernetes). Our ideal grantee looks like a
+                                <a href="https://xkcd.com/2347/" target="_blank">random person in Nebraska</a>.
                             </p>
                         </div>
                         <div class="funding-highlight funding-highlight--scoring">
                             <div class="scoring-left">
-                                <h3>Funding Framework</h3>
+                                <h3>Framework</h3>
                                 <p>
                                     Within each ecosystem, we use a model based on Value and Risk scores. They are
                                     calculated based on multiple open data points and are used to sort OSS projects.
@@ -507,6 +506,10 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
             font-size: var(--font-size-3);
             line-height: 1.6;
         }
+    }
+    .funding-highlight--top {
+        border: none;
+        border-top: 2px solid var(--color-primary-border);
     }
     .funding-highlight--scoring {
         grid-column: 1 / -1;
