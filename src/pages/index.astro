@@ -66,13 +66,13 @@ const featuredDonors = individualDonors
             </div>
             <div class="insec insec--xpad insec--ytight intro-kpis">
                 <div>
-                    <b>${humanize(stats.donations.total_donated_value)}</b><span>donated</span>
+                    <b>${humanize(stats.donations.total_donated_value)}</b><span>endowment fund</span>
                 </div>
                 <div>
-                    <b>{humanize(stats.donations.total_donors_count)}</b><span>donors</span>
+                    <b>{humanize(stats.donations.total_donors_count)}</b><span>total donors</span>
                 </div>
                 <div>
-                    <b>{stats.members_count}</b><span><span class="desktop-only">donors </span>giving $1K+</span>
+                    <b>{stats.members_count}</b><span><span class="desktop-only">people </span>donated $1K+</span>
                 </div>
             </div>
         </div>
@@ -128,10 +128,16 @@ const featuredDonors = individualDonors
                     <figure class="grid__item endorsement">
                         <blockquote>
                             <p>
-                                Open Source is a cornerstone of the tech-enabled world, operating similarly to a global
-                                <a href="https://kvinogradov.com/oss-universities/">research university</a>.
-                                We are building a community-led endowment fund for the global tech industry to
-                                sustainably fund the most critical OSS projects.
+                                Nearly everything in our digital world depends on open source software — a vital
+                                public good that suffers from the tragedy of the commons and lacks sustainable funding.
+                            </p>
+                            <p>
+                                Inspired by top universities that have sustained themselves through generations,
+                                we're building the Endowment to provide lasting support for critical OSS,
+                                powered by donations from the global tech community.
+                            </p>
+                            <p>
+                                Join us in securing the future of open source.
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
@@ -152,12 +158,9 @@ const featuredDonors = individualDonors
                     <figure class="grid__item endorsement">
                         <blockquote>
                             <p>
-                                The Open Source Endowment is so obvious in retrospect, it’s a wonder it took so long to
-                                connect the dots. What better way to permanently fund vital non-profit work? It’s high
-                                time we brought the endowment model to bear on
-                                <a href="https://openpath.quest/2024/the-open-source-sustainability-crisis/"
-                                   >the Open Source sustainability crisis</a
-                                >.
+                                Open Source Endowment is so obvious in retrospect, it's a wonder it took so long to
+                                connect the dots. What better way to permanently fund vital non-profit work? It's high
+                                time we brought the endowment model to bear on the Open Source sustainability crisis.
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
@@ -201,45 +204,46 @@ const featuredDonors = individualDonors
                     <figure class="grid__item endorsement">
                         <blockquote>
                             <p>
-                                Aenean molestie nibh in turpis venenatis, nec
-                                auctor est ultricies. Maecenas porta quis augue
-                                eget luctus.
+                                The Endowment is a very promising project. I am happy to join and pretty excited to
+                                see how it contributes to the FOSS funding ecosystem.
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
                                 <img
-                                    src="/images/icons/silhouette.svg"
-                                    alt="A portrait of Daniel Dover"
+                                    src="/images/endorsements/kailash.webp"
+                                    alt="A portrait of Kailash Nadh"
                                     width="64"
                                     height="64"
                                 >
                             </div>
                             <div>
-                                <h3>Daniel Dover</h3>
-                                <i>CEO, Blooper</i>
+                                <h3>Kailash Nadh</h3>
+                                <i>CTO, Zerodha</i>
                             </div>
                         </figcaption>
                     </figure>
                     <figure class="grid__item endorsement">
                         <blockquote>
                             <p>
-                                Sed malesuada mauris et aliquet mollis. Nunc
-                                sodales eu lacus sed viverra.
+                                Being part of the OSS community for 20+ years, I have consistently reflected on the
+                                significant and unfair imbalance between the value open source creates and its
+                                long-term sustainability. I view the Endowment as an efficient way to give back and
+                                address this issue.
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
                                 <img
-                                    src="/images/icons/silhouette.svg"
-                                    alt="A portrait of Erin Enoch"
+                                    src="/images/endorsements/maxim.webp"
+                                    alt="A portrait of Maxim Konovalov"
                                     width="64"
                                     height="64"
                                 >
                             </div>
                             <div>
-                                <h3>Erin Enoch</h3>
-                                <i>Research Lead, Foofax</i>
+                                <h3>Maxim Konovalov</h3>
+                                <i>Co-founder & ex CTO at Nginx</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -252,7 +256,7 @@ const featuredDonors = individualDonors
             <div class="insec insec--xpad">
                 <div class="sechead">
                     <h2>Solving Open&nbsp;Source Sustainability Together</h2>
-                    <h3>The modern world runs on open source software that is mostly built and maintained by unpaid volunteers. A lack of sustainable funding might lead to serious issues for all of us.</h3>
+                    <h3>Our world runs on open source software that is mostly built and maintained by unpaid volunteers. Its sustainable funding creates serious risks for all of us.</h3>
                 </div>
                 <div class="sustainability">
                     <div class="sustainability-outline">
@@ -446,7 +450,7 @@ const featuredDonors = individualDonors
             <div class="insec insec--xpad">
                 <div class="sechead">
                     <h2>Supported by the tech community</h2>
-                    <h3>Here are some of the generous donors helping make Open Source sustainable</h3>
+                    <h3>Here are some of the generous donors helping make Open Source sustainable. We welcome everybody to join them today</h3>
                 </div>
                 <div class="donor-list donor-list--faded">
                     {featuredDonors.map((donor) => (
@@ -461,7 +465,7 @@ const featuredDonors = individualDonors
                     <a
                         href="/community"
                         class="button"
-                    >See all donors →</a>
+                    >See all {stats.donations.total_donors_count} donors →</a>
                 </div>
             </div>
         </div>
@@ -470,8 +474,8 @@ const featuredDonors = individualDonors
         <div class="container">
             <div class="insec insec--xpad big-cta">
                 <div>
-                    <h2>Donate to Open Source</h2>
-                    <h3>Make an ever-lasting impact on the open source ecosystem</h3>
+                    <h2>Contribute to Open Source</h2>
+                    <h3>Make an ever-lasting impact on the open source ecosystem. All people donating $1K+ become the OSE Members, who are invited to governing the Endowment</h3>
                     <a
                         href="https://www.every.org/osendowment?suggestedAmounts=100%2C500%2C1000%2C2000&theme_color=5ba9ee&designation=Endowment+Fund&utm_campaign=donate-link#/donate"
                         class="button button--colored"
