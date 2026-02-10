@@ -12,11 +12,52 @@ import * as post from '../assets/foundation/faq.md';
         <div class="container">
             <article>
                 <section class="pagesec">
-                    <div class="insec insec--xpad">
+                    <div class="insec insec--xpad faq-content">
                         <Fragment set:html={post.compiledContent()}/>
                     </div>
                 </section>
             </article>
         </div>
     </section>
-</layout>
+</Layout>
+
+<style is:global>
+    .faq-content h1 {
+        margin-bottom: 2rem;
+    }
+    .faq-content h2 {
+        margin-top: 1rem;
+        font-size: var(--font-size-6);
+    }
+    .faq-content h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+    .faq-content hr {
+        margin: 2.5rem 0;
+        border: none;
+        border-top: 1px solid var(--color-section-border);
+    }
+    .faq-content p {
+        line-height: 1.7;
+    }
+    .faq-content ul {
+        padding: 0;
+        padding-left: 1.5rem;
+        list-style-position: outside;
+        list-style-type: disc;
+    }
+    .faq-content ul li {
+        margin-bottom: 0.75rem;
+        line-height: 1.7;
+    }
+    .faq-content ul ul {
+        margin-top: 0.75rem;
+        padding-left: 1.5rem;
+        list-style-type: circle;
+    }
+    .faq-content ul ul li {
+        margin-bottom: 0.35rem;
+    }
+</style>

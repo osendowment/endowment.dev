@@ -36,16 +36,16 @@ const otherDonorsClassName = '0-1K';
     <article>
         <section class="pagesec pagesec--dark pagesec--tight">
             <div class="container">
-                <div class="insec insec--xpad insec--ytight">
+                <div class="insec insec--xpad insec--ytight insec--side-squares insec--side-squares-blue">
                     <div class="community-intro">
                         <div class="sechead sechead--min-height sechead--left">
                             <h1>Community</h1>
                             <p>
-                                We welcome everybody to the donor community, and
-                                thank our {nDonors} donors for generous
-                                donations to the Open Source Endowment, increasing
-                                the sustainability of the global software supply
-                                chain.
+                                We thank our {nDonors} donors for generous
+                                contributions to the Open Source Endowment, and
+                                encourage everybody to join them. Altogether, we
+                                improve the sustainability of the world's software
+                                supply chain.
                             </p>
                             <p>
                                 Community is a cornerstone of our endowment, and
@@ -108,9 +108,14 @@ const otherDonorsClassName = '0-1K';
 </Layout>
 
 <style>
+    .insec--side-squares-blue {
+        &:before, &:after {
+            background-image: url(/images/decorations/squares-side-blue.svg) !important;
+        }
+    }
     .community-intro {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         gap: 4rem;
         @media (max-width: 800px) {
@@ -118,7 +123,11 @@ const otherDonorsClassName = '0-1K';
             gap: 4rem;
         }
         .community-kpi {
+            margin-top: 5.5rem;
             text-align: center;
+            @media (max-width: 800px) {
+                margin-top: 0;
+            }
             b {
                 display: block;
                 margin-bottom: 1.0rem;

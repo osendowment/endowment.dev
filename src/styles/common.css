@@ -268,7 +268,7 @@ a {
     text-decoration-color: var(--color-primary);
     text-decoration-thickness: 2px;
     color: var(--color-primary);
-    font-weight: 500;
+    font-weight: inherit;
     &:hover {
         background-color: var(--color-primary);
         color: var(--color-text-light);
