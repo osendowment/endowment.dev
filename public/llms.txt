@@ -1,0 +1,68 @@
+# Open Source Endowment (OSE)
+
+> The world's first endowment fund dedicated to sustainably funding critical free and open source software.
+
+## Overview
+
+The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity (EIN 33-3502715) founded on February 14, 2025. It collects donations from the open source community, invests all of them into diversified assets, and spends only the investment returns to support critical yet underfunded open source software globally.
+
+- Website: https://endowment.dev
+- GitHub: https://github.com/osendowment
+- Donate: https://endowment.dev/#donate
+
+## How It Works
+
+1. **Fundraise**: Individuals, companies, and foundations donate to form a permanent principal.
+2. **Invest**: The principal is invested in a diversified portfolio managed by Infinite Giving (outsourced CIO), targeting 7-8% annual returns.
+3. **Grant**: 5% of the fund is spent annually on grants to critical open source projects, selected via a data-driven model.
+4. **Monitor**: Grantee projects are tracked for accountability and iterative improvement.
+
+## Key Facts
+
+- Model: Endowment (spend only investment returns, preserve principal forever)
+- Legal: US 501(c)(3) tax-exempt nonprofit (Delaware)
+- Address: 74 E Glenwood Ave Unit 5756, Smyrna, DE
+- Investment Manager: Infinite Giving (specializing in US nonprofits)
+- Target Return: 7-8% annually
+- Target Spend Rate: 5% of fund per year on grants
+- First Grants: Planned for Q1 2026
+- Grant Format: Microgrants (~$5,000) to high-risk candidates among most valuable OSS
+
+## Team
+
+### Board of Directors
+- Konstantin Vinogradov (Chairman) — VC investor, former GP at Runa Capital ($600M+ AUM), creator of ROSS Index
+- Chad Whitacre (Secretary) — Head of Open Source at Sentry, leader of Open Source Pledge, founded Gratipay
+- Maxim Konovalov (Treasurer) — Co-founder and former CTO of Nginx (400M+ websites), former VP Engineering at F5
+
+### Staff & Advisors
+- Jonathan Starr (Executive Director) — Former Program Manager at NumFOCUS
+- Amy Parker (Advisor) — Deputy Executive Director at OpenSSL Foundation, former Director of Wikipedia Endowment
+- Vlad-Stefan Harbuz (Advisor) — Maintainer of Open Source Pledge, core developer at thanks.dev
+
+## Grant Selection Model
+
+OSE uses a data-driven scoring approach based on:
+- **Value**: Dependencies, downloads, potential losses if removed, community endorsements
+- **Risk**: OpenSSF score, lines of code, active maintainers, known funding, CVEs
+
+The model is published openly at https://github.com/osendowment/model
+
+## Governance
+
+- **Donors**: All individual and institutional contributors
+- **Members**: Donors of $1,000+/year gain advisory rights and participate in governance
+- **Board**: 3 directors (expandable to 11); must also be Members
+
+## Contact
+
+- General: konstantin@endowment.dev
+- Donors: donors@endowment.dev
+
+## Further Reading
+
+- About: https://endowment.dev/endowment
+- FAQ: https://endowment.dev/faq
+- Docs: https://endowment.dev/docs
+- Community: https://endowment.dev/community
+- Full details for LLMs: https://endowment.dev/llms-full.txt

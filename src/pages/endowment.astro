@@ -23,6 +23,70 @@ const lastUpdated = Object.values(tempStats.endowment.accounts)
 ---
 
 <Layout title="About the Endowment — Open Source Endowment" description="Learn about the Open Source Endowment's mission, funding model, investing strategy, and the team building sustainable funding for open source software.">
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": {
+            "@type": "NGO",
+            "name": "Open Source Endowment Foundation",
+            "alternateName": "OSE",
+            "url": "https://endowment.dev",
+            "foundingDate": "2025-02-14",
+            "nonprofitStatus": "501c3",
+            "description": "The world's first endowment fund dedicated to sustainably funding critical free and open source software. A US 501(c)(3) tax-exempt public charity.",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "74 E Glenwood Ave Unit 5756",
+                "addressLocality": "Smyrna",
+                "addressRegion": "DE",
+                "addressCountry": "US"
+            },
+            "member": [
+                {
+                    "@type": "Person",
+                    "name": "Konstantin Vinogradov",
+                    "jobTitle": "Chairman of the Board",
+                    "image": "https://endowment.dev/images/team/konstantin.webp",
+                    "description": "VC investor, former General Partner at Runa Capital, creator of the ROSS Index"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Chad Whitacre",
+                    "jobTitle": "Secretary",
+                    "image": "https://endowment.dev/images/team/chad.webp",
+                    "description": "Head of Open Source at Sentry, leader of Open Source Pledge, founder of Gratipay"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Maxim Konovalov",
+                    "jobTitle": "Treasurer",
+                    "image": "https://endowment.dev/images/team/maxim.webp",
+                    "description": "Co-founder and former CTO of Nginx, former VP Engineering at F5, FreeBSD contributor"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Jonathan Starr",
+                    "jobTitle": "Executive Director",
+                    "image": "https://endowment.dev/images/team/jonathan.webp",
+                    "description": "Former Program Manager at NumFOCUS, Co-Founder of SciOS"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Amy Parker",
+                    "jobTitle": "Board Advisor",
+                    "image": "https://endowment.dev/images/team/amy.webp",
+                    "description": "Deputy Executive Director at OpenSSL Foundation, former Director of Wikipedia Endowment"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Vlad-Stefan Harbuz",
+                    "jobTitle": "Board Advisor",
+                    "image": "https://endowment.dev/images/team/vlad.webp",
+                    "description": "Maintainer of Open Source Pledge, core developer at thanks.dev"
+                }
+            ]
+        }
+    })} />
     <article>
         <section class="pagesec pagesec--dark pagesec--tight">
             <div class="container">

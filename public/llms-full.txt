@@ -1,0 +1,195 @@
+# Open Source Endowment (OSE) — Full Reference
+
+> The world's first endowment fund dedicated to sustainably funding critical free and open source software.
+
+## Organization Identity
+
+- Full Legal Name: Open Source Endowment Foundation
+- Short Name: Open Source Endowment (OSE)
+- Type: US 501(c)(3) tax-exempt public charity
+- EIN: 33-3502715
+- Jurisdiction: Delaware, United States
+- Incorporation Date: February 14, 2025
+- Registered Office: 1209 Orange Street, Wilmington, Delaware 19801
+- Registered Agent: National Registered Agents, Inc.
+- Principal Place of Business: 74 E Glenwood Ave Unit #5756, Smyrna, DE 19977
+- Website: https://endowment.dev
+- GitHub: https://github.com/osendowment
+- LinkedIn: https://www.linkedin.com/company/osendowment/
+- X (Twitter): https://x.com/osendowment
+
+## Mission
+
+OSE aims to solve the open source maintenance crisis with a new funding solution that is truly sustainable, systemic, and efficient. Its cornerstone is the endowment model, which top universities have successfully used for centuries. This approach has never been applied to Open Source before OSE.
+
+## The Problem OSE Addresses
+
+Over 95% of software codebases rely on open source software (OSS), with applications averaging 500+ OSS components. Like roads and bridges, OSS requires ongoing maintenance to fix bugs, address security issues, and adapt to changes. 86% of contributors are currently unpaid, and many critical projects lack resources, leading to notable incidents like Heartbleed (2014), Log4Shell (2021), and the XZ Utils backdoor (2024).
+
+Current funding models are insufficient because none simultaneously combine:
+- Sustainable funding: Stable, long-term cash flow not tied to annual donations or volatile budgets
+- Systemic focus: Targets critical underfunded OSS, prioritizing the "long tail" of infrastructure
+- Scalability and efficiency: Transparent, digital-first approach designed to grow over time
+
+## How the Endowment Model Works
+
+1. **Fundraising**: Individuals, companies, and foundations donate to form a permanent endowment principal. The principal is never spent.
+2. **Investing**: The principal is invested in a diversified portfolio managed by a professional asset manager (Infinite Giving), targeting 7-8% annual returns.
+3. **Grantmaking**: Only the investment returns are used. The target spend rate is 5% of the endowment fund per year on grants to critical OSS projects. First grant distribution is planned for Q1 2026.
+4. **Monitoring**: Grantee projects are tracked for accountability and iterative improvement via quantitative metrics and qualitative check-ins.
+
+The remaining investment earnings (after grants and operating costs) are reinvested, growing the endowment over time.
+
+## Investment Strategy
+
+- All donations are put into diversified investments.
+- Initial approach: US Treasury bonds (~5% per year).
+- Current: Transitioned to professional management via Infinite Giving (outsourced CIO specializing in US nonprofits).
+- Target return: 7-8% annually.
+- Target spend rate on grants: 5% per year.
+
+## Grant Selection Model
+
+OSE uses a data-driven scoring approach to identify grant recipients. The model evaluates OSS projects on two dimensions:
+
+### Value Score (how important is this project?)
+- Dependencies: How many other projects depend on it
+- Downloads: Usage volume
+- Potential losses: Impact if the project were removed from the global dependency tree
+- Community nominations: Endorsements from OSE donors, OSS foundations, etc.
+
+### Risk Score (how vulnerable is this project?)
+- OpenSSF Score: Security posture
+- Lines of Code (LOCs): Complexity
+- Active Maintainers: Bus factor, mean time to resolve issues
+- Known Funding: GitHub Sponsors, other funding sources
+- CVEs: Security vulnerability history
+
+### Grant Design
+- Target format: Microgrants (~$5,000) to high-risk candidates among the most valuable OSS projects
+- Forward-looking grants: Maintainers perform measurable work to de-risk their project
+- Backward-looking grants: Public acknowledgment and monetary gratitude for decades of unpaid work
+- Impact checked quantitatively (data-driven metrics) and qualitatively (check-in calls)
+
+### Eligibility
+- Only nonprofit open source projects (no corporate-backed OSS or OSS startups)
+- Projects without corporate ties or associated startups
+- Non-commercializable infrastructure software prioritized
+- The model traces from popular ecosystems (Python, JavaScript, etc.) to underlying packages, naturally prioritizing low-level infrastructure libraries (e.g., C/C++) over app-focused ecosystems
+
+The selection model is published openly: https://github.com/osendowment/model
+
+## Governance Structure
+
+### Three Tiers
+1. **Donors**: All individual and institutional contributors. Open, public list.
+2. **Members**: Donors contributing $1,000+ per year. Gain advisory rights and participate in governance (electing board members, advising on strategy). Legally defined in the Membership Policy.
+3. **Board of Directors**: 3-11 directors. Main governing body. All must also be Members.
+
+### Board Composition
+The board has three classes of directors:
+- **Founding Director**: Konstantin Vinogradov (exclusive 15-year seat)
+- **Member-Elected Directors**: 0-5 directors elected by Members (2-year staggered terms)
+- **Board-Elected Directors**: Remaining seats filled by the board itself (3-year terms)
+
+All directors have equal voting rights regardless of class.
+
+### Governance Principles
+- Bottom-up inclusive governance inspired by leading universities
+- Focus on individuals with "skin in the game," not corporations
+- Corporate/institutional donors welcome but do not receive governing rights (preserving neutrality)
+- Targets best-in-class standards in neutrality, transparency, and efficiency
+- Goal: Build a self-governing endowment where scalable systems reduce need for management intervention
+
+### Membership Policy
+- Eligibility: Minimum $1,000/year contribution
+- Tenure: (Gross donation / $1,000) years
+- Privileges: Advisory rights on strategic matters, appointing community-nominated directors, exclusive events/resources, regular updates
+- Non-transferable; board may suspend/terminate membership if association would harm trust
+
+## Team
+
+### Board of Directors
+
+**Konstantin Vinogradov — Chairman (Founding Director)**
+VC investor who spent the last decade in venture capital as a General Partner at Runa Capital (a $600M+ AUM deep-tech fund). Creator of the ROSS Index (2020-2025), the world's first ranking of commercial open source startups by GitHub. Based in Luxembourg and the US.
+
+**Chad Whitacre — Secretary (Board-Elected Director)**
+Head of Open Source at Sentry (4M+ developers), where he leads the Open Source Pledge initiative. Previously founded Gratipay (2012-2018), one of the earliest platforms for funding open source developers.
+
+**Maxim Konovalov — Treasurer (Board-Elected Director)**
+Co-founder and former CTO of Nginx (serving 400M+ websites), which was acquired for approximately $700M in 2019. Former VP Engineering at F5. Long-time FreeBSD contributor and open source advocate.
+
+### Staff & Advisors
+
+**Jonathan Starr — Executive Director**
+Former Program Manager at NumFOCUS. Co-Founder of SciOS and the Institute of Open Science Practices.
+
+**Amy Parker — Board Advisor**
+Deputy Executive Director of the OpenSSL Foundation. Former Director of the Wikipedia Endowment. Previous roles at the Smithsonian Institution and the New York Public Library.
+
+**Vlad-Stefan Harbuz — Board Advisor**
+Maintainer of the Open Source Pledge. Core developer at thanks.dev. Previously worked on the Gates Foundation's $1B healthcare funding allocation system.
+
+## Six Core Principles
+
+1. **Data-Driven & SMART Goals**: Algorithmic, measurable approach to grant selection
+2. **Global Outlook**: Supports OSS globally, not limited to any geography
+3. **Maximum Transparency**: Open documents, public API endpoints, published model
+4. **Inclusive and Diverse Governance**: Community-driven with individual donor participation
+5. **Decentralized Funding**: Not dependent on any single donor or corporation
+6. **Neutrality**: Agnostic about which software is more valuable; follows market signals
+
+## Legal Documents
+
+All foundation documents are publicly available:
+- Bylaws: https://endowment.dev/docs/bylaws
+- Certificate of Incorporation: https://endowment.dev/docs/certificate-of-incorporation
+- Act of Sole Incorporator: https://endowment.dev/docs/act-of-incorporator
+- Initial Board Resolution: https://endowment.dev/docs/board-uwc
+- Membership Policy: https://endowment.dev/docs/membership-policy
+- Conflict of Interest Policy: https://github.com/osendowment/foundation
+- Board meeting minutes and resolutions: https://endowment.dev/docs
+
+## Public Data
+
+- Stats API: https://stats.endowment.dev/
+- Temporary Stats: https://stats.endowment.dev/temp
+- Donor Data: https://stats.endowment.dev/donors
+- Grant Selection Model: https://github.com/osendowment/model
+
+## Frequently Asked Questions
+
+### What is the Open Source Endowment (OSE)?
+OSE is the world's first endowment fund dedicated to sustainably funding free open source software. It collects donations from the open source community, invests all of them into diversified assets, and spends only the returns to support critical yet underfunded OSS globally. It was incorporated as a US nonprofit on February 14, 2025, and is a tax-exempt 501(c)(3) public charity.
+
+### Why does OSS need more sustainable funding?
+Over 95% of software codebases rely on OSS, with applications averaging 500+ OSS components. 86% of contributors are currently unpaid. Current funding sources (corporate budgets, foundations, GitHub Sponsors, government programs) do not simultaneously provide sustainable, systemic, and scalable funding.
+
+### How do I donate to OSE?
+People and organizations can donate at https://endowment.dev. Donations are tax-deductible in the US. All individuals who donated before the public launch are credited as founding donors. $1,000+ annual donors become Members with governance rights.
+
+### Does OSE accept corporate donors?
+Yes. Corporate and institutional donors are welcome, but do not receive governing rights to preserve long-term neutrality and alignment with the global OSS community.
+
+### How are donated funds invested?
+All donations go into diversified investments managed by Infinite Giving (professional asset manager specializing in US nonprofits), targeting a 7-8% return.
+
+### How is investment income spent?
+All expected investment income is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. First grants are planned for Q1 2026.
+
+### Does OSE support OSS projects with associated businesses?
+No. OSE supports only nonprofit projects, excluding OSS startups and corporate-backed projects.
+
+### How does OSE relate to existing OSS nonprofits?
+OSE is designed as a complementary tool. It attracts donations from a new category of donors (tech individuals) and increases overall funding of the global open source ecosystem without competing for existing resources.
+
+### Does OSE relate to blockchain?
+No. While governance principles resemble DAOs (transparent, decentralized, skin in the game), OSE is a regular regulated US nonprofit corporation, not a crypto organization.
+
+## Contact
+
+- General inquiries: konstantin@endowment.dev
+- Donor inquiries: donors@endowment.dev
+- Website: https://endowment.dev
+- GitHub: https://github.com/osendowment
