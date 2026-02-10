@@ -927,6 +927,7 @@ nav.desktop-nav, nav.mobile-nav {
     display: flex;
     a:not(.button) {
         text-decoration: none;
+        font-weight: 500;
         &, &:hover {
             color: var(--color-text-dark);
             background: none;
