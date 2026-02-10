@@ -32,7 +32,8 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <link rel="preconnect" href="https://stats.endowment.dev">
         <link rel="preconnect" href="https://us.i.posthog.com">
 
-        <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/webp">
+        <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/svg+xml">
+        <link rel="preload" as="font" href="/fonts/plus-jakarta-sans-200-800-normal-latin.woff2" type="font/woff2" crossorigin>
 
         {noindex && <meta name="robots" content="noindex, nofollow" />}
 
@@ -144,11 +145,13 @@ import { OpenPanelComponent } from '@openpanel/astro';
                         <img
                             class="desktop-only"
                             src="/images/logo/OSE Logo.svg"
-                            alt="The Open Source Endowment logo">
+                            alt="The Open Source Endowment logo"
+                            width="195" height="60">
                         <img
                             class="mobile-only"
                             src="/images/logo/Logomark Colored.svg"
-                            alt="The Open Source Endowment logo">
+                            alt="The Open Source Endowment logo"
+                            width="140" height="140">
                     </a>
                     <div class="desktop-only">
                         <nav class="desktop-nav">
@@ -172,7 +175,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                     <div class="mobile-only">
                         <div class="header-buttons">
                             <button class="button button--icon-only nav-trigger">
-                                <img src="/images/icons/em-hamburger.svg" alt="Menu">
+                                <img src="/images/icons/em-hamburger.svg" alt="Menu" width="20" height="20">
                             </button>
                         </div>
                     </div>
@@ -203,7 +206,8 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 <div class="footer-brand">
                     <img
                         src="/images/logo/OSE Logo.svg"
-                        alt="The Open Source Endowment logo">
+                        alt="The Open Source Endowment logo"
+                        width="195" height="60">
                     <p class="footer-credit">Designed by <a href="https://evilmartians.com/" target="_blank">Evil Martians</a></p>
                 </div>
                 <div class="footer-socials">
