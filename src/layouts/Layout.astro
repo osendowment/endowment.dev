@@ -3,10 +3,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 interface Props {
+  title?: string;
+  description?: string;
   nodonate?: boolean;
+  noindex?: boolean;
 }
 
-const { nodonate } = Astro.props;
+const {
+  title = 'Open Source Endowment',
+  description = 'Truly sustainable funding for critical open source software through a community\u2011driven endowment.',
+  nodonate,
+  noindex,
+} = Astro.props;
 
 import '../styles/common.css';
 
@@ -17,25 +25,30 @@ import { OpenPanelComponent } from '@openpanel/astro';
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="/images/logo/web/favicon.png">
         <link rel="apple-touch-icon" href="/images/logo/web/apple-touch-icon.png">
 
+        <link rel="preconnect" href="https://stats.endowment.dev">
+        <link rel="preconnect" href="https://us.i.posthog.com">
+
         <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/webp">
 
-        <title>Open Source Endowment</title>
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+        <title>{title}</title>
         <meta
           name="description"
-          content="Truly sustainable funding for critical open source software through a community‑driven endowment.">
+          content={description}>
         <link rel="canonical" href={Astro.url}>
         <link rel="me" href="https://x.com/osendowment">
         <link rel="me" href="https://www.linkedin.com/company/osendowment/">
         <link rel="me" href="https://github.com/osendowment">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Open Source Endowment">
+        <meta property="og:title" content={title}>
         <meta
           property="og:description"
-          content="Truly sustainable funding for critical open source software through a community‑driven endowment.">
+          content={description}>
         <meta
           property="og:image"
           content="https://endowment.dev/images/opengraph.png">
@@ -50,10 +63,10 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <meta property="og:url" content={Astro.url}>
         <meta
           name="twitter:title"
-          content="Open Source Endowment">
+          content={title}>
         <meta
           name="twitter:description"
-          content="Truly sustainable funding for critical open source software through a community‑driven endowment.">
+          content={description}>
         <meta
           name="twitter:image"
           content="https://endowment.dev/images/opengraph.png">
@@ -68,10 +81,17 @@ import { OpenPanelComponent } from '@openpanel/astro';
 
         <script type="application/ld+json">
         {
-          "@context" : "https://schema.org",
-          "@type" : "WebSite",
-          "name" : "Open Source Endowment",
-          "url" : "https://endowment.dev/"
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Open Source Endowment Foundation",
+          "url": "https://endowment.dev/",
+          "logo": "https://endowment.dev/images/logo/Logomark%20Colored%20for%20Dark%20BG.png",
+          "sameAs": [
+            "https://github.com/osendowment",
+            "https://www.linkedin.com/company/osendowment/",
+            "https://x.com/osendowment"
+          ],
+          "description": "Tax-exempt 501(c)(3) US public charity providing truly sustainable funding for critical open source software through a community-driven endowment."
         }
         </script>
 
@@ -150,7 +170,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                     <div class="mobile-only">
                         <div class="header-buttons">
                             <button class="button button--icon-only nav-trigger">
-                                <img src="/images/icons/em-hamburger.svg">
+                                <img src="/images/icons/em-hamburger.svg" alt="Menu">
                             </button>
                         </div>
                     </div>
