@@ -7,7 +7,53 @@ import Layout from '../layouts/Layout.astro';
 import * as post from '../assets/foundation/faq.md';
 ---
 
-<Layout>
+<Layout title="FAQ — Open Source Endowment" description="Frequently asked questions about the Open Source Endowment, how to donate, how grants work, and more.">
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the Open Source Endowment (OSE)?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE is the world's first endowment fund dedicated to sustainably funding free open source software. It collects donations, invests them into diversified assets, and spends only the returns to support critical yet underfunded OSS globally."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I donate to OSE?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "People and organizations are welcome to donate at endowment.dev. All individuals who donated before the public launch are credited as founding donors."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How are donated funds invested?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All donations are put into diversified investments managed by a professional asset manager, targeting a 7-8% return."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is investment income spent?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All expected investment income is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What principles guide OSE's grantmaking?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE aims to ensure sustainable maintenance of the most critical OSS projects, guided by principles of long-term impact, market-based prioritization, and measurable transparency."
+                }
+            }
+        ]
+    })} />
     <section>
         <div class="container">
             <article>
