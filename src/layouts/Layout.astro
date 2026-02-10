@@ -95,6 +95,8 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }
         </script>
 
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary">
+
         <script async defer src="/js/everyorg-endowment-button.js"></script>
 
         <OpenPanelComponent
@@ -193,7 +195,9 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 </div>
             </div>
         </div>
-        <slot />
+        <main>
+            <slot />
+        </main>
         <footer>
             <div class="container footer-items">
                 <div class="footer-brand">
