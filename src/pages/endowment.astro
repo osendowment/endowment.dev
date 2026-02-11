@@ -4,13 +4,9 @@
 
 import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
+import { cachedFetch } from '../lib/api.ts';
 
-let STATS_URL = 'https://data.endowment.dev/api/public/stats';
-let STATS_FALLBACK_URL = 'https://stats.endowment.dev/temp';
-
-let statsRes = await fetch(STATS_URL);
-if (!statsRes.ok) statsRes = await fetch(STATS_FALLBACK_URL);
-const stats = await statsRes.json();
+const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
 
 const fundSize = stats.endowment.fund_size;
 const totalDonors = stats.donors.total;

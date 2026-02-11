@@ -5,17 +5,10 @@
 import { humanize, EVERYORG_BUTTON_URL } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
+import { cachedFetch, cachedFetchDonors } from '../lib/api.ts';
 
-let STATS_URL = 'https://data.endowment.dev/api/public/stats';
-let STATS_FALLBACK_URL = 'https://stats.endowment.dev/temp';
-let DONOR_STATS_URL = 'https://data.endowment.dev/api/public/donors';
-
-let statsRes = await fetch(STATS_URL);
-if (!statsRes.ok) statsRes = await fetch(STATS_FALLBACK_URL);
-const stats = await statsRes.json();
-
-const donorsRes = await fetch(DONOR_STATS_URL);
-const allDonors = await donorsRes.json();
+const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
+const allDonors = await cachedFetchDonors('https://data.endowment.dev/api/public/donors');
 const individualDonors = allDonors.filter((d) => d.type == 'person');
 const featuredDonors = individualDonors
     .filter((d) => d.featured)
