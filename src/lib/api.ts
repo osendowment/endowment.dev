@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, statSync, existsSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 
+const CACHE_ENABLED = false;
 const CACHE_DIR = join(process.cwd(), '.cache');
 const PHOTO_CACHE_DIR = join(process.cwd(), 'public', 'cache', 'photos');
 const MAX_AGE_MS = 24 * 60 * 60 * 1000;
@@ -37,6 +38,12 @@ function writeJsonCache(key: string, data: any) {
 }
 
 export async function cachedFetch(url: string, cacheKey: string): Promise<any> {
+    if (!CACHE_ENABLED) {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+    }
+
     const path = join(CACHE_DIR, `${cacheKey}.json`);
 
     if (!isStale(path)) {
@@ -86,6 +93,8 @@ function findCachedPhoto(slug: string): string | null {
 
 export async function cachedFetchDonors(url: string): Promise<any[]> {
     const donors = await cachedFetch(url, 'donors');
+
+    if (!CACHE_ENABLED) return donors;
 
     ensureDir(PHOTO_CACHE_DIR);
 
