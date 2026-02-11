@@ -61,10 +61,27 @@ function donorSlug(name: string): string {
     return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
-async function cachePhoto(pictureUrl: string, slug: string): Promise<void> {
+const EXT_BY_TYPE: Record<string, string> = {
+    'image/png': '.png',
+    'image/webp': '.webp',
+    'image/jpeg': '.jpg',
+};
+
+async function cachePhoto(pictureUrl: string, slug: string): Promise<string> {
     const res = await fetch(pictureUrl);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    writeFileSync(join(PHOTO_CACHE_DIR, `${slug}.webp`), Buffer.from(await res.arrayBuffer()));
+    const ext = EXT_BY_TYPE[res.headers.get('content-type') || ''] || '.png';
+    const filename = `${slug}${ext}`;
+    writeFileSync(join(PHOTO_CACHE_DIR, filename), Buffer.from(await res.arrayBuffer()));
+    return filename;
+}
+
+function findCachedPhoto(slug: string): string | null {
+    for (const ext of Object.values(EXT_BY_TYPE)) {
+        const path = join(PHOTO_CACHE_DIR, `${slug}${ext}`);
+        if (existsSync(path)) return `${slug}${ext}`;
+    }
+    return null;
 }
 
 export async function cachedFetchDonors(url: string): Promise<any[]> {
@@ -76,16 +93,19 @@ export async function cachedFetchDonors(url: string): Promise<any[]> {
         .filter((d: any) => d.picture_url)
         .map(async (d: any) => {
             const slug = donorSlug(d.name);
-            const localFile = join(PHOTO_CACHE_DIR, `${slug}.webp`);
+            const existing = findCachedPhoto(slug);
+            const localFile = existing ? join(PHOTO_CACHE_DIR, existing) : null;
 
-            if (isStale(localFile)) {
+            if (!localFile || isStale(localFile)) {
                 try {
-                    await cachePhoto(d.picture_url, slug);
+                    const filename = await cachePhoto(d.picture_url, slug);
+                    d.picture_url = `/cache/photos/${filename}`;
+                    return;
                 } catch { /* keep existing cached photo if download fails */ }
             }
 
-            if (existsSync(localFile)) {
-                d.picture_url = `/cache/photos/${slug}.webp`;
+            if (existing) {
+                d.picture_url = `/cache/photos/${existing}`;
             }
         });
 
