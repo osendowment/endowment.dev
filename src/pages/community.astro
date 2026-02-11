@@ -5,15 +5,17 @@
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
-let STATS_URL = 'https://stats.endowment.dev/';
-let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
+let STATS_URL = 'https://data.endowment.dev/api/public/stats';
+let STATS_FALLBACK_URL = 'https://stats.endowment.dev/temp';
+let DONOR_STATS_URL = 'https://data.endowment.dev/api/public/donors';
 
-const statsRes = await fetch(STATS_URL);
+let statsRes = await fetch(STATS_URL);
+if (!statsRes.ok) statsRes = await fetch(STATS_FALLBACK_URL);
 const stats = await statsRes.json();
 
 const donorsRes = await fetch(DONOR_STATS_URL);
 const allDonors = await donorsRes.json();
-const individualDonors = allDonors.filter((d) => d.type == 'individual');
+const individualDonors = allDonors.filter((d) => d.type == 'person');
 const donorsByClass = individualDonors.reduce((donorsByClass, donor) => {
     if (!(donor.class in donorsByClass)) {
         donorsByClass[donor.class] = [];
@@ -21,7 +23,7 @@ const donorsByClass = individualDonors.reduce((donorsByClass, donor) => {
     donorsByClass[donor.class].push(donor);
     return donorsByClass;
 }, {});
-const nDonors = stats.donations.total_donors_count;
+const nDonors = stats.donors.total;
 
 const classDisplayNames: Record<string, string> = {
     '100K+': '$100,000+ individual donors',
@@ -55,7 +57,7 @@ const otherDonorsClassName = '0-1K';
                             </p>
                         </div>
                         <div class="community-kpi">
-                            <b>{stats.members_count}</b>
+                            <b>{stats.donors.members}</b>
                             <span>OSE members</span>
                         </div>
                     </div>
