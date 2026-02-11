@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   nodonate?: boolean;
   noindex?: boolean;
+  breadcrumbs?: Array<{name: string, url: string}>;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   description = 'Truly sustainable funding for critical open source software through a community\u2011driven endowment.',
   nodonate,
   noindex,
+  breadcrumbs,
 } = Astro.props;
 
 import { EVERYORG_BUTTON_URL } from '../util.ts';
@@ -61,6 +63,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
           property="og:logo"
           content="https://endowment.dev/images/logo/Logomark%20Colored%20for%20Dark%20BG.png">
         <meta property="og:site_name" content="Open Source Endowment">
+        <meta property="og:locale" content="en_US">
         <meta property="og:determiner" content="the">
         <meta property="og:url" content={Astro.url}>
         <meta
@@ -80,6 +83,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
           content="https://endowment.dev/images/logo/Logomark%20Colored%20for%20Dark%20BG.png">
         <meta name="twitter:url" content="https://endowment.dev">
         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@osendowment">
 
         <script type="application/ld+json">
         {
@@ -97,6 +101,29 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }
         </script>
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Open Source Endowment",
+          "url": "https://endowment.dev/",
+          "description": "Truly sustainable funding for critical open source software through a community-driven endowment."
+        }
+        </script>
+
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbs.map((crumb, i) => ({
+              "@type": "ListItem",
+              "position": i + 1,
+              "name": crumb.name,
+              "item": crumb.url
+            }))
+          })} />
+        )}
+
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary">
 
         <script async defer src="/js/everyorg-endowment-button.js"></script>
@@ -113,29 +140,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 defaults: '2025-05-24',
                 person_profiles: 'identified_only',
             })
-        </script>
-        <script>
-            var initOpts = {
-                projectKey: "pDiolTwtsGUmjDW31L9F",
-                defaultInputMode: 2,
-                obscureTextNumbers: false,
-                obscureTextEmails: false,
-            };
-            var startOpts = { userID: "" };
-            (function(A,s,a,y,e,r){
-                r=window.OpenReplay=[e,r,y,[s-1, e]];
-                s=document.createElement('script');s.src=A;s.async=!a;
-                document.getElementsByTagName('head')[0].appendChild(s);
-                r.start=function(v){r.push([0])};
-                r.stop=function(v){r.push([1])};
-                r.setUserID=function(id){r.push([2,id])};
-                r.setUserAnonymousID=function(id){r.push([3,id])};
-                r.setMetadata=function(k,v){r.push([4,k,v])};
-                r.event=function(k,p,i){r.push([5,k,p,i])};
-                r.issue=function(k,p){r.push([6,k,p])};
-                r.isActive=function(){return false};
-                r.getSessionToken=function(){};
-            })("//static.openreplay.com/latest/openreplay-assist.js",1,0,initOpts,startOpts);
         </script>
     </head>
     <body>

@@ -26,7 +26,7 @@ const bgColor = COLORS[Math.abs(hash) % COLORS.length];
     {!compact && (avatarUrl || showInitials) &&
         <div class="donor-avatar">
             {avatarUrl ? (
-                <img src={avatarUrl} alt={name + " photo"}>
+                <img src={avatarUrl} alt={name + " photo"} width="48" height="48" loading="lazy">
             ) : (
                 <div class="donor-initials" style={`background-color: ${bgColor}`}>
                     {initials}

@@ -7,7 +7,7 @@ import Layout from '../../layouts/Layout.astro';
 import * as post from '../../assets/foundation/docs/incorporation/act-of-incorporator.md';
 ---
 
-<Layout title="Act of Incorporator — Open Source Endowment" description="Act of Incorporator of the Open Source Endowment Foundation.">
+<Layout title="Act of Incorporator — Open Source Endowment" description="Act of Incorporator of the Open Source Endowment Foundation." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "Docs", url: "https://endowment.dev/docs/"}, {name: "Act of Incorporator", url: "https://endowment.dev/docs/act-of-incorporator/"}]}>
     <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

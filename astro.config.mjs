@@ -7,7 +7,7 @@ export default defineConfig({
     site: 'https://endowment.dev',
     integrations: [
         sitemap({
-            filter: (page) => !page.includes('/thank-you') && !page.includes('/404'),
+            filter: (page) => !page.includes('/thank-you') && !page.includes('/404') && !page.includes('/refresh'),
         }),
     ],
 });
