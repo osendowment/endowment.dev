@@ -6,6 +6,13 @@ import { humanize, EVERYORG_BUTTON_URL } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 import { cachedFetch, cachedFetchDonors } from '../lib/api.ts';
+import { Image } from 'astro:assets';
+import konstantinImg from '../assets/endorsements/konstantin.webp';
+import mitchellImg from '../assets/endorsements/mitchell.webp';
+import chadImg from '../assets/endorsements/chad.webp';
+import kailashImg from '../assets/endorsements/kailash.webp';
+import maximImg from '../assets/endorsements/maxim.webp';
+import oberhauserImg from '../assets/endorsements/oberhauser.webp';
 
 const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
 const allDonors = await cachedFetchDonors('https://data.endowment.dev/api/public/donors');
@@ -129,12 +136,12 @@ const featuredDonors = individualDonors
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/konstantin.webp"
+                                <Image
+                                    src={konstantinImg}
                                     alt="A portrait of Konstantin Vinogradov"
-                                    width="64"
-                                    height="64"
-                                >
+                                    width={128}
+                                    height={128}
+                                />
                             </div>
                             <div>
                                 <h3>Konstantin Vinogradov</h3>
@@ -152,12 +159,12 @@ const featuredDonors = individualDonors
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/mitchell.webp"
+                                <Image
+                                    src={mitchellImg}
                                     alt="A portrait of Mitchell Hashimoto"
-                                    width="64"
-                                    height="64"
-                                >
+                                    width={128}
+                                    height={128}
+                                />
                             </div>
                             <div>
                                 <h3>Mitchell Hashimoto</h3>
@@ -177,12 +184,12 @@ const featuredDonors = individualDonors
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/chad.webp"
+                                <Image
+                                    src={chadImg}
                                     alt="A portrait of Chad Whitacre"
-                                    width="64"
-                                    height="64"
-                                >
+                                    width={128}
+                                    height={128}
+                                />
                             </div>
                             <div>
                                 <h3>Chad Whitacre</h3>
@@ -199,12 +206,12 @@ const featuredDonors = individualDonors
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/kailash.webp"
+                                <Image
+                                    src={kailashImg}
                                     alt="A portrait of Kailash Nadh"
-                                    width="64"
-                                    height="64"
-                                >
+                                    width={128}
+                                    height={128}
+                                />
                             </div>
                             <div>
                                 <h3>Kailash Nadh</h3>
@@ -223,12 +230,12 @@ const featuredDonors = individualDonors
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/maxim.webp"
+                                <Image
+                                    src={maximImg}
                                     alt="A portrait of Maxim Konovalov"
-                                    width="64"
-                                    height="64"
-                                >
+                                    width={128}
+                                    height={128}
+                                />
                             </div>
                             <div>
                                 <h3>Maxim Konovalov</h3>
@@ -246,12 +253,12 @@ const featuredDonors = individualDonors
                         </blockquote>
                         <figcaption class="donor-mini-profile">
                             <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/oberhauser.webp"
+                                <Image
+                                    src={oberhauserImg}
                                     alt="A portrait of Jan Oberhauser"
-                                    width="64"
-                                    height="64"
-                                >
+                                    width={128}
+                                    height={128}
+                                />
                             </div>
                             <div>
                                 <h3>Jan Oberhauser</h3>
