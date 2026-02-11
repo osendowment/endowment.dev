@@ -2,7 +2,7 @@
 // © Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
-import { humanize } from '../util.ts';
+import { humanize, EVERYORG_BUTTON_URL } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
@@ -54,7 +54,7 @@ const featuredDonors = individualDonors
                         </small>
                         <div class="buttonset">
                             <a
-                                href="https://www.every.org/osendowment?suggestedAmounts=100%2C500%2C1000%2C2000&theme_color=5ba9ee&designation=Endowment+Fund&utm_campaign=donate-link#/donate"
+                                href={EVERYORG_BUTTON_URL}
                                 class="button button--colored"
                                 data-track="intro-bottom-donate"
                             >Donate</a>
@@ -486,7 +486,7 @@ const featuredDonors = individualDonors
                     <h2>Fund the Future of Open Source</h2>
                     <h3>Make an everlasting impact on the open source ecosystem. People donating $1K+ become OSE Members, who help govern the Endowment.</h3>
                     <a
-                        href="https://www.every.org/osendowment?suggestedAmounts=100%2C500%2C1000%2C2000&theme_color=5ba9ee&designation=Endowment+Fund&utm_campaign=donate-link#/donate"
+                        href={EVERYORG_BUTTON_URL}
                         class="button button--colored"
                         data-track="big-cta-donate"
                     >Donate</a>
