@@ -959,6 +959,7 @@ section.pagesec {
             margin-top: 0;
             margin-bottom: 0;
             font-size: var(--font-size-7);
+            text-wrap: balance;
             @media (max-width: 800px) {
                 font-size: var(--font-size-6);
             }
@@ -1661,6 +1662,7 @@ a.card {
     h2 {
         margin-bottom: 1.0rem;
         font-size: var(--font-size-7);
+        text-wrap: balance;
         @media (max-width: 800px) {
             font-size: var(--font-size-6);
         }
