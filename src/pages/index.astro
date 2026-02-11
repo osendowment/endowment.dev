@@ -6,19 +6,17 @@ import { humanize, EVERYORG_BUTTON_URL } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
 
-let STATS_URL = 'https://stats.endowment.dev/';
-let TEMP_STATS_URL = 'https://stats.endowment.dev/temp';
-let DONOR_STATS_URL = 'https://stats.endowment.dev/donors';
+let STATS_URL = 'https://data.endowment.dev/api/public/stats';
+let STATS_FALLBACK_URL = 'https://stats.endowment.dev/temp';
+let DONOR_STATS_URL = 'https://data.endowment.dev/api/public/donors';
 
-const statsRes = await fetch(STATS_URL);
+let statsRes = await fetch(STATS_URL);
+if (!statsRes.ok) statsRes = await fetch(STATS_FALLBACK_URL);
 const stats = await statsRes.json();
-
-const tempStatsRes = await fetch(TEMP_STATS_URL);
-const tempStats = await tempStatsRes.json();
 
 const donorsRes = await fetch(DONOR_STATS_URL);
 const allDonors = await donorsRes.json();
-const individualDonors = allDonors.filter((d) => d.type == 'individual');
+const individualDonors = allDonors.filter((d) => d.type == 'person');
 const featuredDonors = individualDonors
     .filter((d) => d.featured)
     .sort((a, b) => a.featured - b.featured);
@@ -70,13 +68,13 @@ const featuredDonors = individualDonors
             </div>
             <div class="insec insec--xpad insec--ytight intro-kpis">
                 <div>
-                    <b>${humanize(tempStats.endowment.fund_size)}</b><span>endowment fund</span>
+                    <b>${humanize(stats.endowment.fund_size)}</b><span>endowment fund</span>
                 </div>
                 <div>
-                    <b>{tempStats.donors.total}</b><span>total donors</span>
+                    <b>{stats.donors.total}</b><span>total donors</span>
                 </div>
                 <div>
-                    <b>{tempStats.donors.members}</b><span>members ($1K+&nbsp;donors)</span>
+                    <b>{stats.donors.members}</b><span>members ($1K+&nbsp;donors)</span>
                 </div>
             </div>
         </div>
@@ -127,20 +125,13 @@ const featuredDonors = individualDonors
     <section class="pagesec">
         <div class="container container--mobile-unpadded">
             <div class="insec insec--nopad insec--noborder-right insec--side-squares">
-                <div class="grid grid--bigfirst">
+                <div class="grid">
                     <figure class="grid__item endorsement">
                         <blockquote>
                             <p>
-                                Nearly everything in our digital world depends on open source software — a vital
-                                public good that suffers from the tragedy of the commons and lacks sustainable funding.
-                            </p>
-                            <p>
-                                Inspired by top universities that have sustained themselves through generations,
-                                we're building the Endowment to provide lasting support for critical OSS,
-                                powered by donations from the global tech community.
-                            </p>
-                            <p>
-                                Join us in securing the future of open source.
+                                The global open-source community <a href="https://kvinogradov.com/oss-universities/" target="_blank">shares many parallels</a> with how the best
+                                universities work, and we are thrilled to adopt their private endowment model to
+                                sustainably fund OSS maintainers.
                             </p>
                         </blockquote>
                         <figcaption class="donor-mini-profile">
@@ -155,31 +146,6 @@ const featuredDonors = individualDonors
                             <div>
                                 <h3>Konstantin Vinogradov</h3>
                                 <i>ex General Partner at Runa Capital</i>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <figure class="grid__item endorsement">
-                        <blockquote>
-                            <p>
-                                The Open Source Endowment is so obvious in hindsight, it’s high time we brought
-                                this model to bear on
-                                <a href="https://openpath.quest/2024/the-open-source-sustainability-crisis/"
-                                   >the Open Source sustainability crisis</a
-                                >.
-                            </p>
-                        </blockquote>
-                        <figcaption class="donor-mini-profile">
-                            <div class="donor-avatar">
-                                <img
-                                    src="/images/endorsements/chad.webp"
-                                    alt="A portrait of Chad Whitacre"
-                                    width="64"
-                                    height="64"
-                                >
-                            </div>
-                            <div>
-                                <h3>Chad Whitacre</h3>
-                                <i>Head of Open Source, Sentry</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -209,6 +175,31 @@ const featuredDonors = individualDonors
                     <figure class="grid__item endorsement">
                         <blockquote>
                             <p>
+                                The Open Source Endowment is so obvious in hindsight, it's high time we brought
+                                this model to bear on
+                                <a href="https://openpath.quest/2024/the-open-source-sustainability-crisis/"
+                                   >the Open Source sustainability crisis</a
+                                >.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/chad.webp"
+                                    alt="A portrait of Chad Whitacre"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Chad Whitacre</h3>
+                                <i>Head of Open Source, Sentry</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
                                 The Endowment is a very promising project. I am happy to join and pretty excited to
                                 see how it contributes to the FOSS funding ecosystem.
                             </p>
@@ -225,6 +216,30 @@ const featuredDonors = individualDonors
                             <div>
                                 <h3>Kailash Nadh</h3>
                                 <i>CTO, Zerodha</i>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="grid__item endorsement">
+                        <blockquote>
+                            <p>
+                                I've been part of the OSS community for 20+ years, consistently reflecting
+                                on the huge and unfair imbalance between the value open source creates and
+                                its sustainability. The Endowment is an efficient way to give back and
+                                address this issue.
+                            </p>
+                        </blockquote>
+                        <figcaption class="donor-mini-profile">
+                            <div class="donor-avatar">
+                                <img
+                                    src="/images/endorsements/maxim.webp"
+                                    alt="A portrait of Maxim Konovalov"
+                                    width="64"
+                                    height="64"
+                                >
+                            </div>
+                            <div>
+                                <h3>Maxim Konovalov</h3>
+                                <i>Co-founder, Nginx</i>
                             </div>
                         </figcaption>
                     </figure>
@@ -474,7 +489,7 @@ const featuredDonors = individualDonors
                     <a
                         href="/community"
                         class="button"
-                    >See all {tempStats.donors.total} donors →</a>
+                    >See all {stats.donors.total} donors →</a>
                 </div>
             </div>
         </div>

@@ -5,19 +5,17 @@
 import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 
-let STATS_URL = 'https://stats.endowment.dev/';
-let TEMP_STATS_URL = 'https://stats.endowment.dev/temp';
+let STATS_URL = 'https://data.endowment.dev/api/public/stats';
+let STATS_FALLBACK_URL = 'https://stats.endowment.dev/temp';
 
-const statsRes = await fetch(STATS_URL);
+let statsRes = await fetch(STATS_URL);
+if (!statsRes.ok) statsRes = await fetch(STATS_FALLBACK_URL);
 const stats = await statsRes.json();
 
-const tempStatsRes = await fetch(TEMP_STATS_URL);
-const tempStats = await tempStatsRes.json();
-
-const fundSize = tempStats.endowment.fund_size;
-const totalDonors = tempStats.donors.total;
-const totalMembers = tempStats.donors.members;
-const lastUpdated = Object.values(tempStats.endowment.accounts)
+const fundSize = stats.endowment.fund_size;
+const totalDonors = stats.donors.total;
+const totalMembers = stats.donors.members;
+const lastUpdated = Object.values(stats.endowment.accounts)
     .map((a: any) => a.synced_at)
     .sort()[0];
 ---
