@@ -684,6 +684,7 @@ header {
         a.logo {
             background-color: transparent;
             img {
+                width: auto;
                 height: 2.4rem;
             }
         }
