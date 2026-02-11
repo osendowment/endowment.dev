@@ -16,6 +16,7 @@ const stats = await statsRes.json();
 const donorsRes = await fetch(DONOR_STATS_URL);
 const allDonors = await donorsRes.json();
 const individualDonors = allDonors.filter((d) => d.type == 'person');
+const orgDonors = allDonors.filter((d) => d.type == 'organization');
 const donorsByClass = individualDonors.reduce((donorsByClass, donor) => {
     if (!(donor.class in donorsByClass)) {
         donorsByClass[donor.class] = [];
@@ -83,16 +84,13 @@ const otherDonorsClassName = '0-1K';
                     )}
                     <h2>Institutional donors</h2>
                     <div class="donor-list">
-                        <DonorMiniProfile
-                            name="G-Research"
-                            description="Corporate donor"
-                            avatarUrl="https://avatars.githubusercontent.com/u/21341965?s=200&v=4"
-                        ></DonorMiniProfile>
-                        <DonorMiniProfile
-                            name="Evil Martians"
-                            description="Pro bono donor"
-                            avatarUrl="https://avatars.githubusercontent.com/u/46581?s=200&v=4"
-                        ></DonorMiniProfile>
+                        {orgDonors.map((donor) => (
+                            <DonorMiniProfile
+                                name={donor.name}
+                                description={donor.description}
+                                avatarUrl={donor.picture_url}
+                            ></DonorMiniProfile>
+                        ))}
                     </div>
                     <h2>{classDisplayNames[otherDonorsClassName]}</h2>
                     <div class="donor-list">
