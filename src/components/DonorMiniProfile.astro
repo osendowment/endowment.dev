@@ -2,6 +2,8 @@
 // © Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
+import { Image } from 'astro:assets';
+
 interface Props {
   name: string;
   description?: string;
@@ -26,7 +28,7 @@ const bgColor = COLORS[Math.abs(hash) % COLORS.length];
     {!compact && (avatarUrl || showInitials) &&
         <div class="donor-avatar">
             {avatarUrl ? (
-                <img src={avatarUrl} alt={name + " photo"} width="48" height="48" loading="lazy">
+                <Image src={avatarUrl} alt={name + " photo"} width={96} height={96} loading="lazy" />
             ) : (
                 <div class="donor-initials" style={`background-color: ${bgColor}`}>
                     {initials}
