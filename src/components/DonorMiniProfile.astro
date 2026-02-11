@@ -6,12 +6,14 @@ interface Props {
   name: string;
   description?: string;
   avatarUrl?: string;
+  hasPhoto?: boolean;
   compact?: boolean;
   extraClasses?: string;
 }
 
-const { name, description, avatarUrl, compact, extraClasses } = Astro.props;
+const { name, description, avatarUrl, hasPhoto, compact, extraClasses } = Astro.props;
 
+const showInitials = hasPhoto && !avatarUrl;
 const initials = name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
 
 const COLORS = ['#4a90d9','#d94a4a','#50b87a','#e0a030','#9b59b6','#1abc9c','#e67e22','#3498db','#e74c3c','#2ecc71'];
@@ -21,7 +23,7 @@ const bgColor = COLORS[Math.abs(hash) % COLORS.length];
 ---
 
 <div class={'donor-mini-profile ' + (compact && 'donor-mini-profile--compact' || '') + (extraClasses || '')}>
-    {!compact &&
+    {!compact && (avatarUrl || showInitials) &&
         <div class="donor-avatar">
             {avatarUrl ? (
                 <img src={avatarUrl} alt={name + " photo"}>
