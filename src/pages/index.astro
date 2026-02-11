@@ -13,6 +13,7 @@ import chadImg from '../assets/endorsements/chad.webp';
 import kailashImg from '../assets/endorsements/kailash.webp';
 import maximImg from '../assets/endorsements/maxim.webp';
 import oberhauserImg from '../assets/endorsements/oberhauser.webp';
+import xkcdImg from '../assets/images/xkcd-2347.png';
 
 const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
 const allDonors = await cachedFetchDonors('https://data.endowment.dev/api/public/donors');
@@ -281,12 +282,12 @@ const featuredDonors = individualDonors
                     <div class="sustainability-outline">
                         <figure>
                             <a href="https://xkcd.com/2347/" target="_blank">
-                                <img
-                                    src="/images/xkcd-2347.png"
-                                    alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating “all modern digital infrastructure”. The structure precariously rests on a small load-bearing block, titled “a project some random person in Nebraska has been thanklessly maintaining since 2003”."
-                                    width="300"
-                                    height="381"
-                                    loading="lazy">
+                                <Image
+                                    src={xkcdImg}
+                                    alt="This xkcd comic shows a Jenga-like tower of blocks, illustrating &quot;all modern digital infrastructure&quot;. The structure precariously rests on a small load-bearing block, titled &quot;a project some random person in Nebraska has been thanklessly maintaining since 2003&quot;."
+                                    width={300}
+                                    height={381}
+                                    loading="lazy" />
                             </a>
                         </figure>
                         <div class="sustainability-stats">
