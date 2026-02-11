@@ -2,8 +2,6 @@
 // © Vlad-Stefan Harbuz <vlad@vlad.website>
 // SPDX-License-Identifier: Apache-2.0
 
-import { minidenticon } from 'minidenticons';
-
 interface Props {
   name: string;
   description?: string;
@@ -12,20 +10,25 @@ interface Props {
   extraClasses?: string;
 }
 
-let { name, description, avatarUrl, compact, extraClasses } = Astro.props;
+const { name, description, avatarUrl, compact, extraClasses } = Astro.props;
 
-if (!avatarUrl) {
-    avatarUrl = '/images/icons/silhouette.svg';
-}
+const initials = name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+
+const COLORS = ['#4a90d9','#d94a4a','#50b87a','#e0a030','#9b59b6','#1abc9c','#e67e22','#3498db','#e74c3c','#2ecc71'];
+let hash = 0;
+for (const c of name) hash = ((hash << 5) - hash + c.charCodeAt(0)) | 0;
+const bgColor = COLORS[Math.abs(hash) % COLORS.length];
 ---
 
 <div class={'donor-mini-profile ' + (compact && 'donor-mini-profile--compact' || '') + (extraClasses || '')}>
     {!compact &&
         <div class="donor-avatar">
-            {avatarUrl && (
-                <img src={avatarUrl} alt={"The " + name + " logo"}>
-            ) || (
-                <Fragment set:html={minidenticon(name)} />
+            {avatarUrl ? (
+                <img src={avatarUrl} alt={name + " photo"}>
+            ) : (
+                <div class="donor-initials" style={`background-color: ${bgColor}`}>
+                    {initials}
+                </div>
             )}
         </div>
     }
@@ -36,3 +39,19 @@ if (!avatarUrl) {
         }
     </div>
 </div>
+
+<style>
+    .donor-initials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.1rem;
+        line-height: 1;
+        user-select: none;
+    }
+</style>
