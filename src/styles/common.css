@@ -790,6 +790,9 @@ figure.endorsement {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media (max-width: 800px) {
+            padding-right: 1.2rem; /* to match padding-left defined elsewhere */
+        }
     }
     .donor-mini-profile {
         margin-top: 2rem;
