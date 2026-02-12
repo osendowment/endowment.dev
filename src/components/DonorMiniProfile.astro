@@ -18,10 +18,9 @@ const { name, description, avatarUrl, hasPhoto, compact, extraClasses } = Astro.
 const showInitials = hasPhoto && !avatarUrl;
 const initials = name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
 
-const COLORS = ['#4a90d9','#d94a4a','#50b87a','#e0a030','#9b59b6','#1abc9c','#e67e22','#3498db','#e74c3c','#2ecc71'];
 let hash = 0;
 for (const c of name) hash = ((hash << 5) - hash + c.charCodeAt(0)) | 0;
-const bgColor = COLORS[Math.abs(hash) % COLORS.length];
+const angle = Math.abs(hash) % 360;
 ---
 
 <div class={'donor-mini-profile ' + (compact && 'donor-mini-profile--compact' || '') + (extraClasses || '')}>
@@ -30,7 +29,7 @@ const bgColor = COLORS[Math.abs(hash) % COLORS.length];
             {avatarUrl ? (
                 <Image src={avatarUrl} alt={name + " photo"} width={96} height={96} loading="lazy" />
             ) : (
-                <div class="donor-initials" style={`background-color: ${bgColor}`}>
+                <div class="donor-initials" style={`background: linear-gradient(${angle}deg, #5BA9EE, #3FBD73)`}>
                     {initials}
                 </div>
             )}
@@ -51,7 +50,7 @@ const bgColor = COLORS[Math.abs(hash) % COLORS.length];
         justify-content: center;
         width: 100%;
         height: 100%;
-        border-radius: 50%;
+        border-radius: var(--border-radius);
         color: #fff;
         font-weight: 600;
         font-size: 1.1rem;
