@@ -568,8 +568,8 @@ input[type="radio"] {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     &.container--mobile-unpadded {
         @media (max-width: 800px) {
             padding-left: 0;
