@@ -5,7 +5,7 @@
 import { humanize, EVERYORG_BUTTON_URL } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
-import { cachedFetch, cachedFetchDonors } from '../lib/api.ts';
+import { cachedFetch, fetchDonors } from '../lib/api.ts';
 import { Image } from 'astro:assets';
 import konstantinImg from '../assets/endorsements/konstantin.webp';
 import mitchellImg from '../assets/endorsements/mitchell.webp';
@@ -16,7 +16,7 @@ import oberhauserImg from '../assets/endorsements/oberhauser.webp';
 import xkcdImg from '../assets/images/xkcd-2347.png';
 
 const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
-const allDonors = await cachedFetchDonors('https://data.endowment.dev/api/public/donors');
+const allDonors = await fetchDonors('https://data.endowment.dev/api/public/donors');
 const individualDonors = allDonors.filter((d) => d.type == 'person');
 const featuredDonors = individualDonors
     .filter((d) => d.featured)
