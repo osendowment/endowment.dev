@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="1200"
-   height="630"
+   width="1900"
+   height="950"
    fill="none"
    version="1.1"
-   viewBox="0 0 1200 630"
+   viewBox="0 0 1900 950"
    id="svg9"
-   sodipodi:docname="opengraph.svg"
+   sodipodi:docname="everyorg-cover.svg"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
-   inkscape:export-filename="opengraph.png"
+   inkscape:export-filename="everyorg-cover.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -18,16 +18,16 @@
   <defs
      id="defs9">
     <rect
-       x="96.018976"
-       y="273.5635"
-       width="719.23647"
-       height="219.21313"
+       x="96.018974"
+       y="273.56351"
+       width="1165.8829"
+       height="313.95631"
        id="rect4" />
     <rect
        x="123.10564"
-       y="321.87621"
+       y="321.87622"
        width="1038.0142"
-       height="193.5075"
+       height="193.50751"
        id="rect10" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
@@ -122,7 +122,7 @@
   </defs>
   <sodipodi:namedview
      id="namedview9"
-     pagecolor="#ffffff"
+     pagecolor="#fdfdfd"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:showpageshadow="2"
@@ -130,55 +130,19 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.54097717"
-     inkscape:cx="595.2192"
-     inkscape:cy="400.20173"
+     inkscape:zoom="0.36941973"
+     inkscape:cx="977.20824"
+     inkscape:cy="733.58292"
      inkscape:window-width="1440"
-     inkscape:window-height="960"
+     inkscape:window-height="937"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg9">
-    <sodipodi:guide
-       position="0,560"
-       orientation="0,1"
-       id="guide1"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,134,229)" />
-    <sodipodi:guide
-       position="1130,630"
-       orientation="-1,0"
-       id="guide2"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,134,229)" />
-    <sodipodi:guide
-       position="1200,70"
-       orientation="0,1"
-       id="guide3"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,134,229)" />
-    <sodipodi:guide
-       position="70,0"
-       orientation="-1,0"
-       id="guide4"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,134,229)" />
-  </sodipodi:namedview>
-  <rect
-     width="1200"
-     height="630"
-     fill="#080e17"
-     style="paint-order:stroke fill markers;fill:#ffffff;fill-opacity:1"
-     id="rect1"
-     x="0"
-     y="0" />
+     inkscape:current-layer="svg9"
+     inkscape:export-bgcolor="#fdfdfdff" />
   <g
      id="g10"
-     transform="matrix(0.51401363,0,0,0.51401363,37.558973,431.57241)"
+     transform="matrix(0.6381782,0,0,0.6381782,88.847417,695.73872)"
      style="stroke-width:0.849237">
     <path
        d="m 226.9697,81.072181 v 58.509899 c 0,8.48749 -3.3717,16.62712 -9.37298,22.62872 l -45.02991,45.02992 v -2.24332 c 0,-8.4875 3.3717,-16.62713 9.37298,-22.62873 l 26.05642,-26.0561 c 6.00128,-6.0016 9.37298,-14.14124 9.37298,-22.62873 V 72.064822 c -4.00821,-3.281486 -8.2878,-6.253164 -12.80068,-8.877624 v 36.894862 c 0,5.09243 -2.02283,9.97621 -5.62398,13.57704 l -3.97653,3.97685 V 58.290362 c -4.12278,-1.824289 -8.39757,-3.375284 -12.80068,-4.629495 v 76.775763 l -9.60051,9.60051 V 51.323303 c -4.18006,-0.748773 -8.45293,-1.232977 -12.80068,-1.440076 V 152.83782 l -5.52958,5.52958 c -10.80281,10.80249 -16.87162,25.45415 -16.87162,40.73144 v 42.79461 h 12.80069 v -42.79461 c 0,-11.88223 4.72025,-23.27804 13.12229,-31.68008 l 41.2806,-41.2806 v 7.54568 c 0,5.09243 -2.02283,9.97621 -5.62398,13.57705 l -26.0561,26.05642 c -8.40205,8.40205 -13.1223,19.79753 -13.1223,31.68009 v 36.89605 h 12.80068 v -8.59662 c 0,-5.09243 2.02283,-9.97621 5.62398,-13.57704 l 48.4573,-48.45763 c 8.40204,-8.40204 13.12229,-19.79753 13.12229,-31.68008 V 98.325803 C 236.15675,92.105312 231.85572,86.320684 226.9697,81.072181 Z"
@@ -299,7 +263,7 @@
   <g
      clip-path="url(#clip0_595_21552)"
      id="g68"
-     transform="matrix(1.2743526,0,0,1.2743526,526.81179,251.98557)">
+     transform="matrix(1.9747647,0,0,1.9747647,828.83732,480.64092)">
     <rect
        x="69"
        y="192"
@@ -891,24 +855,25 @@
   <text
      xml:space="preserve"
      id="text4"
-     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:58.6667px;line-height:1.1;font-family:'Plus Jakarta Sans';-inkscape-font-specification:'Plus Jakarta Sans Semi-Bold';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4);shape-padding:0;display:inline;fill:#3a3e43;fill-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:96px;line-height:1.1;font-family:'Plus Jakarta Sans';-inkscape-font-specification:'Plus Jakarta Sans Semi-Bold';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4);shape-padding:0;display:inline;fill:#3a3e43;fill-opacity:1"
      x="0"
      y="0"
-     transform="translate(-25.326675,-209.09514)"><tspan
+     transform="translate(34.673325,-158.7753)"><tspan
        x="96.019531"
-       y="324.82797"
-       id="tspan8"><tspan
+       y="357.45017"
+       id="tspan3"><tspan
+         dx="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.00012207031"
          style="font-weight:500;-inkscape-font-specification:'Plus Jakarta Sans Medium'"
-         id="tspan4">Truly sustatinable funding
+         id="tspan1">Truly sustatinable funding
 </tspan></tspan><tspan
        x="96.019531"
-       y="389.36136"
-       id="tspan10"><tspan
+       y="463.05017"
+       id="tspan5"><tspan
          style="font-weight:500;-inkscape-font-specification:'Plus Jakarta Sans Medium'"
-         id="tspan9">for critical open source </tspan></tspan><tspan
+         id="tspan4">for critical open source </tspan></tspan><tspan
        x="96.019531"
-       y="453.89475"
-       id="tspan12"><tspan
+       y="568.65018"
+       id="tspan7"><tspan
          style="font-weight:500;-inkscape-font-specification:'Plus Jakarta Sans Medium'"
-         id="tspan11">software. </tspan></tspan></text>
+         id="tspan6">software. </tspan></tspan></text>
 </svg>
