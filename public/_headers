@@ -19,10 +19,6 @@
 /images/*
   Cache-Control: public, max-age=86400
 
-# Medium cache for donor photos
-/cache/photos/*
-  Cache-Control: public, max-age=86400
-
 # JS assets
 /js/*
   Cache-Control: public, max-age=86400

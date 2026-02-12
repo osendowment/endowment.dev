@@ -13,7 +13,7 @@ export default defineConfig({
     },
     integrations: [
         sitemap({
-            filter: (page) => !page.includes('/thank-you') && !page.includes('/404') && !page.includes('/refresh'),
+            filter: (page) => !page.includes('/thank-you') && !page.includes('/404'),
         }),
     ],
 });

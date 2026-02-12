@@ -1,16 +1,8 @@
-import { readFileSync, writeFileSync, mkdirSync, statSync, existsSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const CACHE_ENABLED = false;
 const CACHE_DIR = join(process.cwd(), '.cache');
-const PHOTO_CACHE_DIR = join(process.cwd(), 'public', 'cache', 'photos');
-const MAX_AGE_MS = 24 * 60 * 60 * 1000;
-
-export function clearCache() {
-    for (const dir of [CACHE_DIR, PHOTO_CACHE_DIR]) {
-        rmSync(dir, { recursive: true, force: true });
-    }
-}
+const MAX_AGE_MS = 6 * 60 * 60 * 1000;
 
 function ensureDir(dir: string) {
     mkdirSync(dir, { recursive: true });
@@ -38,12 +30,6 @@ function writeJsonCache(key: string, data: any) {
 }
 
 export async function cachedFetch(url: string, cacheKey: string): Promise<any> {
-    if (!CACHE_ENABLED) {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-    }
-
     const path = join(CACHE_DIR, `${cacheKey}.json`);
 
     if (!isStale(path)) {
@@ -64,33 +50,6 @@ export async function cachedFetch(url: string, cacheKey: string): Promise<any> {
     }
 }
 
-function donorSlug(name: string): string {
-    return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-}
-
-const EXT_BY_TYPE: Record<string, string> = {
-    'image/png': '.png',
-    'image/webp': '.webp',
-    'image/jpeg': '.jpg',
-};
-
-async function cachePhoto(pictureUrl: string, slug: string): Promise<string> {
-    const res = await fetch(pictureUrl);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const ext = EXT_BY_TYPE[res.headers.get('content-type') || ''] || '.png';
-    const filename = `${slug}${ext}`;
-    writeFileSync(join(PHOTO_CACHE_DIR, filename), Buffer.from(await res.arrayBuffer()));
-    return filename;
-}
-
-function findCachedPhoto(slug: string): string | null {
-    for (const ext of Object.values(EXT_BY_TYPE)) {
-        const path = join(PHOTO_CACHE_DIR, `${slug}${ext}`);
-        if (existsSync(path)) return `${slug}${ext}`;
-    }
-    return null;
-}
-
 async function validatePhotoUrls(donors: any[]): Promise<void> {
     const checks = donors
         .filter((d: any) => d.picture_url)
@@ -108,35 +67,8 @@ async function validatePhotoUrls(donors: any[]): Promise<void> {
     await Promise.all(checks);
 }
 
-export async function cachedFetchDonors(url: string): Promise<any[]> {
+export async function fetchDonors(url: string): Promise<any[]> {
     const donors = await cachedFetch(url, 'donors');
-
     await validatePhotoUrls(donors);
-
-    if (!CACHE_ENABLED) return donors;
-
-    ensureDir(PHOTO_CACHE_DIR);
-
-    const photoJobs = donors
-        .filter((d: any) => d.picture_url)
-        .map(async (d: any) => {
-            const slug = donorSlug(d.name);
-            const existing = findCachedPhoto(slug);
-            const localFile = existing ? join(PHOTO_CACHE_DIR, existing) : null;
-
-            if (!localFile || isStale(localFile)) {
-                try {
-                    const filename = await cachePhoto(d.picture_url, slug);
-                    d.picture_url = `/cache/photos/${filename}`;
-                    return;
-                } catch { /* keep existing cached photo if download fails */ }
-            }
-
-            if (existing) {
-                d.picture_url = `/cache/photos/${existing}`;
-            }
-        });
-
-    await Promise.all(photoJobs);
     return donors;
 }
