@@ -146,6 +146,7 @@ SPDX-License-Identifier: Apache-2.0
     --color-section-border-dark: #3f6280; /* #42586c in design */
     --color-section-border-dark-secondary: #3f628099;
     --color-primary: #5ba9ee;
+    --color-primary-text: #005fa7;
     --color-primary-lightbg: #e9f5f7ff;
     --color-primary-fade1: #d1e6f8;
     --color-primary-fade2: #5ba9ee14;
@@ -230,12 +231,12 @@ h1, h2, h3, h4, h5, h6, .button, small {
 a {
     padding-left: 0.1rem;
     padding-right: 0.1rem;
-    text-decoration-color: var(--color-primary);
-    text-decoration-thickness: 2px;
-    color: var(--color-primary);
+    text-decoration-color: var(--color-primary-text);
+    text-decoration-thickness: 1px;
+    color: var(--color-primary-text);
     font-weight: inherit;
     &:hover {
-        background-color: var(--color-primary);
+        background-color: var(--color-primary-text);
         color: var(--color-text-light);
         text-decoration: none;
     }
