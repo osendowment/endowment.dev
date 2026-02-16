@@ -1036,6 +1036,15 @@ section.pagesec {
             background: var(--color-bg-ash);
             box-shadow: 0 0 20px 10px var(--color-bg-ash);
         }
+        a {
+            text-decoration-color: var(--color-primary);
+            text-decoration-thickness: 2px;
+            color: var(--color-primary);
+            &:hover {
+                background-color: var(--color-primary);
+                color: var(--color-text-light);
+            }
+        }
     }
     &.pagesec--no-top-border {
         border-top: 0;
