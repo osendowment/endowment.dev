@@ -63,12 +63,19 @@ import Layout from '../layouts/Layout.astro';
                     <div class="sechead sechead--min-height flex-center flex-column">
                         <h1>FAQ</h1>
                         <p>
-                            Frequently asked questions about the Open Source Endowment,
-                            how to donate, how the endowment works, how it selects projects
-                            for funding, etc. Feel free to raise issues in our
+                            Frequently asked questions about the Open Source Endowment.
+                            Feel free to raise issues in our
                             <a href="https://github.com/osendowment/foundation" target="_blank">GitHub repo</a>
                             &mdash; the best Q&amp;As will be added to this page.
                         </p>
+                        <nav class="faq-nav">
+                            <a href="#purpose">Purpose</a>
+                            <a href="#donations">Donations</a>
+                            <a href="#governance">Governance</a>
+                            <a href="#investments">Investments</a>
+                            <a href="#grants">Grants</a>
+                            <a href="#other">Other questions</a>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -76,6 +83,8 @@ import Layout from '../layouts/Layout.astro';
         <section class="pagesec">
             <div class="container">
                 <div class="insec insec--xpad">
+
+                    <h2 class="faq-section-heading" id="purpose">Purpose</h2>
 
                     <div class="faq-item">
                         <h3>What is the Open Source Endowment (OSE)?</h3>
@@ -98,7 +107,7 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                     </div>
 
-                    <h2 class="faq-section-heading">Donations &amp; Governance</h2>
+                    <h2 class="faq-section-heading" id="donations">Donations</h2>
 
                     <div class="faq-item">
                         <h3>How do I donate to OSE?</h3>
@@ -121,6 +130,8 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                     </div>
 
+                    <h2 class="faq-section-heading" id="governance">Governance</h2>
+
                     <div class="faq-item">
                         <h3>What will OSE governance look like in the long term?</h3>
                         <div class="faq-answer">
@@ -128,7 +139,7 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                     </div>
 
-                    <h2 class="faq-section-heading">Investments</h2>
+                    <h2 class="faq-section-heading" id="investments">Investments</h2>
 
                     <div class="faq-item">
                         <h3>How are donated funds invested?</h3>
@@ -144,7 +155,7 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                     </div>
 
-                    <h2 class="faq-section-heading">Grants</h2>
+                    <h2 class="faq-section-heading" id="grants">Grants</h2>
 
                     <div class="faq-item">
                         <h3>What principles guide OSE's grantmaking?</h3>
@@ -187,23 +198,29 @@ import Layout from '../layouts/Layout.astro';
                     <div class="faq-item">
                         <h3>Does OSE support OSS projects that have a related tech business?</h3>
                         <div class="faq-answer">
-                            <p>If an open source project can turn into a sustainable business, it probably should. However, OSE supports only nonprofit projects, excluding OSS startups and corporate projects from its scope.</p>
+                            <p>If an open source project can turn into a sustainable business, it probably should.</p>
+                            <p>OSE supports only nonprofit projects, excluding VC-funded startups and projects with corporate origins. One simple test is trademark ownership. Here are examples of great open source projects that OSE <strong>will not</strong> support:</p>
+                            <ul>
+                                <li><strong>Kubernetes</strong> — originated at Google, which initially owned its trademark; now hosted at the Linux Foundation</li>
+                                <li><strong>ClickHouse</strong> — actively commercialized by ClickHouse Inc, which owns its trademark</li>
+                                <li><strong>PostgreSQL</strong> — while its trademark has an <a href="https://wiki.postgresql.org/wiki/Trademark_issues">unclear history</a>, many Postgres-as-a-Service companies (like Supabase and Neon) actively contribute to its development</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>What are grants provided for?</h3>
+                        <h3>What is funding provided for?</h3>
                         <div class="faq-answer">
-                            <p>There are two ways we currently think about awarding grants:</p>
+                            <p>OSE awards funding in two forms:</p>
                             <ul>
-                                <li><strong>Forward-looking</strong>: Maintainers of the project should use grants to perform a measurable chunk of work that will de-risk the project.</li>
-                                <li><strong>Backward-looking</strong>: Some maintainers have already been working on their projects for decades without any reasonable support. We publicly acknowledge and provide monetary gratitude for what they have done, decreasing potential burnout.</li>
+                                <li><strong>Forward-looking grants</strong> — funding a specific, measurable chunk of work that will de-risk the project (e.g., fixing a class of vulnerabilities, onboarding a co-maintainer).</li>
+                                <li><strong>Backward-looking awards</strong> — recognizing maintainers who have sustained critical projects for years or decades without adequate support, helping reduce burnout.</li>
                             </ul>
-                            <p>The impact of grants is planned to be checked quantitatively (data-driven metrics) and qualitatively (check-in calls). We also aim to highlight critical maintainers so everybody can join OSE in supporting them.</p>
+                            <p>Impact is measured both quantitatively (data-driven metrics) and qualitatively (check-in calls). We also aim to highlight critical maintainers so the broader community can join OSE in supporting them.</p>
                         </div>
                     </div>
 
-                    <h2 class="faq-section-heading">Other questions</h2>
+                    <h2 class="faq-section-heading" id="other">Other questions</h2>
 
                     <div class="faq-item">
                         <h3>Can <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhart's law</a> cause any scaling problems?</h3>
@@ -215,11 +232,9 @@ import Layout from '../layouts/Layout.astro';
                     <div class="faq-item">
                         <h3>Why did nobody build an OSS endowment before OSE?</h3>
                         <div class="faq-answer">
-                            <ul>
-                                <li><strong>The endowment model requires a 20+ year planning horizon</strong>: Most organizations, including charities, focus on quick wins and annual budgets. They can't afford to spend only ~5% of donations every year. Established charities can hardly launch next-gen initiatives — like many large or legacy organizations. Even in the case of OSS-enlightened leaders, governments would have a hard time explaining OSS to voters. Companies usually do not create endowments, as their business priorities change over time. Endowments are created by passionate individuals.</li>
-                                <li><strong>The endowment model fits well only targets with unlimited lifespans</strong>: Most OSS communities are typically centered around targets with limited lifespans: software (like Linux), languages (like Python), and people. Software evolves and becomes obsolete over time, rendering any project-specific funding eventually irrelevant. Unlike any particular OSS ecosystem, OSS-at-large is an open-ended target.</li>
-                                <li><strong>An OSS endowment requires a rare intersection of multiple areas of expertise</strong>: This work requires experience in open source and dev-focused products, endowments, scaling of tech startups, fundraising, etc. It requires leaders with a strong desire and ability to pursue their own personal nonprofit initiatives. Most OSS people are not familiar with the endowment model, especially outside the USA/UK (the majority). Most philanthropists are not familiar with open source values and their challenges — this problem did not exist 25 years ago.</li>
-                            </ul>
+                            <p><strong>Endowments require a 20+ year horizon</strong> — most organizations, including charities, optimize for quick wins and annual budgets; spending only ~5% of donations per year is a hard sell. Governments struggle to explain OSS to voters. Companies shift priorities too often. Endowments are created by passionate individuals.</p>
+                            <p><strong>The target must have an unlimited lifespan</strong> — most OSS communities center around specific software (Linux), languages (Python), or people. These targets have limited lifespan, making project-specific endowments eventually irrelevant. OSS-at-large, however, is an open-ended target.</p>
+                            <p><strong>It requires a rare intersection of expertise</strong> — open source, endowment governance, startup scaling, fundraising, and nonprofit law. Most OSS people are unfamiliar with the endowment model, especially outside the US/UK. Most philanthropists are unfamiliar with open source — this problem didn't exist 25 years ago.</p>
                         </div>
                     </div>
 
@@ -258,6 +273,32 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+    .faq-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        position: relative;
+        z-index: 2;
+    }
+    nav.faq-nav a,
+    nav.faq-nav a:visited {
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: var(--font-size-3);
+        text-decoration: none;
+        background-color: transparent;
+        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    }
+    nav.faq-nav a:hover {
+        background-color: var(--color-primary);
+        color: #fff;
+        border-color: var(--color-primary);
+        text-decoration: none;
+    }
     .faq-section-heading {
         font-size: var(--font-size-6);
         font-weight: bold;
@@ -265,6 +306,7 @@ import Layout from '../layouts/Layout.astro';
         margin-bottom: 2.5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid var(--color-section-border);
+        scroll-margin-top: 6rem;
     }
     .faq-item {
         display: flex;
