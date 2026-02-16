@@ -4,6 +4,8 @@
 
 import Layout from '../layouts/Layout.astro';
 import { EVERYORG_BUTTON_URL } from '../util.ts';
+const stats = await fetch('https://data.endowment.dev/api/public/stats').then(r => r.json());
+const orgDonorCount = stats.donors.organizations;
 ---
 
 <Layout title="FAQ — Open Source Endowment" description="Frequently asked questions about the Open Source Endowment, how to donate, how the endowment works, and more." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "FAQ", url: "https://endowment.dev/faq/"}]}>
@@ -90,21 +92,36 @@ import { EVERYORG_BUTTON_URL } from '../util.ts';
                     <div class="faq-item">
                         <h3>What is the Open Source Endowment (OSE)?</h3>
                         <div class="faq-answer">
-                            <p>OSE is the world's first endowment fund dedicated to sustainably funding free open source software. It collects donations from the open source community, invests all of them into diversified assets, and spends only the returns to support critical yet underfunded OSS globally. It was incorporated as a US nonprofit on February 14, 2025, and is a tax-exempt 501(c)(3) public charity.</p>
+                            <p>OSE is the world's first endowment fund for open source software. It invests donations into a low-risk portfolio and spends only the returns to fund maintainers of critical yet underfunded OSS across the globe. OSE is a US 501(c)(3) public charity, incorporated on February 14, 2025.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>Why does OSS need more sustainable funding?</h3>
+                        <h3>Why does OSS need sustainable funding?</h3>
                         <div class="faq-answer">
-                            <p><strong>Open source runs the modern world</strong>: Over 95% of software codebases rely on OSS, with applications averaging 500+ OSS components. Like roads and bridges, OSS requires ongoing maintenance to fix bugs, address security issues, and adapt to changes. 86% of contributors are currently unpaid, and many critical projects lack resources, leading to notable incidents like <a href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed</a> (2014) and <a href="https://en.wikipedia.org/wiki/Log4Shell">Log4Shell</a> (2021).</p>
-                            <p><strong>Current funding models are not enough</strong>: There are many funding sources for FOSS: corporate budgets, OSS nonprofit foundations, tools like GitHub Sponsors, a few government programs, etc. However, none of them simultaneously combine the following three features OSE is designed around:</p>
+                            <p>Open source runs the modern world: <a href="https://www.blackduck.com/blog/appsec-decoded-open-source-trends-ossra-report.html" target="_blank">over 95% of codebases</a> rely on OSS, with applications averaging <a href="https://www.blackduck.com/blog/appsec-decoded-open-source-trends-ossra-report.html" target="_blank">500+ open source components</a>. Like roads and bridges, OSS requires ongoing maintenance to fix bugs, patch security issues, and adapt to changes.</p>
+                            <p>Yet <a href="https://opensourcefundingsurvey2024.com/" target="_blank">86% of contributors</a> are unpaid, and many critical projects lack resources. Without sustainable funding, this is a very fragile foundation for the global software supply chain — leading to incidents like <a href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed</a> (2014) and <a href="https://en.wikipedia.org/wiki/Log4Shell">Log4Shell</a> (2021).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why are current funding solutions not truly sustainable?</h3>
+                        <div class="faq-answer">
+                            <p>Open source has various funding sources: corporate budgets, nonprofit foundations, government programs, personal donations, etc. However, most depend on volatile annual budgets or ad hoc donations that strongly fluctuate with economic and political conditions.</p>
+                            <p>A recession, a corporate strategy shift, or a change of government team can cut OSS budgets overnight — leaving critical projects without support and seriously increasing risks for all of us.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why is OSE unique and sustainable?</h3>
+                        <div class="faq-answer">
+                            <p>OSE complements existing solutions by filling the funding gaps in a sustainable way. It is the only institution that simultaneously combines three features:</p>
                             <ul>
-                                <li><strong>Sustainable funding</strong>: Stable, long-term cash flow for OSS, not tied to annual donations or volatile corporate or governmental budgets.</li>
-                                <li><strong>Systemic focus</strong>: Targets critical underfunded OSS, prioritizing the "long tail" instead of popular, large, or specific supply chains.</li>
-                                <li><strong>Scalability and efficiency</strong>: Uses a transparent, digital-first approach to attract funding from the tech industry and choose grantees, designed to attract more donors over time.</li>
+                                <li><strong>Sustainable funding</strong> — an endowment model that spends only investment returns, providing stable cash flow independent of annual donations or volatile budgets.</li>
+                                <li><strong>Systemic focus</strong> — targets critical underfunded OSS, prioritizing the "long tail" instead of popular, large, or vendor-specific supply chains.</li>
+                                <li><strong>Scalability and efficiency</strong> — a transparent, digital-first approach to attracting donors and selecting grantees, designed to grow over time.</li>
                             </ul>
-                            <p>The current solutions are already making an impact, and OSE is a complementary tool to them. By filling in the gaps in the current OSS funding landscape, OSE aims to reduce the risks for the global software supply chain we all rely on.</p>
+                            <p>By combining all three into a single nonprofit product, OSE provides a predictable, perpetual funding stream for maintainers of the most critical OSS, reducing risks of the global software supply chain our world depends on.</p>
                         </div>
                     </div>
 
@@ -113,45 +130,59 @@ import { EVERYORG_BUTTON_URL } from '../util.ts';
                     <div class="faq-item">
                         <h3>How do I donate?</h3>
                         <div class="faq-answer">
-                            <p>People and organizations are welcome to <a href={EVERYORG_BUTTON_URL}>donate here</a>. We accept card payments, Apple/Google Pay, US and international bank transfers, donor-advised funds (DAF), crypto, and public stock — all non-US assets are automatically liquidated on donation and OSE receives only the USD amount. We also accept private stock option donations.</p>
+                            <p>People and organizations are welcome to <a href={EVERYORG_BUTTON_URL}>donate here</a>. We accept card payments, Apple/Google Pay, US and international bank transfers, donor-advised funds (DAF), crypto, public and private stock — all non-USD assets are automatically converted.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <h3>What happens when I donate $1,000+/year?</h3>
+                        <h3>Where does my donation go?</h3>
                         <div class="faq-answer">
-                            <p>You become an <strong>OSE Member</strong> (individuals only) — with governance rights including advising the Board on strategy and grant-making, appointing community-nominated directors, and voting on key decisions. Each $1,000 grants one year of membership.</p>
-                            <p>Both cash and non-cash donations (e.g., stock) count at gross USD value, including from personal entities like family trusts. See the full <a href="/docs/membership-policy">membership policy</a> for details.</p>
+                            <p>Every public donation to OSE goes directly to the endowment fund — they are invested, not spent. Only the investment returns are used to fund grants to open source projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What happens when I donate more than $1,000?</h3>
+                        <div class="faq-answer">
+                            <p>People who give $1,000 or more become <strong>OSE Members</strong> — with governance rights including advising the Board on strategy and grant-making, appointing community-nominated directors, and voting on key decisions. Each $1,000 grants one year of membership. See the <a href="/docs/membership-policy">membership policy</a> for details.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <h3>Are donations tax-deductible for US donors?</h3>
                         <div class="faq-answer">
-                            <p><strong>Yes.</strong> The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity (EIN 33-3502715), so donations are <a href="https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contribution-deductions" target="_blank">tax-deductible</a> to the full extent permitted by law. Individuals can deduct up to 60% of adjusted gross income (AGI) for cash donations; corporations up to 25% of taxable income. Unused deductions carry forward for up to five years.</p>
+                            <p><strong>Yes.</strong> OSE is a US 501(c)(3) tax-exempt public charity (EIN 33-3502715), so donations are <a href="https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contribution-deductions" target="_blank">tax-deductible</a> to the full extent permitted by law. Individuals can deduct up to 60% of adjusted gross income for cash donations; corporations up to 25% of taxable income. Unused deductions carry forward for up to five years.</p>
                         </div>
                     </div>
 
                     <h2 class="faq-section-heading" id="governance">Governance</h2>
 
                     <div class="faq-item">
-                        <h3>Why does OSE accept only individuals as founding donors?</h3>
+                        <h3>Why did OSE accept only individuals as founding donors?</h3>
                         <div class="faq-answer">
-                            <p>OSE is built as a community-driven nonprofit with inclusive governance based on individual donors — people with a passion for OSS and "skin in the game." The endowment model makes sense on a 20+ year planning horizon, and most organizations plan for shorter periods.</p>
+                            <p>OSE is a grassroots nonprofit governed by individual donors — people with a passion for open source and skin in the game. Endowments require a 20+ year horizon, and most organizations plan for far shorter periods. We are intentionally building a lasting global neutral institution, not a corporate nonprofit.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <h3>Does OSE accept corporate and other institutional donors?</h3>
                         <div class="faq-answer">
-                            <p>Yes! Such donors are very welcome, and we are happy to collaborate with companies and foundations that care about open source. However, we do not offer them governing rights in order to preserve the long-term neutrality and alignment with the global OSS community.</p>
+                            <p><strong>Yes!</strong> We already have {orgDonorCount} <a href="/community">institutional donors</a> in our community, and we welcome more companies and foundations that care about open source. However, we do not offer them governing rights to preserve the long-term neutrality and alignment with the global open source community.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How is OSE leadership structured?</h3>
+                        <div class="faq-answer">
+                            <p>The <strong>Board of Directors</strong> is the main governing body, responsible for OSE strategy, investments, grants, etc. It combines board-appointed and member-elected directors. All directors serve unpaid and must be Members. The Board meets at least four times a year; meeting minutes are published in our <a href="/docs">docs</a>. See the <a href="/docs/bylaws">bylaws</a> for full details.</p>
+                            <p>The <strong>Executive Director</strong> manages day-to-day operations and reports to the Board. The ED is appointed by the Board for up to three years and must be a Member. OSE also engages <strong>Advisors</strong> — thematic experts who help the Board on various topics and, unlike directors and officers, are not required to be Members.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <h3>What will OSE governance look like in the long term?</h3>
                         <div class="faq-answer">
-                            <p>We aim to build a self-governing endowment foundation managed by a diverse community of individuals (OSE Members) who care about open source and have personally donated to the endowment fund. They will gradually gain more power over electing board members. Meanwhile, the board is focused on building scalable systems — if successful, OSE will work efficiently while its board and management won't eventually have much to do except monitoring.</p>
+                            <p>OSE is designed to become a self-governing institution run by a diverse community of Members, having personal commitments to open source. Over time, they will elect more and more Board directors. The Board, meanwhile, is focused on building scalable, transparent systems — so that OSE operates efficiently with minimal management overhead and remains open for new contributors.</p>
                         </div>
                     </div>
 
@@ -327,8 +358,8 @@ import { EVERYORG_BUTTON_URL } from '../util.ts';
     .faq-item {
         display: flex;
         gap: 2rem;
-        padding-bottom: 2.5rem;
-        margin-bottom: 2.5rem;
+        padding-bottom: 1.75rem;
+        margin-bottom: 1.75rem;
         border-bottom: 1px solid var(--color-section-border);
     }
     .faq-item:last-child {
