@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Layout from '../layouts/Layout.astro';
+import { EVERYORG_BUTTON_URL } from '../util.ts';
 ---
 
 <Layout title="FAQ — Open Source Endowment" description="Frequently asked questions about the Open Source Endowment, how to donate, how the endowment works, and more." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "FAQ", url: "https://endowment.dev/faq/"}]}>
@@ -110,11 +111,28 @@ import Layout from '../layouts/Layout.astro';
                     <h2 class="faq-section-heading" id="donations">Donations</h2>
 
                     <div class="faq-item">
-                        <h3>How do I donate to OSE?</h3>
+                        <h3>How do I donate?</h3>
                         <div class="faq-answer">
-                            <p>People and organizations are welcome to donate at <a href="https://endowment.dev/">endowment.dev</a>. All individuals who donated before the public launch of OSE are credited as founding donors and receive additional governing rights in the case of $1,000+/year donations (OSE membership).</p>
+                            <p>People and organizations are welcome to <a href={EVERYORG_BUTTON_URL}>donate here</a>. We accept card payments, Apple/Google Pay, US and international bank transfers, donor-advised funds (DAF), crypto, and public stock — all non-US assets are automatically liquidated on donation and OSE receives only the USD amount. We also accept private stock option donations.</p>
                         </div>
                     </div>
+
+                    <div class="faq-item">
+                        <h3>What happens when I donate $1,000+/year?</h3>
+                        <div class="faq-answer">
+                            <p>You become an <strong>OSE Member</strong> (individuals only) — with governance rights including advising the Board on strategy and grant-making, appointing community-nominated directors, and voting on key decisions. Each $1,000 grants one year of membership.</p>
+                            <p>Both cash and non-cash donations (e.g., stock) count at gross USD value, including from personal entities like family trusts. See the full <a href="/docs/membership-policy">membership policy</a> for details.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Are donations tax-deductible for US donors?</h3>
+                        <div class="faq-answer">
+                            <p><strong>Yes.</strong> The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity (EIN 33-3502715), so donations are <a href="https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contribution-deductions" target="_blank">tax-deductible</a> to the full extent permitted by law. Individuals can deduct up to 60% of adjusted gross income (AGI) for cash donations; corporations up to 25% of taxable income. Unused deductions carry forward for up to five years.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="faq-section-heading" id="governance">Governance</h2>
 
                     <div class="faq-item">
                         <h3>Why does OSE accept only individuals as founding donors?</h3>
@@ -129,8 +147,6 @@ import Layout from '../layouts/Layout.astro';
                             <p>Yes! Such donors are very welcome, and we are happy to collaborate with companies and foundations that care about open source. However, we do not offer them governing rights in order to preserve the long-term neutrality and alignment with the global OSS community.</p>
                         </div>
                     </div>
-
-                    <h2 class="faq-section-heading" id="governance">Governance</h2>
 
                     <div class="faq-item">
                         <h3>What will OSE governance look like in the long term?</h3>
