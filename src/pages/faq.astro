@@ -3,11 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Layout from '../layouts/Layout.astro';
-
-import * as post from '../assets/foundation/faq.md';
 ---
 
-<Layout title="FAQ — Open Source Endowment" description="Frequently asked questions about the Open Source Endowment, how to donate, how grants work, and more." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "FAQ", url: "https://endowment.dev/faq/"}]}>
+<Layout title="FAQ — Open Source Endowment" description="Frequently asked questions about the Open Source Endowment, how to donate, how the endowment works, and more." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "FAQ", url: "https://endowment.dev/faq/"}]}>
     <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -54,15 +52,271 @@ import * as post from '../assets/foundation/faq.md';
             }
         ]
     })} />
-    <section>
-        <div class="container">
-            <article>
-                <section class="pagesec">
-                    <div class="insec insec--xpad doc-content">
-                        <Fragment set:html={post.compiledContent()}/>
+    <article>
+        <section class="pagesec pagesec--dark pagesec--tight">
+            <div class="container">
+                <div class="insec insec--xpad insec--ytight">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-sw-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="sechead sechead--min-height flex-center flex-column">
+                        <h1>FAQ</h1>
+                        <p>
+                            Frequently asked questions about the Open Source Endowment,
+                            how to donate, how the endowment works, how it selects projects
+                            for funding, etc. Feel free to raise issues in our
+                            <a href="https://github.com/osendowment/foundation" target="_blank">GitHub repo</a>
+                            &mdash; the best Q&amp;As will be added to this page.
+                        </p>
                     </div>
-                </section>
-            </article>
-        </div>
-    </section>
+                </div>
+            </div>
+        </section>
+        <section class="pagesec">
+            <div class="container">
+                <div class="insec insec--xpad">
+
+                    <div class="faq-item">
+                        <h3>What is the Open Source Endowment (OSE)?</h3>
+                        <div class="faq-answer">
+                            <p>OSE is the world's first endowment fund dedicated to sustainably funding free open source software. It collects donations from the open source community, invests all of them into diversified assets, and spends only the returns to support critical yet underfunded OSS globally. It was incorporated as a US nonprofit on February 14, 2025, and is a tax-exempt 501(c)(3) public charity.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why does OSS need more sustainable funding?</h3>
+                        <div class="faq-answer">
+                            <p><strong>Open source runs the modern world</strong>: Over 95% of software codebases rely on OSS, with applications averaging 500+ OSS components. Like roads and bridges, OSS requires ongoing maintenance to fix bugs, address security issues, and adapt to changes. 86% of contributors are currently unpaid, and many critical projects lack resources, leading to notable incidents like <a href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed</a> (2014) and <a href="https://en.wikipedia.org/wiki/Log4Shell">Log4Shell</a> (2021).</p>
+                            <p><strong>Current funding models are not enough</strong>: There are many funding sources for FOSS: corporate budgets, OSS nonprofit foundations, tools like GitHub Sponsors, a few government programs, etc. However, none of them simultaneously combine the following three features OSE is designed around:</p>
+                            <ul>
+                                <li><strong>Sustainable funding</strong>: Stable, long-term cash flow for OSS, not tied to annual donations or volatile corporate or governmental budgets.</li>
+                                <li><strong>Systemic focus</strong>: Targets critical underfunded OSS, prioritizing the "long tail" instead of popular, large, or specific supply chains.</li>
+                                <li><strong>Scalability and efficiency</strong>: Uses a transparent, digital-first approach to attract funding from the tech industry and choose grantees, designed to attract more donors over time.</li>
+                            </ul>
+                            <p>The current solutions are already making an impact, and OSE is a complementary tool to them. By filling in the gaps in the current OSS funding landscape, OSE aims to reduce the risks for the global software supply chain we all rely on.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="faq-section-heading">Donations &amp; Governance</h2>
+
+                    <div class="faq-item">
+                        <h3>How do I donate to OSE?</h3>
+                        <div class="faq-answer">
+                            <p>People and organizations are welcome to donate at <a href="https://endowment.dev/">endowment.dev</a>. All individuals who donated before the public launch of OSE are credited as founding donors and receive additional governing rights in the case of $1,000+/year donations (OSE membership).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why does OSE accept only individuals as founding donors?</h3>
+                        <div class="faq-answer">
+                            <p>OSE is built as a community-driven nonprofit with inclusive governance based on individual donors — people with a passion for OSS and "skin in the game." The endowment model makes sense on a 20+ year planning horizon, and most organizations plan for shorter periods.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Does OSE accept corporate and other institutional donors?</h3>
+                        <div class="faq-answer">
+                            <p>Yes! Such donors are very welcome, and we are happy to collaborate with companies and foundations that care about open source. However, we do not offer them governing rights in order to preserve the long-term neutrality and alignment with the global OSS community.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What will OSE governance look like in the long term?</h3>
+                        <div class="faq-answer">
+                            <p>We aim to build a self-governing endowment foundation managed by a diverse community of individuals (OSE Members) who care about open source and have personally donated to the endowment fund. They will gradually gain more power over electing board members. Meanwhile, the board is focused on building scalable systems — if successful, OSE will work efficiently while its board and management won't eventually have much to do except monitoring.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="faq-section-heading">Investments</h2>
+
+                    <div class="faq-item">
+                        <h3>How are donated funds invested?</h3>
+                        <div class="faq-answer">
+                            <p>All donations are put into diversified investments managed by a professional asset manager. The board chose <a href="https://www.infinitegiving.com/">Infinite Giving</a>, specializing in US nonprofits, as our outsourced CIO, targeting a 7–8% return.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How is investment income spent?</h3>
+                        <div class="faq-answer">
+                            <p>All expected investment income from donations to the endowment is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. The first grants are planned for Q1 2026.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="faq-section-heading">Grants</h2>
+
+                    <div class="faq-item">
+                        <h3>What principles guide OSE's grantmaking?</h3>
+                        <div class="faq-answer">
+                            <p>OSE aims to ensure sustainable maintenance of the most critical OSS projects, reducing risks to the global software supply chain by addressing funding gaps. Our key principles:</p>
+                            <ul>
+                                <li><strong>Long-term impact</strong>: Priority on fixing underlying issues (e.g., maintainer burnout) instead of fighting their surface-level consequences (e.g., vulnerabilities). There are already enough organizations doing "firefighting" in the global village of open source; OSE's role is more about funding the preventive installation of "fire safety measures" in the most critical buildings.</li>
+                                <li><strong>Follow the market</strong>: OSE is not opinionated about which software is more valuable and worthy of support, and bases its neutral judgment on an internal estimation of how the world consumes OSS. Such an approach accounts for the full dependency tree and naturally prioritizes low-level infrastructure libraries (e.g., C/C++) over more app-focused ecosystems (e.g., JS/TS).</li>
+                                <li><strong>Measurable and transparent</strong>: Algorithmic (but not automatic!) data-driven selection of grantees, based on a model co-developed with OSE donors, with human-in-the-loop elements. It will be open to OSE Members and partially to the public.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How will the selection model work?</h3>
+                        <div class="faq-answer">
+                            <p>OSE is currently developing the selection model and planning to release its first version in Q1 2026. It will use a scoring approach based on the estimated value and risk for top OSS projects. Here are their potential components:</p>
+                            <ul>
+                                <li><strong>Value for the ecosystem</strong>
+                                    <ul>
+                                        <li>Dependencies</li>
+                                        <li>Downloads</li>
+                                        <li>Potential losses if removed from the global tree</li>
+                                        <li>Endorsements from OSE donors, OSS foundations, etc.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Risk of the project</strong>
+                                    <ul>
+                                        <li>Complexity: LOCs, etc.</li>
+                                        <li>Maintainers: active maintainers, bus factor, MTTR for issues, etc.</li>
+                                        <li>Security: OpenSSF score, CVEs, etc.</li>
+                                        <li>Funding: GitHub Sponsors, known funding, etc.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>The selection model will consist of several steps: a data-driven approach will be used for initial targeting, and human-in-the-loop elements will be required at the due diligence stage — for instance, to check if the project is already well-funded. Public materials on the model are published in our <a href="https://github.com/osendowment/model">repo</a>.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Does OSE support OSS projects that have a related tech business?</h3>
+                        <div class="faq-answer">
+                            <p>If an open source project can turn into a sustainable business, it probably should. However, OSE supports only nonprofit projects, excluding OSS startups and corporate projects from its scope.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What are grants provided for?</h3>
+                        <div class="faq-answer">
+                            <p>There are two ways we currently think about awarding grants:</p>
+                            <ul>
+                                <li><strong>Forward-looking</strong>: Maintainers of the project should use grants to perform a measurable chunk of work that will de-risk the project.</li>
+                                <li><strong>Backward-looking</strong>: Some maintainers have already been working on their projects for decades without any reasonable support. We publicly acknowledge and provide monetary gratitude for what they have done, decreasing potential burnout.</li>
+                            </ul>
+                            <p>The impact of grants is planned to be checked quantitatively (data-driven metrics) and qualitatively (check-in calls). We also aim to highlight critical maintainers so everybody can join OSE in supporting them.</p>
+                        </div>
+                    </div>
+
+                    <h2 class="faq-section-heading">Other questions</h2>
+
+                    <div class="faq-item">
+                        <h3>Can <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhart's law</a> cause any scaling problems?</h3>
+                        <div class="faq-answer">
+                            <p>In the short term, there is no such problem at all. As for the long term, the tech industry has been capable of building robust systems with automated inputs that can't be easily gamed — like Google Search, YouTube, and all large social networks, including GitHub. The selection model can't be perfect, but we aim to make it openly developed, and "with enough eyeballs, all bugs are shallow."</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why did nobody build an OSS endowment before OSE?</h3>
+                        <div class="faq-answer">
+                            <ul>
+                                <li><strong>The endowment model requires a 20+ year planning horizon</strong>: Most organizations, including charities, focus on quick wins and annual budgets. They can't afford to spend only ~5% of donations every year. Established charities can hardly launch next-gen initiatives — like many large or legacy organizations. Even in the case of OSS-enlightened leaders, governments would have a hard time explaining OSS to voters. Companies usually do not create endowments, as their business priorities change over time. Endowments are created by passionate individuals.</li>
+                                <li><strong>The endowment model fits well only targets with unlimited lifespans</strong>: Most OSS communities are typically centered around targets with limited lifespans: software (like Linux), languages (like Python), and people. Software evolves and becomes obsolete over time, rendering any project-specific funding eventually irrelevant. Unlike any particular OSS ecosystem, OSS-at-large is an open-ended target.</li>
+                                <li><strong>An OSS endowment requires a rare intersection of multiple areas of expertise</strong>: This work requires experience in open source and dev-focused products, endowments, scaling of tech startups, fundraising, etc. It requires leaders with a strong desire and ability to pursue their own personal nonprofit initiatives. Most OSS people are not familiar with the endowment model, especially outside the USA/UK (the majority). Most philanthropists are not familiar with open source values and their challenges — this problem did not exist 25 years ago.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Are discussions regarding OSE open to the public?</h3>
+                        <div class="faq-answer">
+                            <p>Transparency is a foundational value of OSE as a community-driven nonprofit project. Currently, most OSE-related discussions and key documents are available for OSE Members and advisors at our <a href="https://github.com/osendowment/foundation">private repo</a>, which will become fully open at the public launch (after 501(c)(3) status approval). We already have a few public GitHub repos available for contributing and plan to publish more in the future.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How can OSE evolve in the long term, especially in an AI-powered world?</h3>
+                        <div class="faq-answer">
+                            <p>We believe that open source software will still be the cornerstone of global tech infrastructure even 50 years from now — besides being a rapidly evolving code-generating component, it is also a globally decentralized cultural and social phenomenon. It is already everywhere, and the entropy of the tech infrastructure will only increase. So there will be a need to sustainably fund its maintenance. In the long term, the share of AI agents performing open source maintenance will increase, so OSE can achieve its targets faster than planned — some of the funds previously granted to people will instead go toward AI computing costs.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Does OSE somehow relate to blockchain technologies?</h3>
+                        <div class="faq-answer">
+                            <p>From a governance design perspective, OSE's principles resemble DAOs: transparent, decentralized, skin in the game, etc. However, OSE is a regular regulated US nonprofit corporation and not a crypto organization by any means. We will accept crypto donations (with proper KYC) in the future, but it is not a priority.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How will OSE work with existing OSS-focused nonprofits?</h3>
+                        <div class="faq-answer">
+                            <p>We designed OSE as a next-gen solution for the old OSS problem, which attracts most donations from a new category of donors (tech individuals) and thus increases funding of the global open source ecosystem. It complements existing OSS foundations without competing for resources.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </article>
 </Layout>
+
+<style>
+    .faq-section-heading {
+        font-size: var(--font-size-6);
+        font-weight: bold;
+        margin-top: 4rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-section-border);
+    }
+    .faq-item {
+        display: flex;
+        gap: 2rem;
+        padding-bottom: 2.5rem;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--color-section-border);
+    }
+    .faq-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+    .faq-item h3 {
+        flex-basis: 28%;
+        flex-shrink: 0;
+        font-size: var(--font-size-5);
+        font-weight: 700;
+        line-height: 1.4;
+    }
+    .faq-answer {
+        flex: 1;
+        min-width: 0;
+    }
+    .faq-answer p {
+        line-height: 1.7;
+    }
+    .faq-answer p + p {
+        margin-top: 1rem;
+    }
+    .faq-answer ul {
+        padding: 0;
+        padding-left: 1.5rem;
+        list-style-position: outside;
+        list-style-type: disc;
+    }
+    .faq-answer ul li {
+        margin-bottom: 0.75rem;
+        line-height: 1.7;
+    }
+    .faq-answer ul ul {
+        margin-top: 0.75rem;
+        padding-left: 1.5rem;
+        list-style-type: circle;
+    }
+    .faq-answer ul ul li {
+        margin-bottom: 0.35rem;
+    }
+    @media (max-width: 800px) {
+        .faq-item {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+    }
+</style>
