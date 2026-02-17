@@ -129,7 +129,7 @@ Former Program Manager at NumFOCUS. Co-Founder of SciOS and the Institute of Ope
 Deputy Executive Director of the OpenSSL Foundation. Former Director of the Wikipedia Endowment. Previous roles at the Smithsonian Institution and the New York Public Library.
 
 **Vlad-Stefan Harbuz — Board Advisor**
-Maintainer of the Open Source Pledge. Core developer at thanks.dev. Previously worked on the Gates Foundation's $1B healthcare funding allocation system.
+Maintainer of the Open Source Pledge. Core developer of OSS funding service thanks.dev. Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
 
 ## Six Core Principles
 
