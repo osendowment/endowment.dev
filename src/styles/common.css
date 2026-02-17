@@ -1033,7 +1033,7 @@ section.pagesec {
             background: var(--color-bg-ash);
             box-shadow: 0 0 20px 10px var(--color-bg-ash);
         }
-        a {
+        a:not(.button) {
             text-decoration-color: var(--color-primary);
             text-decoration-thickness: 2px;
             color: var(--color-primary);
