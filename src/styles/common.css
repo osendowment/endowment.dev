@@ -565,6 +565,7 @@ input[type="radio"] {
 
 .narrow-text {
     max-width: 30rem;
+    text-wrap: pretty;
 }
 
 .container {
@@ -944,7 +945,7 @@ section.pagesec {
     /* For when this contains a .insec.insec--squares */
     overflow-x: hidden;
     .sechead {
-        max-width: 45rem;
+        max-width: 50rem;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0;
@@ -973,10 +974,14 @@ section.pagesec {
             margin-top: 1rem;
             font-size: var(--font-size-5);
             color: var(--color-text-dark-secondary);
+            text-wrap: balance;
         }
         &.sechead--left {
             text-align: left;
             margin-left: 0;
+        }
+        &.sechead--wide {
+            max-width: 55rem;
         }
         &.sechead--min-height {
             display: flex;
@@ -1422,9 +1427,10 @@ a.card {
 
         small {
             display: block;
-            max-width: 25rem;
+            max-width: 23rem;
             font-size: var(--font-size-4);
             font-weight: 500;
+            text-wrap: balance;
         }
         h1 {
             margin: 1.5rem 0;
@@ -1441,7 +1447,7 @@ a.card {
         margin-left: auto;
         margin-right: auto;
         max-height: 24rem;
-        max-width: 100%;
+        max-width: min(100%, 480px);
         height: auto;
         @media (min-width: 1101px) {
             padding-right: 6rem;
@@ -1562,6 +1568,31 @@ a.card {
             border: 1px solid var(--color-section-border-dark-secondary);
         }
     }
+    &.features--arrows {
+        .feature + .feature {
+            position: relative;
+        }
+        .feature + .feature::before {
+            content: "›";
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1;
+            opacity: 0.7;
+        }
+        @media (max-width: 800px) {
+            .feature + .feature::before {
+                content: "›";
+                left: 50%;
+                top: -1rem;
+                transform: translate(-50%, -50%) rotate(90deg);
+            }
+        }
+    }
 }
 
 .team-member-list {
@@ -1641,10 +1672,22 @@ a.card {
 }
 .mini-note {
     padding-top: 3rem;
-    text-align: center;
-    max-width: 35rem;
+    max-width: 40rem;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    text-wrap: balance;
+    .mini-note__icon {
+        flex-shrink: 0;
+        opacity: 0.8;
+    }
+    @media (max-width: 800px) {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 .big-cta {
@@ -1682,6 +1725,7 @@ a.card {
     h3 {
         margin-bottom: 3.0rem;
         color: var(--color-text-light-faded);
+        text-wrap: balance;
     }
     a.button {
         margin-bottom: 2.0rem; /* to balance illustrations */
