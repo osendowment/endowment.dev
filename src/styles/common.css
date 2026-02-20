@@ -202,6 +202,10 @@ html, body {
   display: none !important;
 }
 
+h1[id], h2[id], h3[id] {
+    scroll-margin-top: 6rem;
+}
+
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     margin-bottom: 1em;
@@ -950,6 +954,7 @@ section.pagesec {
         margin-right: auto;
         margin-bottom: 0;
         padding-top: 2rem;
+        scroll-margin-top: 6rem;
         padding-bottom: 4rem;
         text-align: center;
         &:is(h2), h2 {
@@ -990,6 +995,7 @@ section.pagesec {
             min-height: 20rem;
             padding-top: 0;
             padding-bottom: 0;
+            text-wrap: balance;
         }
     }
     &.pagesec--grid {
