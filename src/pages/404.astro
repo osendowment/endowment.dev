@@ -6,12 +6,74 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout noindex={true} title="Page Not Found — Open Source Endowment" description="The page you are looking for could not be found.">
-    <section>
-        <article>
-            <div class="cta">
-                <h3>Oops! Page not found.</h3>
-                <a href="/" class="button button--huge button--colored">Go back to homepage</a>
+    <article>
+        <section class="pagesec pagesec--dark not-found-hero">
+            <div class="container">
+                <div class="insec insec--xpad insec--side-squares insec--side-squares-blue">
+                    <div class="sechead flex-center flex-column">
+                        <h1>Oops! Page not found.</h1>
+                        <p>Maybe you've been looking for something like this?</p>
+                        <nav class="not-found-nav">
+                            <a href="/">Homepage</a>
+                            <a href="/endowment">Endowment</a>
+                            <a href="/community">Community</a>
+                            <a href="/docs">Docs</a>
+                            <a href="/faq">FAQ</a>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </article>
-    </section>
-</layout>
+        </section>
+    </article>
+</Layout>
+
+<style>
+    :global(body) {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+    }
+    :global(main) {
+        flex: 1;
+        min-height: 0;
+    }
+    .insec--side-squares-blue {
+        &:before, &:after {
+            background-image: url(/images/decorations/squares-side-blue.svg) !important;
+        }
+    }
+    .not-found-hero {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .not-found-hero .sechead {
+        max-width: 40rem;
+    }
+    .not-found-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        position: relative;
+        z-index: 2;
+    }
+    nav.not-found-nav a,
+    nav.not-found-nav a:visited {
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: var(--font-size-3);
+        text-decoration: none;
+        background-color: transparent;
+        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    }
+    nav.not-found-nav a:hover {
+        background-color: var(--color-primary);
+        color: #fff;
+        border-color: var(--color-primary);
+        text-decoration: none;
+    }
+</style>
