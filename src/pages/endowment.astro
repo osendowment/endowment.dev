@@ -392,7 +392,7 @@ const lastUpdated = Object.values(stats.endowment.accounts)
         </section>
         <section class="pagesec">
             <div class="container">
-                <div class="insec insec--xpad">
+                <div class="insec insec--xpad insec--side-squares">
                     <h2 class="sechead sechead--left">Investing strategy</h2>
                     <div class="invest-text">
                         <p>
@@ -401,11 +401,7 @@ const lastUpdated = Object.values(stats.endowment.accounts)
                             long-term planning and sustainable funding for OSS.
                         </p>
                         <p>
-                            At the start, OSE invested in US Treasury bonds, which are very
-                            low-risk and earn ~5% per year. Now, the portfolio is being transferred to a professional
-                            investment manager. The board chose
-                            <a href="https://www.infinitegiving.com/" target="_blank">Infinite Giving</a>,
-                            specializing in US nonprofits, as our first outsourced CIO.
+                            At the start, OSE invested in US Treasury bonds, which are very low-risk and earn ~5% per year. Now, the portfolio is being transferred to a professional asset manager <a href="https://www.infinitegiving.com/" target="_blank">Infinite Giving</a>, chosen by the board thanks to its US nonprofit specialization.
                         </p>
                         <p>
                             Targeting a 7-8% return with 5% annual spend on grants, most of the
@@ -421,12 +417,10 @@ const lastUpdated = Object.values(stats.endowment.accounts)
                             <i>5%</i>
                             <span>target spend rate</span>
                         </div>
-                        <div class="invest-kpi">
-                            <a href="https://www.infinitegiving.com/" target="_blank">
-                                <img src="/images/infinite-giving-logo.svg" alt="Infinite Giving" class="invest-kpi__logo" width="180" height="32" loading="lazy">
-                            </a>
+                        <a href="https://www.infinitegiving.com/" target="_blank" class="invest-kpi">
+                            <img src="/images/infinite-giving-logo.svg" alt="Infinite Giving" class="invest-kpi__logo" width="180" height="32" loading="lazy">
                             <span>outsourced CIO</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -568,6 +562,15 @@ const lastUpdated = Object.values(stats.endowment.accounts)
             margin-top: 0.5rem;
             font-size: var(--font-size-3);
             color: var(--color-text-dark-secondary);
+        }
+    }
+    a.invest-kpi {
+        color: inherit;
+        text-decoration: none;
+        transition: border-color 0.15s;
+        &:hover {
+            border-color: var(--color-primary);
+            background: none;
         }
     }
     .invest-kpi__logo {
