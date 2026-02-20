@@ -1,0 +1,183 @@
+---
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import Layout from '../../layouts/Layout.astro';
+
+const EVERY_BASE = 'https://www.every.org/osendowment';
+---
+
+<Layout title="Ways to Give — Open Source Endowment" description="All the ways to donate to the Open Source Endowment: bank transfers, cards, crypto, DAF, stock, PayPal, and more." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "Docs", url: "https://endowment.dev/docs/"}, {name: "Ways to Give", url: "https://endowment.dev/docs/giving/"}]}>
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://endowment.dev/" },
+            { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://endowment.dev/docs" },
+            { "@type": "ListItem", "position": 3, "name": "Ways to Give" }
+        ]
+    })} />
+    <article>
+        <section class="pagesec pagesec--dark pagesec--tight">
+            <div class="container">
+                <div class="insec insec--xpad insec--ytight">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-sw-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="sechead sechead--min-height flex-center flex-column">
+                        <h1>Ways to Give</h1>
+                        <p>
+                            OSE is a US 501(c)(3) tax-exempt public charity — donations are
+                            <a href="https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contribution-deductions" target="_blank">tax-deductible</a>
+                            for US donors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pagesec">
+            <div class="container">
+                <div class="insec insec--xpad">
+
+                    <h2 class="methods-heading" id="methods">Donation Methods</h2>
+
+                    <div class="methods-table">
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="12 3 21 10 3 10"/><line x1="8" y1="14" x2="8" y2="17"/><line x1="16" y1="14" x2="16" y2="17"/><line x1="12" y1="14" x2="12" y2="17"/></svg><span>ACH or US Bank Wire</span></div>
+                            <div class="methods-desc">US bank transfers are the most cost-effective way to donate. <strong>ACH transfers are free</strong> — no fees from Every.org or us. Wire transfers also carry no platform fee.</div>
+                            <div class="methods-action"><a href={`${EVERY_BASE}#/donate/bank`}>Donate</a><span>via every.org</span></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>International Bank Wire</span></div>
+                            <div class="methods-desc">We accept international wire transfers in <a href="https://support.mercury.com/hc/en-us/articles/34750478414740-Receiving-non-USD-payments" target="_blank">almost all currencies</a> to a dedicated account at Mercury bank. Non-USD amounts are converted to USD automatically. Fees depend on your bank; <strong>no fee for receiving USD payments</strong> on our side.</div>
+                            <div class="methods-action"><a href="mailto:donations@endowment.dev">Contact us</a></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Card, Apple Pay, Google Pay</span></div>
+                            <div class="methods-desc">We accept all major credit and debit cards, Apple Pay, and Google Pay. Processing fee: <strong>2.2% + $0.30</strong> (Amex: <strong>3.5%</strong>), +1% for non-US cards.</div>
+                            <div class="methods-action"><a href={`${EVERY_BASE}#/donate/card`}>Donate</a><span>via every.org</span></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.5 9.5c0-1.1.9-2 2-2h1a2 2 0 0 1 0 4h-1a2 2 0 0 0 0 4h1a2 2 0 0 0 2-2"/><line x1="12" y1="6" x2="12" y2="7.5"/><line x1="12" y1="16.5" x2="12" y2="18"/></svg><span>Cryptocurrency</span></div>
+                            <div class="methods-desc">We accept Bitcoin, Ethereum, and other major cryptocurrencies. Every.org automatically converts crypto to USD upon receipt. Platform fee: <strong>1%</strong>.</div>
+                            <div class="methods-action"><a href={`${EVERY_BASE}#/donate/crypto`}>Donate</a><span>via every.org</span></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><path d="M6 16h.01"/><path d="M10 16h4"/></svg><span>PayPal</span></div>
+                            <div class="methods-desc">Donate using your PayPal or Venmo balance or linked payment methods. Processing fee: <strong>1.99%</strong> (+1.5% for non-US payments).</div>
+                            <div class="methods-action"><a href={`${EVERY_BASE}#/donate/paypal`}>Donate</a><span>via every.org</span></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>Donor-Advised Fund (DAF)</span></div>
+                            <div class="methods-desc">Grant from your DAF directly to the Open Source Endowment Foundation (EIN 33-3502715). Every.org integrates with major DAF providers including Fidelity Charitable, Schwab Charitable, and BNY Mellon. <strong>No fees.</strong></div>
+                            <div class="methods-action"><a href={`${EVERY_BASE}#/donate/daf`}>Donate</a><span>via every.org</span></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span>Public Stock</span></div>
+                            <div class="methods-desc">Donate publicly traded shares directly. Every.org handles the transfer and automatically converts stock to USD. <strong>No platform fee.</strong></div>
+                            <div class="methods-action"><a href={`${EVERY_BASE}#/donate/stocks`}>Donate</a><span>via every.org</span></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Private Stock</span></div>
+                            <div class="methods-desc">We accept private stock, including unallocated employee stock options — a convenient option for early-stage tech startups and founders who have not yet exited.</div>
+                            <div class="methods-action"><a href="mailto:donations@endowment.dev">Contact us</a></div>
+                        </div>
+                        <div class="methods-row">
+                            <div class="methods-name"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span>Anything else?</span></div>
+                            <div class="methods-desc">We aim to accept donations in all ways convenient for our donors. API and payroll integrations (like Gusto Giving) are on our roadmap. Don't see your preferred method? Create an issue in our GitHub repo and we'll look into adding it.</div>
+                            <div class="methods-action"><a href="https://github.com/osendowment/foundation/issues/new" target="_blank">Create issue</a><span>on GitHub</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </article>
+</Layout>
+
+<style>
+    .sechead {
+        max-width: 40rem;
+    }
+    .methods-heading {
+        font-size: var(--font-size-6);
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+    .methods-table {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .methods-row {
+        display: grid;
+        grid-template-columns: 14rem 1fr auto;
+        gap: 2rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--color-section-border);
+        align-items: center;
+    }
+    .methods-row:first-child {
+        border-top: 1px solid var(--color-section-border);
+    }
+    .methods-row:last-child {
+        border-bottom: none;
+    }
+    .methods-row--muted {
+        opacity: 0.5;
+    }
+    .methods-name {
+        font-weight: 700;
+        font-size: var(--font-size-3);
+        line-height: 1.3;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        svg {
+            flex-shrink: 0;
+            opacity: 0.45;
+        }
+    }
+    .methods-desc {
+        font-size: var(--font-size-3);
+        line-height: 1.6;
+        min-width: 0;
+    }
+    .methods-action {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        min-width: 6.5rem;
+        span {
+            font-size: 0.65rem;
+            color: var(--color-text-dark-secondary);
+        }
+    }
+    .methods-action a {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        border-radius: 100px;
+        border: 1px solid var(--color-primary);
+        color: #fff;
+        font-size: var(--font-size-2);
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: var(--color-primary);
+        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+        &:hover {
+            background-color: var(--color-secondary-semidark);
+            border-color: var(--color-secondary-semidark);
+            color: #fff;
+        }
+    }
+    @media (max-width: 800px) {
+        .methods-row {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+        .methods-action {
+            align-items: flex-start;
+        }
+    }
+</style>
