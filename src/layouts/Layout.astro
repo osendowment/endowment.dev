@@ -269,4 +269,10 @@ import { OpenPanelComponent } from '@openpanel/astro';
             });
         }));
     });
+
+    // Auto-open donate form when URL has #donate
+    if (window.location.hash === '#donate') {
+        const donateLink = document.querySelector('a[data-track="header-donate"]');
+        if (donateLink) donateLink.click();
+    }
 </script>
