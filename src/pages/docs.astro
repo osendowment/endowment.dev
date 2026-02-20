@@ -17,7 +17,7 @@ import Layout from '../layouts/Layout.astro';
                     <div class="sechead sechead--min-height flex-center flex-column">
                         <h1>Docs</h1>
                         <p>
-                            The Open Source Endowment is committed to outstanding transparency.
+                            The Open Source Endowment Foundation is committed to outstanding transparency.
                             Learn more about our nonprofit through open
                             documents, public endpoints,
                             <a href="/faq">FAQ</a>,
@@ -114,11 +114,14 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                     </div>
                     <div class="category-listing">
-                        <h2>Public API</h2>
+                        <h2>Other</h2>
                         <div>
                             <ul>
                                 <li>
-                                    <a href="https://stats.endowment.dev">stats.endowment.dev</a>
+                                    <a href="https://stats.endowment.dev">Public API</a>
+                                </li>
+                                <li>
+                                    <a href="/docs/giving">Ways to Give</a>
                                 </li>
                             </ul>
                         </div>
@@ -130,12 +133,9 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    .sechead {
-        max-width: 40rem;
-    }
-    /* Match h2 size to endowment page */
     .category-listing h2 {
         font-size: var(--font-size-6);
+        font-weight: 500;
     }
 
     /* Board table */

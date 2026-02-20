@@ -384,6 +384,7 @@ article {
     padding-block: 0.4rem 0.5rem;
     border: 1px solid var(--color-section-border);
     border-radius: var(--border-radius);
+    font-size: var(--font-size-4);
     font-weight: 500;
     background: white;
     color: var(--color-text-dark);
@@ -749,7 +750,7 @@ footer {
         .footer-socials {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.5rem;
             a {
                 display: flex;
                 align-items: center;
@@ -909,7 +910,7 @@ nav.desktop-nav, nav.mobile-nav {
             background: none;
         }
         &:hover, &.active {
-            color: var(--color-primary-text);
+            color: var(--color-primary);
         }
     }
 }
@@ -949,7 +950,7 @@ section.pagesec {
     /* For when this contains a .insec.insec--squares */
     overflow-x: hidden;
     .sechead {
-        max-width: 50rem;
+        max-width: 45rem;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 0;
@@ -991,9 +992,9 @@ section.pagesec {
         &.sechead--min-height {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            min-height: 20rem;
-            padding-top: 0;
+            justify-content: flex-start;
+            height: 23rem;
+            padding-top: 4.5rem;
             padding-bottom: 0;
             text-wrap: balance;
         }
@@ -1705,6 +1706,10 @@ a.card {
     & > div {
         max-width: 45rem;
     }
+    h2 {
+        max-width: 30rem;
+        margin-inline: auto;
+    }
     background-image:
         url(/images/icons/em-sustainable-mono.svg),
         url(/images/icons/em-systemic-mono.svg),
@@ -1712,7 +1717,7 @@ a.card {
     background-position:
         01% 20%,
         98% 50%,
-        center 82.7%;
+        28% 78%;
     background-repeat: no-repeat;
     h2, h3 {
         text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -1721,15 +1726,17 @@ a.card {
         background-size: 100px, 100px, 100px;
     }
     h2 {
-        margin-bottom: 1.0rem;
+        margin-bottom: 2rem;
+        font-family: var(--font-family-serif);
         font-size: var(--font-size-7);
+        line-height: 1;
         text-wrap: balance;
         @media (max-width: 800px) {
             font-size: var(--font-size-6);
         }
     }
     h3 {
-        margin-bottom: 3.0rem;
+        margin-bottom: 4rem;
         color: var(--color-text-light-faded);
         text-wrap: balance;
     }

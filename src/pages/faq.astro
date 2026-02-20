@@ -279,7 +279,7 @@ const orgDonorCount = stats.donors.organizations;
                         </div>
                     </div>
 
-                    <h2 class="faq-section-heading" id="other">Other questions</h2>
+                    <h2 class="faq-section-heading" id="other">Others</h2>
 
                     <div class="faq-item">
                         <h3>Why did nobody build an OSS endowment before OSE?</h3>
@@ -310,7 +310,7 @@ const orgDonorCount = stats.donors.organizations;
                     <div class="faq-item">
                         <h3>Does OSE somehow relate to blockchain technologies?</h3>
                         <div class="faq-answer">
-                            <p>From a governance perspective, OSE might resemble DAO: transparent, decentralized, skin in the game, etc. However, OSE is a standard US public charity and not a crypto organization by any means. That said, we accept crypto donations (via every.org).</p>
+                            <p>From a governance perspective, OSE might resemble a DAO: transparent, decentralized, skin in the game, etc. However, OSE is a standard US public charity and not a crypto organization by any means. That said, we accept crypto donations (via Every.org).</p>
                         </div>
                     </div>
 
@@ -356,12 +356,15 @@ const orgDonorCount = stats.donors.organizations;
     }
     .faq-section-heading {
         font-size: var(--font-size-6);
-        font-weight: bold;
+        font-weight: 500;
         margin-top: 4rem;
         margin-bottom: 2.5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid var(--color-section-border);
         scroll-margin-top: 6rem;
+        &:first-child {
+            margin-top: 0;
+        }
     }
     .faq-item {
         display: flex;
