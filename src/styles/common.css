@@ -727,6 +727,13 @@ header {
     .header-buttons {
         display: flex;
         gap: 1rem;
+        .hamburger-button {
+            padding: 0.6rem;
+            img {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
     }
 }
 footer {
