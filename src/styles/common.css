@@ -196,6 +196,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    main {
+        flex: 1;
+    }
+}
 
 /* We never want anything to have higher specificity than `[hidden]`. */
 [hidden] {
