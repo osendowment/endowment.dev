@@ -1173,6 +1173,9 @@ section.pagesec {
             background-image: url(/images/decorations/squares-side.svg);
             background-repeat: no-repeat;
             background-position: center right;
+            @media (max-width: 1250px) {
+                display: none;
+            }
         }
         &:before {
             left: calc(-1 * (var(--squares-width) + var(--squares-margin)));
