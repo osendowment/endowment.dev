@@ -14,11 +14,11 @@ import Layout from '../layouts/Layout.astro';
                         <h1>Oops! Page not found.</h1>
                         <p>Maybe you've been looking for something like this?</p>
                         <nav class="not-found-nav">
-                            <a href="/">Homepage</a>
-                            <a href="/endowment">Endowment</a>
-                            <a href="/community">Community</a>
-                            <a href="/docs">Docs</a>
-                            <a href="/faq">FAQ</a>
+                            <a class="button button--pill" href="/">Homepage</a>
+                            <a class="button button--pill" href="/endowment">Endowment</a>
+                            <a class="button button--pill" href="/community">Community</a>
+                            <a class="button button--pill" href="/docs">Docs</a>
+                            <a class="button button--pill" href="/faq">FAQ</a>
                         </nav>
                     </div>
                 </div>
@@ -58,22 +58,5 @@ import Layout from '../layouts/Layout.astro';
         margin-top: 1.5rem;
         position: relative;
         z-index: 2;
-    }
-    nav.not-found-nav a,
-    nav.not-found-nav a:visited {
-        padding: 0.4rem 1rem;
-        border-radius: 100px;
-        border: 1px solid #fff;
-        color: #fff;
-        font-size: var(--font-size-3);
-        text-decoration: none;
-        background-color: transparent;
-        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-    }
-    nav.not-found-nav a:hover {
-        background-color: var(--color-primary);
-        color: #fff;
-        border-color: var(--color-primary);
-        text-decoration: none;
     }
 </style>
