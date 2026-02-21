@@ -72,12 +72,12 @@ const orgDonorCount = stats.donors.organizations;
                             &mdash; the best Q&amp;As will be added to this page.
                         </p>
                         <nav class="faq-nav">
-                            <a href="#purpose">Purpose</a>
-                            <a href="#donations">Donations</a>
-                            <a href="#governance">Governance</a>
-                            <a href="#investments">Investments</a>
-                            <a href="#grants">Grants</a>
-                            <a href="#other">Others</a>
+                            <a class="button button--pill" href="#purpose">Purpose</a>
+                            <a class="button button--pill" href="#donations">Donations</a>
+                            <a class="button button--pill" href="#governance">Governance</a>
+                            <a class="button button--pill" href="#investments">Investments</a>
+                            <a class="button button--pill" href="#grants">Grants</a>
+                            <a class="button button--pill" href="#other">Others</a>
                         </nav>
                     </div>
                 </div>
@@ -336,23 +336,6 @@ const orgDonorCount = stats.donors.organizations;
         margin-top: 1.5rem;
         position: relative;
         z-index: 2;
-    }
-    nav.faq-nav a,
-    nav.faq-nav a:visited {
-        padding: 0.4rem 1rem;
-        border-radius: 100px;
-        border: 1px solid #fff;
-        color: #fff;
-        font-size: var(--font-size-3);
-        text-decoration: none;
-        background-color: transparent;
-        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-    }
-    nav.faq-nav a:hover {
-        background-color: var(--color-primary);
-        color: #fff;
-        border-color: var(--color-primary);
-        text-decoration: none;
     }
     .faq-section-heading {
         font-size: var(--font-size-6);
