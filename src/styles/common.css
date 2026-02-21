@@ -433,6 +433,23 @@ article {
             background: var(--color-secondary-semidark);
         }
     }
+    &.button--pill {
+        min-width: auto;
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: var(--font-size-3);
+        text-decoration: none;
+        background-color: transparent;
+        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+        &:hover {
+            background-color: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+            text-decoration: none;
+        }
+    }
     &[disabled] {
         cursor: not-allowed;
     }
