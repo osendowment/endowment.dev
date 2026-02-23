@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import NominationForm from '../components/NominationForm.tsx';
 ---
 
 <Layout title="Nominate OSS for Funding — Open Source Endowment" description="Nominate critical, underfunded open source projects for OSE grant funding through our open, community-developed model.">
@@ -15,9 +16,10 @@ import Layout from '../layouts/Layout.astro';
                     <div class="sechead sechead--min-height flex-center flex-column">
                         <h1>Nominate OSS for Funding</h1>
                         <p>
-                            Know a critical open source project that deserves support?
-                            Help us identify projects our model might not yet surface.
-                            Nominations will be considered in the model for this round.
+                            Know an open source project that deserves support?
+                            Help us find the most critical yet underfunded OSS.
+                            Community nominations are important input for our model,
+                            and self-nominations are welcome too!
                         </p>
                     </div>
                 </div>
@@ -33,7 +35,8 @@ import Layout from '../layouts/Layout.astro';
                             <div class="sidebar-card">
                                 <h3>Eligibility</h3>
                                 <p>
-                                    Only independent free and open source software is eligible — no corporate or VC-funded projects.
+                                    Only independent free and open source software is eligible — no corporate
+                                    or VC-funded projects, and no projects with associated startups.
                                     See our <a href="/faq">FAQ</a> for details.
                                 </p>
                             </div>
@@ -41,27 +44,27 @@ import Layout from '../layouts/Layout.astro';
                             <div class="sidebar-card">
                                 <h3>Community Input</h3>
                                 <p>
-                                    Projects are selected through the
+                                    Projects are selected through an open
                                     <a href="https://github.com/osendowment/model" target="_blank">model</a>,
-                                    co-developed with the
+                                    co-developed with OSE
                                     <a href="/endowment#governance">Members</a>.
-                                    Your nominations are valuable input for this model,
-                                    and self-nominations are welcome!
+                                    Your nominations are used for the selection model
+                                    among many other data inputs.
                                 </p>
                             </div>
 
                             <div class="sidebar-card">
                                 <h3>Funding Format</h3>
                                 <p>
-                                    OSE aims to provide ~$5,000 microgrants to the most valuable OSS
-                                    that is at high risk due to underfunding. We will contact the potential
-                                    grantees in Q2 2026.
+                                    OSE provides ~$5,000 microgrants to the most valuable independent OSS.
+                                    Funding is dedicated to making them more secure and stable
+                                    or awarding long-term maintainers.
                                 </p>
                             </div>
 
                         </div>
                         <div class="nominate-main">
-                            <div id="surveyjs-container"></div>
+                            <NominationForm client:load />
                         </div>
                     </div>
                 </div>
@@ -69,39 +72,37 @@ import Layout from '../layouts/Layout.astro';
         </section>
 
         <!-- Selection Process -->
-        <section class="pagesec">
+        <section class="pagesec pagesec--dark">
             <div class="container">
                 <div class="insec insec--xpad">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
                     <h2 class="sechead sechead--left">Selection Process</h2>
-                    <div class="process-flow">
-                        <!-- Parallel steps 1 & 2 -->
-                        <div class="process-parallel">
-                            <div class="process-card">
-                                <span class="process-num">1</span>
-                                <strong>Community Nominations</strong>
-                                <p>Community nominations are accepted</p>
-                            </div>
-                            <div class="process-card">
-                                <span class="process-num">2</span>
-                                <strong>Model Finalization</strong>
-                                <p>OSE Members and community finalize the grantmaking model</p>
-                            </div>
+                    <div class="selection-steps">
+                        <div class="step">
+                            <span class="step-num">1</span>
+                            <h3>Collecting Inputs</h3>
+                            <p>We collect nominations from developers and maintainers who know which projects need support most.</p>
+                            <p>Meanwhile, OSE and its Members co-develop the grant model that shapes how nominations and other signals are scored.</p>
                         </div>
-                        <!-- Arrow -->
-                        <div class="process-arrow">›</div>
-                        <!-- Step 3 -->
-                        <div class="process-card">
-                            <span class="process-num">3</span>
-                            <strong>Selection</strong>
-                            <p>Data-driven model highlights potential grantees; OSE team contacts top candidates and performs due diligence</p>
+                        <div class="step">
+                            <span class="step-num">2</span>
+                            <h3>Scoring Projects</h3>
+                            <p>Nominations feed into our <a href="/endowment#model">Value-Risk framework</a>, which has many other inputs: downloads, dependents, security, bus factor, etc.</p>
+                            <p>The model finds high-value, at-risk projects: widely used software that lacks funding or active contributors.</p>
                         </div>
-                        <!-- Arrow -->
-                        <div class="process-arrow">›</div>
-                        <!-- Step 4 -->
-                        <div class="process-card">
-                            <span class="process-num">4</span>
-                            <strong>Board Approval</strong>
-                            <p>Board reviews DD results and approves grant distribution</p>
+                        <div class="step">
+                            <span class="step-num">3</span>
+                            <h3>Outreach &amp; Due Diligence</h3>
+                            <p>OSE team contacts top-scoring projects to verify eligibility, independence, and interest in a grant.</p>
+                            <p>An operational review ensures funds can be received by maintainers directly or via fiscal sponsors.</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">4</span>
+                            <h3>Approval &amp; Distribution</h3>
+                            <p>The Board reviews due diligence results and approves the final grant list for each funding round.</p>
+                            <p><strong>The first grant distribution round will happen in Q2 2026.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -119,11 +120,12 @@ import Layout from '../layouts/Layout.astro';
         align-items: flex-start;
         @media (max-width: 900px) {
             flex-direction: column;
-            gap: 3rem;
+            gap: 2.5rem;
         }
     }
     .nominate-main {
         flex: 2;
+        min-width: 0;
         padding: 2rem;
         background: white;
         border: 1px solid var(--color-primary-fade1);
@@ -131,185 +133,82 @@ import Layout from '../layouts/Layout.astro';
             padding-top: 0;
             margin-bottom: 0.5rem;
         }
+        @media (max-width: 900px) {
+            width: 100%;
+            padding: 0;
+            background: none;
+            border: none;
+        }
     }
     .nominate-sidebar {
         flex: 1;
+        min-width: 0;
     }
 
     /* Sidebar cards */
     .sidebar-card {
-        padding: 1.5rem 0;
+        padding: 1.25rem 0 1.25rem 1.5rem;
+        border-left: 2px solid var(--color-primary-fade1);
         h3 {
             margin: 0 0 0.5rem;
-            font-size: var(--font-size-2);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            opacity: 0.5;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
         p {
             margin: 0;
             font-size: var(--font-size-3);
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--color-text-dark-secondary);
         }
         & + .sidebar-card {
-            border-top: 1px solid var(--color-section-border);
+            margin-top: 1.25rem;
         }
     }
 
     /* Selection Process */
-    .process-flow {
-        display: flex;
-        align-items: stretch;
-        gap: 0;
-        @media (max-width: 900px) {
-            flex-direction: column;
-            align-items: stretch;
+    .selection-steps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
         }
     }
-    .process-parallel {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        .process-card {
-            flex: 1;
-        }
+    .step {
+        padding: 1.5rem 1.75rem;
+        border: 1px solid var(--color-section-border-dark-secondary);
+        position: relative;
     }
-    .process-card {
-        padding: 1.5rem;
-        border: 1px solid var(--color-section-border);
-        .process-num {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 1.6rem;
-            height: 1.6rem;
-            margin-bottom: 0.6rem;
-            background: var(--color-primary-fade2);
-            border: 1px solid var(--color-primary-border);
-            border-radius: 50%;
-            font-weight: 600;
-            font-size: var(--font-size-2);
-            color: var(--color-primary-text);
-        }
-        strong {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: var(--font-size-3);
-            font-weight: 600;
-        }
-        p {
-            margin: 0;
-            font-size: var(--font-size-2);
-            line-height: 1.5;
-            color: var(--color-text-dark-secondary);
-        }
-    }
-    .process-arrow {
-        display: flex;
+    .step-num {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0 0.6rem;
-        color: var(--color-primary);
-        font-size: 1.4rem;
-        font-weight: 300;
-        opacity: 0.7;
-        @media (max-width: 900px) {
-            padding: 0.4rem 0;
-            transform: rotate(90deg);
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        border: 1px solid var(--color-primary-fade1);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--color-primary-light);
+        margin-bottom: 0.75rem;
+    }
+    .step h3 {
+        margin: 0 0 0.65rem;
+        font-size: 1.05rem;
+    }
+    .step p {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        color: var(--color-text-light-faded);
+        margin: 0 0 0.5rem;
+        &:last-child {
+            margin-bottom: 0;
         }
     }
-
-    /* Survey.js container */
-    #surveyjs-container {
-        max-width: 42rem;
+    .step a {
+        color: var(--color-primary-light);
+        text-decoration: underline;
+        text-underline-offset: 2px;
     }
+
 </style>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/survey-core/survey-core.min.css" />
-<script is:inline src="https://cdn.jsdelivr.net/npm/survey-core/survey.core.min.js"></script>
-<script is:inline src="https://cdn.jsdelivr.net/npm/survey-js-ui/survey-js-ui.min.js"></script>
-<script is:inline>
-    const surveyJson = {
-        "pages": [
-            {
-                "name": "Nominate an OSS project",
-                "elements": [
-                    {
-                        "type": "text",
-                        "name": "name",
-                        "title": "Your name",
-                        "isRequired": true
-                    },
-                    {
-                        "type": "text",
-                        "name": "email",
-                        "title": "Your email",
-                        "isRequired": true,
-                        "inputType": "email",
-                        "autocomplete": "email",
-                        "validators": [
-                            {
-                                "type": "email"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "text",
-                        "name": "project_url",
-                        "title": "GitHub Repo URL of a nominated project",
-                        "isRequired": true,
-                        "validators": [
-                            {
-                                "type": "regex",
-                                "text": "Please enter a valid GitHub repository URL (https://github.com/user/repo)",
-                                "regex": "^https?:\\/\\/github\\.com\\/[a-zA-Z0-9_.-]+\\/[a-zA-Z0-9_.-]+\\/?$"
-                            }
-                        ],
-                        "placeholder": "https://github.com/{user}/{repo}"
-                    },
-                    {
-                        "type": "comment",
-                        "name": "comment",
-                        "title": "Comments",
-                        "placeholder": "Why do you think this OSS is valuable but underfunded? Please briefly explain why you nominate this project"
-                    }
-                ]
-            }
-        ],
-        "showTitle": false,
-        "completeText": "Nominate OSS project for funding"
-    };
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const survey = new Survey.Model(surveyJson);
-
-        survey.applyTheme({
-            "cssVariables": {
-                "--sjs-primary-backcolor": "#5ba9ee",
-                "--sjs-primary-backcolor-light": "rgba(91,169,238,0.1)",
-                "--sjs-primary-backcolor-dark": "#005fa7",
-                "--sjs-primary-forecolor": "#fff",
-                "--sjs-general-backcolor": "transparent",
-                "--sjs-general-backcolor-dim": "transparent",
-                "--sjs-general-forecolor": "#3a3e43",
-                "--sjs-general-forecolor-light": "rgba(58,62,67,0.55)",
-                "--sjs-border-default": "#e0e0e0",
-                "--sjs-border-light": "#e0e0e0",
-                "--sjs-font-family": "inherit",
-                "--sjs-corner-radius": "4px",
-                "--sjs-base-unit": "8px",
-                "--sjs-shadow-small": "none",
-                "--sjs-shadow-inner": "none"
-            },
-            "isPanelless": true
-        });
-
-        survey.onComplete.add(function (sender) {
-            console.log("Survey results:", JSON.stringify(sender.data, null, 2));
-        });
-
-        survey.render(document.getElementById("surveyjs-container"));
-    });
-</script>
