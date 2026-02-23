@@ -1,6 +1,10 @@
+import { useEffect, useRef, useState } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
+
+const TURNSTILE_SITE_KEY = "0x4AAAAAAChARxpm0A9_t-AB";
+const IS_DEV = typeof window !== "undefined" && window.location.hostname === "localhost";
 
 const surveyJson = {
     pages: [
@@ -43,6 +47,12 @@ const surveyJson = {
                     placeholder:
                         "Why do you think this OSS is valuable but underfunded? Please briefly explain why you nominate this project",
                 },
+                {
+                    type: "text",
+                    name: "website",
+                    title: "Website",
+                    visible: false,
+                },
             ],
         },
     ],
@@ -69,22 +79,62 @@ const theme = {
         "--sjs-base-unit": "8px",
         "--sjs-shadow-small": "none",
         "--sjs-shadow-inner": "none",
+        "--sjs-editorpanel-backcolor": "white",
+        "--sjs-editor-background": "white",
     },
     isPanelless: true,
 };
 
 export default function NominationForm() {
+    const formLoadedAt = useRef(Date.now() / 1000);
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const turnstileRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (IS_DEV) {
+            setTurnstileToken("dev-bypass");
+            return;
+        }
+
+        const renderWidget = () => {
+            if (turnstileRef.current && window.turnstile) {
+                window.turnstile.render(turnstileRef.current, {
+                    sitekey: TURNSTILE_SITE_KEY,
+                    callback: (token: string) => setTurnstileToken(token),
+                });
+            }
+        };
+
+        if (window.turnstile) {
+            renderWidget();
+        } else {
+            const interval = setInterval(() => {
+                if (window.turnstile) {
+                    clearInterval(interval);
+                    renderWidget();
+                }
+            }, 200);
+            return () => clearInterval(interval);
+        }
+    }, []);
+
     const survey = new Model(surveyJson);
     survey.applyTheme(theme);
 
     survey.onComplete.add(async (sender) => {
+        const payload = {
+            ...sender.data,
+            turnstile_token: turnstileToken || "",
+            form_loaded_at: formLoadedAt.current,
+        };
+
         try {
             const response = await fetch(
                 "https://data.endowment.dev/api/public/nominate",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(sender.data),
+                    body: JSON.stringify(payload),
                 }
             );
 
@@ -102,5 +152,24 @@ export default function NominationForm() {
         }
     });
 
-    return <Survey model={survey} />;
+    return (
+        <>
+            <style>{`
+                .sd-input {
+                    background: white !important;
+                }
+                .sd-comment {
+                    border: 1px solid #e0e0e0 !important;
+                    border-radius: 4px !important;
+                }
+            `}</style>
+            <Survey model={survey} />
+            {!IS_DEV && (
+                <div
+                    ref={turnstileRef}
+                    style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}
+                />
+            )}
+        </>
+    );
 }
