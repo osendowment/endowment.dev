@@ -29,7 +29,7 @@ const surveyJson = {
                 {
                     type: "text",
                     name: "project_url",
-                    title: "GitHub Repo URL of a nominated project",
+                    title: "GitHub Repo URL of the project you're nominating",
                     isRequired: true,
                     validators: [
                         {
@@ -45,13 +45,14 @@ const surveyJson = {
                     name: "comment",
                     title: "Comments",
                     placeholder:
-                        "Why do you think this OSS is valuable but underfunded? Please briefly explain why you nominate this project",
+                        "Why do you think this OSS is valuable but underfunded? Please briefly explain why you're nominating this project",
                 },
                 {
                     type: "text",
                     name: "website",
                     title: "Website",
-                    visible: false,
+                    cssClass: "sr-only",
+                    titleLocation: "hidden",
                 },
             ],
         },
@@ -97,9 +98,11 @@ export default function NominationForm() {
         survey.applyTheme(theme);
 
         survey.onComplete.add(async (sender) => {
+            const token = turnstileTokenRef.current;
+            console.log("[Turnstile] Submitting with token:", token ? token.slice(0, 20) + "..." : "(empty)");
             const payload = {
                 ...sender.data,
-                turnstile_token: turnstileTokenRef.current,
+                turnstile_token: token,
                 form_loaded_at: formLoadedAt.current,
             };
 
@@ -116,7 +119,8 @@ export default function NominationForm() {
                 if (!response.ok) {
                     const err = await response.json().catch(() => null);
                     const message = err?.detail || "Something went wrong. Please try again.";
-                    sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${message}</h3></div>`;
+                    const escaped = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+                    sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${escaped}</h3></div>`;
                 }
             } catch {
                 sender.completedHtml =
@@ -129,31 +133,58 @@ export default function NominationForm() {
 
     useEffect(() => {
         if (IS_DEV) {
+            console.log("[Turnstile] DEV mode — bypassing");
             turnstileTokenRef.current = "dev-bypass";
             return;
         }
 
         const renderWidget = () => {
-            if (turnstileRef.current && window.turnstile) {
-                window.turnstile.render(turnstileRef.current, {
-                    sitekey: TURNSTILE_SITE_KEY,
-                    callback: (token: string) => {
-                        turnstileTokenRef.current = token;
-                    },
-                });
+            if (!turnstileRef.current) {
+                console.warn("[Turnstile] ref is null — cannot render widget");
+                return;
             }
+            if (!window.turnstile) {
+                console.warn("[Turnstile] window.turnstile not available");
+                return;
+            }
+            console.log("[Turnstile] Rendering widget...");
+            const widgetId = window.turnstile.render(turnstileRef.current, {
+                sitekey: TURNSTILE_SITE_KEY,
+                callback: (token: string) => {
+                    console.log("[Turnstile] Token received:", token.slice(0, 20) + "...");
+                    turnstileTokenRef.current = token;
+                },
+                "error-callback": (error: unknown) => {
+                    console.error("[Turnstile] Error:", error);
+                },
+                "expired-callback": () => {
+                    console.warn("[Turnstile] Token expired — resetting");
+                    turnstileTokenRef.current = "";
+                    if (window.turnstile) window.turnstile.reset(widgetId);
+                },
+            });
+            console.log("[Turnstile] Widget rendered, id:", widgetId);
         };
 
         if (window.turnstile) {
             renderWidget();
         } else {
+            console.log("[Turnstile] Waiting for script to load...");
             const interval = setInterval(() => {
                 if (window.turnstile) {
                     clearInterval(interval);
+                    console.log("[Turnstile] Script loaded");
                     renderWidget();
                 }
             }, 200);
-            return () => clearInterval(interval);
+            const timeout = setTimeout(() => {
+                clearInterval(interval);
+                console.error("[Turnstile] Script failed to load after 10s");
+            }, 10000);
+            return () => {
+                clearInterval(interval);
+                clearTimeout(timeout);
+            };
         }
     }, []);
 
@@ -166,6 +197,17 @@ export default function NominationForm() {
                 .sd-comment {
                     border: 1px solid #e0e0e0 !important;
                     border-radius: 4px !important;
+                }
+                .sr-only {
+                    position: absolute !important;
+                    width: 1px !important;
+                    height: 1px !important;
+                    padding: 0 !important;
+                    margin: -1px !important;
+                    overflow: hidden !important;
+                    clip: rect(0,0,0,0) !important;
+                    white-space: nowrap !important;
+                    border: 0 !important;
                 }
             `}</style>
             <Survey model={surveyRef.current!} />
