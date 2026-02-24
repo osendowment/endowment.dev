@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
@@ -87,12 +87,49 @@ const theme = {
 
 export default function NominationForm() {
     const formLoadedAt = useRef(Date.now() / 1000);
-    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const turnstileTokenRef = useRef<string>("");
     const turnstileRef = useRef<HTMLDivElement>(null);
+
+    // Stable survey model — created once, never recreated on re-render
+    const surveyRef = useRef<Model | null>(null);
+    if (!surveyRef.current) {
+        const survey = new Model(surveyJson);
+        survey.applyTheme(theme);
+
+        survey.onComplete.add(async (sender) => {
+            const payload = {
+                ...sender.data,
+                turnstile_token: turnstileTokenRef.current,
+                form_loaded_at: formLoadedAt.current,
+            };
+
+            try {
+                const response = await fetch(
+                    "https://data.endowment.dev/api/public/nominate",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload),
+                    }
+                );
+
+                if (!response.ok) {
+                    const err = await response.json().catch(() => null);
+                    const message = err?.detail || "Something went wrong. Please try again.";
+                    sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${message}</h3></div>`;
+                }
+            } catch {
+                sender.completedHtml =
+                    '<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">Network error. Please try again.</h3></div>';
+            }
+        });
+
+        surveyRef.current = survey;
+    }
 
     useEffect(() => {
         if (IS_DEV) {
-            setTurnstileToken("dev-bypass");
+            turnstileTokenRef.current = "dev-bypass";
             return;
         }
 
@@ -100,7 +137,9 @@ export default function NominationForm() {
             if (turnstileRef.current && window.turnstile) {
                 window.turnstile.render(turnstileRef.current, {
                     sitekey: TURNSTILE_SITE_KEY,
-                    callback: (token: string) => setTurnstileToken(token),
+                    callback: (token: string) => {
+                        turnstileTokenRef.current = token;
+                    },
                 });
             }
         };
@@ -118,37 +157,6 @@ export default function NominationForm() {
         }
     }, []);
 
-    const survey = new Model(surveyJson);
-    survey.applyTheme(theme);
-
-    survey.onComplete.add(async (sender) => {
-        const payload = {
-            ...sender.data,
-            turnstile_token: turnstileToken || "",
-            form_loaded_at: formLoadedAt.current,
-        };
-
-        try {
-            const response = await fetch(
-                "https://data.endowment.dev/api/public/nominate",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
-                }
-            );
-
-            if (!response.ok) {
-                const err = await response.json().catch(() => null);
-                const message = err?.detail || "Something went wrong. Please try again.";
-                sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${message}</h3></div>`;
-            }
-        } catch {
-            sender.completedHtml =
-                '<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">Network error. Please try again.</h3></div>';
-        }
-    });
-
     return (
         <>
             <style>{`
@@ -160,7 +168,7 @@ export default function NominationForm() {
                     border-radius: 4px !important;
                 }
             `}</style>
-            <Survey model={survey} />
+            <Survey model={surveyRef.current!} />
             {!IS_DEV && (
                 <div
                     ref={turnstileRef}
