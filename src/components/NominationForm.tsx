@@ -140,10 +140,7 @@ export default function NominationForm() {
 
             if (!response.ok) {
                 const err = await response.json().catch(() => null);
-                const message =
-                    response.status === 409
-                        ? "You have already nominated this project."
-                        : err?.detail || "Something went wrong. Please try again.";
+                const message = err?.detail || "Something went wrong. Please try again.";
                 sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${message}</h3></div>`;
             }
         } catch {
