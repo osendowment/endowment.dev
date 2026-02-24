@@ -150,6 +150,7 @@ export default function NominationForm() {
             console.log("[Turnstile] Rendering widget...");
             const widgetId = window.turnstile.render(turnstileRef.current, {
                 sitekey: TURNSTILE_SITE_KEY,
+                appearance: "interaction-only",
                 callback: (token: string) => {
                     console.log("[Turnstile] Token received:", token.slice(0, 20) + "...");
                     turnstileTokenRef.current = token;

@@ -4,6 +4,7 @@ interface Window {
             element: HTMLElement,
             options: {
                 sitekey: string;
+                appearance?: "always" | "execute" | "interaction-only";
                 callback: (token: string) => void;
                 "error-callback"?: (error: unknown) => void;
                 "expired-callback"?: () => void;
