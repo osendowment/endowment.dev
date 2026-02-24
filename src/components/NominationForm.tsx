@@ -48,11 +48,9 @@ const surveyJson = {
                         "Why do you think this OSS is valuable but underfunded? Please briefly explain why you're nominating this project",
                 },
                 {
-                    type: "text",
-                    name: "website",
-                    title: "Website",
-                    cssClass: "sr-only",
-                    titleLocation: "hidden",
+                    type: "html",
+                    name: "website_trap",
+                    html: '<div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" id="hp-website"></label></div>',
                 },
             ],
         },
@@ -100,8 +98,10 @@ export default function NominationForm() {
         survey.onComplete.add(async (sender) => {
             const token = turnstileTokenRef.current;
             console.log("[Turnstile] Submitting with token:", token ? token.slice(0, 20) + "..." : "(empty)");
+            const hpField = document.getElementById("hp-website") as HTMLInputElement | null;
             const payload = {
                 ...sender.data,
+                website: hpField?.value || undefined,
                 turnstile_token: token,
                 form_loaded_at: formLoadedAt.current,
             };
@@ -197,17 +197,6 @@ export default function NominationForm() {
                 .sd-comment {
                     border: 1px solid #e0e0e0 !important;
                     border-radius: 4px !important;
-                }
-                .sr-only {
-                    position: absolute !important;
-                    width: 1px !important;
-                    height: 1px !important;
-                    padding: 0 !important;
-                    margin: -1px !important;
-                    overflow: hidden !important;
-                    clip: rect(0,0,0,0) !important;
-                    white-space: nowrap !important;
-                    border: 0 !important;
                 }
             `}</style>
             <Survey model={surveyRef.current!} />
