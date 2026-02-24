@@ -157,6 +157,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                             <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
                             <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
                             <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
+                            <a href="/funding" class={Astro.url.pathname === '/funding' ? 'active' : ''}>Funding</a>
                             <a href="/faq" class={Astro.url.pathname === '/faq' ? 'active' : ''}>FAQ</a>
                         </nav>
                     </div>
@@ -188,6 +189,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                             <a href="/endowment" class={Astro.url.pathname === '/endowment' ? 'active' : ''}>Endowment</a>
                             <a href="/community" class={Astro.url.pathname === '/community' ? 'active' : ''}>Community</a>
                             <a href="/docs" class={Astro.url.pathname === '/docs' ? 'active' : ''}>Docs</a>
+                            <a href="/funding" class={Astro.url.pathname === '/funding' ? 'active' : ''}>Funding</a>
                             <a href="/faq" class={Astro.url.pathname === '/faq' ? 'active' : ''}>FAQ</a>
                             <a
                                 href={EVERYORG_BUTTON_URL}
@@ -230,6 +232,11 @@ import { OpenPanelComponent } from '@openpanel/astro';
                         <li><a href="/endowment">Endowment</a></li>
                         <li><a href="/community">Community</a></li>
                         <li><a href="/docs">Docs</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="/funding">Funding</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href={EVERYORG_BUTTON_URL}>Donate</a></li>
                     </ul>
                 </nav>
                 <div class="footer-legal">

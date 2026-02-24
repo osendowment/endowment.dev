@@ -804,6 +804,10 @@ footer {
                 }
             }
         }
+        .footer-nav {
+            display: flex;
+            gap: 3rem;
+        }
         .footer-nav ul {
             margin: 0;
             padding: 0;

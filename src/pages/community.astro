@@ -63,7 +63,7 @@ const otherDonorsClassName = '0-1K';
                 <div class="insec insec--xpad donor-board">
                     {Object.entries(donorsByClass).map(([className, donors]) =>
                         className != otherDonorsClassName && (
-                            <h2>{classDisplayNames[className]}</h2>
+                            <h2>{classDisplayNames[className]} <span class="donor-count">{donors.length}</span></h2>
                             <div class="donor-list">
                                 {donors.map((donor) => (
                                     <DonorMiniProfile
@@ -76,7 +76,7 @@ const otherDonorsClassName = '0-1K';
                             </div>
                         )
                     )}
-                    <h2>Institutional donors</h2>
+                    <h2>Institutional donors <span class="donor-count">{orgDonors.length}</span></h2>
                     <div class="donor-list">
                         {orgDonors.map((donor) => (
                             <DonorMiniProfile
@@ -87,7 +87,7 @@ const otherDonorsClassName = '0-1K';
                             ></DonorMiniProfile>
                         ))}
                     </div>
-                    <h2>{classDisplayNames[otherDonorsClassName]}</h2>
+                    <h2>{classDisplayNames[otherDonorsClassName]} <span class="donor-count">{donorsByClass[otherDonorsClassName]?.length ?? 0}</span></h2>
                     <div class="donor-list">
                         {donorsByClass[otherDonorsClassName].map((donor) => (
                             <DonorMiniProfile
@@ -107,6 +107,16 @@ const otherDonorsClassName = '0-1K';
         &:before, &:after {
             background-image: url(/images/decorations/squares-side-blue.svg) !important;
         }
+    }
+    .donor-count {
+        font-family: var(--font-family-mono);
+        font-size: 0.35em;
+        font-weight: 300;
+        color: #bbb;
+        vertical-align: baseline;
+        margin-left: 0.4em;
+        position: relative;
+        top: -0.2em;
     }
     .community-intro {
         display: flex;
