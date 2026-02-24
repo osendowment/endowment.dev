@@ -28,7 +28,7 @@ for (const c of name) {
 const avatarBgColor = AVATAR_BG_COLORS[Math.abs(hash) % AVATAR_BG_COLORS.length];
 ---
 
-<div class={'donor-mini-profile ' + (compact && 'donor-mini-profile--compact' || '') + (extraClasses || '')}>
+<div class={'donor-mini-profile' + (compact ? ' donor-mini-profile--compact' : '') + (extraClasses ? ' ' + extraClasses : '')}>
     {!compact && (avatarUrl || showInitials) &&
         <div class="donor-avatar">
             {avatarUrl ? (

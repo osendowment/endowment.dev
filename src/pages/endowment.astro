@@ -4,16 +4,11 @@
 
 import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
-import { cachedFetch } from '../lib/api.ts';
-
-const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
+const stats = await fetch('https://data.endowment.dev/api/public/stats').then(r => r.json());
 
 const fundSize = stats.endowment.fund_size;
 const totalDonors = stats.donors.total;
 const totalMembers = stats.donors.members;
-const lastUpdated = Object.values(stats.endowment.accounts)
-    .map((a: any) => a.synced_at)
-    .sort()[0];
 ---
 
 <Layout title="About the Endowment — Open Source Endowment" description="Learn about the Open Source Endowment's mission, funding model, investing strategy, and the team building sustainable funding for open source software." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "Endowment", url: "https://endowment.dev/endowment/"}]}>
@@ -111,7 +106,7 @@ const lastUpdated = Object.values(stats.endowment.accounts)
                             <p>
                                 Its cornerstone is the <a href="https://en.wikipedia.org/wiki/Financial_endowment" target="_blank">endowment model</a>,
                                 which top universities have successfully used for centuries. However, this approach
-                                has never been applied to Open Source before OSE.
+                                has never been applied to open source before OSE.
                             </p>
                             <p>
                                 Founded in 2025 by a diverse group of tech founders, executives, investors, and
@@ -152,7 +147,7 @@ const lastUpdated = Object.values(stats.endowment.accounts)
                     <div class="sechead sechead--left">
                         <h2 id="governance">Governance</h2>
                         <p class="narrow-text">
-                            Open Source Endowment Foundation is a tax-exempt 501(c)(3) US public charity with a global focus. Its bottom-up governance is inspired by the best universities and revolves around passionate people with "skin in the game", not corporations.
+                            Open Source Endowment Foundation is a tax-exempt 501(c)(3) US public charity with a global focus. Its bottom-up governance is inspired by the best universities and revolves around passionate people with "skin in the game," not corporations.
                         </p>
                         <p class="narrow-text">
                             We strive to meet best-in-class standards of neutrality,
@@ -385,7 +380,11 @@ const lastUpdated = Object.values(stats.endowment.accounts)
                         </div>
                     </div>
                     <p class="funding-milestone">
-                        First grant distribution is planned for early 2026.
+                        <span class="funding-cta-wrap">
+                            <span class="funding-cta-chevron">&rsaquo;</span>
+                            <a href="/funding" class="button funding-cta">Nominate OSS projects for our first funding round in Q2 2026</a>
+                            <span class="funding-cta-chevron">&lsaquo;</span>
+                        </span>
                     </p>
                 </div>
             </div>
@@ -578,11 +577,6 @@ const lastUpdated = Object.values(stats.endowment.accounts)
         margin: 0.25rem 0;
     }
 
-    .funding-icon {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-
     /* Funding Model */
     .funding-intro {
         max-width: 66%;
@@ -661,10 +655,33 @@ const lastUpdated = Object.values(stats.endowment.accounts)
         color: #fff;
     }
     .funding-milestone {
-        margin: 2rem 0 0;
-        font-size: var(--font-size-3);
-        color: #fff;
+        margin: 3rem 0 0;
         text-align: center;
+    }
+    .funding-cta-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .funding-cta-chevron {
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        opacity: 0.4;
+        font-weight: 300;
+        line-height: 1;
+    }
+    .funding-cta {
+        border: none;
+        background: var(--color-primary);
+        color: var(--color-text-light);
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        font-weight: 600;
+        padding: 0.5rem 1.2rem;
+        font-size: var(--font-size-3);
+        transition: background 0.15s ease;
+        &:hover {
+            background: color-mix(in srgb, var(--color-primary) 80%, #000);
+        }
     }
     .tag-cloud {
         display: flex;

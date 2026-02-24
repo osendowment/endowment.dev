@@ -16,7 +16,7 @@ contribution and lasts for the next X years, where X = gross USD donation / $100
 3. **Roles and Privileges**. Members are central to OSE’s governance – they shape the
 lasting endowment for open source sustainability and have the following privileges:
     - a) Advising the Board on strategic matters, including grant-making models
-    - b) Appointing of community-nominated directors of the Board
+    - b) Appointment of community-nominated directors to the Board
     - c) Participating in exclusive OSE events, online resources, etc.
     - d) Receiving regular updates on OSE’s activities and development.
     - e) Any other rights and responsibilities set forth in OSE’s bylaws.
@@ -24,11 +24,11 @@ lasting endowment for open source sustainability and have the following privileg
 4. **Voting**. On matters that need member approval, each member shall be entitled to
 vote by email or other methods approved by the Board. The voting period shall be
 at least one week long. Other details for specific voting events are determined by
-the Board, following the OSE's Bylaws and the Delaware law.﻿
+the Board, following the OSE's Bylaws and the Delaware law.
 
 5. **Disqualification**. In exceptional cases, the Board reserves the right to suspend or
 terminate a membership if it determines, at its sole discretion, that the member's
-association with OSE could undermine public trust or harm its reputation﻿ . To the
+association with OSE could undermine public trust or harm its reputation. To the
 extent required by law, the affected individual will be provided notice and an
 opportunity to respond prior to termination.
 

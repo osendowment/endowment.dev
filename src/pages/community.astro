@@ -4,9 +4,9 @@
 
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
-import { cachedFetch, fetchDonors } from '../lib/api.ts';
+import { fetchDonors } from '../lib/api.ts';
 
-const stats = await cachedFetch('https://data.endowment.dev/api/public/stats', 'stats');
+const stats = await fetch('https://data.endowment.dev/api/public/stats').then(r => r.json());
 const allDonors = await fetchDonors('https://data.endowment.dev/api/public/donors');
 const individualDonors = allDonors.filter((d) => d.type == 'person');
 const orgDonors = allDonors.filter((d) => d.type == 'organization');
@@ -89,7 +89,7 @@ const otherDonorsClassName = '0-1K';
                     </div>
                     <h2>{classDisplayNames[otherDonorsClassName]} <span class="donor-count">{donorsByClass[otherDonorsClassName]?.length ?? 0}</span></h2>
                     <div class="donor-list">
-                        {donorsByClass[otherDonorsClassName].map((donor) => (
+                        {(donorsByClass[otherDonorsClassName] ?? []).map((donor) => (
                             <DonorMiniProfile
                                 name={donor.name}
                                 compact={true}
