@@ -34,7 +34,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
 
         <link rel="preconnect" href="https://stats.endowment.dev">
 
-        <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/svg+xml">
+        {Astro.url.pathname === '/' && <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/svg+xml">}
         <link rel="preload" as="font" href="/fonts/ovo-normal-latin.woff2" type="font/woff2" crossorigin>
         <link rel="preload" as="font" href="/fonts/plus-jakarta-sans-200-800-normal-latin.woff2" type="font/woff2" crossorigin>
         <link rel="preload" as="font" href="/fonts/GeistMono[wght].woff2" type="font/woff2" crossorigin>
@@ -145,7 +145,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary">
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-friendly extended reference">
 
-        <script async defer src="/js/everyorg-endowment-button.js"></script>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
         <OpenPanelComponent
@@ -297,9 +296,28 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }));
     });
 
+    // Lazy-load Every.org donate button script after page is idle
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            const s = document.createElement('script');
+            s.src = '/js/everyorg-endowment-button.js';
+            document.head.appendChild(s);
+        });
+    } else {
+        setTimeout(() => {
+            const s = document.createElement('script');
+            s.src = '/js/everyorg-endowment-button.js';
+            document.head.appendChild(s);
+        }, 2000);
+    }
+
     // Auto-open donate form when URL has #donate
     if (window.location.hash === '#donate') {
-        const donateLink = document.querySelector('a[data-track="header-donate"]');
-        if (donateLink) donateLink.click();
+        // Wait for Every.org script to load before clicking
+        const tryOpen = () => {
+            const donateLink = document.querySelector('a[data-track="header-donate"]');
+            if (donateLink) donateLink.click();
+        };
+        setTimeout(tryOpen, 3000);
     }
 </script>
