@@ -190,6 +190,6 @@ No. While governance principles resemble DAOs (transparent, decentralized, skin 
 ## Contact
 
 - General inquiries: konstantin@endowment.dev
-- Donor inquiries: donors@endowment.dev
+- Donor inquiries: donations@endowment.dev
 - Website: https://endowment.dev
 - GitHub: https://github.com/osendowment

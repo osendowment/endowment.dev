@@ -57,7 +57,7 @@ The model is published openly at https://github.com/osendowment/model
 ## Contact
 
 - General: konstantin@endowment.dev
-- Donors: donors@endowment.dev
+- Donors: donations@endowment.dev
 
 ## Further Reading
 
