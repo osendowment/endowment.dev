@@ -58,7 +58,7 @@ const otherDonorsClassName = '0-1K';
                             </p>
                             <p>
                                 Community is a cornerstone of our endowment, and
-                                all individuals contributing at least $1000/year —
+                                all individuals contributing at least $1,000/year —
                                 OSE Members — are invited to participate in its
                                 <a href="/endowment#governance">governance</a>.
                             </p>
@@ -130,6 +130,9 @@ const otherDonorsClassName = '0-1K';
         margin-left: 0.4em;
         position: relative;
         top: -0.2em;
+        @media (max-width: 800px) {
+            display: none;
+        }
     }
     .community-intro {
         display: flex;
