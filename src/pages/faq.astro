@@ -18,15 +18,111 @@ const orgDonorCount = stats.donors.organizations;
                 "name": "What is the Open Source Endowment (OSE)?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "OSE is the world's first endowment fund dedicated to sustainably funding free open source software. It collects donations, invests them into diversified assets, and spends only the returns to support critical yet underfunded OSS globally."
+                    "text": "OSE is the world's first endowment fund for open source software. It invests donations into a low-risk portfolio and spends only the returns to fund maintainers of critical yet underfunded OSS across the globe. OSE is a US 501(c)(3) public charity, incorporated on February 14, 2025."
                 }
             },
             {
                 "@type": "Question",
-                "name": "How do I donate to OSE?",
+                "name": "Why does OSS need sustainable funding?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "People and organizations are welcome to donate at endowment.dev. All individuals who donated before the public launch are credited as founding donors."
+                    "text": "Over 95% of software codebases rely on OSS, with applications averaging 500+ open source components. Yet 86% of contributors are unpaid, and many critical projects lack resources, leading to incidents like Heartbleed (2014) and Log4Shell (2021)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why are current funding solutions not truly sustainable?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most funding sources depend on volatile annual budgets or ad hoc donations that fluctuate with economic and political conditions. A tech market instability, a corporate strategy shift, or elections can cut OSS budgets overnight."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is OSE unique and sustainable?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE is the only open source institution that simultaneously combines sustainable funding through an endowment model that spends only investment returns, systemic focus on critical underfunded OSS, and scalability through a transparent digital-first approach."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I donate?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "People and organizations can donate at endowment.dev. OSE accepts card payments, Apple/Google Pay, US and international bank transfers, donor-advised funds, crypto, and public and private stock."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where does my donation go?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every public donation goes directly to the endowment fund — it is invested, not spent. Only the investment returns are used to fund grants to open source projects."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens when I donate more than $1,000?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Donors of $1,000 or more become OSE Members with governance rights including advising the Board on strategy and grant-making, appointing community-nominated directors, and voting on key decisions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are donations tax-deductible for US donors?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. OSE is a US 501(c)(3) tax-exempt public charity (EIN 33-3502715), so donations are tax-deductible to the full extent permitted by law."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did OSE accept only individuals as founding donors?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE is a grassroots nonprofit governed by individual donors with passion for open source. Endowments require a 20+ year horizon, and most organizations plan for shorter periods."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does OSE accept corporate and other institutional donors?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Corporate and institutional donors are welcome, but do not receive governing rights to preserve long-term neutrality and alignment with the global open source community."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does OSE governance work now?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Board of Directors is the main governing body, combining board-appointed and member-elected directors. All directors serve unpaid and must be Members. The Executive Director manages day-to-day operations and reports to the Board."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are discussions regarding OSE open to the public?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Key documents and board meeting minutes are published in OSE's docs, and most discussions happen openly in the GitHub repo. Transparency is a foundational value."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I actively participate in OSE governance?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The best way to be nominated as a board director or advisor is to become a Member and actively help with key elements of the endowment: fundraising, investing, grantmaking, etc."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What will OSE governance look like in the long term?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE is designed to become a self-governing institution run by a diverse community of Members who will elect more and more Board directors over time, with scalable systems reducing management overhead."
                 }
             },
             {
@@ -34,7 +130,7 @@ const orgDonorCount = stats.donors.organizations;
                 "name": "How are donated funds invested?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "All donations are put into diversified investments managed by a professional asset manager, targeting a 7-8% return."
+                    "text": "All donations are put into diversified investments managed by Infinite Giving, a professional asset manager specializing in US nonprofits, targeting a 7-8% return."
                 }
             },
             {
@@ -50,7 +146,71 @@ const orgDonorCount = stats.donors.organizations;
                 "name": "What principles guide OSE's grantmaking?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "OSE strives to support the most critical yet underfunded open source projects, guided by principles of long-term impact, deep infrastructure prioritization, and open transparent selection."
+                    "text": "OSE strives to sustainably address funding gaps, guided by long-term impact over surface-level fixes, following the market by estimating how the world consumes OSS, and open transparent selection via a data-driven model."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the selection model work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE scores projects on Value (dependencies, downloads, potential losses, endorsements) and Risk (complexity, maintainers, security, funding). Target format: microgrants (~$5,000) to high-risk candidates among the most valuable OSS, approved by the board after due diligence."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does OSE support OSS projects that have a related tech business?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. OSE supports only nonprofit projects, excluding VC-funded startups and projects with corporate origins."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is funding provided for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE provides forward-looking grants for measurable work to de-risk projects (e.g., fixing vulnerabilities, onboarding co-maintainers), and backward-looking awards recognizing maintainers who sustained critical projects for years without adequate support."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did nobody build an OSS endowment before OSE?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Endowments require a 20+ year horizon most organizations can't sustain. The target must have an unlimited lifespan, and it requires a rare intersection of expertise in open source, endowment governance, fundraising, and nonprofit law."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can OSE evolve in the long term, especially in an AI-powered world?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Open source will remain the cornerstone of global tech infrastructure. AI accelerates both maintenance productivity and codebase complexity. Sustainable funding for human maintainers will remain essential, and AI may help OSE achieve its goals faster."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can Goodhart's law cause any scaling problems?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "At current scale, this isn't a concern. The tech industry has built robust systems with automated inputs that can't be easily gamed. The selection model will be openly developed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does OSE somehow relate to blockchain technologies?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE's governance principles resemble DAOs (transparent, decentralized, skin in the game) but it is a standard US public charity, not a crypto organization. It accepts crypto donations via Every.org."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does OSE work with existing OSS nonprofits?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OSE is designed as a complementary tool that attracts donations from a new category of donors (tech individuals) and increases overall funding of the global open source ecosystem without competing for existing resources."
                 }
             }
         ]

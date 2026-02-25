@@ -35,7 +35,7 @@ Current funding models are insufficient because none simultaneously combine:
 
 1. **Fundraising**: Individuals, companies, and foundations donate to form a permanent endowment principal. The principal is never spent.
 2. **Investing**: The principal is invested in a diversified portfolio managed by a professional asset manager (Infinite Giving), targeting 7-8% annual returns.
-3. **Grantmaking**: Only the investment returns are used. The target spend rate is 5% of the endowment fund per year on grants to critical OSS projects. First grant distribution is planned for Q1 2026.
+3. **Grantmaking**: Only the investment returns are used. The target spend rate is 5% of the endowment fund per year on grants to critical OSS projects. First grant distribution is planned for Q2 2026.
 4. **Monitoring**: Grantee projects are tracked for accountability and iterative improvement via quantitative metrics and qualitative check-ins.
 
 The remaining investment earnings (after grants and operating costs) are reinvested, growing the endowment over time.
@@ -176,7 +176,7 @@ Yes. Corporate and institutional donors are welcome, but do not receive governin
 All donations go into diversified investments managed by Infinite Giving (professional asset manager specializing in US nonprofits), targeting a 7-8% return.
 
 ### How is investment income spent?
-All expected investment income is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. First grants are planned for Q1 2026.
+All expected investment income is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. First grants are planned for Q2 2026.
 
 ### Does OSE support OSS projects with associated businesses?
 No. OSE supports only nonprofit projects, excluding OSS startups and corporate-backed projects.

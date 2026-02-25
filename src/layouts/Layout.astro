@@ -83,14 +83,37 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "Organization",
+          "@type": ["Organization", "NGO"],
           "name": "Open Source Endowment Foundation",
+          "alternateName": "OSE",
           "url": "https://endowment.dev/",
           "logo": "https://endowment.dev/images/logo/Logomark%20Colored%20for%20Dark%20BG.png",
+          "foundingDate": "2025-02-14",
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "Wilmington, Delaware, USA"
+          },
+          "founder": {
+            "@type": "Person",
+            "name": "Konstantin Vinogradov",
+            "url": "https://www.linkedin.com/in/kvinogradov/"
+          },
+          "nonprofitStatus": "Nonprofit501c3",
+          "taxID": "33-3502715",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "74 E Glenwood Ave Unit 5756",
+            "addressLocality": "Smyrna",
+            "addressRegion": "DE",
+            "postalCode": "19977",
+            "addressCountry": "US"
+          },
+          "areaServed": "Global",
           "sameAs": [
             "https://github.com/osendowment",
             "https://www.linkedin.com/company/osendowment/",
-            "https://x.com/osendowment"
+            "https://x.com/osendowment",
+            "https://www.guidestar.org/profile/33-3502715"
           ],
           "description": "Tax-exempt 501(c)(3) US public charity providing truly sustainable funding for critical open source software through a community-driven endowment."
         }
@@ -120,6 +143,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
         )}
 
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary">
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-friendly extended reference">
 
         <script async defer src="/js/everyorg-endowment-button.js"></script>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -169,7 +193,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                     </div>
                     <div class="mobile-only">
                         <div class="header-buttons">
-                            <button class="button button--icon-only hamburger-button nav-trigger">
+                            <button class="button button--icon-only hamburger-button nav-trigger" aria-expanded="false" aria-label="Toggle navigation menu">
                                 <img src="/images/icons/em-hamburger.svg" alt="Menu" width="20" height="20">
                             </button>
                         </div>
@@ -264,8 +288,10 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 $mobileNav.hidden = !$mobileNav.hidden;
                 if ($navTrigger.dataset.active) {
                     delete $navTrigger.dataset.active;
+                    $navTrigger.setAttribute('aria-expanded', 'false');
                 } else {
                     $navTrigger.dataset.active = 'true';
+                    $navTrigger.setAttribute('aria-expanded', 'true');
                 }
             });
         }));

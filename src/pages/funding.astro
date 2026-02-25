@@ -4,6 +4,22 @@ import NominationForm from '../components/NominationForm.tsx';
 ---
 
 <Layout title="Nominate OSS for Funding — Open Source Endowment" description="Nominate critical, underfunded open source projects for OSE grant funding through our open, community-developed model.">
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MonetaryGrant",
+        "name": "OSE Microgrant for Critical Open Source Software",
+        "description": "Microgrants of approximately $5,000 awarded to high-risk candidates among the most valuable open source software projects, selected via a data-driven Value-Risk scoring model.",
+        "amount": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "5000"
+        },
+        "funder": {
+            "@type": "Organization",
+            "name": "Open Source Endowment Foundation",
+            "url": "https://endowment.dev/"
+        }
+    })} />
     <article>
         <!-- Hero (same structure as Docs page) -->
         <section class="pagesec pagesec--dark pagesec--tight">

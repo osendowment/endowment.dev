@@ -46,7 +46,7 @@ All donations are put into diversified investments managed by a professional ass
 
 ### How is investment income spent?
 
-All expected investment income from donations to the endowment is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. The first grants are planned for Q1 2026.
+All expected investment income from donations to the endowment is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. The first grants are planned for Q2 2026.
 
 ---
 
@@ -62,7 +62,7 @@ OSE aims to ensure sustainable maintenance of the most critical OSS projects, re
 
 ### How will the selection model work?
 
-OSE is currently developing the selection model and planning to release its first version in Q1 2026. It will use a scoring approach based on the estimated value and risk for top OSS projects. Here are their potential components:
+OSE is currently developing the selection model and planning to release its first version in Q2 2026. It will use a scoring approach based on the estimated value and risk for top OSS projects. Here are their potential components:
 
 - **Value for the ecosystem**
 	- Dependencies

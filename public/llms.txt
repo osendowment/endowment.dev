@@ -25,7 +25,7 @@ The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity
 - Investment Manager: Infinite Giving (specializing in US nonprofits)
 - Target Return: 7-8% annually
 - Target Spend Rate: 5% of fund per year on grants
-- First Grants: Planned for Q1 2026
+- First Grants: Planned for Q2 2026
 - Grant Format: Microgrants (~$5,000) to high-risk candidates among most valuable OSS
 
 ## Team

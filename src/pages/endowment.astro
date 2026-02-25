@@ -30,48 +30,72 @@ const totalMembers = stats.donors.members;
                 "addressRegion": "DE",
                 "addressCountry": "US"
             },
-            "member": [
+            "employee": [
                 {
                     "@type": "Person",
                     "name": "Konstantin Vinogradov",
                     "jobTitle": "Chairman of the Board",
                     "image": "https://endowment.dev/images/team/konstantin.webp",
-                    "description": "VC investor, former General Partner at Runa Capital, creator of the ROSS Index"
+                    "description": "VC investor, former General Partner at Runa Capital, creator of the ROSS Index",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Open Source Endowment Foundation"
+                    }
                 },
                 {
                     "@type": "Person",
                     "name": "Chad Whitacre",
                     "jobTitle": "Secretary",
                     "image": "https://endowment.dev/images/team/chad.webp",
-                    "description": "Head of Open Source at Sentry, leader of Open Source Pledge, founder of Gratipay"
+                    "description": "Head of Open Source at Sentry, leader of Open Source Pledge, founder of Gratipay",
+                    "worksFor": [
+                        { "@type": "Organization", "name": "Open Source Endowment Foundation" },
+                        { "@type": "Organization", "name": "Sentry" }
+                    ]
                 },
                 {
                     "@type": "Person",
                     "name": "Maxim Konovalov",
                     "jobTitle": "Treasurer",
                     "image": "https://endowment.dev/images/team/maxim.webp",
-                    "description": "Co-founder and former CTO of Nginx, former VP Engineering at F5, FreeBSD contributor"
+                    "description": "Co-founder and former CTO of Nginx, former VP Engineering at F5, FreeBSD contributor",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Open Source Endowment Foundation"
+                    }
                 },
                 {
                     "@type": "Person",
                     "name": "Jonathan Starr",
                     "jobTitle": "Executive Director",
                     "image": "https://endowment.dev/images/team/jonathan.webp",
-                    "description": "Former Program Manager at NumFOCUS, Co-Founder of SciOS"
+                    "description": "Former Program Manager at NumFOCUS, Co-Founder of SciOS",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Open Source Endowment Foundation"
+                    }
                 },
                 {
                     "@type": "Person",
                     "name": "Amy Parker",
                     "jobTitle": "Board Advisor",
                     "image": "https://endowment.dev/images/team/amy.webp",
-                    "description": "Deputy Executive Director at OpenSSL Foundation, former Director of Wikipedia Endowment"
+                    "description": "Deputy Executive Director at OpenSSL Foundation, former Director of Wikipedia Endowment",
+                    "worksFor": [
+                        { "@type": "Organization", "name": "Open Source Endowment Foundation" },
+                        { "@type": "Organization", "name": "OpenSSL Foundation" }
+                    ]
                 },
                 {
                     "@type": "Person",
                     "name": "Vlad-Stefan Harbuz",
                     "jobTitle": "Board Advisor",
                     "image": "https://endowment.dev/images/team/vlad.webp",
-                    "description": "Maintainer of Open Source Pledge, core developer at thanks.dev"
+                    "description": "Maintainer of Open Source Pledge, core developer at thanks.dev",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Open Source Endowment Foundation"
+                    }
                 }
             ]
         }
@@ -298,7 +322,7 @@ const totalMembers = stats.donors.members;
                         </a>
                     </div>
                     <div class="mini-note">
-                        <img src="/images/icons/em-door.svg" alt="" width="44" height="44" class="mini-note__icon">
+                        <img src="/images/icons/em-door.svg" alt="Open door icon" width="44" height="44" class="mini-note__icon">
                         <p>
                             Looking to contribute to the Open Source Endowment and join our volunteer team as an advisor or board member? Please
                             <a href="mailto:konstantin@endowment.dev" target="_blank">contact us</a>.
