@@ -1,5 +1,9 @@
 # Open Source Endowment - Website
 
+## Rules
+
+- **Never push to GitHub without explicit user approval.** Commit locally freely, but always wait for the user to say "push" before running `git push`.
+
 ## Tech Stack
 
 - **Framework**: Astro 5 (static site, SSG)
