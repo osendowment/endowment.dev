@@ -311,14 +311,67 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }, 2000);
     }
 
-    // Track donation page open when any donate link is clicked
-    document.querySelectorAll('a[data-track*="donate"]').forEach((link) => {
-        link.addEventListener('click', () => {
+    // Track session-level metrics for donation attribution
+    if (!sessionStorage.getItem('ose_start')) {
+        sessionStorage.setItem('ose_start', String(Date.now()));
+        sessionStorage.setItem('ose_landing', window.location.pathname);
+        sessionStorage.setItem('ose_pv', '1');
+    } else {
+        sessionStorage.setItem('ose_pv', String(parseInt(sessionStorage.getItem('ose_pv') || '1', 10) + 1));
+    }
+
+    // Persistent visitor ID — shared across donation links and nomination form
+    function getVisitorId() {
+        let id = localStorage.getItem('ose_visitor_id');
+        if (!id) {
+            id = crypto.randomUUID();
+            localStorage.setItem('ose_visitor_id', id);
+        }
+        return id;
+    }
+    window.__oseVisitorId = getVisitorId();
+
+    // Track donation page open + inject OpenPanel tracking into Every.org URL
+    document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const trackingId = window.__oseVisitorId;
+            const source = link.getAttribute('data-track') || 'unknown';
+
+            // Link this browsing session to the tracking ID in OpenPanel
             if (window.op) {
-                window.op.track('donation-page-open', {
-                    source: link.getAttribute('data-track'),
-                });
+                window.op.identify({ profileId: trackingId });
             }
+
+            // Build partner_metadata with attribution context not easily
+            // reconstructable from OpenPanel after matching
+            const urlParams = new URLSearchParams(window.location.search);
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const metadata = {
+                source,
+                page: window.location.pathname,
+                landing_page: sessionStorage.getItem('ose_landing') || window.location.pathname,
+                timezone: tz,
+                locale: navigator.language,
+                pages_viewed: parseInt(sessionStorage.getItem('ose_pv') || '1', 10),
+                time_on_site: Math.round((Date.now() - Number(sessionStorage.getItem('ose_start') || Date.now())) / 1000),
+                utm_source: urlParams.get('utm_source') || undefined,
+                utm_medium: urlParams.get('utm_medium') || undefined,
+                utm_campaign: urlParams.get('utm_campaign') || undefined,
+                utm_content: urlParams.get('utm_content') || undefined,
+            };
+            const metadataB64 = btoa(JSON.stringify(metadata));
+
+            // Inject partner_donation_id + partner_metadata before the #hash
+            const href = link.getAttribute('href');
+            const [base, hash] = href.split('#');
+            const sep = base.includes('?') ? '&' : '?';
+            const newHref = base
+                + sep + 'partner_donation_id=' + encodeURIComponent(trackingId)
+                + '&partner_metadata=' + encodeURIComponent(metadataB64)
+                + (hash ? '#' + hash : '');
+
+            link.setAttribute('href', newHref);
+            // Let the default navigation proceed with the modified URL
         });
     });
 
