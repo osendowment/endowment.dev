@@ -311,6 +311,17 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }, 2000);
     }
 
+    // Track donation page open when any donate link is clicked
+    document.querySelectorAll('a[data-track*="donate"]').forEach((link) => {
+        link.addEventListener('click', () => {
+            if (window.op) {
+                window.op.track('donation-page-open', {
+                    source: link.getAttribute('data-track'),
+                });
+            }
+        });
+    });
+
     // Auto-open donate form when URL has #donate
     if (window.location.hash === '#donate') {
         // Wait for Every.org script to load before clicking
