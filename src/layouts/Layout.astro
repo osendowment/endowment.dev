@@ -328,51 +328,36 @@ import { OpenPanelComponent } from '@openpanel/astro';
     }
     window.__oseVisitorId = getVisitorId();
 
-    // Inject partner_donation_id into donate hrefs BEFORE the Every.org widget
-    // loads — the widget reads params from href at init time and via MutationObserver
-    function injectPartnerParams(link) {
-        const href = link.getAttribute('href');
-        if (href.includes('partner_donation_id')) return; // already injected
-        const [base, hash] = href.split('#');
-        const sep = base.includes('?') ? '&' : '?';
-        link.setAttribute('href',
-            base + sep + 'partner_donation_id=' + encodeURIComponent(window.__oseVisitorId)
-            + (hash ? '#' + hash : ''));
-    }
-    document.querySelectorAll('a[href*="every.org/osendowment"]').forEach(injectPartnerParams);
+    // Inject tracking params into donate hrefs BEFORE the Every.org widget loads
+    // — the widget reads params from href at init time
+    const urlParams = new URLSearchParams(window.location.search);
+    const metadata = {
+        source_page: window.location.pathname,
+        entry_page: sessionStorage.getItem('ose_entry') || window.location.pathname,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        locale: navigator.language,
+        utm_source: urlParams.get('utm_source') || undefined,
+        utm_medium: urlParams.get('utm_medium') || undefined,
+        utm_campaign: urlParams.get('utm_campaign') || undefined,
+        utm_content: urlParams.get('utm_content') || undefined,
+    };
+    const metadataB64 = btoa(JSON.stringify(metadata));
 
-    // On click: identify in OpenPanel + update href with fresh partner_metadata
+    document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href.includes('partner_donation_id')) return;
+        const [base, hash] = href.split('#');
+        link.setAttribute('href',
+            base + '&partner_donation_id=' + encodeURIComponent(window.__oseVisitorId)
+            + '&partner_metadata=' + encodeURIComponent(metadataB64)
+            + (hash ? '#' + hash : ''));
+    });
+
+    // Identify in OpenPanel when donate link is clicked
     document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
         link.addEventListener('click', () => {
             if (window.op) {
                 window.op.identify({ profileId: window.__oseVisitorId });
-            }
-
-            // Build partner_metadata with attribution context
-            const urlParams = new URLSearchParams(window.location.search);
-            const metadata = {
-                source: link.getAttribute('data-track') || 'unknown',
-                entry_page: sessionStorage.getItem('ose_entry') || window.location.pathname,
-                exit_page: window.location.pathname,
-                time_on_site: Math.round((Date.now() - Number(sessionStorage.getItem('ose_start') || Date.now())) / 1000),
-                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                locale: navigator.language,
-                utm_source: urlParams.get('utm_source') || undefined,
-                utm_medium: urlParams.get('utm_medium') || undefined,
-                utm_campaign: urlParams.get('utm_campaign') || undefined,
-                utm_content: urlParams.get('utm_content') || undefined,
-            };
-            const metadataB64 = btoa(JSON.stringify(metadata));
-
-            // Update href with metadata — widget's MutationObserver picks this up
-            const href = link.getAttribute('href');
-            if (href.includes('partner_metadata=')) {
-                link.setAttribute('href', href.replace(/partner_metadata=[^&#]*/, 'partner_metadata=' + encodeURIComponent(metadataB64)));
-            } else {
-                const [base, hash] = href.split('#');
-                link.setAttribute('href',
-                    base + '&partner_metadata=' + encodeURIComponent(metadataB64)
-                    + (hash ? '#' + hash : ''));
             }
         });
     });
