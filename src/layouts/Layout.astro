@@ -314,10 +314,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
     // Track session-level metrics for donation attribution
     if (!sessionStorage.getItem('ose_start')) {
         sessionStorage.setItem('ose_start', String(Date.now()));
-        sessionStorage.setItem('ose_landing', window.location.pathname);
-        sessionStorage.setItem('ose_pv', '1');
-    } else {
-        sessionStorage.setItem('ose_pv', String(parseInt(sessionStorage.getItem('ose_pv') || '1', 10) + 1));
+        sessionStorage.setItem('ose_entry', window.location.pathname);
     }
 
     // Persistent visitor ID — shared across donation links and nomination form
@@ -348,12 +345,11 @@ import { OpenPanelComponent } from '@openpanel/astro';
             const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
             const metadata = {
                 source,
-                page: window.location.pathname,
-                landing_page: sessionStorage.getItem('ose_landing') || window.location.pathname,
+                entry_page: sessionStorage.getItem('ose_entry') || window.location.pathname,
+                exit_page: window.location.pathname,
+                time_on_site: Math.round((Date.now() - Number(sessionStorage.getItem('ose_start') || Date.now())) / 1000),
                 timezone: tz,
                 locale: navigator.language,
-                pages_viewed: parseInt(sessionStorage.getItem('ose_pv') || '1', 10),
-                time_on_site: Math.round((Date.now() - Number(sessionStorage.getItem('ose_start') || Date.now())) / 1000),
                 utm_source: urlParams.get('utm_source') || undefined,
                 utm_medium: urlParams.get('utm_medium') || undefined,
                 utm_campaign: urlParams.get('utm_campaign') || undefined,
