@@ -366,8 +366,10 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 + '&partner_metadata=' + encodeURIComponent(metadataB64)
                 + (hash ? '#' + hash : '');
 
-            link.setAttribute('href', newHref);
-            // Let the default navigation proceed with the modified URL
+            // Bypass Every.org widget overlay — navigate directly so params are preserved
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            window.location.href = newHref;
         });
     });
 
