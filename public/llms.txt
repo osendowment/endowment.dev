@@ -61,7 +61,7 @@ The model is published openly at https://github.com/osendowment/model
 
 ## Further Reading
 
-- About: https://endowment.dev/endowment
+- About: https://endowment.dev/about
 - FAQ: https://endowment.dev/faq
 - Docs: https://endowment.dev/docs
 - Community: https://endowment.dev/community
