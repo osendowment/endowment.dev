@@ -26,7 +26,7 @@
 ## Analytics & Tracking
 
 - OpenPanel SDK auto-tracks: page views, outgoing links, `data-track` element clicks
-- Donate links: inject `partner_donation_id` (persistent UUID from localStorage) + `partner_metadata` (base64 JSON with attribution context) into Every.org URL on click
+- Donate links: inject `partner_donation_id` (persistent UUID from localStorage) into Every.org URL on click
 - Nomination form: `op.identify()` with same visitor UUID + donor email/name
 - Visitor ID stored in `localStorage` as `ose_visitor_id`, session metrics in `sessionStorage`
 

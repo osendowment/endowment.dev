@@ -311,12 +311,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }, 2000);
     }
 
-    // Track session-level metrics for donation attribution
-    if (!sessionStorage.getItem('ose_start')) {
-        sessionStorage.setItem('ose_start', String(Date.now()));
-        sessionStorage.setItem('ose_entry', window.location.pathname);
-    }
-
     // Persistent visitor ID — shared across donation links and nomination form
     function getVisitorId() {
         let id = localStorage.getItem('ose_visitor_id');
@@ -328,30 +322,14 @@ import { OpenPanelComponent } from '@openpanel/astro';
     }
     window.__oseVisitorId = getVisitorId();
 
-    // Inject tracking params into donate hrefs BEFORE the Every.org widget loads
+    // Inject partner_donation_id into donate hrefs BEFORE the Every.org widget loads
     // — the widget reads params from href at init time
-    const urlParams = new URLSearchParams(window.location.search);
-    const buttonMap = { 'header-donate': 'header', 'intro-bottom-donate': 'intro-bottom', 'big-cta-donate': 'big-cta', 'footer-donate': 'footer', 'content-donate': 'content' };
-
     document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
         const href = link.getAttribute('href');
-        if (href.includes('partner_metadata')) return;
-        const metadata = {
-            visitor_id: window.__oseVisitorId,
-            landing: sessionStorage.getItem('ose_entry') || window.location.pathname,
-            source: window.location.pathname,
-            button: buttonMap[link.dataset.track] || 'other',
-            datetime: new Date().toISOString(),
-            utm_source: urlParams.get('utm_source') || undefined,
-            utm_medium: urlParams.get('utm_medium') || undefined,
-            utm_campaign: urlParams.get('utm_campaign') || undefined,
-            utm_content: urlParams.get('utm_content') || undefined,
-        };
-        const metadataB64 = btoa(JSON.stringify(metadata));
+        if (href.includes('partner_donation_id')) return;
         const [base, hash] = href.split('#');
-        // Inject partner_donation_id (visitor UUID) so the widget forwards it to Every.org
         link.setAttribute('href',
-            base + '&partner_donation_id=' + encodeURIComponent(window.__oseVisitorId) + '&partner_metadata=' + encodeURIComponent(metadataB64)
+            base + '&partner_donation_id=' + encodeURIComponent(window.__oseVisitorId)
             + (hash ? '#' + hash : ''));
     });
 
