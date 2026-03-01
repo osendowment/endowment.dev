@@ -104,6 +104,7 @@ export default function NominationForm() {
                 website: hpField?.value || undefined,
                 turnstile_token: token,
                 form_loaded_at: formLoadedAt.current,
+                visitor_id: (window as any).__oseVisitorId || undefined,
             };
 
             try {
