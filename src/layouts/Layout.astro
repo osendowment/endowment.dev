@@ -253,7 +253,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                     <ul>
                         <li><a href="/funding">Funding</a></li>
                         <li><a href="/faq">FAQ</a></li>
-                        <li><a href={EVERYORG_BUTTON_URL}>Donate</a></li>
+                        <li><a href={EVERYORG_BUTTON_URL} data-track="footer-donate">Donate</a></li>
                     </ul>
                 </nav>
                 <div class="footer-legal">
@@ -331,22 +331,23 @@ import { OpenPanelComponent } from '@openpanel/astro';
     // Inject tracking params into donate hrefs BEFORE the Every.org widget loads
     // — the widget reads params from href at init time
     const urlParams = new URLSearchParams(window.location.search);
-    const metadata = {
-        visitor_id: window.__oseVisitorId,
-        source_page: window.location.pathname,
-        entry_page: sessionStorage.getItem('ose_entry') || window.location.pathname,
-        datetime: new Date().toISOString(),
-        locale: navigator.language,
-        utm_source: urlParams.get('utm_source') || undefined,
-        utm_medium: urlParams.get('utm_medium') || undefined,
-        utm_campaign: urlParams.get('utm_campaign') || undefined,
-        utm_content: urlParams.get('utm_content') || undefined,
-    };
-    const metadataB64 = btoa(JSON.stringify(metadata));
+    const buttonMap = { 'header-donate': 'header', 'intro-bottom-donate': 'intro-bottom', 'big-cta-donate': 'big-cta', 'footer-donate': 'footer', 'content-donate': 'content' };
 
     document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
         const href = link.getAttribute('href');
         if (href.includes('partner_metadata')) return;
+        const metadata = {
+            visitor_id: window.__oseVisitorId,
+            landing: sessionStorage.getItem('ose_entry') || window.location.pathname,
+            source: window.location.pathname,
+            button: buttonMap[link.dataset.track] || 'other',
+            datetime: new Date().toISOString(),
+            utm_source: urlParams.get('utm_source') || undefined,
+            utm_medium: urlParams.get('utm_medium') || undefined,
+            utm_campaign: urlParams.get('utm_campaign') || undefined,
+            utm_content: urlParams.get('utm_content') || undefined,
+        };
+        const metadataB64 = btoa(JSON.stringify(metadata));
         const [base, hash] = href.split('#');
         link.setAttribute('href',
             base + '&partner_metadata=' + encodeURIComponent(metadataB64)
