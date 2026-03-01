@@ -349,8 +349,9 @@ import { OpenPanelComponent } from '@openpanel/astro';
         };
         const metadataB64 = btoa(JSON.stringify(metadata));
         const [base, hash] = href.split('#');
+        // Inject partner_donation_id (visitor UUID) so the widget forwards it to Every.org
         link.setAttribute('href',
-            base + '&partner_metadata=' + encodeURIComponent(metadataB64)
+            base + '&partner_donation_id=' + encodeURIComponent(window.__oseVisitorId) + '&partner_metadata=' + encodeURIComponent(metadataB64)
             + (hash ? '#' + hash : ''));
     });
 
