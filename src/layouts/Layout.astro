@@ -332,6 +332,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
     // — the widget reads params from href at init time
     const urlParams = new URLSearchParams(window.location.search);
     const metadata = {
+        visitor_id: window.__oseVisitorId,
         source_page: window.location.pathname,
         entry_page: sessionStorage.getItem('ose_entry') || window.location.pathname,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
