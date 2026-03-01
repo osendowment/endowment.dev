@@ -124,7 +124,7 @@ export default function NominationForm() {
                     sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${escaped}</h3></div>`;
                 } else if (window.op) {
                     const nameParts = (sender.data.name || '').trim().split(/\s+/);
-                    const visitorId = (window as any).__oseVisitorId || sender.data.email;
+                    const visitorId = (window as any).__oseVisitorId;
                     window.op.identify({
                         profileId: visitorId,
                         firstName: nameParts[0] || '',
