@@ -237,6 +237,7 @@
                 s = e.partnerMetadata,
                 g = e.partnerDonationId, // OSE patch: extract partnerDonationId from input config
                 S = e.successUrl, // OSE patch: extract successUrl from input config
+                Z = e.exitUrl, // OSE patch: extract exitUrl from input config
                 d = e.designation,
                 f = e.requireShareInfo,
                 p = (function () {
@@ -259,6 +260,7 @@
                 (t[dt.PARTNER_METADATA] = s),
                 (t[dt.PARTNER_DONATION_ID] = g), // OSE patch: write partner_donation_id to output URL
                 (t[dt.SUCCESS_URL] = S), // OSE patch: write success_url to output URL
+                (t[dt.EXIT_URL] = Z), // OSE patch: write exit_url to output URL
                 (t[dt.DESIGNATION] = d),
                 (t[dt.REQUIRE_SHARE_INFO] = f),
                 (t[ft.utm_campaign] = "donate-button"),
@@ -330,7 +332,8 @@
                 N = null != (c = p.get(dt.PARTNER_WEBHOOK_TOKEN)) ? c : void 0,
                 k = null != (l = p.get(dt.PARTNER_METADATA)) ? l : void 0,
                 E = p.get(dt.PARTNER_DONATION_ID) || void 0, // OSE patch: read partner_donation_id from button href
-                T = p.get(dt.SUCCESS_URL) || void 0; // OSE patch: read success_url from button href
+                T = p.get(dt.SUCCESS_URL) || void 0, // OSE patch: read success_url from button href
+                X = p.get(dt.EXIT_URL) || void 0; // OSE patch: read exit_url from button href
             if (f)
                 return Object.fromEntries(
                     Object.entries({
@@ -352,6 +355,7 @@
                         partnerMetadata: k,
                         partnerDonationId: E, // OSE patch: include in parsed config object
                         successUrl: T, // OSE patch: include in parsed config object
+                        exitUrl: X, // OSE patch: include in parsed config object
                     }).filter(function (e) {
                         return void 0 !== e[1];
                     }),
@@ -7172,6 +7176,7 @@
                                     partnerMetadata: e.partnerMetadata,
                                     partnerDonationId: e.partnerDonationId, // OSE patch: forward to donation URL
                                     successUrl: e.successUrl, // OSE patch: forward to donation URL
+                                    exitUrl: e.exitUrl, // OSE patch: forward to donation URL
                                     designation: j,
                                     requireShareInfo: w,
                                 };
