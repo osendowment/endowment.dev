@@ -253,7 +253,7 @@
                 })();
             return c(
                 (((t = {})[dt.METHOD] = null == n ? void 0 : n.join(",")),
-                (t[dt.NO_EXIT] = null != o ? o : 1),
+                (t[dt.NO_EXIT] = null != o ? o : 0), // OSE patch: allow exit so exit_url works
                 (t[dt.PRIVATE_NOTE] = i),
                 (t[dt.PUBLIC_TESTIMONY] = a),
                 (t[dt.PARTNER_WEBHOOK_TOKEN] = u),
