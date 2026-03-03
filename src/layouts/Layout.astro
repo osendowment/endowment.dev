@@ -296,6 +296,36 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }));
     });
 
+    // Intercept window.open to capture donation intent from Every.org widget
+    const _originalOpen = window.open;
+    window.open = function(url, ...args) {
+        if (url && typeof url === 'string' && url.includes('every.org')) {
+            try {
+                const u = new URL(url);
+                const p = u.searchParams;
+                const props = {};
+                // Money amounts
+                if (p.get('amount')) props.amount = parseFloat(p.get('amount'));
+                if (p.get('crypto_amount')) props.crypto_amount = parseFloat(p.get('crypto_amount'));
+                if (p.get('stock_amount')) props.stock_amount = parseFloat(p.get('stock_amount'));
+                if (p.get('gift_card_amount')) props.gift_card_amount = parseFloat(p.get('gift_card_amount'));
+                // Payment details
+                if (p.get('frequency')) props.frequency = p.get('frequency');
+                if (p.get('method')) props.method = p.get('method');
+                if (p.get('crypto_currency')) props.crypto_currency = p.get('crypto_currency');
+                if (p.get('stock_symbol')) props.stock_symbol = p.get('stock_symbol');
+                // Metadata
+                if (p.get('designation')) props.designation = p.get('designation');
+                if (p.get('share_info')) props.share_info = p.get('share_info');
+                if (p.get('partner_donation_id')) props.partner_donation_id = p.get('partner_donation_id');
+                if (window.op && Object.keys(props).length > 0) {
+                    window.op('track', 'donation-intent', props);
+                }
+            } catch {}
+        }
+        return _originalOpen.call(window, url, ...args);
+    };
+
     // Lazy-load Every.org donate button script after page is idle
     if ('requestIdleCallback' in window) {
         requestIdleCallback(() => {
