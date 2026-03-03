@@ -125,13 +125,13 @@ export default function NominationForm() {
                 } else if (window.op) {
                     const nameParts = (sender.data.name || '').trim().split(/\s+/);
                     const visitorId = (window as any).__oseVisitorId;
-                    window.op.identify({
+                    window.op('identify', {
                         profileId: visitorId,
                         firstName: nameParts[0] || '',
                         lastName: nameParts.slice(1).join(' ') || undefined,
                         email: sender.data.email,
                     });
-                    window.op.track('project-nomination', {
+                    window.op('track', 'project-nomination', {
                         project_url: sender.data.project_url,
                         has_comment: !!sender.data.comment,
                     });

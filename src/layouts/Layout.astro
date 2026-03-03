@@ -337,7 +337,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
     document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
         link.addEventListener('click', () => {
             if (window.op) {
-                window.op.identify({ profileId: window.__oseVisitorId });
+                window.op('identify', { profileId: window.__oseVisitorId });
             }
         });
     });
