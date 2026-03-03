@@ -297,6 +297,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
     });
 
     // Intercept window.open to capture donation intent from Every.org widget
+    // and inject success_url so Every.org redirects back after donation
     const _originalOpen = window.open;
     window.open = function(url, ...args) {
         if (url && typeof url === 'string' && url.includes('every.org')) {
@@ -352,14 +353,17 @@ import { OpenPanelComponent } from '@openpanel/astro';
     }
     window.__oseVisitorId = getVisitorId();
 
-    // Inject partner_donation_id into donate hrefs BEFORE the Every.org widget loads
+    // Inject partner_donation_id + success_url into donate hrefs BEFORE the Every.org widget loads
     // — the widget reads params from href at init time
+    const thanksUrl = 'https://endowment.dev/thanks?donation_id=' + encodeURIComponent(window.__oseVisitorId);
     document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
         const href = link.getAttribute('href');
         if (href.includes('partner_donation_id')) return;
         const [base, hash] = href.split('#');
         link.setAttribute('href',
-            base + '&partner_donation_id=' + encodeURIComponent(window.__oseVisitorId)
+            base
+            + '&partner_donation_id=' + encodeURIComponent(window.__oseVisitorId)
+            + '&success_url=' + encodeURIComponent(thanksUrl)
             + (hash ? '#' + hash : ''));
     });
 

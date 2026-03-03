@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout nodonate={true} noindex={true} title="Thank You — Open Source Endowment" description="Thank you for donating to the Open Source Endowment.">
+    <article>
+        <section class="pagesec pagesec--dark pagesec--tight thanks-hero">
+            <div class="container">
+                <div class="insec insec--xpad insec--side-squares insec--side-squares-green">
+                    <div class="sechead flex-center flex-column">
+                        <div class="thanks-emoji">🎉</div>
+                        <h1 style="text-wrap: balance;">Thank you for your donation!</h1>
+                        <p style="text-wrap: balance;">
+                            Your generous contribution helps to sustainably support the
+                            most valuable open source projects, derisking the critical
+                            infrastructure the modern world relies on.
+                        </p>
+                        <div class="thanks-actions">
+                            <h3>What's next?</h3>
+                            <div class="thanks-cards">
+                                <div class="thanks-card">
+                                    <div class="thanks-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                    </div>
+                                    <span><span class="share-wrap"><a href="#" id="share-link">Share</a></span> the Open Source Endowment with fellow tech folks — every voice helps</span>
+                                </div>
+                                <div class="thanks-card">
+                                    <div class="thanks-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                    </div>
+                                    <span><a href="mailto:donations@endowment.dev?subject=GitHub%20Org%20Membership&body=Hi!%20I%20just%20donated%20to%20the%20Open%20Source%20Endowment.%20Please%20add%20me%20to%20the%20GitHub%20org.%20My%20GitHub%20login%20is%20%7Busername%7D.">Email us</a> your GitHub login to join our GitHub org as a member (for donations of $1,000+)</span>
+                                </div>
+                                <div class="thanks-card">
+                                    <div class="thanks-card-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    </div>
+                                    <span>Your name will appear on the <a href="/community">community page</a> soon, when donation is cleared</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+</Layout>
+
+<script>
+    // "Share" link — copy URL to clipboard and show tooltip balloon
+    const shareLink = document.getElementById('share-link');
+    shareLink?.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText('https://endowment.dev').then(() => {
+            document.getElementById('copy-tip')?.remove();
+            const tip = document.createElement('span');
+            tip.id = 'copy-tip';
+            tip.textContent = 'Link copied!';
+            Object.assign(tip.style, {
+                position: 'absolute',
+                bottom: 'calc(100% + 8px)',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: '#222',
+                color: '#fff',
+                fontSize: '0.7rem',
+                padding: '2px 8px',
+                borderRadius: '4px',
+                whiteSpace: 'nowrap',
+                pointerEvents: 'none',
+                zIndex: '10',
+            });
+            shareLink.closest('.share-wrap')!.appendChild(tip);
+            setTimeout(() => tip.remove(), 1500);
+        });
+    });
+
+    // Identify donor in OpenPanel using donation_id passed back by Every.org via success_url
+    const params = new URLSearchParams(window.location.search);
+    const visitorId = params.get('donation_id');
+    if (visitorId && window.op) {
+        window.op('identify', { profileId: visitorId });
+        window.op('track', 'donation-completed', {
+            visitor_id: visitorId,
+        });
+    }
+</script>
+
+<style>
+    .insec--side-squares-green {
+        &:before, &:after {
+            background-image: url(/images/decorations/squares-side-blue.svg) !important;
+        }
+    }
+    .thanks-hero {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .thanks-hero .sechead {
+        max-width: 52rem;
+    }
+    .thanks-emoji {
+        font-size: 4rem;
+        margin-bottom: 0.5rem;
+    }
+    .thanks-actions {
+        margin-top: 1.5rem;
+        text-align: left;
+        width: 100%;
+    }
+    .thanks-actions h3 {
+        font-size: var(--font-size-3);
+        margin-bottom: 0.75rem;
+    }
+    .thanks-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+        .thanks-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .thanks-card-icon {
+        color: #fff;
+        flex-shrink: 0;
+    }
+    .thanks-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.55);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-align: left;
+    }
+    @media (min-width: 640px) {
+        .thanks-card {
+            flex-direction: column;
+            text-align: center;
+            text-wrap: balance;
+        }
+    }
+    .thanks-actions a {
+        color: var(--color-link-on-dark, #8cc8ff);
+    }
+    .share-wrap {
+        position: relative;
+        display: inline-block;
+    }
+    .thanks-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        position: relative;
+        z-index: 2;
+    }
+</style>
