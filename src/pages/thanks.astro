@@ -74,14 +74,9 @@ import Layout from '../layouts/Layout.astro';
         });
     });
 
-    // Identify donor in OpenPanel using donation_id passed back by Every.org via success_url
-    const params = new URLSearchParams(window.location.search);
-    const visitorId = params.get('donation_id');
-    if (visitorId && window.op) {
-        window.op('identify', { profileId: visitorId });
-        window.op('track', 'donation-completed', {
-            visitor_id: visitorId,
-        });
+    // Track donation completion — OP already knows this browser's profile
+    if (window.op) {
+        window.op('track', 'donation-completed');
     }
 </script>
 

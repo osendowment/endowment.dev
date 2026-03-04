@@ -149,7 +149,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
 
         <OpenPanelComponent
             clientId="56442bc4-68fa-4003-8935-8210f125f448"
-            trackScreenViews={true}
+            trackScreenViews={false}
             trackAttributes={true}
             trackOutgoingLinks={true} />
     </head>
@@ -342,7 +342,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
         }, 2000);
     }
 
-    // Persistent visitor ID — shared across donation links and nomination form
+    // Persistent visitor ID — shared across donation links, nomination form, and OP profile
     function getVisitorId() {
         let id = localStorage.getItem('ose_visitor_id');
         if (!id) {
@@ -352,6 +352,13 @@ import { OpenPanelComponent } from '@openpanel/astro';
         return id;
     }
     window.__oseVisitorId = getVisitorId();
+
+    // Set OP profile to our persistent UUID, then fire screen_view manually
+    // (trackScreenViews is disabled so we control the order: identify first, then page view)
+    if (window.op) {
+        window.op('identify', { profileId: window.__oseVisitorId });
+        window.op('track', 'screen_view');
+    }
 
     // Inject partner_donation_id + success_url into donate hrefs BEFORE the Every.org widget loads
     // — the widget reads params from href at init time
@@ -376,7 +383,6 @@ import { OpenPanelComponent } from '@openpanel/astro';
             if (window.op) {
                 const placement = link.getAttribute('data-placement') || 'unknown';
                 window.op('track', 'donate-click', { placement });
-                window.op('identify', { profileId: window.__oseVisitorId });
             }
         });
     });
@@ -385,11 +391,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
     // Track donation-cancelled when user returns from Every.org without donating
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('from') === 'every-exit' && window.op) {
-        const donationId = urlParams.get('donation_id');
-        if (donationId) {
-            window.op('identify', { profileId: donationId });
-            window.op('track', 'donation-cancelled', { donation_id: donationId });
-        }
+        window.op('track', 'donation-cancelled');
     }
 
     // Auto-open donate form when URL has #donate
