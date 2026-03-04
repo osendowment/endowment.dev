@@ -90,10 +90,22 @@ export default function NominationForm() {
     const turnstileRef = useRef<HTMLDivElement>(null);
 
     // Stable survey model — created once, never recreated on re-render
+    const intentFired = useRef(false);
     const surveyRef = useRef<Model | null>(null);
     if (!surveyRef.current) {
         const survey = new Model(surveyJson);
         survey.applyTheme(theme);
+
+        // Fire nomination-intent + identify on first field interaction
+        survey.onValueChanged.add(() => {
+            if (intentFired.current) return;
+            intentFired.current = true;
+            const visitorId = (window as any).__oseVisitorId;
+            if (visitorId && window.op) {
+                window.op('identify', { profileId: visitorId });
+                window.op('track', 'nomination-intent', { visitor_id: visitorId });
+            }
+        });
 
         survey.onComplete.add(async (sender) => {
             const token = turnstileTokenRef.current;
