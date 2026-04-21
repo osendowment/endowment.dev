@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
+import markdownExport from './plugins/markdown-export.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,5 +16,5 @@ export default defineConfig({
     },
     integrations: [sitemap({
         filter: (page) => !page.includes('/thank-you') && !page.includes('/404'),
-    }), react()],
+    }), react(), markdownExport()],
 });

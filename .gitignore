@@ -26,3 +26,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .firecrawl/
+
+# local dev
+.wrangler/
+.playwright-mcp/
