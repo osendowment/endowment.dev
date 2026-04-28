@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
+import { NOMINATE_URL } from "../lib/api.ts";
 
 const TURNSTILE_SITE_KEY = "0x4AAAAAAChARxpm0A9_t-AB";
 const IS_DEV = typeof window !== "undefined" && window.location.hostname === "localhost";
@@ -119,7 +120,7 @@ export default function NominationForm() {
 
             try {
                 const response = await fetch(
-                    "https://data.endowment.dev/api/public/nominate",
+                    NOMINATE_URL,
                     {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },

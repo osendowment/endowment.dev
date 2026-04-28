@@ -1,3 +1,9 @@
+export const API_BASE = 'https://api.endowment.dev';
+
+export const STATS_URL = `${API_BASE}/api/public/stats`;
+export const DONORS_URL = `${API_BASE}/api/public/donors`;
+export const NOMINATE_URL = `${API_BASE}/api/public/nominate`;
+
 async function validatePhotoUrls(donors: any[]): Promise<void> {
     const checks = donors
         .filter((d: any) => d.picture_url)
@@ -15,7 +21,11 @@ async function validatePhotoUrls(donors: any[]): Promise<void> {
     await Promise.all(checks);
 }
 
-export async function fetchDonors(url: string): Promise<any[]> {
+export async function fetchStats(): Promise<any> {
+    return fetch(STATS_URL).then(r => r.json());
+}
+
+export async function fetchDonors(url: string = DONORS_URL): Promise<any[]> {
     const donors = await fetch(url).then(r => r.json());
     await validatePhotoUrls(donors);
     return donors;

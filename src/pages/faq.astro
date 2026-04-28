@@ -4,7 +4,8 @@
 
 import Layout from '../layouts/Layout.astro';
 import { EVERYORG_BUTTON_URL } from '../util.ts';
-const stats = await fetch('https://data.endowment.dev/api/public/stats').then(r => r.json());
+import { fetchStats } from '../lib/api.ts';
+const stats = await fetchStats();
 const orgDonorCount = stats.donors.organizations;
 ---
 

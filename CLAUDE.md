@@ -12,8 +12,8 @@
 - **UI**: Astro components + React (for interactive components like NominationForm)
 - **Analytics**: OpenPanel (`@openpanel/astro`, client ID hardcoded in Layout.astro)
 - **Donations**: Every.org (external redirect, donate URL in `src/util.ts`)
-- **Nomination form**: SurveyJS + Cloudflare Turnstile CAPTCHA, submits to `data.endowment.dev`
-- **Data API**: `https://data.endowment.dev` (donor stats, nominations — separate repo `osendowment/data`)
+- **Nomination form**: SurveyJS + Cloudflare Turnstile CAPTCHA, submits to `api.endowment.dev`
+- **Data API**: `https://api.endowment.dev` (donor stats, nominations — Cloudflare Worker in `osendowment/app` repo). Endpoints centralized in `src/lib/api.ts` (`STATS_URL`, `DONORS_URL`, `NOMINATE_URL`).
 - **Package manager**: npm (no lockfile committed)
 
 ## Key Files

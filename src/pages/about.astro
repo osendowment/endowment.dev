@@ -4,7 +4,8 @@
 
 import { humanize } from '../util.ts';
 import Layout from '../layouts/Layout.astro';
-const stats = await fetch('https://data.endowment.dev/api/public/stats').then(r => r.json());
+import { fetchStats } from '../lib/api.ts';
+const stats = await fetchStats();
 
 const fundSize = stats.endowment.fund_size;
 const totalDonors = stats.donors.total;

@@ -4,10 +4,10 @@
 
 import Layout from '../layouts/Layout.astro';
 import DonorMiniProfile from "../components/DonorMiniProfile.astro";
-import { fetchDonors } from '../lib/api.ts';
+import { fetchDonors, fetchStats } from '../lib/api.ts';
 
-const stats = await fetch('https://data.endowment.dev/api/public/stats').then(r => r.json());
-const allDonors = await fetchDonors('https://data.endowment.dev/api/public/donors');
+const stats = await fetchStats();
+const allDonors = await fetchDonors();
 const individualDonors = allDonors.filter((d) => d.type == 'person');
 const orgDonors = allDonors.filter((d) => d.type == 'organization');
 const donorsByClass = individualDonors.reduce((donorsByClass, donor) => {
