@@ -11,8 +11,13 @@ export default defineConfig({
     image: {
         remotePatterns: [{
             protocol: 'https',
-            hostname: 'data.endowment.dev',
+            hostname: 'api.endowment.dev',
         }],
+    },
+    vite: {
+        server: {
+            allowedHosts: ['ose.localhost'],
+        },
     },
     integrations: [sitemap({
         filter: (page) => !page.includes('/thank-you') && !page.includes('/404'),

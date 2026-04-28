@@ -1,4 +1,8 @@
-export const API_BASE = 'https://api.endowment.dev';
+// In dev, hit the local Cloudflare Worker via portless (https://api.ose.localhost).
+// In prod, hit the deployed Worker at https://api.endowment.dev.
+export const API_BASE = import.meta.env.DEV
+    ? 'https://api.ose.localhost'
+    : 'https://api.endowment.dev';
 
 export const STATS_URL = `${API_BASE}/api/public/stats`;
 export const DONORS_URL = `${API_BASE}/api/public/donors`;
