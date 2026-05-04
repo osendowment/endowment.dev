@@ -29,6 +29,7 @@ The Open Source Endowment Foundation is committed to outstanding transparency. L
 | 2025-08-08 | [Meeting minutes](https://github.com/osendowment/foundation/blob/main/docs/board/2025-08-08/minutes.md) |
 | 2025-12-04 | [Meeting minutes](https://github.com/osendowment/foundation/blob/main/docs/board/2025-12-04/minutes.md) |
 | 2026-02-10 | [Meeting minutes](https://github.com/osendowment/foundation/blob/main/docs/board/2026-02-10/minutes.md) |
+| 2026-04-27 | [Meeting minutes](https://github.com/osendowment/foundation/blob/main/docs/board/2026-04-27/minutes.md) |
 
 ## Other
 
