@@ -4,7 +4,7 @@ import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
 import { NOMINATE_URL } from "../lib/api.ts";
 
-const TURNSTILE_SITE_KEY = "0x4AAAAAAChARxpm0A9_t-AB";
+const TURNSTILE_SITE_KEY = "0x4AAAAAADMu4xpj33C7DuE0";
 const IS_DEV = typeof window !== "undefined" && window.location.hostname === "localhost";
 
 const surveyJson = {
