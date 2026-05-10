@@ -3,6 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Layout from '../layouts/Layout.astro';
+// Single source of truth for the docs index — non-coders edit this
+// markdown file (sections, links, and the meeting-minutes table). Astro
+// renders <Content /> below; styles in this file shape the output to
+// match the rest of the site.
+import { Content } from '../content/md/docs-index.md';
 ---
 
 <Layout title="Foundation Documents — Open Source Endowment" description="Official documents of the Open Source Endowment Foundation including bylaws, certificate of incorporation, board resolutions, and policies." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "Docs", url: "https://endowment.dev/docs/"}]}>
@@ -31,104 +36,8 @@ import Layout from '../layouts/Layout.astro';
         <section class="pagesec">
             <div class="container">
                 <div class="insec insec--xpad">
-                    <div class="category-listing">
-                        <h2>Foundation</h2>
-                        <div>
-                            <ul>
-                                <li>
-                                    Open Source Endowment Foundation
-                                </li>
-                                <li>
-                                    US 501(c)(3) tax-exempt charitable organization
-                                </li>
-                                <li>
-                                    EIN 33-3502715
-                                </li>
-                                <li>
-                                    <a href="/docs/bylaws">Bylaws</a>
-                                </li>
-                                <li>
-                                    <a href="/docs/board-uwc">Initial Board Resolution</a>
-                                </li>
-                                <li>
-                                    <a href="/docs/act-of-incorporator">Act of Sole Incorporator</a>
-                                </li>
-                                <li>
-                                    <a href="/docs/certificate-of-incorporation">Certificate of Incorporation</a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/osendowment/foundation/blob/main/docs/501c3/501c3-letter.pdf">501(c)(3) determination letter</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="category-listing">
-                        <h2>Policies</h2>
-                        <div>
-                            <ul>
-                                <li>
-                                    <a href="/docs/membership-policy">Membership policy</a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/osendowment/foundation/blob/main/docs/policies/coi-policy.pdf">Conflict of interest policy</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="category-listing">
-                        <h2>Board resolutions and meeting minutes</h2>
-                        <div>
-                            <table class="board-table">
-                                <tr>
-                                    <td><time datetime="2025-03-28">2025-03-28</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-03-28/minutes.md">Meeting minutes</a></td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2025-05-23">2025-05-23</time></td>
-                                    <td>
-                                        <a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-05-23/minutes.md">Meeting minutes</a>,
-                                        <a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-05-23/membership-policy.pdf">Membership policy</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2025-05-29">2025-05-29</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-05-29/RESOLUTION%20OF%20THE%20BOARD%20OF%20DIRECTORS%20OF%20THE%20OPEN%20SOURCE%20ENDOWMENT%20FOUNDATION%20%28Adopted%20by%20Unanimous%20Written%20Consent%20In%20Lieu%20of%20a%20Meeting%20Pursuant%20to%20Section%203.pdf">Resolution re Vanguard account</a></td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2025-06-25">2025-06-25</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-06-25/Board%20decision%20re%20T%20Bonds%20%E2%80%A2%20konstantin%40endowment.dev.pdf">Resolution re T-Bonds</a></td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2025-08-08">2025-08-08</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-08-08/minutes.md">Meeting minutes</a></td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2025-12-04">2025-12-04</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2025-12-04/minutes.md">Meeting minutes</a></td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2026-02-10">2026-02-10</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2026-02-10/minutes.md">Meeting minutes</a></td>
-                                </tr>
-                                <tr>
-                                    <td><time datetime="2026-04-27">2026-04-27</time></td>
-                                    <td><a href="https://github.com/osendowment/foundation/blob/main/docs/board/2026-04-27/minutes.md">Meeting minutes</a></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="category-listing">
-                        <h2>Other</h2>
-                        <div>
-                            <ul>
-                                <li>
-                                    <a href="https://stats.endowment.dev">Public API</a>
-                                </li>
-                                <li>
-                                    <a href="/docs/giving">Ways to Give</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="docs-content">
+                        <Content />
                     </div>
                 </div>
             </div>
@@ -137,29 +46,42 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-    .category-listing h2 {
+    .docs-content :global(h2) {
         font-size: var(--font-size-6);
         font-weight: 500;
+        margin-top: 1.5rem;
+    }
+    .docs-content :global(h2:first-child) {
+        margin-top: 0;
+    }
+    .docs-content :global(ul) {
+        list-style: disc;
+        padding-left: 1.5rem;
     }
 
-    /* Board table */
-    .board-table {
+    /* Board resolutions and meeting minutes table — same look as the
+       previous hardcoded .board-table. The markdown table renders with a
+       <thead> we don't want, so hide it. */
+    .docs-content :global(table) {
         border-collapse: collapse;
         width: 100%;
-        td {
-            padding: 0.5rem 0;
-            vertical-align: middle;
-            border-bottom: 1px solid var(--color-section-border);
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        td:first-child {
-            white-space: nowrap;
-            padding-right: 2rem;
-            font-family: var(--font-family-mono);
-            font-size: var(--font-size-2);
-            color: var(--color-text-dark-secondary);
-        }
+    }
+    .docs-content :global(table thead) {
+        display: none;
+    }
+    .docs-content :global(table td) {
+        padding: 0.5rem 0;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--color-section-border);
+    }
+    .docs-content :global(table tr:last-child td) {
+        border-bottom: none;
+    }
+    .docs-content :global(table td:first-child) {
+        white-space: nowrap;
+        padding-right: 2rem;
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-2);
+        color: var(--color-text-dark-secondary);
     }
 </style>
