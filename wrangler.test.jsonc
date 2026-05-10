@@ -1,0 +1,14 @@
+{
+    "name": "ose-website-test",
+    "compatibility_date": "2026-02-09",
+    "assets": {
+        "directory": "./dist",
+        "not_found_handling": "404-page"
+    },
+    "routes": [
+        {
+            "pattern": "test.endowment.dev",
+            "custom_domain": true
+        }
+    ]
+}
