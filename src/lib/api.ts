@@ -1,8 +1,9 @@
 // In dev, hit the local Cloudflare Worker via portless (https://api.ose.localhost).
-// In prod, hit the deployed Worker at https://api.endowment.dev.
+// In prod, hit the deployed Worker at https://api.osendowment.workers.dev
+// (will switch to https://api.endowment.dev after the zone moves).
 export const API_BASE = import.meta.env.DEV
     ? 'https://api.ose.localhost'
-    : 'https://api.endowment.dev';
+    : 'https://api.osendowment.workers.dev';
 
 export const STATS_URL = `${API_BASE}/api/public/stats`;
 export const DONORS_URL = `${API_BASE}/api/public/donors`;
