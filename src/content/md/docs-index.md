@@ -29,7 +29,7 @@
 
 ## Other
 
-- [Public API](https://stats.endowment.dev)
+- [Public API](https://api.endowment.dev/public/)
 - [Ways to Give](/docs/giving/)
 
 
