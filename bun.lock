@@ -12,8 +12,6 @@
         "@types/react-dom": "^19.2.3",
         "astro": "^5.8.0",
         "identicon.js": "^2.3.3",
-        "install": "^0.13.0",
-        "minidenticons": "^4.2.1",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "survey-core": "^2.5.11",
@@ -482,8 +480,6 @@
 
     "import-meta-resolve": ["import-meta-resolve@4.2.0", "", {}, "sha512-Iqv2fzaTQN28s/FwZAoFq0ZSs/7hMAHJVX+w8PZl3cY19Pxk6jFFalxQoIfW2826i/fDLXv8IiEZRIT0lDuWcg=="],
 
-    "install": ["install@0.13.0", "", {}, "sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA=="],
-
     "iron-webcrypto": ["iron-webcrypto@1.2.1", "", {}, "sha512-feOM6FaSr6rEABp/eDfVseKyTMDt+KGpeB35SkVn9Tyn0CqvVsY3EwI0v5i8nMHyJnzCIQf7nsy3p41TPkJZhg=="],
 
     "is-docker": ["is-docker@3.0.0", "", { "bin": "cli.js" }, ""],
@@ -599,8 +595,6 @@
     "micromark-util-symbol": ["micromark-util-symbol@2.0.1", "", {}, ""],
 
     "micromark-util-types": ["micromark-util-types@2.0.2", "", {}, ""],
-
-    "minidenticons": ["minidenticons@4.2.1", "", {}, "sha512-oWfFivA0lOx/V/bO/YIJbthB26lV8JXYvhnv9zM2hNd3fzsHTXQ6c6bWZPcvhD3nnOB+lQk/D9lF43BXixrN8g=="],
 
     "mrmime": ["mrmime@2.0.1", "", {}, ""],
 
