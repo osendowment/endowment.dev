@@ -15,9 +15,9 @@ import { useEffect, useMemo, useState } from 'react';
 type Layer = 'db' | 'api' | 'website';
 
 const ENDPOINTS = [
-    { path: '/api/public/', description: 'API index with available endpoints' },
-    { path: '/api/public/stats', description: 'Donation totals, donor/member counts, endowment fund breakdown' },
-    { path: '/api/public/donors', description: 'Donor list with names, tiers, photos, and social links' },
+    { path: '/public/', description: 'API index with available endpoints' },
+    { path: '/public/stats', description: 'Donation totals, donor/member counts, endowment fund breakdown' },
+    { path: '/public/donors', description: 'Donor list with names, tiers, photos, and social links' },
 ];
 
 const HOSTS: { layer: Exclude<Layer, 'website'>; label: string; base: string; tag: string }[] = [
@@ -158,10 +158,10 @@ export default function Monitoring() {
             const url = h.base + ep.path;
             probe(url).then(r => {
                 setProbes(p => ({ ...p, [url]: { ...p[url], ...r, loading: false } }));
-                if (ep.path === '/api/public/stats' && r.body && typeof r.body === 'object') {
+                if (ep.path === '/public/stats' && r.body && typeof r.body === 'object') {
                     setStats(s => ({ ...s, [h.layer]: r.body as Stats }));
                 }
-                if (ep.path === '/api/public/donors' && Array.isArray(r.body)) {
+                if (ep.path === '/public/donors' && Array.isArray(r.body)) {
                     setDonorCounts(d => ({ ...d, [h.layer]: (r.body as any[]).length }));
                     const withPhoto = (r.body as any[]).filter(x => x?.picture_url);
                     if (withPhoto.length) {

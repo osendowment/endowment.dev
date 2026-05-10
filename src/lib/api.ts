@@ -1,13 +1,12 @@
 // In dev, hit the local Cloudflare Worker via portless (https://api.ose.localhost).
-// In prod, hit the deployed Worker at https://api.osendowment.workers.dev
-// (will switch to https://api.endowment.dev after the zone moves).
+// In prod, hit the deployed Worker at https://api.endowment.dev.
 export const API_BASE = import.meta.env.DEV
     ? 'https://api.ose.localhost'
-    : 'https://api.osendowment.workers.dev';
+    : 'https://api.endowment.dev';
 
-export const STATS_URL = `${API_BASE}/api/public/stats`;
-export const DONORS_URL = `${API_BASE}/api/public/donors`;
-export const NOMINATE_URL = `${API_BASE}/api/public/nominate`;
+export const STATS_URL = `${API_BASE}/public/stats`;
+export const DONORS_URL = `${API_BASE}/public/donors`;
+export const NOMINATE_URL = `${API_BASE}/public/nominate`;
 
 // Force Gravatar to return 404 instead of its own default identicon, so the
 // validator below nulls the URL out and the donor card falls back to our own
