@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Monitoring from '../components/Monitoring.tsx';
+---
+
+<Layout
+    title="Monitoring — Open Source Endowment"
+    description="Live monitoring dashboard: public API tests and DB/API/Website consistency checks."
+    breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "Monitoring", url: "https://endowment.dev/monitoring/"}]}
+>
+    <article>
+        <section class="pagesec">
+            <div class="container">
+                <div class="insec insec--xpad">
+                    <header style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-section-border);">
+                        <h1 style="margin: 0 0 0.3rem;">Monitoring</h1>
+                        <p style="margin: 0; color: var(--color-text-dark-secondary, #666);">
+                            Live tests of the public API and consistency checks across the DB, the Worker API, and the
+                            rendered website. Probes run client-side at page-load — refresh to re-run.
+                        </p>
+                    </header>
+                    <Monitoring client:load />
+                </div>
+            </div>
+        </section>
+    </article>
+</Layout>
