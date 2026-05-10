@@ -11,6 +11,7 @@
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
         "astro": "^5.8.0",
+        "identicon.js": "^2.3.3",
         "install": "^0.13.0",
         "minidenticons": "^4.2.1",
         "react": "^19.2.4",
@@ -476,6 +477,8 @@
     "html-void-elements": ["html-void-elements@3.0.0", "", {}, ""],
 
     "http-cache-semantics": ["http-cache-semantics@4.2.0", "", {}, ""],
+
+    "identicon.js": ["identicon.js@2.3.3", "", {}, "sha512-/qgOkXKZ7YbeCYbawJ9uQQ3XJ3uBg9VDpvHjabCAPp6aRMhjLaFAxG90+1TxzrhKaj6AYpVGrx6UXQfQA41UEA=="],
 
     "import-meta-resolve": ["import-meta-resolve@4.2.0", "", {}, "sha512-Iqv2fzaTQN28s/FwZAoFq0ZSs/7hMAHJVX+w8PZl3cY19Pxk6jFFalxQoIfW2826i/fDLXv8IiEZRIT0lDuWcg=="],
 
