@@ -340,20 +340,23 @@ import { OpenPanelComponent } from '@openpanel/astro';
         return _originalOpen.call(window, url, ...args);
     };
 
-    // Lazy-load Every.org donate button script after page is idle
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            const s = document.createElement('script');
-            s.src = '/js/everyorg-endowment-button.js';
-            document.head.appendChild(s);
-        });
-    } else {
-        setTimeout(() => {
-            const s = document.createElement('script');
-            s.src = '/js/everyorg-endowment-button.js';
-            document.head.appendChild(s);
-        }, 2000);
+    // Load Every.org button widget (~400KB) only when a donate link is about
+    // to be used — first hover/focus/touch. Visitors who never interact with
+    // a donate link pay zero JS cost. If the user clicks before the script
+    // loads, the plain <a href> still navigates to every.org normally.
+    let everyorgLoaded = false;
+    function loadEveryorgWidget() {
+        if (everyorgLoaded) return;
+        everyorgLoaded = true;
+        const s = document.createElement('script');
+        s.src = '/js/everyorg-endowment-button.js';
+        document.head.appendChild(s);
     }
+    document.querySelectorAll('a[href*="every.org/osendowment"]').forEach((link) => {
+        link.addEventListener('pointerenter', loadEveryorgWidget, { once: true });
+        link.addEventListener('focusin', loadEveryorgWidget, { once: true });
+        link.addEventListener('touchstart', loadEveryorgWidget, { once: true, passive: true });
+    });
 
     // Persistent visitor ID — shared across donation links, nomination form, and OP profile
     function getVisitorId() {
@@ -407,9 +410,10 @@ import { OpenPanelComponent } from '@openpanel/astro';
         window.op('track', 'donation-cancelled');
     }
 
-    // Auto-open donate form when URL has #donate
+    // Auto-open donate form when URL has #donate — eager-load widget here
+    // since the user explicitly arrived intending to donate.
     if (window.location.hash === '#donate') {
-        // Wait for Every.org script to load before clicking
+        loadEveryorgWidget();
         const tryOpen = () => {
             const donateLink = document.querySelector('a[data-placement="header"]');
             if (donateLink) donateLink.click();
