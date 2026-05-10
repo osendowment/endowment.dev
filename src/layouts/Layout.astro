@@ -18,6 +18,11 @@ const {
   breadcrumbs,
 } = Astro.props;
 
+// Astro's default `trailingSlash: 'ignore'` means pathname is "/funding/"
+// at build time; strip the trailing slash so equality checks match the
+// usual `/funding` form.
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
 import { EVERYORG_BUTTON_URL } from '../util.ts';
 import '../styles/common.css';
 
@@ -33,11 +38,12 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <link rel="apple-touch-icon" href="/images/logo/web/apple-touch-icon.png">
 
         <link rel="preconnect" href="https://stats.endowment.dev">
+        <link rel="preconnect" href="https://openpanel.dev">
+        {path === '/funding' && <link rel="preconnect" href="https://challenges.cloudflare.com">}
 
-        {Astro.url.pathname === '/' && <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/svg+xml">}
+        {path === '/' && <link rel="preload" fetchpriority="high" as="image" href="/images/branches.svg" type="image/svg+xml">}
         <link rel="preload" as="font" href="/fonts/ovo-normal-latin.woff2" type="font/woff2" crossorigin>
         <link rel="preload" as="font" href="/fonts/plus-jakarta-sans-200-800-normal-latin.woff2" type="font/woff2" crossorigin>
-        <link rel="preload" as="font" href="/fonts/GeistMono[wght].woff2" type="font/woff2" crossorigin>
 
         {noindex && <meta name="robots" content="noindex, nofollow" />}
 
@@ -145,7 +151,9 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary">
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-friendly extended reference">
 
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        {path === '/funding' && (
+          <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        )}
 
         <OpenPanelComponent
             clientId="56442bc4-68fa-4003-8935-8210f125f448"
