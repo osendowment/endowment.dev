@@ -1,5 +1,6 @@
 {
     "name": "website",
+    "account_id": "4c652ce91ca46238173dea8db39e1d56",
     "compatibility_date": "2026-02-09",
     "assets": {
         "directory": "./dist",
