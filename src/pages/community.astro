@@ -81,6 +81,7 @@ const otherDonorsClassName = '0-1K';
                                 {donors.map((donor) => (
                                     <DonorMiniProfile
                                         name={donor.name}
+                                        email={donor.email}
                                         description={donor.description}
                                         avatarUrl={donor.picture_url}
                                         hasPhoto={true}
@@ -94,6 +95,7 @@ const otherDonorsClassName = '0-1K';
                         {orgDonors.map((donor) => (
                             <DonorMiniProfile
                                 name={donor.name}
+                                email={donor.email}
                                 description={donor.description}
                                 avatarUrl={donor.picture_url}
                                 hasPhoto={true}
