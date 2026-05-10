@@ -58,9 +58,15 @@ const surveyJson = {
     ],
     showTitle: false,
     completeText: "Nominate OSS project for funding",
+    // Initial completed-state HTML — shown briefly while the async submit
+    // is in flight. onComplete swaps to SUCCESS_HTML or an error panel when
+    // the fetch resolves so users never see a premature "Thank you!".
     completedHtml:
-        "<div style='text-align:center;padding:2.5rem 1rem'><div style='font-size:3rem;margin-bottom:1rem'>&#127881;</div><h3 style='font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43'>Thank you!</h3><p style='font-size:1.1rem;line-height:1.8;color:#3a3e43;max-width:30rem;margin:0 auto'>Thanks for highlighting the most important OSS projects requiring funding! You made an impact today, and can multiply it by sharing this page with other open source folks.</p></div>",
+        "<div style='text-align:center;padding:2.5rem 1rem'><div style='font-size:2.5rem;margin-bottom:1rem;opacity:0.7'>&#9203;</div><h3 style='font-size:1.25rem;font-weight:500;margin:0;color:#3a3e43'>Submitting…</h3></div>",
 };
+
+const SUCCESS_HTML =
+    "<div style='text-align:center;padding:2.5rem 1rem'><div style='font-size:3rem;margin-bottom:1rem'>&#127881;</div><h3 style='font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43'>Thank you!</h3><p style='font-size:1.1rem;line-height:1.8;color:#3a3e43;max-width:30rem;margin:0 auto'>Thanks for highlighting the most important OSS projects requiring funding! You made an impact today, and can multiply it by sharing this page with other open source folks.</p></div>";
 
 const theme = {
     cssVariables: {
@@ -106,50 +112,70 @@ export default function NominationForm() {
             }
         });
 
-        survey.onComplete.add(async (sender) => {
-            const token = turnstileTokenRef.current;
-            console.log("[Turnstile] Submitting with token:", token ? token.slice(0, 20) + "..." : "(empty)");
-            const hpField = document.getElementById("hp-website") as HTMLInputElement | null;
-            const payload = {
-                ...sender.data,
-                website: hpField?.value || undefined,
-                turnstile_token: token,
-                form_loaded_at: formLoadedAt.current,
-                visitor_id: (window as any).__oseVisitorId || undefined,
-            };
+        // We submit during onCompleting so the API result drives which
+        // completedHtml renders on transition — sender.completedHtml mutated
+        // *after* completion does not re-render in the React/SurveyJS
+        // wrapper, which led to the "🎉 Thank you!" panel briefly showing
+        // even when the API rejected the submission. The flag below lets us
+        // re-enter onCompleting from doComplete() to finally allow the
+        // transition once we've decided what to show.
+        let proceed = false;
+        survey.onCompleting.add((sender, options) => {
+            if (proceed) return; // re-entry from sender.doComplete() below
+            options.allow = false;
 
-            try {
-                const response = await fetch(
-                    NOMINATE_URL,
-                    {
+            (async () => {
+                const token = turnstileTokenRef.current;
+                console.log("[Turnstile] Submitting with token:", token ? token.slice(0, 20) + "..." : "(empty)");
+                const hpField = document.getElementById("hp-website") as HTMLInputElement | null;
+                const payload = {
+                    ...sender.data,
+                    website: hpField?.value || undefined,
+                    turnstile_token: token,
+                    form_loaded_at: formLoadedAt.current,
+                    visitor_id: (window as any).__oseVisitorId || undefined,
+                };
+
+                const errorPanel = (msg: string) =>
+                    `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${msg}</h3></div>`;
+
+                try {
+                    const response = await fetch(NOMINATE_URL, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(payload),
-                    }
-                );
+                    });
 
-                if (!response.ok) {
-                    const err = await response.json().catch(() => null);
-                    const message = err?.detail || "Something went wrong. Please try again.";
-                    const escaped = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-                    sender.completedHtml = `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${escaped}</h3></div>`;
-                } else if (window.op) {
-                    const nameParts = (sender.data.name || '').trim().split(/\s+/);
-                    window.op('identify', {
-                        profileId: (window as any).__oseVisitorId,
-                        firstName: nameParts[0] || '',
-                        lastName: nameParts.slice(1).join(' ') || undefined,
-                        email: sender.data.email,
-                    });
-                    window.op('track', 'project-nomination', {
-                        project_url: sender.data.project_url,
-                        has_comment: !!sender.data.comment,
-                    });
+                    if (!response.ok) {
+                        const err = await response.json().catch(() => null);
+                        const message = err?.detail || "Something went wrong. Please try again.";
+                        const escaped = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+                        sender.completedHtml = errorPanel(escaped);
+                    } else {
+                        sender.completedHtml = SUCCESS_HTML;
+                        if (window.op) {
+                            const nameParts = (sender.data.name || '').trim().split(/\s+/);
+                            window.op('identify', {
+                                profileId: (window as any).__oseVisitorId,
+                                firstName: nameParts[0] || '',
+                                lastName: nameParts.slice(1).join(' ') || undefined,
+                                email: sender.data.email,
+                            });
+                            window.op('track', 'project-nomination', {
+                                project_url: sender.data.project_url,
+                                has_comment: !!sender.data.comment,
+                            });
+                        }
+                    }
+                } catch {
+                    sender.completedHtml = errorPanel("Network error. Please try again.");
                 }
-            } catch {
-                sender.completedHtml =
-                    '<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">Network error. Please try again.</h3></div>';
-            }
+
+                proceed = true;
+                // Defer to next tick so we're not nested inside SurveyJS's
+                // own completion-attempt call stack.
+                setTimeout(() => sender.doComplete(), 0);
+            })();
         });
 
         surveyRef.current = survey;
