@@ -24,9 +24,19 @@ const showIdenticon = hasPhoto && !avatarUrl;
 // name when we don't have an email.
 const identiconSeed = email ? email.trim().toLowerCase() : name;
 const identiconUrl = showIdenticon ? identiconDataUrl(identiconSeed, 96) : null;
+
+// When the donor has a website, the whole card is one clickable target — wrapper
+// becomes <a> instead of <div>. The `--linked` modifier triggers the blue
+// hover-border in common.css.
+const Tag = websiteUrl ? 'a' : 'div';
+const linkAttrs = websiteUrl ? { href: websiteUrl, target: '_blank', rel: 'noopener noreferrer' } : {};
+const className = 'donor-mini-profile'
+    + (compact ? ' donor-mini-profile--compact' : '')
+    + (websiteUrl ? ' donor-mini-profile--linked' : '')
+    + (extraClasses ? ' ' + extraClasses : '');
 ---
 
-<div class={'donor-mini-profile' + (compact ? ' donor-mini-profile--compact' : '') + (extraClasses ? ' ' + extraClasses : '')}>
+<Tag class={className} {...linkAttrs}>
     {!compact && (avatarUrl || identiconUrl) &&
         <div class="donor-avatar">
             {avatarUrl ? (
@@ -37,14 +47,10 @@ const identiconUrl = showIdenticon ? identiconDataUrl(identiconSeed, 96) : null;
         </div>
     }
     <div>
-        <h3>
-            {websiteUrl ? (
-                <a href={websiteUrl} target="_blank" rel="noopener noreferrer">{name}</a>
-            ) : name}
-        </h3>
+        <h3>{name}</h3>
         {!compact &&
             <i>{description}</i>
         }
     </div>
-</div>
+</Tag>
 

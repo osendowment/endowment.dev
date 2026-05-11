@@ -874,6 +874,17 @@ figure.endorsement {
             border: 0;
             padding: 0;
         }
+        /* When the whole card is a link (donor has a website_url set), strip
+           the anchor's default styling and turn the border blue on hover —
+           mirrors the nav-menu hover color so the affordance reads as "link". */
+        &.donor-mini-profile--linked {
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.15s ease;
+            &:hover {
+                border-color: var(--color-primary);
+            }
+        }
     }
     &.donor-list--faded {
         &:after {
