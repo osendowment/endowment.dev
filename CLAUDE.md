@@ -7,7 +7,7 @@
 ## Tech Stack
 
 - **Framework**: Astro 5 (static site, SSG)
-- **Deployment**: Cloudflare Pages (auto-deploys from `main` branch, project name: `ose-website`)
+- **Deployment**: Cloudflare Worker with Static Assets (`[assets]` binding in `wrangler.jsonc`, worker name: `website`). Auto-builds from `main` via Cloudflare Workers Builds + GitHub integration. **Not** Pages.
 - **Domain**: endowment.dev
 - **UI**: Astro components + React (for interactive components like NominationForm)
 - **Analytics**: OpenPanel (`@openpanel/astro`, client ID hardcoded in Layout.astro)
