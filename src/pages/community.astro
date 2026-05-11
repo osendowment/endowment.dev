@@ -39,7 +39,7 @@ const otherDonorsClassName = '0-1K';
             .map((d) => ({
                 "@type": "Person",
                 "name": d.name,
-                ...(d.github_url ? { "url": d.github_url } : d.linkedin_url ? { "url": d.linkedin_url } : {})
+                ...(d.website_url ? { "url": d.website_url } : d.github_url ? { "url": d.github_url } : d.linkedin_url ? { "url": d.linkedin_url } : {})
             }))
     })} />
     <article>
@@ -84,6 +84,7 @@ const otherDonorsClassName = '0-1K';
                                         email={donor.email}
                                         description={donor.description}
                                         avatarUrl={donor.picture_url}
+                                        websiteUrl={donor.website_url}
                                         hasPhoto={true}
                                     ></DonorMiniProfile>
                                 ))}
@@ -98,6 +99,7 @@ const otherDonorsClassName = '0-1K';
                                 email={donor.email}
                                 description={donor.description}
                                 avatarUrl={donor.picture_url}
+                                websiteUrl={donor.website_url}
                                 hasPhoto={true}
                             ></DonorMiniProfile>
                         ))}

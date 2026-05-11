@@ -10,12 +10,13 @@ interface Props {
   email?: string;
   description?: string;
   avatarUrl?: string;
+  websiteUrl?: string;
   hasPhoto?: boolean;
   compact?: boolean;
   extraClasses?: string;
 }
 
-const { name, email, description, avatarUrl, hasPhoto, compact, extraClasses } = Astro.props;
+const { name, email, description, avatarUrl, websiteUrl, hasPhoto, compact, extraClasses } = Astro.props;
 
 const showIdenticon = hasPhoto && !avatarUrl;
 // Hash on email (Gravatar-style: trimmed + lowercased) so the identicon stays
@@ -36,7 +37,11 @@ const identiconUrl = showIdenticon ? identiconDataUrl(identiconSeed, 96) : null;
         </div>
     }
     <div>
-        <h3>{name}</h3>
+        <h3>
+            {websiteUrl ? (
+                <a href={websiteUrl} target="_blank" rel="noopener noreferrer">{name}</a>
+            ) : name}
+        </h3>
         {!compact &&
             <i>{description}</i>
         }
