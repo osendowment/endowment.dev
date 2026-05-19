@@ -16,8 +16,11 @@ const ROUTES = [
   { route: '/docs/membership-policy/',            src: 'src/assets/foundation/docs/policies/membership-policy.md' },
 ];
 
-const STATS_URL = 'https://data.endowment.dev/api/public/stats';
-const DONORS_URL = 'https://data.endowment.dev/api/public/donors';
+// Canonical API host — `data.endowment.dev/api/public/*` is a retired legacy
+// path that now 404s, which left {{fundSize}}/{{totalDonors}} unsubstituted in
+// every exported .md. See osendowment/data CLAUDE.md "API path convention".
+const STATS_URL = 'https://api.endowment.dev/public/stats';
+const DONORS_URL = 'https://api.endowment.dev/public/donors';
 
 function humanizeDollars(n) {
   if (n >= 1_000_000) return `$${Math.round(n / 1_000_000)}M`;
