@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && bunx wrangler deploy"
+    "deploy": "astro build && bash scripts/with-ose-env.sh bunx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
