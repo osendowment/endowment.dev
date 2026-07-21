@@ -46,14 +46,15 @@ We strive to support the most critical yet underfunded open source projects, sus
 - **Deep Infrastructure** — Our target model traces links from popular ecosystems (like Python and JavaScript) to underlying packages, creating a natural priority for low-level libraries (written in e.g. C and Fortran).
 - **Independent FOSS** — We support only nonprofit projects without corporate ties or associated startups — not Kubernetes, not Sentry. Our ideal grantee looks like [a random person in Nebraska](https://xkcd.com/2347/).
 
-### Framework
+### Selection Framework
 
-Within each ecosystem, we use a model based on **Value** and **Risk** scores. Target format: **microgrants (~$5,000)** to high-risk candidates among the most valuable OSS, approved by the board after manual due diligence.
+Within each ecosystem, we use a scoring model based on **Value** and **Risk** scores. Target format: **microgrants (up to $5,000)** to eligible high-risk candidates among the most valuable OSS, approved by the board after manual due diligence.
 
-| Score | Inputs |
+| Stage | Inputs |
 |-------|--------|
-| **Value** | Downloads, dependents, community nominations, endorsements |
-| **Risk** | OpenSSF score, lines of code, active maintainers, funding |
+| **Value** | Downloads, dependencies, dependents, criticality |
+| **Risk** | Concentration (bus factor), complexity, security, maintainer workload |
+| **Eligibility** | Open source, active, nonprofit, funding intent |
 
 → [Nominate OSS projects](/funding/) for our first funding round.
 

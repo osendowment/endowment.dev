@@ -53,20 +53,29 @@ The remaining investment earnings (after grants and operating costs) are reinves
 OSE uses a data-driven scoring approach to identify grant recipients. The model evaluates OSS projects on two dimensions:
 
 ### Value Score (how important is this project?)
-- Dependencies: How many other projects depend on it
-- Downloads: Usage volume
-- Potential losses: Impact if the project were removed from the global dependency tree
-- Community nominations: Endorsements from OSE donors, OSS foundations, etc.
+A pro-rata weighted blend; only components present for a repo are summed and renormalized.
+- OpenSSF Criticality Score (60%): commit cadence, contributor count, org diversity, dependents, issue activity. GitHub-only.
+- Ecosystem criticality (20%): whether ecosyste.ms lists the package as critical infrastructure. Covers GitHub and GitLab.
+- Ecosystem PageRank position (10%): download-personalized PageRank within the repo's strongest ecosystem.
+- Dependency mass (10%): cross-ecosystem dependency weight, complementing the position signal.
 
 ### Risk Score (how vulnerable is this project?)
-- OpenSSF Score: Security posture
-- Lines of Code (LOCs): Complexity
-- Active Maintainers: Bus factor, mean time to resolve issues
-- Known Funding: GitHub Sponsors, other funding sources
-- CVEs: Security vulnerability history
+Geometric mean of four dimensions, each 0-100 with higher = riskier.
+- Concentration: bus factor and HHI over the last 5 years, from the commit log.
+- Complexity: lines of code and maximum cyclomatic complexity at a year-pinned commit.
+- Security: worst-of an inverted OpenSSF Scorecard and a CVE score from OSV.
+- Workload: lines of code, CVEs, and net-new issues per active contributor.
+
+### Eligibility (a plain AND of four booleans)
+- oss: carries an open-source licence.
+- intent: shows any intent to be funded (Sponsors, FUNDING.yml, Open Collective, etc.).
+- nonprofit: no company strongly affiliated with the project.
+- active: not end-of-life and not archived.
+
+The final score is sqrt(value_score x risk_score), so both dimensions must be high.
 
 ### Grant Design
-- Target format: Microgrants (~$5,000) to high-risk candidates among the most valuable OSS projects
+- Target format: Microgrants (up to $5,000) to eligible high-risk candidates among the most valuable OSS projects
 - Forward-looking grants: Maintainers perform measurable work to de-risk their project
 - Backward-looking grants: Public acknowledgment and monetary gratitude for decades of unpaid work
 - Impact checked quantitatively (data-driven metrics) and qualitatively (check-in calls)

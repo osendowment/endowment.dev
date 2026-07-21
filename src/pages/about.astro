@@ -381,12 +381,14 @@ const totalMembers = stats.donors.members;
                         </div>
                         <div class="funding-highlight funding-highlight--scoring">
                             <div class="scoring-left">
-                                <h3>Framework</h3>
+                                <h3>Selection Framework</h3>
                                 <p>
-                                    Within each ecosystem, we use a model based on Value and Risk scores. They are
+                                    Within each ecosystem, we use a scoring model based on Value and Risk scores. They are
                                     calculated based on multiple open data points and are used to sort projects.
-                                    Our target format is microgrants (~$5,000) to high-risk candidates among
-                                    the most valuable OSS, approved by the board after manual due diligence.
+                                </p>
+                                <p>
+                                    Our target format is microgrants (up to $5,000) to eligible high-risk candidates
+                                    among the most valuable OSS, approved by the board after manual due diligence.
                                 </p>
                             </div>
                             <div class="scoring-right">
@@ -394,19 +396,27 @@ const totalMembers = stats.donors.members;
                                     <h4>Value</h4>
                                     <div class="tag-cloud">
                                         <span>Downloads</span>
+                                        <span>Dependencies</span>
                                         <span>Dependents</span>
-                                        <span>Community Nominations</span>
-                                        <span>...</span>
+                                        <span>Criticality</span>
                                     </div>
                                 </div>
                                 <div class="funding-score-card funding-score-card--risk">
                                     <h4>Risk</h4>
                                     <div class="tag-cloud">
-                                        <span>OpenSSF Score</span>
-                                        <span>LOCs</span>
-                                        <span>Active Maintainers</span>
-                                        <span>Funding</span>
-                                        <span>...</span>
+                                        <span>Concentration</span>
+                                        <span>Complexity</span>
+                                        <span>Security</span>
+                                        <span>Workload</span>
+                                    </div>
+                                </div>
+                                <div class="funding-score-card funding-score-card--eligibility">
+                                    <h4>Eligibility</h4>
+                                    <div class="tag-cloud">
+                                        <span>Open Source</span>
+                                        <span>Active</span>
+                                        <span>Nonprofit</span>
+                                        <span>Funding Intent</span>
                                     </div>
                                 </div>
                             </div>
@@ -663,6 +673,11 @@ const totalMembers = stats.donors.members;
     }
     .scoring-left {
         flex: 1;
+        /* The global reset zeroes paragraph margins, so the two paragraphs
+           would otherwise run together as one block of text. */
+        p + p {
+            margin-top: 1rem;
+        }
     }
     .scoring-right {
         flex: 1;
@@ -685,6 +700,11 @@ const totalMembers = stats.donors.members;
     .funding-score-card--risk .tag-cloud span {
         background-color: color-mix(in srgb, var(--color-no) 80%, #000);
         border-color: color-mix(in srgb, var(--color-no) 80%, #000);
+        color: #fff;
+    }
+    .funding-score-card--eligibility .tag-cloud span {
+        background-color: color-mix(in srgb, var(--color-primary-text) 85%, #000);
+        border-color: color-mix(in srgb, var(--color-primary-text) 85%, #000);
         color: #fff;
     }
     .funding-milestone {

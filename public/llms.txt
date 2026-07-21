@@ -25,7 +25,7 @@ The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity
 - Investment Manager: Infinite Giving (specializing in US nonprofits)
 - Target Return: 7-8% annually
 - Target Spend Rate: 5% of fund per year on grants
-- Grant Format: Microgrants (~$5,000) to high-risk candidates among most valuable OSS
+- Grant Format: Microgrants (up to $5,000) to eligible high-risk candidates among most valuable OSS
 
 ## Team
 
@@ -42,8 +42,10 @@ The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity
 ## Grant Selection Model
 
 OSE uses a data-driven scoring approach based on:
-- **Value**: Dependencies, downloads, potential losses if removed, community endorsements
-- **Risk**: OpenSSF score, lines of code, active maintainers, known funding, CVEs
+- **Value**: downloads, dependencies, dependents, criticality — implemented as OpenSSF Criticality Score (60%), ecosyste.ms critical-infrastructure flag (20%), PageRank position within the strongest ecosystem (10%), cross-ecosystem dependency mass (10%)
+- **Risk**: geometric mean of concentration (bus factor + HHI), complexity (LOC + cyclomatic), security (OpenSSF Scorecard + CVEs), and maintainer workload
+- **Eligibility**: open source AND active AND nonprofit AND funding intent (a plain AND of four booleans)
+- Final score is sqrt(value x risk), so both dimensions must be high
 
 The model is published openly at https://github.com/osendowment/model
 

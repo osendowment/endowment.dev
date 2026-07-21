@@ -100,17 +100,22 @@ OSE strives to sustainably address funding gaps in the OSS funding landscape. Ou
 
 ### How does the selection model work?
 
-Within each ecosystem, OSE scores projects on Value and Risk using open data points. Target format: microgrants (~$5,000) to high-risk candidates among the most valuable OSS, approved by the board after due diligence.
+Within each ecosystem, OSE scores projects on Value and Risk using open data points. Target format: microgrants (up to $5,000) to eligible high-risk candidates among the most valuable OSS, approved by the board after due diligence.
 
 - **Value for the ecosystem**
-  - Dependencies and downloads
-  - Potential losses if removed from the global tree
-  - Endorsements from OSE donors, OSS foundations, etc.
+  - Downloads and dependencies
+  - Dependents across ecosystems
+  - Criticality (OpenSSF Criticality Score, ecosyste.ms critical-infrastructure flag)
 - **Risk of the project**
-  - Complexity: LOCs, etc.
-  - Maintainers: active count, bus factor, MTTR for issues
-  - Security: OpenSSF score, CVEs, etc.
-  - Funding: GitHub Sponsors, known funding, etc.
+  - Concentration: bus factor and contributor HHI
+  - Complexity: lines of code and cyclomatic complexity
+  - Security: OpenSSF Scorecard and known CVEs
+  - Workload: code, CVEs and new issues per active contributor
+- **Eligibility of the project**
+  - Open source: carries an open-source licence
+  - Active: not end-of-life and not archived
+  - Nonprofit: no company strongly affiliated with the project
+  - Funding intent: shows some intent to be funded (Sponsors, FUNDING.yml, Open Collective, etc.)
 
 Data-driven targeting first, then human review — e.g., checking if the project is already well-funded. Public materials on the model are in our [repo](https://github.com/osendowment/model).
 

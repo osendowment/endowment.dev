@@ -21,7 +21,7 @@ Projects are selected through an open [model](https://github.com/osendowment/mod
 
 ## Funding format
 
-OSE provides **~$5,000 microgrants** to the most valuable independent OSS. Funding is dedicated to improving security and stability, or rewarding long-term maintainers.
+OSE provides **microgrants of up to $5,000** to the most valuable independent OSS. Funding is dedicated to improving security and stability, or rewarding long-term maintainers.
 
 Two mental models guide grant usage:
 

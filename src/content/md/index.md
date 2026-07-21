@@ -29,7 +29,7 @@ Incidents like [Heartbleed](https://en.wikipedia.org/wiki/Heartbleed), [Log4Shel
 
 1. **Fundraising** — Individuals, companies, and foundations donate to the endowment, forming its permanent principal.
 2. **Investing** — The principal is invested in a low-risk portfolio targeting ~7–8% returns. Currently managed by [Infinite Giving](https://www.infinitegiving.com/), specialists in US nonprofits.
-3. **Grantmaking** — We distribute grants based on an open, data-driven [model](https://github.com/osendowment/model) co-developed with OSE Members and the community. Target format: ~$5,000 microgrants to the most critical-but-underfunded projects.
+3. **Grantmaking** — We distribute grants based on an open, data-driven [model](https://github.com/osendowment/model) co-developed with OSE Members and the community. Target format: microgrants of up to $5,000s to the most critical-but-underfunded projects.
 4. **Impact tracking** — Grant recipients are tracked for accountability, and the model is continuously refined.
 
 The target annual spend rate is **5%** of the fund, matching the approach used by leading US universities.

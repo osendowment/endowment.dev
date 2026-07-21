@@ -155,7 +155,7 @@ const orgDonorCount = stats.donors.organizations;
                 "name": "How does the selection model work?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "OSE scores projects on Value (dependencies, downloads, potential losses, endorsements) and Risk (complexity, maintainers, security, funding). Target format: microgrants (~$5,000) to high-risk candidates among the most valuable OSS, approved by the board after due diligence."
+                    "text": "OSE scores projects on Value (downloads, dependencies, dependents, criticality), Risk (concentration, complexity, security, workload) and Eligibility (open source, active, nonprofit, funding intent). Target format: microgrants (up to $5,000) to eligible high-risk candidates among the most valuable OSS, approved by the board after due diligence."
                 }
             },
             {
@@ -394,21 +394,29 @@ const orgDonorCount = stats.donors.organizations;
                     <div class="faq-item">
                         <h3>How does the selection model work?</h3>
                         <div class="faq-answer">
-                            <p>Within each ecosystem, OSE scores projects on Value and Risk using open data points. Target format: microgrants (~$5,000) to high-risk candidates among the most valuable OSS, approved by the board after due diligence.</p>
+                            <p>Within each ecosystem, OSE scores projects on Value and Risk using open data points. Target format: microgrants (up to $5,000) to eligible high-risk candidates among the most valuable OSS, approved by the board after due diligence.</p>
                             <ul>
                                 <li><strong>Value for the ecosystem</strong>
                                     <ul>
-                                        <li>Dependencies and downloads</li>
-                                        <li>Potential losses if removed from the global tree</li>
-                                        <li>Endorsements from OSE donors, OSS foundations, etc.</li>
+                                        <li>Downloads and dependencies</li>
+                                        <li>Dependents across ecosystems</li>
+                                        <li>Criticality (OpenSSF Criticality Score, ecosyste.ms critical-infrastructure flag)</li>
                                     </ul>
                                 </li>
                                 <li><strong>Risk of the project</strong>
                                     <ul>
-                                        <li>Complexity: LOCs, etc.</li>
-                                        <li>Maintainers: active count, bus factor, MTTR for issues</li>
-                                        <li>Security: OpenSSF score, CVEs, etc.</li>
-                                        <li>Funding: GitHub Sponsors, known funding, etc.</li>
+                                        <li>Concentration: bus factor and contributor HHI</li>
+                                        <li>Complexity: lines of code and cyclomatic complexity</li>
+                                        <li>Security: OpenSSF Scorecard and known CVEs</li>
+                                        <li>Workload: code, CVEs and new issues per active contributor</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Eligibility of the project</strong>
+                                    <ul>
+                                        <li>Open source: carries an open-source licence</li>
+                                        <li>Active: not end-of-life and not archived</li>
+                                        <li>Nonprofit: no company strongly affiliated with the project</li>
+                                        <li>Funding intent: shows some intent to be funded</li>
                                     </ul>
                                 </li>
                             </ul>
