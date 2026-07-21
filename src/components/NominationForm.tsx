@@ -3,7 +3,7 @@ import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
 import { NOMINATE_URL } from "../lib/api.ts";
-import { getTurnstileSiteKey } from "../lib/turnstile.ts";
+import { createTokenGate, getTurnstileSiteKey } from "../lib/turnstile.ts";
 
 
 
@@ -93,7 +93,7 @@ const theme = {
 
 export default function NominationForm() {
     const formLoadedAt = useRef(Date.now() / 1000);
-    const turnstileTokenRef = useRef<string>("");
+    const turnstileGate = useRef(createTokenGate()).current;
     const turnstileRef = useRef<HTMLDivElement>(null);
 
     // Stable survey model — created once, never recreated on re-render
@@ -125,7 +125,10 @@ export default function NominationForm() {
             options.allow = false;
 
             (async () => {
-                const token = turnstileTokenRef.current;
+                // Await rather than read: with interaction-only appearance the
+                // challenge often lands after the click, and reading once here
+                // posted an empty token while the widget showed "Success!".
+                const token = await turnstileGate.wait();
                 console.log("[Turnstile] Submitting with token:", token ? token.slice(0, 20) + "..." : "(empty)");
                 const hpField = document.getElementById("hp-website") as HTMLInputElement | null;
                 const payload = {
@@ -197,14 +200,14 @@ export default function NominationForm() {
                 appearance: "interaction-only",
                 callback: (token: string) => {
                     console.log("[Turnstile] Token received:", token.slice(0, 20) + "...");
-                    turnstileTokenRef.current = token;
+                    turnstileGate.set(token);
                 },
                 "error-callback": (error: unknown) => {
                     console.error("[Turnstile] Error:", error);
                 },
                 "expired-callback": () => {
                     console.warn("[Turnstile] Token expired — resetting");
-                    turnstileTokenRef.current = "";
+                    turnstileGate.clear();
                     if (window.turnstile) window.turnstile.reset(widgetId);
                 },
             });

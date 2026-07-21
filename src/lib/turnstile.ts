@@ -33,3 +33,49 @@ export function getTurnstileSiteKey(): string {
     if (typeof window === "undefined") return PROD_SITE_KEY;
     return isLocalHost(window.location.hostname) ? DEV_SITE_KEY : PROD_SITE_KEY;
 }
+
+/**
+ * A token holder that callers can *await*.
+ *
+ * The widget renders with `appearance: "interaction-only"`, so the challenge
+ * frequently completes only after the user has already hit submit. Reading the
+ * token once at submit time therefore races the callback: the form posts an
+ * empty token, the API correctly rejects it with "Verification not ready", and
+ * the widget flips to "Success!" a beat later — an error next to a green tick.
+ *
+ * `wait()` resolves immediately when a token is already in hand, otherwise it
+ * parks until the callback fires or the timeout elapses.
+ */
+export function createTokenGate() {
+    let token = "";
+    let waiters: Array<(t: string) => void> = [];
+
+    return {
+        set(value: string) {
+            token = value;
+            const pending = waiters;
+            waiters = [];
+            for (const resolve of pending) resolve(value);
+        },
+        clear() {
+            token = "";
+        },
+        peek(): string {
+            return token;
+        },
+        wait(timeoutMs = 10_000): Promise<string> {
+            if (token) return Promise.resolve(token);
+            return new Promise((resolve) => {
+                const timer = setTimeout(() => {
+                    waiters = waiters.filter((w) => w !== onToken);
+                    resolve("");
+                }, timeoutMs);
+                const onToken = (t: string) => {
+                    clearTimeout(timer);
+                    resolve(t);
+                };
+                waiters.push(onToken);
+            });
+        },
+    };
+}
