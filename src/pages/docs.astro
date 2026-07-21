@@ -46,73 +46,226 @@ import { Content } from '../content/md/docs-index.md';
 </Layout>
 
 <style>
-    /* Section heading on the left (40%), content (ul/table) on the right —
-       mirrors the old .category-listing flex layout the markdown refactor
-       replaced. Grid auto-flow pairs each H2 with the next sibling block. */
-    .docs-content {
-        display: grid;
-        grid-template-columns: 40% 1fr;
-        column-gap: 2rem;
-        row-gap: 1rem;
-    }
+    /* Full-width sections: the H2 sits above its own grid of link blocks.
+       Replaces the old 40%/1fr split, which left half the page empty. */
     .docs-content :global(h2) {
-        margin: 0;
-        font-size: var(--font-size-5);
-        font-weight: bold;
-    }
-    .docs-content :global(ul) {
-        list-style: disc;
-        padding-left: 1.5rem;
-        margin: 0;
-    }
-    /* Border separates each section pair (h2 row + following content row).
-       Apply to BOTH children of each row except the last pair. */
-    .docs-content :global(> *:not(:nth-last-child(-n+2))) {
-        padding-bottom: 3rem;
-        margin-bottom: 0;
+        margin: 0 0 1.5rem;
+        padding-bottom: 0.85rem;
         border-bottom: 1px solid var(--color-section-border);
+        font-family: var(--font-family-serif);
+        font-size: var(--font-size-6);
+        font-weight: normal;
+        line-height: 1.2;
+    }
+    .docs-content :global(h2:not(:first-child)) {
+        margin-top: 3.5rem;
+    }
+    /* Plain facts that belong under a heading rather than in a link block. */
+    .docs-content :global(p) {
+        margin: -0.75rem 0 1.5rem;
+        color: var(--color-text-dark-secondary);
+        font-size: var(--font-size-3);
     }
 
-    @media (max-width: 800px) {
-        .docs-content {
-            grid-template-columns: 1fr;
-            row-gap: 0.5rem;
-        }
-        /* Stacked layout: only the content blocks (every 2nd child) get the
-           bottom border; the H2 above it stays attached. */
-        .docs-content :global(> *:not(:nth-last-child(-n+2))) {
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        .docs-content :global(> *:nth-child(2n):not(:last-child)) {
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--color-section-border);
-        }
+    /* Link blocks. auto-fill + an 18rem floor yields 3 per row on desktop,
+       degrading to 2 / 1 as the viewport narrows — no breakpoints needed.
+       Card treatment matches .team-card on /about. */
+    .docs-content :global(ul),
+    .docs-content :global(tbody) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+        grid-auto-rows: 1fr;
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .docs-content :global(li),
+    .docs-content :global(tbody tr) {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 1rem;
+        min-height: 4.75rem;
+        padding: 1rem 1.35rem;
+        border: 1px solid var(--color-section-border);
+        border-radius: var(--border-radius);
+        font-size: var(--font-size-3);
+        line-height: 1.45;
+        transition: border-color 0.15s;
+    }
+    /* Only blocks that actually link are interactive — "EIN 33-3502715" and
+       friends are plain facts and must not look clickable. */
+    .docs-content :global(li:has(a):hover),
+    .docs-content :global(tbody tr:hover) {
+        border-color: var(--color-primary);
+    }
+    /* Dated blocks are top-aligned so their eyebrows line up across a row
+       even when titles wrap to different heights. Undated blocks ("Other")
+       have nothing to align to, so they centre instead. */
+    .docs-content :global(li),
+    .docs-content :global(tbody tr) {
+        align-content: center;
+    }
+    /* The row is as tall as the 28px icon, so a stretched anchor parks its
+       text at the top and it reads ~8px high. Centre the items instead. */
+    .docs-content :global(li) {
+        align-items: center;
+    }
+    /* ---- Block icons -------------------------------------------------
+       One icon per document *type*, matched on the link target so the
+       markdown stays plain (no icon column for editors to maintain).
+       Everything gets the generic document icon; the rules below override
+       it per type, so a newly added row always shows something sensible. */
+    /* Drawn as a mask rather than a background image so the glyph is painted
+       with a real theme variable — a data-URI background can't read CSS vars,
+       which would mean hardcoding a hex that drifts from the palette. */
+    /* Sits in the title row (not spanning the date), pinned to the top and
+       nudged up so it optically centres on the FIRST line of the title —
+       stays put whether the title runs to one line or two. */
+    .docs-content :global(tbody tr)::before {
+        /* Trailing icon: right column, spanning the date and title rows and
+           centred, so it sits at the block's vertical middle. */
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+    }
+    /* Explicit placement is required: pinning the icon to row 2 alone lets the
+       date auto-place into column 1 and pushes the whole block out of shape. */
+    .docs-content :global(tbody td:first-child) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .docs-content :global(tbody td:last-child) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .docs-content :global(li)::before,
+    .docs-content :global(tbody tr)::before {
+        content: '';
+        width: 1.75rem;
+        height: 1.75rem;
+        background-color: var(--doc-icon-color, var(--color-primary));
+        -webkit-mask: var(--doc-icon) no-repeat left center / contain;
+        mask: var(--doc-icon) no-repeat left center / contain;
     }
 
-    /* Board resolutions table — match the previous hardcoded .board-table.
-       The markdown table renders with a <thead> we don't want, so hide it. */
+    /* Default: a document with a folded corner and lines of text — reads as
+       "paper" far more clearly than an empty outlined page. */
+    .docs-content :global(li),
+    .docs-content :global(tbody tr) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2.8H6.6A1.6 1.6 0 0 0 5 4.4v15.2a1.6 1.6 0 0 0 1.6 1.6h10.8a1.6 1.6 0 0 0 1.6-1.6V7.8z'/%3E%3Cpath d='M13.9 2.8v5.1H19'/%3E%3Cpath d='M8.4 12.6h7.2M8.4 16.2h4.8'/%3E%3C/svg%3E");
+    }
+    /* board meeting minutes → calendar */
+    .docs-content :global(tbody tr:has(a[href*="minutes.md"])) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M8 3v4M16 3v4M3 11h18'/%3E%3C/svg%3E");
+    }
+    /* IRS determination letter → envelope */
+    .docs-content :global(tbody tr:has(a[href*="501c3"])) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 8 9 6 9-6'/%3E%3C/svg%3E");
+    }
+    /* policies → shield */
+    .docs-content :global(tbody tr:has(a[href*="policy"])) {
+        --doc-icon-color: var(--color-primary-text);
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l7 3v5c0 4.5-2.9 8.1-7 10-4.1-1.9-7-5.5-7-10V6z'/%3E%3C/svg%3E");
+    }
+    /* board resolutions (anything under /docs/board/ that is not minutes) → seal */
+    .docs-content :global(tbody tr:has(a[href*="/docs/board/"]:not([href*="minutes.md"]))) {
+        --doc-icon-color: var(--color-secondary);
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3C/svg%3E");
+    }
+    /* Other section (API, MCP, giving) → external/tool */
+    .docs-content :global(li)::before {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+    }
+    .docs-content :global(li) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4h6v6'/%3E%3Cpath d='M20 4 11 13'/%3E%3Cpath d='M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5'/%3E%3C/svg%3E");
+    }
+    /* One icon per tool rather than a shared external-link arrow, which said
+       "this is a link" (already obvious) instead of what the target is. */
+    /* Public API → code brackets */
+    .docs-content :global(li:has(a[href*="api.endowment.dev"])) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 6-6 6 6 6'/%3E%3Cpath d='m16 6 6 6-6 6'/%3E%3C/svg%3E");
+    }
+    /* MCP Server → stacked server */
+    .docs-content :global(li:has(a[href*="/docs/mcp"])) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='7' rx='1.6'/%3E%3Crect x='3' y='13' width='18' height='7' rx='1.6'/%3E%3Cpath d='M6.8 7.5h.01M6.8 16.5h.01'/%3E%3C/svg%3E");
+    }
+    /* Ways to Give → heart */
+    .docs-content :global(li:has(a[href*="/docs/giving"])) {
+        --doc-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20.3s-7.4-4.6-7.4-9.8a4.2 4.2 0 0 1 7.4-2.7 4.2 4.2 0 0 1 7.4 2.7c0 5.2-7.4 9.8-7.4 9.8z'/%3E%3C/svg%3E");
+    }
+
+    /* Links inherit the body colour and carry no underline — the block itself
+       is the affordance, and its border lights up on hover. Mirrors .team-card
+       on /about so the two card families read as one system. */
+    /* Whole block is the click target. The anchor stretches a transparent
+       overlay across the block rather than the block being wrapped in a link
+       — markdown can't wrap a table row in an <a>, and this keeps exactly one
+       real link per block for a11y and for the keyboard tab order. */
+    .docs-content :global(li),
+    .docs-content :global(tbody tr) {
+        position: relative;
+    }
+    .docs-content :global(li:has(a)),
+    .docs-content :global(tbody tr:has(a)) {
+        cursor: pointer;
+    }
+    .docs-content :global(li a)::after,
+    .docs-content :global(tbody td a)::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+    .docs-content :global(li a),
+    .docs-content :global(tbody td a) {
+        color: inherit;
+        text-decoration: none;
+        /* `pretty`, not `balance`: balance equalises line lengths, which made
+           "Board meeting minutes (August 2025)" break a word earlier than its
+           February/December siblings purely because its month is shorter.
+           `pretty` breaks all of them identically and still keeps "T-Bonds"
+           off the hyphen. */
+        text-wrap: pretty;
+    }
+    .docs-content :global(li a:hover),
+    .docs-content :global(tbody td a:hover) {
+        color: inherit;
+        text-decoration: none;
+        background: none;
+    }
+
+    /* Board resolutions: same blocks, driven by the markdown table. The
+       <thead> is decorative here, and each row becomes date-over-links. */
     .docs-content :global(table) {
-        border-collapse: collapse;
+        display: block;
         width: 100%;
+        border-collapse: collapse;
     }
     .docs-content :global(table thead) {
         display: none;
     }
     .docs-content :global(table td) {
-        padding: 0.5rem 0;
-        vertical-align: middle;
-        border-bottom: 1px solid var(--color-section-border);
+        display: block;
+        padding: 0;
+        border: none;
     }
-    .docs-content :global(table tr:last-child td) {
-        border-bottom: none;
+    /* Flex, not block: markdown leaves whitespace text nodes around the link
+       inside the cell, which render as a stray leading space on the first
+       line. Flex containers drop whitespace-only children. */
+    .docs-content :global(table td:last-child) {
+        display: flex;
     }
     .docs-content :global(table td:first-child) {
-        white-space: nowrap;
-        padding-right: 2rem;
+        margin-bottom: 0.35rem;
+        /* Geist Mono's digits sit flush to the box edge while Plus Jakarta
+           Sans's caps carry ~1.6px of left side bearing, so without this the
+           date optically overhangs the title it labels. Measured constant
+           across every row, so a fixed nudge is exact rather than a fudge. */
+        padding-left: 0.1rem;
         font-family: var(--font-family-mono);
         font-size: var(--font-size-2);
-        color: var(--color-text-dark-secondary);
+        color: color-mix(in srgb, var(--color-text-dark-secondary) 72%, white);
     }
 </style>
