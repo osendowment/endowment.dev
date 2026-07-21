@@ -6,6 +6,7 @@ const ROUTES = [
   { route: '/about/',                             src: 'src/content/md/about.md' },
   { route: '/community/',                         src: 'src/content/md/community.md' },
   { route: '/funding/',                           src: 'src/content/md/funding.md' },
+  { route: '/nominate-board/',                    src: 'src/content/md/nominate-board.md' },
   { route: '/faq/',                               src: 'src/content/md/faq.md' },
   { route: '/docs/',                              src: 'src/content/md/docs-index.md' },
   { route: '/docs/giving/',                       src: 'src/content/md/giving.md' },

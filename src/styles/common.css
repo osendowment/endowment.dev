@@ -493,7 +493,10 @@ label {
     }
 }
 
-input[type="text"], input[type="email"] {
+/* Keep this list in sync with the input types the forms actually use — a type
+   that is missing here renders with no border at all (url was, on the board
+   nomination form). */
+input[type="text"], input[type="email"], input[type="url"] {
     display: block;
     width: 100%;
     padding: 0.7rem;

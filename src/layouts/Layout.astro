@@ -108,10 +108,9 @@ import { OpenPanelComponent } from '@openpanel/astro';
           "taxID": "33-3502715",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "74 E Glenwood Ave Unit 5756",
-            "addressLocality": "Smyrna",
-            "addressRegion": "DE",
-            "postalCode": "19977",
+            "streetAddress": "2261 Market Street Suite 91962",
+            "addressLocality": "San Francisco",
+            "addressRegion": "CA",
             "addressCountry": "US"
           },
           "areaServed": "Global",
@@ -151,7 +150,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary">
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-friendly extended reference">
 
-        {path === '/funding' && (
+        {(path === '/funding' || path === '/nominate-board') && (
           <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
         )}
 
@@ -272,7 +271,7 @@ import { OpenPanelComponent } from '@openpanel/astro';
                 <div class="footer-legal">
                     <p>Open Source Endowment Foundation</p>
                     <p>US 501(c)(3) tax-exempt charity (EIN 33-3502715)</p>
-                    <p>Address: 74 E Glenwood Ave Unit 5756, Smyrna, DE</p>
+                    <p>Address: 2261 Market Street Suite 91962, San Francisco, CA</p>
                 </div>
             </div>
         </footer>

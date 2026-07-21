@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BoardNominationForm from '../components/BoardNominationForm.tsx';
+---
+
+<Layout title="Nominate a Board Director Candidate — Open Source Endowment" description="Highlight people who would strengthen the Open Source Endowment board. Anyone can nominate a candidate, and self-nominations are welcome.">
+    <article>
+        <!-- Hero (same structure as Funding page) -->
+        <section class="pagesec pagesec--dark pagesec--tight">
+            <div class="container">
+                <div class="insec insec--xpad insec--ytight">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-sw-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="sechead sechead--min-height flex-center flex-column">
+                        <h1>Nominate a Board Director Candidate</h1>
+                        <p>
+                            Know someone who would strengthen the OSE board?
+                            Anyone can highlight a worthy candidate,
+                            and self-nominations are welcome too!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nomination Form + Sidebar -->
+        <section class="pagesec">
+            <div class="container">
+                <div class="insec insec--xpad">
+                    <div class="nominate-layout">
+                        <div class="nominate-sidebar">
+                            <div class="sidebar-card">
+                                <h3>Who Can Nominate</h3>
+                                <p>
+                                    Anyone. You need not be a donor or Member to put a name
+                                    forward, and you may nominate yourself. Tell us who they
+                                    are and why they fit.
+                                </p>
+                            </div>
+
+                            <div class="sidebar-card">
+                                <h3>Membership Requirement</h3>
+                                <p>
+                                    Directors must be OSE
+                                    <a href="/about#governance">Members</a> — donors giving at
+                                    least $1,000/year. Candidates can join after nomination,
+                                    so nominate first.
+                                </p>
+                            </div>
+
+                            <div class="sidebar-card">
+                                <h3>What the Board Does</h3>
+                                <p>
+                                    The main governing body of the Open Source Endowment:
+                                    approves grants, appoints the Executive Director, selects
+                                    investment strategy, etc. Details in the
+                                    <a href="/docs/bylaws">bylaws</a>.
+                                </p>
+                            </div>
+
+                            <div class="sidebar-card">
+                                <h3>How Election Works</h3>
+                                <p>
+                                    We review nominations on a rolling basis against OSE's
+                                    needs — fundraising, investment management, open
+                                    source expertise — and interview and invite the most
+                                    promising candidates to join. Directors are elected for a
+                                    three-year term.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="nominate-main">
+                            <BoardNominationForm client:load />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+</Layout>
+
+<style>
+    /* Two-column layout */
+    .nominate-layout {
+        display: flex;
+        gap: 4rem;
+        align-items: flex-start;
+        @media (max-width: 900px) {
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+    }
+    .nominate-main {
+        flex: 2;
+        min-width: 0;
+        padding: 2rem;
+        background: #f5f7fa;
+        border: 1px solid var(--color-primary-fade1);
+        border-radius: var(--border-radius);
+        h2.sechead {
+            padding-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 900px) {
+            width: 100%;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+    }
+    .nominate-sidebar {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Sidebar cards */
+    .sidebar-card {
+        padding: 1.25rem 0 1.25rem 1.5rem;
+        border-left: 2px solid var(--color-primary-fade1);
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        p {
+            margin: 0;
+            font-size: var(--font-size-3);
+            line-height: 1.7;
+            color: var(--color-text-dark-secondary);
+        }
+        & + .sidebar-card {
+            margin-top: 1.25rem;
+        }
+    }
+
+</style>

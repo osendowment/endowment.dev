@@ -7,6 +7,9 @@ export const API_BASE = import.meta.env.DEV
 export const STATS_URL = `${API_BASE}/public/stats`;
 export const DONORS_URL = `${API_BASE}/public/donors`;
 export const NOMINATE_URL = `${API_BASE}/public/nominate`;
+// NOTE: not implemented in the `data` repo yet — /nominate-board submissions
+// 404 until the endpoint and its `form_board_nomination` table ship.
+export const NOMINATE_BOARD_URL = `${API_BASE}/public/nominate-board`;
 
 // Force Gravatar to return 404 instead of its own default identicon, so the
 // validator below nulls the URL out and the donor card falls back to our own

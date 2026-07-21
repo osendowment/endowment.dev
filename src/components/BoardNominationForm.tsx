@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/survey-core.min.css";
-import { NOMINATE_URL } from "../lib/api.ts";
+import { NOMINATE_BOARD_URL } from "../lib/api.ts";
 import { getTurnstileSiteKey } from "../lib/turnstile.ts";
 
 
@@ -10,7 +10,7 @@ import { getTurnstileSiteKey } from "../lib/turnstile.ts";
 const surveyJson = {
     pages: [
         {
-            name: "Nominate an OSS project",
+            name: "Nominate a board candidate",
             elements: [
                 {
                     type: "text",
@@ -29,35 +29,42 @@ const surveyJson = {
                 },
                 {
                     type: "text",
-                    name: "project_url",
-                    title: "GitHub Repo URL of the project you're nominating",
+                    name: "candidate_name",
+                    title: "Candidate name",
                     isRequired: true,
+                },
+                {
+                    type: "text",
+                    name: "candidate_url",
+                    title: "Candidate profile URL (LinkedIn, Wikipedia, etc.)",
+                    isRequired: true,
+                    inputType: "url",
                     validators: [
                         {
                             type: "regex",
-                            text: "Please enter a valid GitHub repository URL (https://github.com/user/repo)",
-                            regex: "^https?:\\/\\/github\\.com\\/[a-zA-Z0-9_.-]+\\/[a-zA-Z0-9_.-]+\\/?$",
+                            text: "Please enter a valid URL starting with http:// or https://",
+                            regex: "^https?:\\/\\/.+\\..+",
                         },
                     ],
-                    placeholder: "https://github.com/{user}/{repo}",
+                    placeholder: "https://www.linkedin.com/in/{profile}",
                 },
                 {
                     type: "comment",
                     name: "comment",
                     title: "Comments",
                     placeholder:
-                        "Why do you think this OSS is valuable but underfunded? Please briefly explain why you're nominating this project",
+                        "Why would they strengthen the OSE board? Track record, experience, links",
                 },
                 {
                     type: "html",
                     name: "website_trap",
-                    html: '<div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" id="hp-website"></label></div>',
+                    html: '<div style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" id="hp-website-board"></label></div>',
                 },
             ],
         },
     ],
     showTitle: false,
-    completeText: "Nominate OSS project for funding",
+    completeText: "Nominate board candidate",
     // Initial completed-state HTML — shown briefly while the async submit
     // is in flight. onComplete swaps to SUCCESS_HTML or an error panel when
     // the fetch resolves so users never see a premature "Thank you!".
@@ -66,7 +73,7 @@ const surveyJson = {
 };
 
 const SUCCESS_HTML =
-    "<div style='text-align:center;padding:2.5rem 1rem'><div style='font-size:3rem;margin-bottom:1rem'>&#127881;</div><h3 style='font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43'>Thank you!</h3><p style='font-size:1.1rem;line-height:1.8;color:#3a3e43;max-width:30rem;margin:0 auto'>Thanks for highlighting the most important OSS projects requiring funding! You made an impact today, and can multiply it by sharing this page with other open source folks.</p></div>";
+    "<div style='text-align:center;padding:2.5rem 1rem'><div style='font-size:3rem;margin-bottom:1rem'>&#127881;</div><h3 style='font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43'>Thank you!</h3><p style='font-size:1.1rem;line-height:1.8;color:#3a3e43;max-width:30rem;margin:0 auto'>Thanks for helping us build a stronger board! We review every nomination and reach out to the best candidates.</p></div>";
 
 const theme = {
     cssVariables: {
@@ -91,7 +98,7 @@ const theme = {
     isPanelless: true,
 };
 
-export default function NominationForm() {
+export default function BoardNominationForm() {
     const formLoadedAt = useRef(Date.now() / 1000);
     const turnstileTokenRef = useRef<string>("");
     const turnstileRef = useRef<HTMLDivElement>(null);
@@ -108,17 +115,13 @@ export default function NominationForm() {
             if (intentFired.current) return;
             intentFired.current = true;
             if (window.op) {
-                window.op('track', 'nomination-intent');
+                window.op('track', 'board-nomination-intent');
             }
         });
 
         // We submit during onCompleting so the API result drives which
-        // completedHtml renders on transition — sender.completedHtml mutated
-        // *after* completion does not re-render in the React/SurveyJS
-        // wrapper, which led to the "🎉 Thank you!" panel briefly showing
-        // even when the API rejected the submission. The flag below lets us
-        // re-enter onCompleting from doComplete() to finally allow the
-        // transition once we've decided what to show.
+        // completedHtml renders on transition — see NominationForm.tsx for
+        // the full rationale behind the `proceed` re-entry flag.
         let proceed = false;
         survey.onCompleting.add((sender, options) => {
             if (proceed) return; // re-entry from sender.doComplete() below
@@ -127,7 +130,7 @@ export default function NominationForm() {
             (async () => {
                 const token = turnstileTokenRef.current;
                 console.log("[Turnstile] Submitting with token:", token ? token.slice(0, 20) + "..." : "(empty)");
-                const hpField = document.getElementById("hp-website") as HTMLInputElement | null;
+                const hpField = document.getElementById("hp-website-board") as HTMLInputElement | null;
                 const payload = {
                     ...sender.data,
                     website: hpField?.value || undefined,
@@ -140,7 +143,7 @@ export default function NominationForm() {
                     `<div style="text-align:center;padding:2.5rem 1rem"><div style="font-size:3rem;margin-bottom:1rem">&#9888;&#65039;</div><h3 style="font-size:1.5rem;font-weight:600;margin:0 0 1rem;color:#3a3e43">${msg}</h3></div>`;
 
                 try {
-                    const response = await fetch(NOMINATE_URL, {
+                    const response = await fetch(NOMINATE_BOARD_URL, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(payload),
@@ -161,8 +164,8 @@ export default function NominationForm() {
                                 lastName: nameParts.slice(1).join(' ') || undefined,
                                 email: sender.data.email,
                             });
-                            window.op('track', 'project-nomination', {
-                                project_url: sender.data.project_url,
+                            window.op('track', 'board-nomination', {
+                                candidate_url: sender.data.candidate_url,
                                 has_comment: !!sender.data.comment,
                             });
                         }
