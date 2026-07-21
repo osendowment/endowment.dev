@@ -3,6 +3,7 @@
 ## Rules
 
 - **Never push to GitHub without explicit user approval.** Commit locally freely, but always wait for the user to say "push" before running `git push`.
+- **Never edit the executed legal records in `src/assets/foundation/docs/` without explicit approval in the current message** (bylaws, certificate of incorporation, act of sole incorporator, board UWC). Default is always no — ask first, and only proceed when the user says so in that same message; approval given earlier or for a different document does not carry over. They are signed, dated records of what was executed. They will contradict the live site — that is correct, not a bug to fix. When a governance fact changes, update the site content only, then add a new dated row to the "Board resolutions and meeting minutes" table in `src/content/md/docs-index.md` linking the PDF in the `osendowment/foundation` repo. Changing the authorized number of directors or the registered address is a board action, not a file edit.
 
 ## Tech Stack
 
