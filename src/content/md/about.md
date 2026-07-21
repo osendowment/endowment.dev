@@ -24,10 +24,10 @@ OSE's bottom-up governance is inspired by the best universities and revolves aro
 
 ### Board of Directors
 
-- **[Konstantin Vinogradov](https://www.linkedin.com/in/kvinogradov/)** — Chairman. VC investor in open source, AI, and infra software. Former General Partner at Runa Capital ($600M+ AUM). Creator of the ROSS Index (2020–2025), a quarterly data-driven index of open-source startups.
+- **[Konstantin Vinogradov](https://kvinogradov.com)** — Chairman. VC investor in open source, AI, and infra software. Former General Partner at Runa Capital ($600M+ AUM). Creator of the ROSS Index (2020–2025), a quarterly data-driven index of open-source startups.
 - **[Amy Parker](https://www.linkedin.com/in/amy3parker/)** — Secretary. VP, Major Gifts at the Signal Foundation; former Deputy Executive Director at the OpenSSL Foundation and Director of the Wikipedia Endowment. Served as Director of Individual Giving at the Smithsonian and the New York Public Library.
 - **[Maxim Konovalov](https://www.linkedin.com/in/maxim/)** — Treasurer. Co-founder and former CTO at Nginx, the world's leading web server used by 400M+ websites (acquired for ~$700M in 2019). Former VP Engineering at F5. Long-time FreeBSD contributor.
-- **[Chad Whitacre](https://www.linkedin.com/in/chadwhitacre/)** — Director. Former Head of Open Source at Sentry (used by 4M+ developers) and former leader of the Open Source Pledge. Founder of open source funding pioneer Gratipay (2012–2018).
+- **[Chad Whitacre](https://openpath.quest)** — Director. Former Head of Open Source at Sentry (used by 4M+ developers) and former leader of the Open Source Pledge. Founder of open source funding pioneer Gratipay (2012–2018).
 
 <!-- TEMPORARILY HIDDEN, restore with the CTA in about.astro:
 → [Nominate a candidate](/nominate-board/) for the OSE board.
