@@ -33,4 +33,4 @@ Two mental models guide grant usage:
 1. **Collecting inputs** — We collect nominations from the open source community, surfacing valuable projects that need support most. These inputs help OSE and its Members finalize the grant model.
 2. **Scoring projects** — Nominations feed into our [Value-Risk framework](/about/#model), alongside other inputs: downloads, dependents, security, bus factor, etc. The model finds high-value, at-risk projects.
 3. **Outreach & due diligence** — The OSE team contacts top-scoring projects to verify eligibility, independence, and interest. An operational review ensures funds can be received directly or via fiscal sponsors.
-4. **Approval & distribution** — The Board of Directors reviews due diligence results and approves the final grant list. **The first grant distribution round is planned for Q2 2026.**
+4. **Approval & distribution** — The Board of Directors reviews due diligence results and approves the final grant list.

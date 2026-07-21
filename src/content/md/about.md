@@ -18,23 +18,25 @@ OSE's bottom-up governance is inspired by the best universities and revolves aro
 
 - **Donors** ({{totalDonors}}) — OSE welcomes all individual and institutional donors who want to leave a lasting impact on the open source ecosystem. The [donor list](/community/) is fully open and regularly updated.
 - **Members** ({{members}}) — Donors contributing at least **$1,000/year** qualify as OSE Members. Members advise the Board on key matters like the grant model, participate in closed events, and appoint board directors. Member rights are defined in the [membership policy](/docs/membership-policy/).
-- **Board of Directors** (3) — The main governing body. All Directors must also be Members. Details in the [bylaws](/docs/bylaws/).
+- **Board of Directors** (4) — The main governing body. All Directors must also be Members. Details in the [bylaws](/docs/bylaws/).
 
 ## Team
 
 ### Board of Directors
 
 - **[Konstantin Vinogradov](https://www.linkedin.com/in/kvinogradov/)** — Chairman. VC investor in open source, AI, and infra software. Former General Partner at Runa Capital ($600M+ AUM). Creator of the ROSS Index (2020–2025), a quarterly data-driven index of open-source startups.
-- **[Chad Whitacre](https://www.linkedin.com/in/chadwhitacre/)** — Secretary. Head of Open Source at Sentry (used by 4M+ developers), leader of the Open Source Pledge, founder of open source funding pioneer Gratipay (2012–2018).
+- **[Amy Parker](https://www.linkedin.com/in/amy3parker/)** — Secretary. VP, Major Gifts at the Signal Foundation; former Deputy Executive Director at the OpenSSL Foundation and Director of the Wikipedia Endowment. Served as Director of Individual Giving at the Smithsonian and the New York Public Library.
 - **[Maxim Konovalov](https://www.linkedin.com/in/maxim/)** — Treasurer. Co-founder and former CTO at Nginx, the world's leading web server used by 400M+ websites (acquired for ~$700M in 2019). Former VP Engineering at F5. Long-time FreeBSD contributor.
+- **[Chad Whitacre](https://www.linkedin.com/in/chadwhitacre/)** — Director. Former Head of Open Source at Sentry (used by 4M+ developers) and former leader of the Open Source Pledge. Founder of open source funding pioneer Gratipay (2012–2018).
+
+<!-- TEMPORARILY HIDDEN, restore with the CTA in about.astro:
+→ [Nominate a candidate](/nominate-board/) for the OSE board.
+-->
 
 ### Staff & Advisors
 
 - **[Jonathan Starr](https://www.linkedin.com/in/jonathan-starr-b04032284/)** — Executive Director. Former Program Manager at NumFOCUS. Co-Founder of SciOS and The Institute of Open Science Practices.
-- **[Amy Parker](https://www.linkedin.com/in/amy3parker/)** — Advisor. Deputy Executive Director at the OpenSSL Foundation; former Director of the Wikipedia Endowment. Served as Director of Individual Giving at the Smithsonian and the New York Public Library.
-- **[Vlad-Stefan Harbuz](https://vlad.website)** — Advisor. Maintainer of the Open Source Pledge. Core developer of OSS funding service thanks.dev.
-
-Looking to contribute as an advisor or board member? [Contact us](mailto:konstantin@endowment.dev).
+- **[Vlad-Stefan Harbuz](https://vlad.website)** — Advisor. Director of the Open Source Pledge. Core developer of OSS funding service thanks.dev.
 
 ## How we fund open source
 
@@ -53,7 +55,7 @@ Within each ecosystem, we use a model based on **Value** and **Risk** scores. Ta
 | **Value** | Downloads, dependents, community nominations, endorsements |
 | **Risk** | OpenSSF score, lines of code, active maintainers, funding |
 
-→ [Nominate OSS projects](/funding/) for our first funding round in Q2 2026.
+→ [Nominate OSS projects](/funding/) for our first funding round.
 
 ## Investing strategy
 

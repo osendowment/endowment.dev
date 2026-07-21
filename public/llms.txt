@@ -21,24 +21,23 @@ The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity
 
 - Model: Endowment (spend only investment returns, preserve principal forever)
 - Legal: US 501(c)(3) tax-exempt nonprofit (Delaware)
-- Address: 74 E Glenwood Ave Unit 5756, Smyrna, DE
+- Address: 2261 Market Street Suite 91962, San Francisco, CA
 - Investment Manager: Infinite Giving (specializing in US nonprofits)
 - Target Return: 7-8% annually
 - Target Spend Rate: 5% of fund per year on grants
-- First Grants: Planned for Q2 2026
 - Grant Format: Microgrants (~$5,000) to high-risk candidates among most valuable OSS
 
 ## Team
 
 ### Board of Directors
 - Konstantin Vinogradov (Chairman) — VC investor, former GP at Runa Capital ($600M+ AUM), creator of ROSS Index
-- Chad Whitacre (Secretary) — Head of Open Source at Sentry, leader of Open Source Pledge, founded Gratipay
+- Amy Parker (Secretary) — VP, Major Gifts at the Signal Foundation, former Deputy Executive Director at OpenSSL Foundation and Director of Wikipedia Endowment
 - Maxim Konovalov (Treasurer) — Co-founder and former CTO of Nginx (400M+ websites), former VP Engineering at F5
+- Chad Whitacre (Director) — Former Head of Open Source at Sentry, former leader of Open Source Pledge, founded Gratipay
 
 ### Staff & Advisors
 - Jonathan Starr (Executive Director) — Former Program Manager at NumFOCUS
-- Amy Parker (Advisor) — Deputy Executive Director at OpenSSL Foundation, former Director of Wikipedia Endowment
-- Vlad-Stefan Harbuz (Advisor) — Maintainer of Open Source Pledge, core developer at thanks.dev
+- Vlad-Stefan Harbuz (Advisor) — Director of Open Source Pledge, core developer at thanks.dev
 
 ## Grant Selection Model
 
@@ -52,7 +51,13 @@ The model is published openly at https://github.com/osendowment/model
 
 - **Donors**: All individual and institutional contributors
 - **Members**: Donors of $1,000+/year gain advisory rights and participate in governance
-- **Board**: 3 directors (expandable to 11); must also be Members
+- **Board**: 4 directors (expandable to 11); must also be Members
+
+## Get Involved
+
+- **Nominate an OSS project** for a grant: https://endowment.dev/funding — open to anyone, self-nominations welcome.
+- **Nominate a board director candidate**: https://endowment.dev/nominate-board — open to anyone, self-nominations welcome. To be elected, Directors must be OSE Members (donors giving $1,000+/year). Reviewed on a rolling basis against OSE's needs — fundraising, investment management, open source expertise. Directors are elected for a three-year term.
+- **Become a Member**: donate $1,000+/year.
 
 ## Contact
 
@@ -62,6 +67,8 @@ The model is published openly at https://github.com/osendowment/model
 ## Further Reading
 
 - About: https://endowment.dev/about
+- Nominate OSS: https://endowment.dev/funding
+- Nominate a board director: https://endowment.dev/nominate-board
 - FAQ: https://endowment.dev/faq
 - Docs: https://endowment.dev/docs
 - Community: https://endowment.dev/community

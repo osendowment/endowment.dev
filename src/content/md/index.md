@@ -32,7 +32,7 @@ Incidents like [Heartbleed](https://en.wikipedia.org/wiki/Heartbleed), [Log4Shel
 3. **Grantmaking** — We distribute grants based on an open, data-driven [model](https://github.com/osendowment/model) co-developed with OSE Members and the community. Target format: ~$5,000 microgrants to the most critical-but-underfunded projects.
 4. **Impact tracking** — Grant recipients are tracked for accountability, and the model is continuously refined.
 
-The target annual spend rate is **5%** of the fund, matching the approach used by leading US universities. The first funding round is planned for **Q2 2026**.
+The target annual spend rate is **5%** of the fund, matching the approach used by leading US universities.
 
 ## Operating principles
 
@@ -52,7 +52,7 @@ The target annual spend rate is **5%** of the fund, matching the approach used b
 > — **Mitchell Hashimoto**, Co-founder, HashiCorp
 
 > The Open Source Endowment is so obvious in hindsight, it's high time we brought this model to bear on [the Open Source sustainability crisis](https://openpath.quest/2024/the-open-source-sustainability-crisis/).
-> — **Chad Whitacre**, Head of Open Source, Sentry
+> — **Chad Whitacre**, ex Head of Open Source, Sentry
 
 > The Endowment is a very promising project. I am happy to join and pretty excited to see how it contributes to the FOSS funding ecosystem.
 > — **Kailash Nadh**, CTO, Zerodha

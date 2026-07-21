@@ -7,6 +7,12 @@ import Layout from '../layouts/Layout.astro';
 import { fetchStats } from '../lib/api.ts';
 const stats = await fetchStats();
 
+// /nominate-board is deployed but deliberately unlinked while we test it by
+// direct URL. Flip to `true` to launch it — that is the only change needed.
+// Uses a build-time conditional rather than an HTML comment on purpose: Astro
+// keeps comments in the output, which would ship the CTA text in the page source.
+const SHOW_BOARD_NOMINATION_CTA = false;
+
 const fundSize = stats.endowment.fund_size;
 const totalDonors = stats.donors.total;
 const totalMembers = stats.donors.members;
@@ -26,9 +32,9 @@ const totalMembers = stats.donors.members;
             "description": "The world's first endowment fund dedicated to sustainably funding critical free and open source software. A US 501(c)(3) tax-exempt public charity.",
             "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "74 E Glenwood Ave Unit 5756",
-                "addressLocality": "Smyrna",
-                "addressRegion": "DE",
+                "streetAddress": "2261 Market Street Suite 91962",
+                "addressLocality": "San Francisco",
+                "addressRegion": "CA",
                 "addressCountry": "US"
             },
             "employee": [
@@ -45,13 +51,13 @@ const totalMembers = stats.donors.members;
                 },
                 {
                     "@type": "Person",
-                    "name": "Chad Whitacre",
+                    "name": "Amy Parker",
                     "jobTitle": "Secretary",
-                    "image": "https://endowment.dev/images/team/chad.webp",
-                    "description": "Head of Open Source at Sentry, leader of Open Source Pledge, founder of Gratipay",
+                    "image": "https://endowment.dev/images/team/amy.webp",
+                    "description": "VP, Major Gifts at the Signal Foundation, former Deputy Executive Director at OpenSSL Foundation and Director of Wikipedia Endowment",
                     "worksFor": [
                         { "@type": "Organization", "name": "Open Source Endowment Foundation" },
-                        { "@type": "Organization", "name": "Sentry" }
+                        { "@type": "Organization", "name": "Signal Foundation" }
                     ]
                 },
                 {
@@ -67,6 +73,16 @@ const totalMembers = stats.donors.members;
                 },
                 {
                     "@type": "Person",
+                    "name": "Chad Whitacre",
+                    "jobTitle": "Director",
+                    "image": "https://endowment.dev/images/team/chad.webp",
+                    "description": "Former Head of Open Source at Sentry, former leader of Open Source Pledge, founder of Gratipay",
+                    "worksFor": [
+                        { "@type": "Organization", "name": "Open Source Endowment Foundation" }
+                    ]
+                },
+                {
+                    "@type": "Person",
                     "name": "Jonathan Starr",
                     "jobTitle": "Executive Director",
                     "image": "https://endowment.dev/images/team/jonathan.webp",
@@ -78,21 +94,10 @@ const totalMembers = stats.donors.members;
                 },
                 {
                     "@type": "Person",
-                    "name": "Amy Parker",
-                    "jobTitle": "Board Advisor",
-                    "image": "https://endowment.dev/images/team/amy.webp",
-                    "description": "Deputy Executive Director at OpenSSL Foundation, former Director of Wikipedia Endowment",
-                    "worksFor": [
-                        { "@type": "Organization", "name": "Open Source Endowment Foundation" },
-                        { "@type": "Organization", "name": "OpenSSL Foundation" }
-                    ]
-                },
-                {
-                    "@type": "Person",
                     "name": "Vlad-Stefan Harbuz",
-                    "jobTitle": "Board Advisor",
+                    "jobTitle": "Advisor",
                     "image": "https://endowment.dev/images/team/vlad.webp",
-                    "description": "Maintainer of Open Source Pledge, core developer at thanks.dev",
+                    "description": "Director of Open Source Pledge, core developer at thanks.dev",
                     "worksFor": {
                         "@type": "Organization",
                         "name": "Open Source Endowment Foundation"
@@ -205,7 +210,7 @@ const totalMembers = stats.donors.members;
                             </p>
                         </div>
                         <div class="feature">
-                            <h3><i>3</i>Board Directors</h3>
+                            <h3><i>4</i>Board Directors</h3>
                             <p>
                                 The Board of Directors is our main governing body, appointing both the Executive
                                 Director for operational management and Advisors.
@@ -242,18 +247,21 @@ const totalMembers = stats.donors.members;
                                 ROSS Index (2020-2025), a quarterly data-driven index of open-source startups.
                             </p>
                         </a>
-                        <a href="https://www.linkedin.com/in/chadwhitacre/" target="_blank" class="team-card">
+                        <a href="https://www.linkedin.com/in/amy3parker/" target="_blank" class="team-card">
                             <div class="team-card__head">
                                 <div class="team-card__photo">
-                                    <img src="/images/team/chad.webp" alt="Chad Whitacre" width="200" height="200" loading="lazy">
+                                    <img src="/images/team/amy.webp" alt="Amy Parker" width="200" height="200" loading="lazy">
                                 </div>
                                 <div class="team-card__info">
-                                    <h4>Chad Whitacre</h4>
+                                    <h4>Amy Parker</h4>
                                     <span class="team-card__role">Secretary</span>
                                 </div>
                             </div>
                             <p class="team-card__desc">
-                                Head of Open Source at Sentry (used by 4M+ developers), who leads the Open Source Pledge, a cultural initiative to get companies to pay maintainers. Founded open source funding pioneer Gratipay (2012–2018).
+                                VP, Major Gifts at the Signal Foundation.
+                                Former Deputy Executive Director at the OpenSSL Foundation
+                                and Director of the Wikipedia Endowment.
+                                Served as Director of Individual Giving at the Smithsonian and the New York Public Library.
                             </p>
                         </a>
                         <a href="https://www.linkedin.com/in/maxim/" target="_blank" class="team-card">
@@ -270,7 +278,30 @@ const totalMembers = stats.donors.members;
                                 Co-founder and former CTO at Nginx, the world's leading web server used by 400M+ websites, which was acquired for ~$700M in 2019. Former VP Engineering at F5. Long-time contributor to FreeBSD.
                             </p>
                         </a>
+                        <a href="https://www.linkedin.com/in/chadwhitacre/" target="_blank" class="team-card">
+                            <div class="team-card__head">
+                                <div class="team-card__photo">
+                                    <img src="/images/team/chad.webp" alt="Chad Whitacre" width="200" height="200" loading="lazy">
+                                </div>
+                                <div class="team-card__info">
+                                    <h4>Chad Whitacre</h4>
+                                    <span class="team-card__role">Director</span>
+                                </div>
+                            </div>
+                            <p class="team-card__desc">
+                                Former Head of Open Source at Sentry (used by 4M+ developers) and former leader of the Open Source Pledge, a cultural initiative to get companies to pay maintainers. Founded open source funding pioneer Gratipay (2012–2018).
+                            </p>
+                        </a>
                     </div>
+                    {SHOW_BOARD_NOMINATION_CTA && (
+                    <p class="funding-milestone funding-milestone--tight">
+                        <span class="funding-cta-wrap">
+                            <span class="funding-cta-chevron">&rsaquo;</span>
+                            <a href="/nominate-board" class="button funding-cta">Nominate a candidate for the OSE board</a>
+                            <span class="funding-cta-chevron">&lsaquo;</span>
+                        </span>
+                    </p>
+                    )}
                     <h3 class="team-group-label">Staff &amp; Advisors</h3>
                     <div class="team-grid">
                         <a href="https://www.linkedin.com/in/jonathan-starr-b04032284/" target="_blank" class="team-card">
@@ -289,22 +320,6 @@ const totalMembers = stats.donors.members;
                                 focusing on sustainable open science.
                             </p>
                         </a>
-                        <a href="https://www.linkedin.com/in/amy3parker/" target="_blank" class="team-card">
-                            <div class="team-card__head">
-                                <div class="team-card__photo">
-                                    <img src="/images/team/amy.webp" alt="Amy Parker" width="200" height="200" loading="lazy">
-                                </div>
-                                <div class="team-card__info">
-                                    <h4>Amy Parker</h4>
-                                    <span class="team-card__role">Advisor</span>
-                                </div>
-                            </div>
-                            <p class="team-card__desc">
-                                Deputy Executive Director at the OpenSSL Foundation
-                                and former Director of the Wikipedia Endowment.
-                                Served as Director of Individual Giving at the Smithsonian and the New York Public Library.
-                            </p>
-                        </a>
                         <a href="https://vlad.website" target="_blank" class="team-card">
                             <div class="team-card__head">
                                 <div class="team-card__photo">
@@ -316,18 +331,11 @@ const totalMembers = stats.donors.members;
                                 </div>
                             </div>
                             <p class="team-card__desc">
-                                Maintainer of the Open Source Pledge.
+                                Director of the Open Source Pledge.
                                 Core developer of OSS funding service thanks.dev.
                                 Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
                             </p>
                         </a>
-                    </div>
-                    <div class="mini-note">
-                        <img src="/images/icons/em-door.svg" alt="Open door icon" width="44" height="44" class="mini-note__icon">
-                        <p>
-                            Looking to contribute to the Open Source Endowment and join our volunteer team as an advisor or board member? Please
-                            <a href="mailto:konstantin@endowment.dev" target="_blank">contact us</a>.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -407,7 +415,7 @@ const totalMembers = stats.donors.members;
                     <p class="funding-milestone">
                         <span class="funding-cta-wrap">
                             <span class="funding-cta-chevron">&rsaquo;</span>
-                            <a href="/funding" class="button funding-cta">Nominate OSS projects for our first funding round in Q2 2026</a>
+                            <a href="/funding" class="button funding-cta">Nominate OSS projects for our first funding round</a>
                             <span class="funding-cta-chevron">&lsaquo;</span>
                         </span>
                     </p>
@@ -496,7 +504,7 @@ const totalMembers = stats.donors.members;
     }
     .team-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         @media (max-width: 900px) {
             grid-template-columns: 1fr;
@@ -682,6 +690,10 @@ const totalMembers = stats.donors.members;
     .funding-milestone {
         margin: 3rem 0 0;
         text-align: center;
+    }
+    /* Sits between the two team grids, so it needs breathing room below too */
+    .funding-milestone--tight {
+        margin: 2.5rem 0 0;
     }
     .funding-cta-wrap {
         display: inline-flex;

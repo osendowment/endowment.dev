@@ -86,7 +86,7 @@ All donations are put into diversified investments managed by a professional ass
 
 ### How is investment income spent?
 
-All expected investment income from donations to the endowment is spent on grants to open source projects. The target spend rate is **5%** of the endowment fund per year. The fund has already generated its first profit, and the first funding round is underway in Q2 2026.
+All expected investment income from donations to the endowment is spent on grants to open source projects. The target spend rate is **5%** of the endowment fund per year. The fund has already generated its first profit, and the first funding round is underway.
 
 ## Grants
 

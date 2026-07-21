@@ -12,7 +12,7 @@
 - Incorporation Date: February 14, 2025
 - Registered Office: 1209 Orange Street, Wilmington, Delaware 19801
 - Registered Agent: National Registered Agents, Inc.
-- Principal Place of Business: 74 E Glenwood Ave Unit #5756, Smyrna, DE 19977
+- Principal Place of Business: 2261 Market Street Suite 91962, San Francisco, CA
 - Website: https://endowment.dev
 - GitHub: https://github.com/osendowment
 - LinkedIn: https://www.linkedin.com/company/osendowment/
@@ -35,7 +35,7 @@ Current funding models are insufficient because none simultaneously combine:
 
 1. **Fundraising**: Individuals, companies, and foundations donate to form a permanent endowment principal. The principal is never spent.
 2. **Investing**: The principal is invested in a diversified portfolio managed by a professional asset manager (Infinite Giving), targeting 7-8% annual returns.
-3. **Grantmaking**: Only the investment returns are used. The target spend rate is 5% of the endowment fund per year on grants to critical OSS projects. First grant distribution is planned for Q2 2026.
+3. **Grantmaking**: Only the investment returns are used. The target spend rate is 5% of the endowment fund per year on grants to critical OSS projects.
 4. **Monitoring**: Grantee projects are tracked for accountability and iterative improvement via quantitative metrics and qualitative check-ins.
 
 The remaining investment earnings (after grants and operating costs) are reinvested, growing the endowment over time.
@@ -107,6 +107,16 @@ All directors have equal voting rights regardless of class.
 - Privileges: Advisory rights on strategic matters, appointing community-nominated directors, exclusive events/resources, regular updates
 - Non-transferable; board may suspend/terminate membership if association would harm trust
 
+## Nominations
+
+Two public nomination channels, both open to anyone, both accepting self-nominations:
+
+### OSS project nominations (grants)
+Submitted at https://endowment.dev/funding. Nominations are one input among many into the Value-Risk selection model. Only independent nonprofit OSS is eligible.
+
+### Board director nominations
+Submitted at https://endowment.dev/nominate-board. Anyone may nominate a candidate for the Board of Directors, including themselves; no donation is required to nominate. To be elected, a Director must be an OSE Member (a donor giving at least $1,000/year), though a candidate may become a Member after being nominated. Nominations are reviewed on a rolling basis against OSE's current needs — fundraising, investment management, and open source expertise. The most promising candidates are interviewed and invited to join. Directors are elected for a three-year term; the board holds between 3 and 11 seats.
+
 ## Team
 
 ### Board of Directors
@@ -114,22 +124,22 @@ All directors have equal voting rights regardless of class.
 **Konstantin Vinogradov — Chairman (Founding Director)**
 VC investor who spent the last decade in venture capital as a General Partner at Runa Capital (a $600M+ AUM deep-tech fund). Creator of the ROSS Index (2020-2025), the world's first ranking of commercial open source startups by GitHub. Based in Luxembourg and the US.
 
-**Chad Whitacre — Secretary (Board-Elected Director)**
-Head of Open Source at Sentry (4M+ developers), where he leads the Open Source Pledge initiative. Previously founded Gratipay (2012-2018), one of the earliest platforms for funding open source developers.
+**Amy Parker — Secretary (Board-Elected Director)**
+VP, Major Gifts at the Signal Foundation. Former Deputy Executive Director of the OpenSSL Foundation and Director of the Wikipedia Endowment. Previous roles at the Smithsonian Institution and the New York Public Library.
 
 **Maxim Konovalov — Treasurer (Board-Elected Director)**
 Co-founder and former CTO of Nginx (serving 400M+ websites), which was acquired for approximately $700M in 2019. Former VP Engineering at F5. Long-time FreeBSD contributor and open source advocate.
+
+**Chad Whitacre — Director (Board-Elected Director)**
+Former Head of Open Source at Sentry (4M+ developers) and former leader of the Open Source Pledge initiative. Previously founded Gratipay (2012-2018), one of the earliest platforms for funding open source developers.
 
 ### Staff & Advisors
 
 **Jonathan Starr — Executive Director**
 Former Program Manager at NumFOCUS. Co-Founder of SciOS and the Institute of Open Science Practices.
 
-**Amy Parker — Board Advisor**
-Deputy Executive Director of the OpenSSL Foundation. Former Director of the Wikipedia Endowment. Previous roles at the Smithsonian Institution and the New York Public Library.
-
 **Vlad-Stefan Harbuz — Board Advisor**
-Maintainer of the Open Source Pledge. Core developer of OSS funding service thanks.dev. Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
+Director of the Open Source Pledge. Core developer of OSS funding service thanks.dev. Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
 
 ## Six Core Principles
 
@@ -176,7 +186,7 @@ Yes. Corporate and institutional donors are welcome, but do not receive governin
 All donations go into diversified investments managed by Infinite Giving (professional asset manager specializing in US nonprofits), targeting a 7-8% return.
 
 ### How is investment income spent?
-All expected investment income is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year. First grants are planned for Q2 2026.
+All expected investment income is spent on grants to OSS projects. The target spend rate is 5% of the endowment fund per year.
 
 ### Does OSE support OSS projects with associated businesses?
 No. OSE supports only nonprofit projects, excluding OSS startups and corporate-backed projects.
