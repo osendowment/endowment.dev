@@ -7,11 +7,10 @@ import Layout from '../layouts/Layout.astro';
 import { fetchStats } from '../lib/api.ts';
 const stats = await fetchStats();
 
-// /nominate-board is deployed but deliberately unlinked while we test it by
-// direct URL. Flip to `true` to launch it — that is the only change needed.
-// Uses a build-time conditional rather than an HTML comment on purpose: Astro
-// keeps comments in the output, which would ship the CTA text in the page source.
-const SHOW_BOARD_NOMINATION_CTA = false;
+// Build-time gate rather than an HTML comment: Astro keeps comments in the
+// output, so commenting the block out would still ship the CTA text in the
+// page source. Set false to unlink /nominate-board again.
+const SHOW_BOARD_NOMINATION_CTA = true;
 
 const fundSize = stats.endowment.fund_size;
 const totalDonors = stats.donors.total;

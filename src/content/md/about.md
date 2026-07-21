@@ -29,9 +29,7 @@ OSE's bottom-up governance is inspired by the best universities and revolves aro
 - **[Maxim Konovalov](https://www.linkedin.com/in/maxim/)** — Treasurer. Co-founder and former CTO at Nginx, the world's leading web server used by 400M+ websites (acquired for ~$700M in 2019). Former VP Engineering at F5. Long-time FreeBSD contributor.
 - **[Chad Whitacre](https://openpath.quest)** — Director. Former Head of Open Source at Sentry (used by 4M+ developers) and former leader of the Open Source Pledge. Founder of open source funding pioneer Gratipay (2012–2018).
 
-<!-- TEMPORARILY HIDDEN, restore with the CTA in about.astro:
 → [Nominate a candidate](/nominate-board/) for the OSE board.
--->
 
 ### Staff & Advisors
 
