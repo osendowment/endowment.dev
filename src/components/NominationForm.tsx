@@ -30,13 +30,17 @@ const surveyJson = {
                 {
                     type: "text",
                     name: "project_url",
-                    title: "GitHub Repo URL of the project you're nominating",
+                    title: "GitHub/GitLab Repo URL of the project you're nominating",
                     isRequired: true,
                     validators: [
                         {
                             type: "regex",
-                            text: "Please enter a valid GitHub repository URL (https://github.com/user/repo)",
-                            regex: "^https?:\\/\\/github\\.com\\/[a-zA-Z0-9_.-]+\\/[a-zA-Z0-9_.-]+\\/?$",
+                            text: "Please enter a valid GitHub or GitLab repository URL",
+                            // GitHub (owner/repo) or GitLab on gitlab.com / a recognised
+                            // custom host from the model repo's HOST_NICKNAMES registry
+                            // (nested groups allowed). Keep this host list in sync with the
+                            // API validator in osendowment/data (src/validators/nomination.ts).
+                            regex: "^https:\\/\\/(github\\.com\\/[a-zA-Z0-9_.-]+\\/[a-zA-Z0-9_.-]+|(gitlab\\.com|salsa\\.debian\\.org|gitlab\\.freedesktop\\.org|gitlab\\.gnome\\.org|gitlab\\.redox-os\\.org|invent\\.kde\\.org|gitlab\\.xiph\\.org|gitlab\\.isc\\.org|gitlab\\.inria\\.fr|gitlab\\.dkrz\\.de|code\\.videolan\\.org|gitlab\\.linss\\.com|gitlab\\.cern\\.ch|gitlab\\.exherbo\\.org|gitlab\\.kitware\\.com|gitlab\\.xfce\\.org|gitlab\\.ibr\\.cs\\.tu-bs\\.de)\\/[a-zA-Z0-9_.-]+(\\/[a-zA-Z0-9_.-]+)+)\\/?$",
                         },
                     ],
                     placeholder: "https://github.com/{user}/{repo}",
