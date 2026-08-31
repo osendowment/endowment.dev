@@ -1,0 +1,286 @@
+---
+// © Vlad-Stefan Harbuz <vlad@vlad.website>
+// SPDX-License-Identifier: Apache-2.0
+
+import Layout from '../../layouts/Layout.astro';
+
+const MCP_URL = 'https://mcp.endowment.dev';
+
+// Public (unauthenticated) tools. Mirrors PUBLIC_TOOLS in the mcp worker —
+// keep in sync when tools are added or their schemas change.
+const tools = [
+    {
+        name: 'fund_stats',
+        params: '—',
+        desc: 'Live fund totals: amount donated, individual and organization donor counts, member count, endowment size in USD, and a breakdown by funding source.',
+    },
+    {
+        name: 'portfolio_composition',
+        params: '—',
+        desc: 'How the endowment is invested: every holding with its asset name, ISIN, description, and share of total market value.',
+    },
+    {
+        name: 'donors_list',
+        params: 'limit, type, members_only',
+        desc: 'The public donor list — name (or an anonymous label), tier, donor type, member flag, and profile links. Filter by type (person or organization) or to members only.',
+    },
+    {
+        name: 'donate_methods',
+        params: '—',
+        desc: 'The canonical guide to giving: every donation method with its URL and fees, plus our EIN.',
+    },
+    {
+        name: 'about_ose',
+        params: '—',
+        desc: 'What the Open Source Endowment is — mission, funding model, and governance — as Markdown.',
+    },
+    {
+        name: 'faq_list',
+        params: 'section, limit',
+        desc: 'Browse the FAQ. Optionally scope to one section: Purpose, Donations, Governance, Investments, Grants, or Other.',
+    },
+    {
+        name: 'faq_search',
+        params: 'query (required), limit',
+        desc: 'Full-text search across every FAQ question and answer.',
+    },
+];
+
+const resources = [
+    { uri: 'about://ose', desc: 'Mission, funding model, and how the endowment works.' },
+    { uri: 'donate://how', desc: 'Every way to give, with fees and links.' },
+    { uri: 'faq://endowment.dev', desc: 'The complete FAQ as a single document.' },
+];
+
+const curlExample = `curl -s ${MCP_URL} \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": { "name": "fund_stats", "arguments": {} }
+  }'`;
+---
+
+<Layout title="MCP Server — Open Source Endowment" description="Connect Claude and other AI agents to live Open Source Endowment data. Public MCP server: fund stats, portfolio composition, donors, FAQ — no authentication required." breadcrumbs={[{name: "Home", url: "https://endowment.dev/"}, {name: "Docs", url: "https://endowment.dev/docs/"}, {name: "MCP Server", url: "https://endowment.dev/docs/mcp/"}]}>
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://endowment.dev/" },
+            { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://endowment.dev/docs" },
+            { "@type": "ListItem", "position": 3, "name": "MCP Server" }
+        ]
+    })} />
+    <article>
+        <section class="pagesec pagesec--dark pagesec--tight">
+            <div class="container">
+                <div class="insec insec--xpad insec--ytight">
+                    <div class="squares squares--corner-dark-sw-outer"></div>
+                    <div class="squares squares--corner-dark-sw-inner"></div>
+                    <div class="squares squares--corner-dark-ne-outer"></div>
+                    <div class="squares squares--corner-dark-ne-inner"></div>
+                    <div class="sechead sechead--min-height flex-center flex-column">
+                        <h1>MCP Server</h1>
+                        <p>
+                            Give Claude — or any
+                            <a href="https://modelcontextprotocol.io" target="_blank">MCP</a>-capable
+                            agent — live access to our fund, portfolio, donors, and FAQ. Everything
+                            on this page is public: no account, no API key.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pagesec">
+            <div class="container">
+                <div class="insec insec--xpad">
+
+                    <h2 class="mcp-heading" id="endpoint">Endpoint</h2>
+                    <div class="mcp-endpoint">
+                        <code>{MCP_URL}</code>
+                    </div>
+                    <p class="mcp-note">
+                        Transport is <strong>streamable HTTP</strong> — one JSON-RPC 2.0 request per
+                        <code>POST /</code>, at the root. There is no <code>/sse</code> and no
+                        <code>/mcp</code> path; pointing a client at one will fail. A
+                        <code>GET /</code> returns a discovery document describing the server and its
+                        tools.
+                    </p>
+
+                    <h2 class="mcp-heading" id="connect">Connect</h2>
+
+                    <h3 class="mcp-subheading">Claude Code</h3>
+                    <pre class="mcp-code"><code>claude mcp add --transport http ose {MCP_URL}</code></pre>
+
+                    <h3 class="mcp-subheading">Claude apps</h3>
+                    <p class="mcp-note">
+                        Go to <strong>Settings → Connectors → Add custom connector</strong> and paste
+                        the endpoint above.
+                    </p>
+
+                    <h3 class="mcp-subheading">Anything else</h3>
+                    <p class="mcp-note">
+                        Call it directly — it is a plain HTTP endpoint, CORS-enabled for every origin,
+                        so it works from a browser too.
+                    </p>
+                    <pre class="mcp-code"><code>{curlExample}</code></pre>
+
+                    <h2 class="mcp-heading" id="tools">Public Tools</h2>
+                    <p class="mcp-note">
+                        Seven tools, callable without authentication. Every parameter is optional
+                        except where noted. A <code>tools/list</code> call also returns the
+                        admin tools, but calling one without a token returns
+                        <code>Authentication required</code>.
+                    </p>
+
+                    <div class="mcp-table">
+                        {tools.map((tool) => (
+                            <div class="mcp-row">
+                                <div class="mcp-name"><code>{tool.name}</code></div>
+                                <div class="mcp-desc">{tool.desc}</div>
+                                <div class="mcp-params">{tool.params}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <h2 class="mcp-heading" id="resources">Resources</h2>
+                    <p class="mcp-note">
+                        Three documents are also exposed as MCP resources — handy when an agent wants
+                        the whole text rather than a query result.
+                    </p>
+
+                    <div class="mcp-table">
+                        {resources.map((resource) => (
+                            <div class="mcp-row mcp-row--two">
+                                <div class="mcp-name"><code>{resource.uri}</code></div>
+                                <div class="mcp-desc">{resource.desc}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <h2 class="mcp-heading" id="limits">Limits</h2>
+                    <ul class="mcp-list">
+                        <li>Request body is capped at <strong>64&nbsp;KB</strong>.</li>
+                        <li>JSON-RPC batches are capped at <strong>10</strong> requests.</li>
+                        <li>
+                            Figures are served from a cache, so a donation shows up in
+                            <code>fund_stats</code> within about an hour.
+                        </li>
+                    </ul>
+
+                    <p class="mcp-note mcp-note--footer">
+                        Prefer plain REST? The same public data is available from our
+                        <a href="https://api.endowment.dev/public/" target="_blank">public API</a>.
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </article>
+</Layout>
+
+<style>
+    .sechead {
+        max-width: 40rem;
+    }
+    .mcp-heading {
+        font-size: var(--font-size-6);
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .mcp-heading:not(:first-child) {
+        margin-top: 3.5rem;
+    }
+    .mcp-subheading {
+        font-size: var(--font-size-3);
+        font-weight: 700;
+        margin: 1.75rem 0 0.6rem;
+    }
+    .mcp-note {
+        font-size: var(--font-size-3);
+        line-height: 1.6;
+        max-width: 46rem;
+        margin-bottom: 1rem;
+    }
+    .mcp-note--footer {
+        margin-top: 3.5rem;
+    }
+    .mcp-endpoint {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--color-primary);
+        border-radius: 6px;
+        margin-bottom: 1rem;
+    }
+    .mcp-endpoint code {
+        font-size: var(--font-size-4);
+        font-weight: 700;
+    }
+    .mcp-code {
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--color-section-border);
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: var(--font-size-2);
+        line-height: 1.5;
+    }
+    .mcp-list {
+        font-size: var(--font-size-3);
+        line-height: 1.7;
+        padding-left: 1.2rem;
+        max-width: 46rem;
+    }
+    .mcp-table {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+    }
+    .mcp-row {
+        display: grid;
+        grid-template-columns: 14rem 1fr 12rem;
+        gap: 2rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--color-section-border);
+        align-items: baseline;
+    }
+    .mcp-row--two {
+        grid-template-columns: 14rem 1fr;
+    }
+    .mcp-row:first-child {
+        border-top: 1px solid var(--color-section-border);
+    }
+    .mcp-row:last-child {
+        border-bottom: none;
+    }
+    .mcp-name {
+        font-size: var(--font-size-3);
+        line-height: 1.3;
+        min-width: 0;
+    }
+    .mcp-name code {
+        font-weight: 700;
+        word-break: break-word;
+    }
+    .mcp-desc {
+        font-size: var(--font-size-3);
+        line-height: 1.6;
+        min-width: 0;
+    }
+    .mcp-params {
+        font-family: monospace;
+        font-size: var(--font-size-2);
+        line-height: 1.5;
+        color: var(--color-text-dark-secondary);
+        min-width: 0;
+    }
+    @media (max-width: 800px) {
+        .mcp-row,
+        .mcp-row--two {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+    }
+</style>
