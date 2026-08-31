@@ -23,7 +23,8 @@ const ROUTES = [
 const STATS_URL = 'https://api.endowment.dev/public/stats';
 const DONORS_URL = 'https://api.endowment.dev/public/donors';
 
-function humanizeDollars(n) {
+// Exported so src/util.test.ts can pin humanize() against this copy.
+export function humanizeDollars(n) {
   if (n >= 1_000_000) return `$${Math.round(n / 1_000_000)}M`;
   if (n >= 1_000) return `$${Math.round(n / 1_000)}K`;
   return `$${n.toLocaleString()}`;
