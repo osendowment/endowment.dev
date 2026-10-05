@@ -147,7 +147,7 @@ Former Head of Open Source at Sentry (4M+ developers) and former leader of the O
 **Jonathan Starr — Executive Director**
 Former Program Manager at NumFOCUS. Co-Founder of SciOS and the Institute of Open Science Practices.
 
-**Vlad-Stefan Harbuz — Board Advisor**
+**Vlad Miricioiu — Board Advisor**
 Director of the Open Source Pledge. Core developer of OSS funding service thanks.dev. Helped build software used by the Gates Foundation to allocate $1B in healthcare funding.
 
 ## Six Core Principles
