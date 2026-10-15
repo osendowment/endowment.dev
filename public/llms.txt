@@ -37,7 +37,7 @@ The Open Source Endowment Foundation is a US 501(c)(3) tax-exempt public charity
 
 ### Staff & Advisors
 - Jonathan Starr (Executive Director) — Former Program Manager at NumFOCUS
-- Vlad-Stefan Harbuz (Advisor) — Director of Open Source Pledge, core developer at thanks.dev
+- Vlad Miricioiu (Advisor) — Director of Open Source Pledge, core developer at thanks.dev
 
 ## Grant Selection Model
 

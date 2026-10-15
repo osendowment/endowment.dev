@@ -21,7 +21,7 @@ path = [
     "public/images/icons/**",
     "public/images/noise.png",
 ]
-SPDX-FileCopyrightText = "© Vlad-Stefan Harbuz"
+SPDX-FileCopyrightText = "© Vlad Miricioiu"
 SPDX-License-Identifier = "LicenseRef-Restricted"
 
 [[annotations]]

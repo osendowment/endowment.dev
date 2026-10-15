@@ -34,7 +34,7 @@ OSE's bottom-up governance is inspired by the best universities and revolves aro
 ### Staff & Advisors
 
 - **[Jonathan Starr](https://www.linkedin.com/in/jonathan-starr-b04032284/)** — Executive Director. Former Program Manager at NumFOCUS. Co-Founder of SciOS and The Institute of Open Science Practices.
-- **[Vlad-Stefan Harbuz](https://vlad.website)** — Advisor. Director of the Open Source Pledge. Core developer of OSS funding service thanks.dev.
+- **[Vlad Miricioiu](https://vlad.website)** — Advisor. Director of the Open Source Pledge. Core developer of OSS funding service thanks.dev.
 
 ## How we fund open source
 
